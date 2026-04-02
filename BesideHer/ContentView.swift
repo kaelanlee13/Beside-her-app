@@ -2,30 +2,39 @@
 //  ContentView.swift
 //  BesideHer
 //
-//  Created by Kaelan Lee on 4/2/26.
+//  Root view that checks onboarding status and routes accordingly
 //
 
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
-    let content = ContentService.shared
+    @Query private var profiles: [UserProfile]
+    @State private var showOnboarding = false
+    
+    /// The user's profile, if onboarding is complete
+    var userProfile: UserProfile? {
+        profiles.first { $0.onboardingCompleted }
+    }
     
     var body: some View {
-        NavigationStack {
-            VStack(spacing: 16) {
-                Text("BesideHer")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                
-                Text("\(content.weeks.count) weeks loaded")
-                Text("\(content.tips.count) tips loaded")
-                Text("\(content.checklists.count) checklists loaded")
+        Group {
+            if let profile = userProfile, !showOnboarding {
+                // User has completed onboarding — show the main app
+                HomeView(profile: profile)
+            } else {
+                // First time user — show onboarding
+                OnboardingView(onComplete: {
+                    withAnimation {
+                        showOnboarding = false
+                    }
+                })
             }
-            .padding()
         }
     }
 }
 
 #Preview {
     ContentView()
+        .modelContainer(for: UserProfile.self, inMemory: true)
 }
