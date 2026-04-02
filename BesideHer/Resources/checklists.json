@@ -1,0 +1,295 @@
+{
+  "checklists": [
+    {
+      "id": "checklist-t1",
+      "title": "First Trimester Checklist",
+      "trimester": 1,
+      "items": [
+        {
+          "id": "t1-c1",
+          "text": "Schedule and attend first prenatal appointment (weeks 8-10)",
+          "category": "medical",
+          "weekRecommended": 8
+        },
+        {
+          "id": "t1-c2",
+          "text": "Discuss genetic screening options (NIPT, NT scan) with partner",
+          "category": "medical",
+          "weekRecommended": 10
+        },
+        {
+          "id": "t1-c3",
+          "text": "Begin taking prenatal vitamins (600 mcg folic acid, 27 mg iron)",
+          "category": "health",
+          "weekRecommended": 4
+        },
+        {
+          "id": "t1-c4",
+          "text": "Review health insurance \u2014 deductibles, copays, out-of-pocket max",
+          "category": "financial",
+          "weekRecommended": 9
+        },
+        {
+          "id": "t1-c5",
+          "text": "Start building emergency fund (target: 6 months expenses)",
+          "category": "financial",
+          "weekRecommended": 6
+        },
+        {
+          "id": "t1-c6",
+          "text": "Research car seats, cribs, and strollers",
+          "category": "gear",
+          "weekRecommended": 11
+        },
+        {
+          "id": "t1-c7",
+          "text": "Discuss when to share pregnancy news with family",
+          "category": "emotional",
+          "weekRecommended": 8
+        },
+        {
+          "id": "t1-c8",
+          "text": "Learn foods to avoid and adjust household meals",
+          "category": "health",
+          "weekRecommended": 5
+        },
+        {
+          "id": "t1-c9",
+          "text": "Practice active listening and emotional support techniques",
+          "category": "emotional",
+          "weekRecommended": 6
+        },
+        {
+          "id": "t1-c10",
+          "text": "Research your employer's paternity leave policy",
+          "category": "planning",
+          "weekRecommended": 9
+        },
+        {
+          "id": "t1-c11",
+          "text": "Get term life insurance quotes from at least 3 providers",
+          "category": "financial",
+          "weekRecommended": 10
+        },
+        {
+          "id": "t1-c12",
+          "text": "Start a pregnancy budget spreadsheet",
+          "category": "financial",
+          "weekRecommended": 8
+        }
+      ]
+    },
+    {
+      "id": "checklist-t2",
+      "title": "Second Trimester Checklist",
+      "trimester": 2,
+      "items": [
+        {
+          "id": "t2-c1",
+          "text": "Attend the anatomy scan together (weeks 18-22)",
+          "category": "medical",
+          "weekRecommended": 20
+        },
+        {
+          "id": "t2-c2",
+          "text": "Complete glucose challenge test (weeks 24-28)",
+          "category": "medical",
+          "weekRecommended": 26
+        },
+        {
+          "id": "t2-c3",
+          "text": "Purchase major baby gear: crib, car seat, stroller",
+          "category": "gear",
+          "weekRecommended": 22
+        },
+        {
+          "id": "t2-c4",
+          "text": "Research childcare options and get on daycare waitlists",
+          "category": "planning",
+          "weekRecommended": 18
+        },
+        {
+          "id": "t2-c5",
+          "text": "Enroll in a childbirth education class",
+          "category": "planning",
+          "weekRecommended": 22
+        },
+        {
+          "id": "t2-c6",
+          "text": "Start discussing birth plan preferences",
+          "category": "planning",
+          "weekRecommended": 24
+        },
+        {
+          "id": "t2-c7",
+          "text": "Review and update life insurance and beneficiaries",
+          "category": "financial",
+          "weekRecommended": 24
+        },
+        {
+          "id": "t2-c8",
+          "text": "Begin babyproofing: anchor furniture, outlet covers, water heater to 120\u00b0F",
+          "category": "gear",
+          "weekRecommended": 26
+        },
+        {
+          "id": "t2-c9",
+          "text": "Create and share baby registry",
+          "category": "gear",
+          "weekRecommended": 16
+        },
+        {
+          "id": "t2-c10",
+          "text": "Order nursery furniture (allow 4-8 weeks delivery)",
+          "category": "gear",
+          "weekRecommended": 20
+        },
+        {
+          "id": "t2-c11",
+          "text": "Notify employer about upcoming paternity leave",
+          "category": "planning",
+          "weekRecommended": 14
+        },
+        {
+          "id": "t2-c12",
+          "text": "Interview and select a pediatrician",
+          "category": "medical",
+          "weekRecommended": 22
+        },
+        {
+          "id": "t2-c13",
+          "text": "Pre-register at the hospital",
+          "category": "planning",
+          "weekRecommended": 24
+        },
+        {
+          "id": "t2-c14",
+          "text": "Open a 529 college savings plan",
+          "category": "financial",
+          "weekRecommended": 20
+        },
+        {
+          "id": "t2-c15",
+          "text": "Schedule and take a hospital tour",
+          "category": "planning",
+          "weekRecommended": 23
+        }
+      ]
+    },
+    {
+      "id": "checklist-t3",
+      "title": "Third Trimester Checklist",
+      "trimester": 3,
+      "items": [
+        {
+          "id": "t3-c1",
+          "text": "Attend biweekly appointments (28-36), then weekly",
+          "category": "medical",
+          "weekRecommended": 28
+        },
+        {
+          "id": "t3-c2",
+          "text": "Complete GBS screening at week 36",
+          "category": "medical",
+          "weekRecommended": 36
+        },
+        {
+          "id": "t3-c3",
+          "text": "Finalize and share birth plan with care provider",
+          "category": "planning",
+          "weekRecommended": 36
+        },
+        {
+          "id": "t3-c4",
+          "text": "Install car seat rear-facing and get it inspected",
+          "category": "gear",
+          "weekRecommended": 36
+        },
+        {
+          "id": "t3-c5",
+          "text": "Pack hospital bags for both parents by week 36",
+          "category": "planning",
+          "weekRecommended": 35
+        },
+        {
+          "id": "t3-c6",
+          "text": "Prepare 15-20 freezer meals for postpartum",
+          "category": "postpartum",
+          "weekRecommended": 32
+        },
+        {
+          "id": "t3-c7",
+          "text": "Set up nursery: crib with firm mattress, fitted sheet only, 68-72\u00b0F",
+          "category": "gear",
+          "weekRecommended": 33
+        },
+        {
+          "id": "t3-c8",
+          "text": "Confirm insurance pre-authorization for delivery",
+          "category": "financial",
+          "weekRecommended": 34
+        },
+        {
+          "id": "t3-c9",
+          "text": "Learn the 5-1-1 rule for when to go to the hospital",
+          "category": "planning",
+          "weekRecommended": 37
+        },
+        {
+          "id": "t3-c10",
+          "text": "Draft a birth plan together",
+          "category": "planning",
+          "weekRecommended": 28
+        },
+        {
+          "id": "t3-c11",
+          "text": "Practice labor comfort measures together",
+          "category": "planning",
+          "weekRecommended": 30
+        },
+        {
+          "id": "t3-c12",
+          "text": "Complete childbirth classes",
+          "category": "planning",
+          "weekRecommended": 32
+        },
+        {
+          "id": "t3-c13",
+          "text": "Know the fastest route to the hospital (and a backup)",
+          "category": "planning",
+          "weekRecommended": 36
+        },
+        {
+          "id": "t3-c14",
+          "text": "Finalize will and guardianship designations",
+          "category": "financial",
+          "weekRecommended": 34
+        },
+        {
+          "id": "t3-c15",
+          "text": "Pre-fill insurance enrollment forms for adding baby",
+          "category": "financial",
+          "weekRecommended": 35
+        },
+        {
+          "id": "t3-c16",
+          "text": "Learn newborn care basics: diapering, swaddling, feeding cues",
+          "category": "postpartum",
+          "weekRecommended": 34
+        },
+        {
+          "id": "t3-c17",
+          "text": "Set up visitor policy with partner",
+          "category": "postpartum",
+          "weekRecommended": 35
+        },
+        {
+          "id": "t3-c18",
+          "text": "Keep car gas tank full from week 36 onward",
+          "category": "planning",
+          "weekRecommended": 36
+        }
+      ]
+    }
+  ]
+}

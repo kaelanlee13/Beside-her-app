@@ -1,0 +1,1058 @@
+{
+  "tips": [
+    {
+      "id": "tip-001",
+      "category": "emotional-support",
+      "title": "Learn the Hormonal Landscape",
+      "content": "Estrogen rises to about 100 times pre-pregnancy levels, progesterone about 10 times, and cortisol triples by the third trimester. These directly alter brain chemistry. Mood swings aren't a choice \u2014 they're biological. Knowing this changes how you respond to everything.",
+      "trimester": [
+        1,
+        2,
+        3
+      ],
+      "tags": [
+        "hormones",
+        "understanding",
+        "empathy"
+      ]
+    },
+    {
+      "id": "tip-002",
+      "category": "emotional-support",
+      "title": "Calibrate Your Response by Trimester",
+      "content": "First trimester: most intense mood swings with nausea and fatigue. Second trimester: often called the honeymoon phase \u2014 calmer, more energy. Third trimester: mood swings return with physical discomfort and labor anxiety. Adjust your expectations accordingly.",
+      "trimester": [
+        1,
+        2,
+        3
+      ],
+      "tags": [
+        "hormones",
+        "trimester",
+        "expectations"
+      ]
+    },
+    {
+      "id": "tip-003",
+      "category": "emotional-support",
+      "title": "Depersonalize the Mood Swings",
+      "content": "When she snaps at you, remember: she's not choosing this. Her cortisol is at triple its normal level, her back hurts, and she's exhausted. Take a breath, say 'I've got this \u2014 go rest,' and let it go. Never say 'It's just hormones' or 'You're overreacting.'",
+      "trimester": [
+        1,
+        2,
+        3
+      ],
+      "tags": [
+        "mood",
+        "patience",
+        "empathy"
+      ]
+    },
+    {
+      "id": "tip-004",
+      "category": "emotional-support",
+      "title": "Master Reflective Listening",
+      "content": "When she says 'I'm so exhausted and I still have months to go,' reflect back: 'It sounds like you're feeling completely drained and it's hard to imagine keeping this up.' Then ask: 'What's been the hardest part of this week?' Reflect emotions, not just words.",
+      "trimester": [
+        1,
+        2,
+        3
+      ],
+      "tags": [
+        "listening",
+        "communication",
+        "validation"
+      ]
+    },
+    {
+      "id": "tip-005",
+      "category": "emotional-support",
+      "title": "Resist the Fix-It Reflex",
+      "content": "Before responding to something difficult, ask yourself: 'Is she asking me to fix something, or is she asking me to be with her in this?' When she says 'I'm terrified something will go wrong,' the right response isn't 'The doctor said everything's fine.' It's 'I'm scared too, and we'll figure it out together.'",
+      "trimester": [
+        1,
+        2,
+        3
+      ],
+      "tags": [
+        "listening",
+        "support",
+        "validation"
+      ]
+    },
+    {
+      "id": "tip-006",
+      "category": "emotional-support",
+      "title": "Use Powerful Validation Phrases",
+      "content": "'I hear you. This is real and it matters.' 'How are you \u2014 really?' 'You don't have to explain \u2014 I believe you.' 'You know what you're doing \u2014 I trust you.' Use these daily. Never silver-line with 'It could be worse' or compare to others.",
+      "trimester": [
+        1,
+        2,
+        3
+      ],
+      "tags": [
+        "validation",
+        "phrases",
+        "daily"
+      ]
+    },
+    {
+      "id": "tip-007",
+      "category": "emotional-support",
+      "title": "Show Up with Your Body, Not Just Words",
+      "content": "Put away your phone, turn toward her, maintain gentle eye contact, and offer physical touch. Sitting together without requiring conversation is a powerful form of validation. Sometimes silence plus holding her hand is the most powerful response.",
+      "trimester": [
+        1,
+        2,
+        3
+      ],
+      "tags": [
+        "presence",
+        "physical",
+        "connection"
+      ]
+    },
+    {
+      "id": "tip-008",
+      "category": "emotional-support",
+      "title": "Talk and Read to the Baby",
+      "content": "From about 18 weeks, your baby can hear your voice. Read stories, sing songs, or just talk about your day. This builds a bond before birth and helps the baby recognize your voice when they arrive. Make it a nightly ritual.",
+      "trimester": [
+        2,
+        3
+      ],
+      "tags": [
+        "bonding",
+        "baby",
+        "voice"
+      ]
+    },
+    {
+      "id": "tip-009",
+      "category": "emotional-support",
+      "title": "Say 'You ARE Beautiful' \u2014 Not 'You LOOK Beautiful'",
+      "content": "'You are beautiful' speaks to identity. 'You look beautiful' is tied to appearance. During dramatic physical changes, identity-level affirmation feels more encompassing and believable. Pair it with 'I'm amazed by what your body is doing right now.'",
+      "trimester": [
+        1,
+        2,
+        3
+      ],
+      "tags": [
+        "body-image",
+        "affirmation",
+        "language"
+      ]
+    },
+    {
+      "id": "tip-010",
+      "category": "emotional-support",
+      "title": "Never Comment on Her Size",
+      "content": "Don't say 'You're so big!' or 'You look like you're ready to pop!' \u2014 even positively. Don't compare her to other pregnant women. If she says 'Nothing fits anymore,' respond with: 'You are beautiful. I know this part is frustrating \u2014 want me to help you find something comfortable?'",
+      "trimester": [
+        2,
+        3
+      ],
+      "tags": [
+        "body-image",
+        "language",
+        "respect"
+      ]
+    },
+    {
+      "id": "tip-011",
+      "category": "emotional-support",
+      "title": "Affirm Her Identity Beyond Pregnancy",
+      "content": "Ask about HER \u2014 not just the baby. 'How's your project going?' 'What are you reading?' She's still a full person with interests, ambitions, and needs beyond the pregnancy. Make sure your conversations reflect that.",
+      "trimester": [
+        1,
+        2,
+        3
+      ],
+      "tags": [
+        "identity",
+        "respect",
+        "conversation"
+      ]
+    },
+    {
+      "id": "tip-012",
+      "category": "emotional-support",
+      "title": "Use the Soft Start-Up for Difficult Conversations",
+      "content": "How you begin a conversation predicts 96% of how it will end. Start with 'I feel...' not 'You always...' Example: 'I feel anxious about our finances' instead of 'You spend too much.' No criticism, contempt, or blame in the opening.",
+      "trimester": [
+        1,
+        2,
+        3
+      ],
+      "tags": [
+        "communication",
+        "conflict",
+        "relationship"
+      ]
+    },
+    {
+      "id": "tip-013",
+      "category": "emotional-support",
+      "title": "Deploy Repair Attempts During Disagreements",
+      "content": "When a conversation goes sideways, the ability to repair matters more than never fighting. Try: 'I think we got off track. Can we start over?' or 'I'm sorry \u2014 that came out wrong. What I meant was...' Early repair is more powerful than perfect arguments.",
+      "trimester": [
+        1,
+        2,
+        3
+      ],
+      "tags": [
+        "conflict",
+        "repair",
+        "relationship"
+      ]
+    },
+    {
+      "id": "tip-014",
+      "category": "emotional-support",
+      "title": "Navigate Financial Conversations Calmly",
+      "content": "Frame money discussions as collaborative problem-solving, not crisis management. Say 'Let's figure this out together' instead of 'We have a problem.' Break big financial worries into smaller action steps \u2014 research one thing this week.",
+      "trimester": [
+        1,
+        2,
+        3
+      ],
+      "tags": [
+        "finances",
+        "communication",
+        "teamwork"
+      ]
+    },
+    {
+      "id": "tip-015",
+      "category": "emotional-support",
+      "title": "Practice Breathing Exercises Together",
+      "content": "Try box breathing together: inhale 4 counts, hold 4, exhale 4, hold 4. Do this before stressful moments like doctor appointments. It calms you both and builds a shared ritual. You need it too \u2014 don't treat breathing as something only she needs.",
+      "trimester": [
+        1,
+        2,
+        3
+      ],
+      "tags": [
+        "stress",
+        "breathing",
+        "ritual"
+      ]
+    },
+    {
+      "id": "tip-016",
+      "category": "emotional-support",
+      "title": "Schedule Weekly Worry Meetings",
+      "content": "Pick one time per week to discuss concerns together \u2014 finances, health, logistics. This prevents worries from festering and converts rumination into action. Assign one research task each and revisit next week. Contain worry to its scheduled time.",
+      "trimester": [
+        2,
+        3
+      ],
+      "tags": [
+        "stress",
+        "planning",
+        "communication"
+      ]
+    },
+    {
+      "id": "tip-017",
+      "category": "emotional-support",
+      "title": "Create Small Daily Rituals",
+      "content": "Ask 'What was the best and hardest part of your day?' every evening. Put crackers on the nightstand. Send a midday check-in text. These tiny, consistent acts build emotional connection more powerfully than grand gestures.",
+      "trimester": [
+        1,
+        2,
+        3
+      ],
+      "tags": [
+        "rituals",
+        "daily",
+        "connection"
+      ]
+    },
+    {
+      "id": "tip-018",
+      "category": "emotional-support",
+      "title": "Plan Shared Experiences in the Second Trimester",
+      "content": "The second trimester is your best window for adventures together. Plan a babymoon, take a class, set up the nursery side by side. Energy is higher and the due date feels manageable. Don't waste this calmer period.",
+      "trimester": [
+        2
+      ],
+      "tags": [
+        "connection",
+        "planning",
+        "babymoon"
+      ]
+    },
+    {
+      "id": "tip-019",
+      "category": "emotional-support",
+      "title": "Comfort and Affirm in the Third Trimester",
+      "content": "She's uncomfortable, anxious, and exhausted. Offer massages without being asked. Build the birth plan together so she feels heard. Say 'You are doing an incredible job' often. Verbal affirmation matters most when she's at her most vulnerable.",
+      "trimester": [
+        3
+      ],
+      "tags": [
+        "comfort",
+        "affirmation",
+        "third-trimester"
+      ]
+    },
+    {
+      "id": "tip-020",
+      "category": "emotional-support",
+      "title": "Recognize Your Own Mental Health Needs",
+      "content": "About 1 in 10 fathers experience depression or anxiety during the perinatal period. Warning signs include irritability, withdrawal, anger, risk-taking, and substance use \u2014 not just sadness. Build your own support network. Therapy, peer groups, and trusted friends all help.",
+      "trimester": [
+        1,
+        2,
+        3
+      ],
+      "tags": [
+        "mental-health",
+        "self-care",
+        "awareness"
+      ]
+    },
+    {
+      "id": "tip-021",
+      "category": "financial-prep",
+      "title": "Know Your Pregnancy Price Tag",
+      "content": "Total pregnancy and delivery costs average $20,416, with about $2,743 out-of-pocket for families with employer insurance. C-sections cost about $13,000 more total. Request a cost estimate from your OB's billing office and review your insurance plan's maternity benefits.",
+      "trimester": [
+        1
+      ],
+      "tags": [
+        "costs",
+        "insurance",
+        "planning"
+      ]
+    },
+    {
+      "id": "tip-022",
+      "category": "financial-prep",
+      "title": "Maximize Your Insurance Benefits",
+      "content": "Confirm all providers are in-network. Routine prenatal care is covered at no cost under the ACA. Know your deductible, copay, and out-of-pocket maximum. Ask about your plan's coverage for genetic testing, which can cost $400-$2,500.",
+      "trimester": [
+        1
+      ],
+      "tags": [
+        "insurance",
+        "savings",
+        "healthcare"
+      ]
+    },
+    {
+      "id": "tip-023",
+      "category": "financial-prep",
+      "title": "Build a Baby Emergency Fund",
+      "content": "Aim for 6 months of post-baby living expenses. Set up automated transfers to a high-yield savings account. Start with whatever you can \u2014 even $50/month adds up. Nearly 9 in 10 mothers report finances impact their mental health.",
+      "trimester": [
+        1,
+        2
+      ],
+      "tags": [
+        "savings",
+        "emergency-fund",
+        "automation"
+      ]
+    },
+    {
+      "id": "tip-024",
+      "category": "financial-prep",
+      "title": "Understand Tax Benefits for New Parents",
+      "content": "The Child Tax Credit provides $2,200 per child. The EITC can add up to $4,328 for one-child families. The Dependent Care FSA allows up to $7,500 in pre-tax childcare dollars for 2026. Together these can return $5,000-$9,000 annually.",
+      "trimester": [
+        2,
+        3
+      ],
+      "tags": [
+        "taxes",
+        "credits",
+        "savings"
+      ]
+    },
+    {
+      "id": "tip-025",
+      "category": "financial-prep",
+      "title": "Use FSA and HSA Strategically",
+      "content": "A Healthcare FSA covers up to $3,300-$3,400 in pre-tax medical expenses. An HSA (if on a high-deductible plan) allows $8,550-$8,750 for families. Max these out during the delivery year to save significantly on taxes.",
+      "trimester": [
+        1,
+        2
+      ],
+      "tags": [
+        "fsa",
+        "hsa",
+        "tax-savings"
+      ]
+    },
+    {
+      "id": "tip-026",
+      "category": "financial-prep",
+      "title": "Plan for Parental Leave Income Gap",
+      "content": "FMLA provides 12 weeks of unpaid leave. Thirteen states plus DC offer paid family leave. Plan ahead: bank PTO, explore short-term disability insurance, and practice living on one income before the baby arrives.",
+      "trimester": [
+        1,
+        2
+      ],
+      "tags": [
+        "leave",
+        "income",
+        "planning"
+      ]
+    },
+    {
+      "id": "tip-027",
+      "category": "financial-prep",
+      "title": "Negotiate Medical Bills",
+      "content": "Up to 80% of medical bills contain errors. Always request an itemized bill and review for duplicate charges. Ask about financial assistance programs \u2014 charity care can reduce balances significantly. Don't pay the first bill without reviewing it.",
+      "trimester": [
+        3
+      ],
+      "tags": [
+        "bills",
+        "negotiation",
+        "savings"
+      ]
+    },
+    {
+      "id": "tip-028",
+      "category": "financial-prep",
+      "title": "Start a 529 College Savings Plan",
+      "content": "Opening a 529 at birth with $200/month grows to approximately $86,144 by age 18 at 7% returns. Many states offer tax deductions on contributions. Starting early with even small amounts makes a huge difference thanks to compound growth.",
+      "trimester": [
+        3
+      ],
+      "tags": [
+        "college",
+        "savings",
+        "529"
+      ]
+    },
+    {
+      "id": "tip-029",
+      "category": "financial-prep",
+      "title": "Get Term Life Insurance",
+      "content": "A healthy 30-year-old can get $500,000 in coverage for $23-$30/month \u2014 about 15x cheaper than whole life. Use the DIME method: Debt + Income replacement + Mortgage + Education = your coverage need. Get quotes from at least three providers.",
+      "trimester": [
+        2
+      ],
+      "tags": [
+        "insurance",
+        "life-insurance",
+        "protection"
+      ]
+    },
+    {
+      "id": "tip-030",
+      "category": "financial-prep",
+      "title": "Create Your Estate Documents",
+      "content": "A will with guardianship designation is the most important document. Without it, a court decides who raises your children. A basic attorney package (will + power of attorney + healthcare directive) costs $1,000-$2,000 for a couple.",
+      "trimester": [
+        2,
+        3
+      ],
+      "tags": [
+        "estate",
+        "will",
+        "guardianship"
+      ]
+    },
+    {
+      "id": "tip-031",
+      "category": "financial-prep",
+      "title": "Cut Expenses Strategically",
+      "content": "Audit subscriptions \u2014 average households spend $69/month on streaming alone. Cut dining out by half to save $200-$400/month. Attack high-interest debt before baby arrives. Every dollar freed up now means less stress later.",
+      "trimester": [
+        1,
+        2
+      ],
+      "tags": [
+        "budget",
+        "savings",
+        "expenses"
+      ]
+    },
+    {
+      "id": "tip-032",
+      "category": "financial-prep",
+      "title": "Understand Childcare Costs",
+      "content": "Daycare centers average $17,836/year nationally. In-home daycare: $6,500-$12,000/year. Nannies: ~$43,000/year. Au pairs: $18,200-$27,000/year. Start research early \u2014 many daycares have 6-12 month waitlists.",
+      "trimester": [
+        2
+      ],
+      "tags": [
+        "childcare",
+        "costs",
+        "planning"
+      ]
+    },
+    {
+      "id": "tip-033",
+      "category": "financial-prep",
+      "title": "Use a Budgeting App",
+      "content": "Create a baby budget using an app like YNAB, Mint, or Goodbudget. Track pregnancy-related expenses separately. Include categories for medical costs, gear, nursery, and postpartum needs. Visibility reduces financial anxiety.",
+      "trimester": [
+        1,
+        2
+      ],
+      "tags": [
+        "budget",
+        "apps",
+        "tracking"
+      ]
+    },
+    {
+      "id": "tip-034",
+      "category": "financial-prep",
+      "title": "Plan for the First 30 Days After Birth",
+      "content": "Add baby to insurance within 30 days of birth. Apply for a Social Security number at the hospital. Update your W-4 to reflect the new dependent. Enroll in a Dependent Care FSA if not already. Request an itemized hospital bill.",
+      "trimester": [
+        3
+      ],
+      "tags": [
+        "postpartum",
+        "insurance",
+        "paperwork"
+      ]
+    },
+    {
+      "id": "tip-035",
+      "category": "financial-prep",
+      "title": "Explore Government Assistance Programs",
+      "content": "WIC provides nutrition support for pregnant women and children under 5. CHIP covers children in families with incomes too high for Medicaid. Medicaid covers pregnancy in many states with higher income limits. Check eligibility \u2014 these programs exist to help.",
+      "trimester": [
+        1,
+        2
+      ],
+      "tags": [
+        "assistance",
+        "wic",
+        "medicaid"
+      ]
+    },
+    {
+      "id": "tip-036",
+      "category": "home-gear",
+      "title": "Buy Safety-Critical Gear New",
+      "content": "Always buy car seats, crib mattresses, and bassinets new \u2014 used ones may have hidden damage or expired materials. Everything else (stroller, clothes, dresser) can be safely purchased secondhand. Check cpsc.gov for recalls on any used items.",
+      "trimester": [
+        2,
+        3
+      ],
+      "tags": [
+        "safety",
+        "gear",
+        "buying"
+      ]
+    },
+    {
+      "id": "tip-037",
+      "category": "home-gear",
+      "title": "Set Up a Safe Sleep Environment",
+      "content": "Crib must have a firm, flat mattress with only a fitted sheet \u2014 nothing else. No blankets, bumpers, pillows, or stuffed animals. Room temperature 68-72\u00b0F. Room-share (same room, not same bed) for at least 6 months.",
+      "trimester": [
+        3
+      ],
+      "tags": [
+        "sleep",
+        "safety",
+        "crib"
+      ]
+    },
+    {
+      "id": "tip-038",
+      "category": "home-gear",
+      "title": "Choose the Right Car Seat",
+      "content": "New federal car seat standards (FMVSS 213b) with updated side-impact testing become mandatory December 2026. Infant bucket seats offer portability but last only 6-18 months. Convertible seats last 3-10 years for better long-term value. Always install rear-facing.",
+      "trimester": [
+        3
+      ],
+      "tags": [
+        "car-seat",
+        "safety",
+        "transport"
+      ]
+    },
+    {
+      "id": "tip-039",
+      "category": "home-gear",
+      "title": "Start a Smart Baby Registry",
+      "content": "Register at multiple stores using a universal registry platform. List 2-3x more items than expected guests. Take advantage of completion discounts (Amazon offers 15% off for Prime). Focus on essentials, not gimmicks.",
+      "trimester": [
+        2
+      ],
+      "tags": [
+        "registry",
+        "gear",
+        "planning"
+      ]
+    },
+    {
+      "id": "tip-040",
+      "category": "home-gear",
+      "title": "Skip These Overhyped Items",
+      "content": "Skip wipe warmers (unnecessary), newborn shoes (babies don't walk), car seat mirrors (distraction hazard), wearable baby monitors (increase anxiety), bottle sterilizers (dishwasher works fine), and crib bumpers (banned for safety).",
+      "trimester": [
+        2,
+        3
+      ],
+      "tags": [
+        "registry",
+        "savings",
+        "skip"
+      ]
+    },
+    {
+      "id": "tip-041",
+      "category": "home-gear",
+      "title": "Buy Used Strategically",
+      "content": "Save $1,650-$4,000+ buying strollers, clothes, and furniture secondhand. UPPAbaby Vista strollers ($900+ new) sell used for $150. Baby clothes are outgrown in weeks. Bouncers and swings are used for just months \u2014 borrow if possible.",
+      "trimester": [
+        2,
+        3
+      ],
+      "tags": [
+        "used",
+        "savings",
+        "gear"
+      ]
+    },
+    {
+      "id": "tip-042",
+      "category": "home-gear",
+      "title": "Babyproof in Phases",
+      "content": "Phase 1 (3rd trimester): Anchor furniture, install smoke/CO detectors, cover outlets, set water heater to 120\u00b0F, switch to cordless blinds. Phase 2 (6-12 months): Cabinet locks, stair gates, corner guards. Phase 3 (12+ months): Toilet locks, stove knob covers, window guards.",
+      "trimester": [
+        3
+      ],
+      "tags": [
+        "babyproofing",
+        "safety",
+        "home"
+      ]
+    },
+    {
+      "id": "tip-043",
+      "category": "home-gear",
+      "title": "Set Up the Nursery Wisely",
+      "content": "Budget nursery: $610-$1,225. Mid-range: $1,465-$2,910. A dresser with changing pad on top is more versatile than a dedicated changing table. Blackout curtains help sleep. Sound machine below 50 decibels, at least 2 feet from crib.",
+      "trimester": [
+        2,
+        3
+      ],
+      "tags": [
+        "nursery",
+        "setup",
+        "budget"
+      ]
+    },
+    {
+      "id": "tip-044",
+      "category": "home-gear",
+      "title": "Essential Clothing Needs",
+      "content": "You need less than you think: 6-10 onesies, 4-7 pajamas, 3-5 pants, 4-6 pairs of socks. Buy mostly 0-3 month size \u2014 newborn size is outgrown in 2-4 weeks. Buy used or accept hand-me-downs for maximum savings.",
+      "trimester": [
+        3
+      ],
+      "tags": [
+        "clothing",
+        "essentials",
+        "savings"
+      ]
+    },
+    {
+      "id": "tip-045",
+      "category": "home-gear",
+      "title": "Prepare Feeding Supplies",
+      "content": "Start with 4-6 bottles to test preferences before committing to a brand. Breast pumps are typically covered free by insurance under the ACA \u2014 call your insurer to order one. High chairs aren't needed until about 6 months.",
+      "trimester": [
+        3
+      ],
+      "tags": [
+        "feeding",
+        "bottles",
+        "pump"
+      ]
+    },
+    {
+      "id": "tip-046",
+      "category": "home-gear",
+      "title": "Understand Diapering Costs",
+      "content": "Disposable diapers cost $1,500-$3,000 from birth to potty training. Cloth diapers require $300-$600 upfront but save 30-50% overall. A contoured changing pad on a dresser is more versatile than a standalone changing table.",
+      "trimester": [
+        3
+      ],
+      "tags": [
+        "diapers",
+        "costs",
+        "comparison"
+      ]
+    },
+    {
+      "id": "tip-047",
+      "category": "home-gear",
+      "title": "Set Up Changing Stations",
+      "content": "Create a main changing hub in the nursery and a smaller version in a high-traffic area. For two-level homes, have one station per floor. Each needs: changing pad, diapers, wipes, diaper cream, a few changes of clothes, and disposal bags.",
+      "trimester": [
+        3
+      ],
+      "tags": [
+        "changing",
+        "stations",
+        "setup"
+      ]
+    },
+    {
+      "id": "tip-048",
+      "category": "home-gear",
+      "title": "Order Nursery Furniture by Week 20",
+      "content": "Allow 4-8 weeks for furniture delivery. New furniture should off-gas for at least 2-4 weeks before baby arrives. Convertible cribs (3-in-1 or 4-in-1) offer the best long-term value. Anchor ALL furniture to walls with anti-tip straps.",
+      "trimester": [
+        2
+      ],
+      "tags": [
+        "furniture",
+        "timing",
+        "safety"
+      ]
+    },
+    {
+      "id": "tip-049",
+      "category": "home-gear",
+      "title": "Choose the Right Baby Carrier",
+      "content": "For carriers, follow the T.I.C.K.S. safety rule: Tight, In view, Close enough to kiss, Keep chin off chest, Supported back. Try different styles \u2014 wraps, structured carriers, and ring slings all have different advantages. Buy used if possible.",
+      "trimester": [
+        3
+      ],
+      "tags": [
+        "carrier",
+        "safety",
+        "babywearing"
+      ]
+    },
+    {
+      "id": "tip-050",
+      "category": "home-gear",
+      "title": "Prep Your Car for Baby",
+      "content": "Install the car seat by week 36 and have it inspected at a certified inspection station. Keep the car gas tank at least half full from week 36 onward. Pack a small emergency kit in the car with blankets and a flashlight.",
+      "trimester": [
+        3
+      ],
+      "tags": [
+        "car",
+        "car-seat",
+        "preparation"
+      ]
+    },
+    {
+      "id": "tip-051",
+      "category": "labor-prep",
+      "title": "Learn the 5-1-1 Rule",
+      "content": "Go to the hospital when contractions are 5 minutes apart, lasting 1 minute each, for at least 1 hour. Before that, early labor can last hours at home. Call your provider if water breaks, you see heavy bleeding, or she has severe pain between contractions.",
+      "trimester": [
+        3
+      ],
+      "tags": [
+        "labor",
+        "timing",
+        "hospital"
+      ]
+    },
+    {
+      "id": "tip-052",
+      "category": "labor-prep",
+      "title": "Know the Stages of Labor",
+      "content": "Stage 1: Contractions dilate the cervix (early labor 0-6cm, active labor 6-10cm). Stage 2: Pushing and delivery. Stage 3: Delivery of the placenta. Early labor is the longest \u2014 active labor typically lasts 4-8 hours for first-time moms.",
+      "trimester": [
+        3
+      ],
+      "tags": [
+        "labor",
+        "stages",
+        "education"
+      ]
+    },
+    {
+      "id": "tip-053",
+      "category": "labor-prep",
+      "title": "Master Comfort Measures",
+      "content": "Counter-pressure on the lower back during contractions, hip squeezes, massage, cool washcloths on the forehead, and guided breathing. Practice these before labor so they feel natural. Your calm presence is her most powerful pain relief tool.",
+      "trimester": [
+        3
+      ],
+      "tags": [
+        "labor",
+        "comfort",
+        "support"
+      ]
+    },
+    {
+      "id": "tip-054",
+      "category": "labor-prep",
+      "title": "Use the BRAIN Framework",
+      "content": "When facing unexpected medical recommendations, ask: What are the Benefits? The Risks? The Alternatives? What does your Intuition say? What happens if we do Nothing (wait)? This helps you make decisions under pressure without feeling steamrolled.",
+      "trimester": [
+        3
+      ],
+      "tags": [
+        "decisions",
+        "framework",
+        "advocacy"
+      ]
+    },
+    {
+      "id": "tip-055",
+      "category": "labor-prep",
+      "title": "Pack the Hospital Bag by Week 35",
+      "content": "For her: personal pillow, lip balm, nursing robe, loose pants, grippy socks, breastfeeding pillow. For you: change of clothes, pillow, snacks, chargers, camera, book for early labor. For baby: going-home outfit in 2 sizes, swaddle blankets, Aquaphor.",
+      "trimester": [
+        3
+      ],
+      "tags": [
+        "hospital-bag",
+        "packing",
+        "preparation"
+      ]
+    },
+    {
+      "id": "tip-056",
+      "category": "labor-prep",
+      "title": "Understand Pain Management Options",
+      "content": "Epidurals offer the highest pain relief but limit mobility. Nitrous oxide provides moderate relief with good mobility. Non-pharmacological options like hydrotherapy, TENS, and hypnobirthing preserve full mobility. Discuss preferences before labor.",
+      "trimester": [
+        3
+      ],
+      "tags": [
+        "pain",
+        "epidural",
+        "options"
+      ]
+    },
+    {
+      "id": "tip-057",
+      "category": "labor-prep",
+      "title": "Know What NOT to Say During Labor",
+      "content": "Don't say: 'Calm down,' 'It can't be that bad,' 'Are you sure you don't want the epidural?', or 'My feet hurt too.' Do say: 'You're doing amazing,' 'I'm right here,' 'What do you need?' Follow her lead completely.",
+      "trimester": [
+        3
+      ],
+      "tags": [
+        "labor",
+        "communication",
+        "support"
+      ]
+    },
+    {
+      "id": "tip-058",
+      "category": "labor-prep",
+      "title": "Prepare for a C-Section Possibility",
+      "content": "About 32% of US births are C-sections. Some are planned, many are emergency decisions. Know what to expect: spinal anesthesia, a curtain at chest level, you'll sit by her head, and the surgery takes about 45-60 minutes. Recovery is longer than vaginal birth.",
+      "trimester": [
+        3
+      ],
+      "tags": [
+        "c-section",
+        "preparation",
+        "flexibility"
+      ]
+    },
+    {
+      "id": "tip-059",
+      "category": "labor-prep",
+      "title": "Choose Your Pediatrician by Week 36",
+      "content": "Interview pediatricians in the third trimester. Ask about after-hours availability, vaccination philosophy, and communication preferences. Many hospitals have the pediatrician visit within 24 hours of birth for the first checkup.",
+      "trimester": [
+        3
+      ],
+      "tags": [
+        "pediatrician",
+        "interview",
+        "planning"
+      ]
+    },
+    {
+      "id": "tip-060",
+      "category": "labor-prep",
+      "title": "Pre-Register at the Hospital",
+      "content": "Pre-register between weeks 20-26 to avoid paperwork during labor. Confirm insurance pre-authorization for delivery. Take a hospital tour to know the layout \u2014 where to park, where to check in, and the fastest route from your home.",
+      "trimester": [
+        2,
+        3
+      ],
+      "tags": [
+        "hospital",
+        "registration",
+        "preparation"
+      ]
+    },
+    {
+      "id": "tip-061",
+      "category": "labor-prep",
+      "title": "Create a Birth Plan (But Stay Flexible)",
+      "content": "Include preferences for pain management, delivery positions, cord cutting, skin-to-skin, and breastfeeding. But remember: a birth plan is not a contract. Unexpected events may require rapid changes. Flexibility reduces disappointment.",
+      "trimester": [
+        3
+      ],
+      "tags": [
+        "birth-plan",
+        "preferences",
+        "flexibility"
+      ]
+    },
+    {
+      "id": "tip-062",
+      "category": "labor-prep",
+      "title": "Be Her Advocate in the Delivery Room",
+      "content": "Speak up when she can't \u2014 communicate her wishes to the medical team. Ask for explanations when procedures are recommended. Make sure she's comfortable, hydrated, and heard. You are her voice when she's focused on labor.",
+      "trimester": [
+        3
+      ],
+      "tags": [
+        "advocacy",
+        "support",
+        "communication"
+      ]
+    },
+    {
+      "id": "tip-063",
+      "category": "postpartum-prep",
+      "title": "Prepare 15-20 Freezer Meals",
+      "content": "Start meal prep around week 30. Aim for 25-50 individual portions. Best freezer meals: casseroles, soups, breakfast egg muffins, and handheld foods like burritos. Portion into 2-3 serving containers. Label everything with contents, date, and reheating instructions.",
+      "trimester": [
+        3
+      ],
+      "tags": [
+        "meals",
+        "prep",
+        "postpartum"
+      ]
+    },
+    {
+      "id": "tip-064",
+      "category": "postpartum-prep",
+      "title": "Know the Baby Blues vs. Postpartum Depression",
+      "content": "Baby blues affect up to 80% of new mothers and resolve within 2 weeks \u2014 mood swings, crying, anxiety. Postpartum depression is different: persistent sadness, withdrawal, inability to sleep even when baby sleeps. If symptoms last beyond 2 weeks, seek professional help.",
+      "trimester": [
+        3
+      ],
+      "tags": [
+        "mental-health",
+        "ppd",
+        "awareness"
+      ]
+    },
+    {
+      "id": "tip-065",
+      "category": "postpartum-prep",
+      "title": "Watch for Paternal Postpartum Depression",
+      "content": "8-10% of fathers experience postpartum depression, peaking 3-6 months after birth. Signs: irritability, withdrawal, anger, risk-taking. Children raised by fathers with depression have higher risk of emotional difficulties. Don't hesitate to seek help \u2014 PSI Helpline: 1-800-944-4773.",
+      "trimester": [
+        3
+      ],
+      "tags": [
+        "mental-health",
+        "ppd",
+        "fathers"
+      ]
+    },
+    {
+      "id": "tip-066",
+      "category": "postpartum-prep",
+      "title": "Implement Tag-Team Sleep Strategy",
+      "content": "Divide nighttime duties so each partner gets at least one 4-5 hour uninterrupted sleep block. Sleep deprivation affects judgment, mood, and health. This isn't about being fair \u2014 it's about keeping both parents functional and safe.",
+      "trimester": [
+        3
+      ],
+      "tags": [
+        "sleep",
+        "teamwork",
+        "postpartum"
+      ]
+    },
+    {
+      "id": "tip-067",
+      "category": "postpartum-prep",
+      "title": "Set Up a Visitor Policy in Advance",
+      "content": "Decide together: who visits, when, and for how long. Require hand-washing and current vaccinations. It's okay to say no or limit visits. Your partner needs rest and bonding time, not a parade of guests. Set boundaries early.",
+      "trimester": [
+        3
+      ],
+      "tags": [
+        "visitors",
+        "boundaries",
+        "postpartum"
+      ]
+    },
+    {
+      "id": "tip-068",
+      "category": "postpartum-prep",
+      "title": "Add Baby to Insurance Within 30 Days",
+      "content": "This is a qualifying life event \u2014 you have 30-60 days to add baby to your health insurance. Apply for the Social Security number at the hospital. Update your W-4 at work. Missing these deadlines can mean gaps in coverage.",
+      "trimester": [
+        3
+      ],
+      "tags": [
+        "insurance",
+        "paperwork",
+        "deadline"
+      ]
+    },
+    {
+      "id": "tip-069",
+      "category": "postpartum-prep",
+      "title": "Learn Newborn Care Basics Before Birth",
+      "content": "Practice diapering, swaddling, and safe sleep positioning before the baby arrives. Learn to recognize hunger cues: rooting, hand-to-mouth, fussiness. Crying is always last \u2014 if you catch earlier cues, feeding is easier.",
+      "trimester": [
+        3
+      ],
+      "tags": [
+        "newborn",
+        "skills",
+        "preparation"
+      ]
+    },
+    {
+      "id": "tip-070",
+      "category": "postpartum-prep",
+      "title": "Watch for Postpartum Warning Signs",
+      "content": "Emergency signs after birth: heavy bleeding (soaking a pad in an hour), seizures, severe headaches, vision changes, and fever over 100.4\u00b0F. Postpartum preeclampsia can occur up to 6 weeks after delivery. Know when to call 911 vs. the doctor.",
+      "trimester": [
+        3
+      ],
+      "tags": [
+        "warning-signs",
+        "safety",
+        "postpartum"
+      ]
+    },
+    {
+      "id": "tip-071",
+      "category": "postpartum-prep",
+      "title": "Schedule the Newborn's First Appointments",
+      "content": "First pediatrician visit within 3-5 days of discharge. The 6-week postpartum checkup for your partner. Newborn hearing screening and metabolic screening happen at the hospital. Keep a log of feedings, diapers, and sleep patterns.",
+      "trimester": [
+        3
+      ],
+      "tags": [
+        "appointments",
+        "newborn",
+        "scheduling"
+      ]
+    },
+    {
+      "id": "tip-072",
+      "category": "postpartum-prep",
+      "title": "Maintain Your Own Self-Care",
+      "content": "Exercise, sleep, and social connection aren't selfish \u2014 they make you a better partner and father. Keep at least one personal hobby. Connect with other dads. You can't pour from an empty cup. Take care of yourself so you can take care of your family.",
+      "trimester": [
+        3
+      ],
+      "tags": [
+        "self-care",
+        "health",
+        "balance"
+      ]
+    }
+  ]
+}

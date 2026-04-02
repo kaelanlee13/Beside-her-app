@@ -1,0 +1,1430 @@
+{
+  "weeks": [
+    {
+      "weekNumber": 1,
+      "trimester": 1,
+      "title": "Week 1-3: The Journey Begins",
+      "babySize": "Microscopic",
+      "babyDevelopment": "Conception and implantation happen during these first weeks. There's no visible baby yet \u2014 pregnancy dating begins from the first day of your partner's last menstrual period. The fertilized egg travels down the fallopian tube and implants into the uterine lining around day 6-10.",
+      "partnerExperience": "Your partner likely doesn't know she's pregnant yet. There are no noticeable symptoms at this stage, though some women report mild cramping during implantation.",
+      "howToHelp": [
+        "Confirm the pregnancy together when the time comes",
+        "Start taking prenatal vitamins together as a show of solidarity",
+        "Have an open conversation about your feelings and readiness",
+        "Begin tracking her cycle if you're actively trying to conceive"
+      ],
+      "actionItems": [
+        {
+          "id": "w1-a1",
+          "text": "Research prenatal vitamins (600 mcg folic acid, 27 mg iron)",
+          "category": "health"
+        },
+        {
+          "id": "w1-a2",
+          "text": "Have a conversation about parenting goals and expectations",
+          "category": "emotional"
+        },
+        {
+          "id": "w1-a3",
+          "text": "Start saving \u2014 aim for a 6-month emergency fund",
+          "category": "financial"
+        }
+      ],
+      "commonDadQuestion": "Is this really happening?",
+      "relatedTips": [
+        "tip-001",
+        "tip-014",
+        "tip-028"
+      ]
+    },
+    {
+      "weekNumber": 4,
+      "trimester": 1,
+      "title": "Week 4: Poppy Seed",
+      "babySize": "Poppy seed (~2mm)",
+      "babyDevelopment": "The embryo is tiny but mighty. The amniotic sac and early placenta are forming. The embryo has two layers of cells that will develop into all organs and body parts. This is when a home pregnancy test can first detect the pregnancy.",
+      "partnerExperience": "A missed period is the first major sign. Fatigue may set in as progesterone levels surge. Some women feel nothing yet; others notice tender breasts or mild nausea.",
+      "howToHelp": [
+        "Be present when she takes the pregnancy test",
+        "Schedule the first prenatal visit together (typically weeks 8-10)",
+        "Start adjusting household routines to support her rest",
+        "Begin researching what to expect in the coming weeks"
+      ],
+      "actionItems": [
+        {
+          "id": "w4-a1",
+          "text": "Schedule the first prenatal appointment",
+          "category": "medical"
+        },
+        {
+          "id": "w4-a2",
+          "text": "Discuss when and how to share the news with family",
+          "category": "emotional"
+        },
+        {
+          "id": "w4-a3",
+          "text": "Review your health insurance maternity coverage",
+          "category": "financial"
+        }
+      ],
+      "commonDadQuestion": "When do we tell people?",
+      "relatedTips": [
+        "tip-001",
+        "tip-015",
+        "tip-029"
+      ]
+    },
+    {
+      "weekNumber": 5,
+      "trimester": 1,
+      "title": "Week 5: Peppercorn",
+      "babySize": "Peppercorn",
+      "babyDevelopment": "The neural tube \u2014 which becomes the brain and spinal cord \u2014 is forming. A tiny heart starts beating at about 110 beats per minute. The circulatory system is the first major system to function. Three layers of cells are differentiating into all body systems.",
+      "partnerExperience": "Nausea may begin as hCG levels double every 48-72 hours. Morning sickness is a misnomer \u2014 it can strike any time of day. Fatigue is intensifying as the body works overtime building the placenta.",
+      "howToHelp": [
+        "Stock nausea-friendly foods: crackers, ginger ale, bland snacks",
+        "Keep food smells minimal \u2014 take over cooking if needed",
+        "Be patient with her energy levels",
+        "Place crackers on the nightstand for morning nausea"
+      ],
+      "actionItems": [
+        {
+          "id": "w5-a1",
+          "text": "Stock the pantry with nausea-friendly foods",
+          "category": "health"
+        },
+        {
+          "id": "w5-a2",
+          "text": "Learn which foods to avoid during pregnancy",
+          "category": "health"
+        },
+        {
+          "id": "w5-a3",
+          "text": "Start a shared note for questions to ask the doctor",
+          "category": "medical"
+        }
+      ],
+      "commonDadQuestion": "Is morning sickness normal?",
+      "relatedTips": [
+        "tip-002",
+        "tip-003",
+        "tip-028"
+      ]
+    },
+    {
+      "weekNumber": 6,
+      "trimester": 1,
+      "title": "Week 6: Pomegranate Seed",
+      "babySize": "Pomegranate seed",
+      "babyDevelopment": "Arm and leg buds are appearing. Blood circulation begins. Early structures for ears, eyes, and mouth are forming. The embryo has a curved, tadpole-like shape. The heart is beating steadily and can sometimes be seen on an early ultrasound.",
+      "partnerExperience": "Morning sickness is in full swing for many women. Heightened sense of smell can trigger nausea. Extreme fatigue is common as the body diverts energy to building the baby's life support system.",
+      "howToHelp": [
+        "Take over cooking duties \u2014 food smells can be a major trigger",
+        "Help identify specific nausea triggers and avoid them",
+        "Don't take her mood changes personally \u2014 hormones are surging",
+        "Offer to handle more household chores without being asked"
+      ],
+      "actionItems": [
+        {
+          "id": "w6-a1",
+          "text": "Take over cooking and kitchen duties",
+          "category": "emotional"
+        },
+        {
+          "id": "w6-a2",
+          "text": "Research what your insurance covers for prenatal care",
+          "category": "financial"
+        },
+        {
+          "id": "w6-a3",
+          "text": "Start reading about pregnancy and fatherhood",
+          "category": "emotional"
+        }
+      ],
+      "commonDadQuestion": "What if she can't keep food down?",
+      "relatedTips": [
+        "tip-003",
+        "tip-004",
+        "tip-005"
+      ]
+    },
+    {
+      "weekNumber": 7,
+      "trimester": 1,
+      "title": "Week 7: Blueberry",
+      "babySize": "Blueberry",
+      "babyDevelopment": "Bones are beginning to replace cartilage. The brain is growing rapidly, generating about 100 new cells per minute. Tiny nostrils and mouth are visible. Arm buds now look like paddles that will form hands.",
+      "partnerExperience": "Nausea often intensifies this week. She may have strong food aversions and cravings. Emotional mood swings are common as hormones peak. Fatigue continues to be overwhelming.",
+      "howToHelp": [
+        "Help identify specific nausea triggers \u2014 keep a log together",
+        "Offer small, frequent meals instead of three large ones",
+        "Be her calm presence when emotions run high",
+        "Remember: mood swings are biological, not a choice"
+      ],
+      "actionItems": [
+        {
+          "id": "w7-a1",
+          "text": "Track nausea triggers together",
+          "category": "health"
+        },
+        {
+          "id": "w7-a2",
+          "text": "Practice active listening when she shares how she feels",
+          "category": "emotional"
+        },
+        {
+          "id": "w7-a3",
+          "text": "Research genetic testing options (NIPT, NT scan)",
+          "category": "medical"
+        }
+      ],
+      "commonDadQuestion": "Should we see a doctor about the nausea?",
+      "relatedTips": [
+        "tip-003",
+        "tip-004",
+        "tip-005"
+      ]
+    },
+    {
+      "weekNumber": 8,
+      "trimester": 1,
+      "title": "Week 8: Bean",
+      "babySize": "Bean (~\u00bd inch)",
+      "babyDevelopment": "All major organs and body systems are developing. The umbilical cord is fully formed. Fingers are beginning to form, though still webbed. The embryo is making spontaneous movements, though too small to feel. All four chambers of the heart are working.",
+      "partnerExperience": "Nausea and fatigue often peak around this time. Frequent urination increases as the uterus presses on the bladder. She may feel bloated and her pants may feel tighter even though she's not showing.",
+      "howToHelp": [
+        "Attend the first prenatal visit together \u2014 you'll hear the heartbeat",
+        "Prepare questions for the doctor in advance",
+        "Be ready for an emotional experience at the first ultrasound",
+        "Handle logistics so she can focus on resting"
+      ],
+      "actionItems": [
+        {
+          "id": "w8-a1",
+          "text": "Attend the first prenatal appointment together",
+          "category": "medical"
+        },
+        {
+          "id": "w8-a2",
+          "text": "Ask the OB about genetic screening options",
+          "category": "medical"
+        },
+        {
+          "id": "w8-a3",
+          "text": "Start a pregnancy budget spreadsheet",
+          "category": "financial"
+        }
+      ],
+      "commonDadQuestion": "What if we miscarry?",
+      "relatedTips": [
+        "tip-001",
+        "tip-005",
+        "tip-014"
+      ]
+    },
+    {
+      "weekNumber": 9,
+      "trimester": 1,
+      "title": "Week 9: Cherry",
+      "babySize": "Cherry",
+      "babyDevelopment": "Teeth and taste buds are beginning to form beneath the gums. The embryo is starting to look more human \u2014 the tail is disappearing. Essential organs like the liver, kidneys, and brain continue developing rapidly. Tiny earlobes are visible.",
+      "partnerExperience": "Frequent urination is increasing. Nausea may still be strong but could start easing for some. Emotional sensitivity is high. She may feel anxious about money and the future.",
+      "howToHelp": [
+        "Review your health insurance plan together \u2014 understand deductibles and out-of-pocket maximums",
+        "Have an honest, calm conversation about finances",
+        "Reassure her that worrying is normal and you're a team",
+        "Continue managing household tasks proactively"
+      ],
+      "actionItems": [
+        {
+          "id": "w9-a1",
+          "text": "Review health insurance coverage in detail",
+          "category": "financial"
+        },
+        {
+          "id": "w9-a2",
+          "text": "Create a baby savings account",
+          "category": "financial"
+        },
+        {
+          "id": "w9-a3",
+          "text": "Research your employer's paternity leave policy",
+          "category": "planning"
+        }
+      ],
+      "commonDadQuestion": "Can we afford this?",
+      "relatedTips": [
+        "tip-014",
+        "tip-015",
+        "tip-016"
+      ]
+    },
+    {
+      "weekNumber": 10,
+      "trimester": 1,
+      "title": "Week 10: Kumquat",
+      "babySize": "Kumquat",
+      "babyDevelopment": "Fingers and toes are fully separated \u2014 no more webbing. The baby (now officially called a fetus) can bend limbs. Vital organs are formed and starting to function. Bone development is accelerating throughout the body.",
+      "partnerExperience": "Nausea may be starting to ease for some women. Round ligament stretching can cause occasional sharp pains. Increased blood volume may make veins more visible. Energy is still low.",
+      "howToHelp": [
+        "Research genetic testing options and discuss together",
+        "Support whatever decision she makes about testing",
+        "Start exploring childcare options \u2014 daycare waitlists can be 6-12 months",
+        "Continue being patient with fatigue and nausea"
+      ],
+      "actionItems": [
+        {
+          "id": "w10-a1",
+          "text": "Research and discuss genetic testing options (NIPT available now)",
+          "category": "medical"
+        },
+        {
+          "id": "w10-a2",
+          "text": "Start researching daycare waitlists in your area",
+          "category": "planning"
+        },
+        {
+          "id": "w10-a3",
+          "text": "Look into prenatal classes in your community",
+          "category": "planning"
+        }
+      ],
+      "commonDadQuestion": "Are genetic tests necessary?",
+      "relatedTips": [
+        "tip-015",
+        "tip-029",
+        "tip-030"
+      ]
+    },
+    {
+      "weekNumber": 11,
+      "trimester": 1,
+      "title": "Week 11: Brussels Sprout",
+      "babySize": "Brussels sprout",
+      "babyDevelopment": "The baby can open and close fists. Tooth buds are appearing under the gums. The head makes up about half the body length. Hair follicles are forming. The baby is starting to look distinctly human.",
+      "partnerExperience": "Bloating and gas are common due to progesterone slowing digestion. She may be experiencing food cravings more intensely. Some women get a pregnancy glow from increased blood flow. Others break out.",
+      "howToHelp": [
+        "Start researching daycare waitlists \u2014 seriously, start now",
+        "Help her feel comfortable with body changes",
+        "Keep healthy snacks stocked for her cravings",
+        "Start thinking about how and when to tell your employer"
+      ],
+      "actionItems": [
+        {
+          "id": "w11-a1",
+          "text": "Get on daycare waitlists if needed",
+          "category": "planning"
+        },
+        {
+          "id": "w11-a2",
+          "text": "Research baby gear basics \u2014 crib, car seat, stroller",
+          "category": "gear"
+        },
+        {
+          "id": "w11-a3",
+          "text": "Discuss a plan for telling your employer",
+          "category": "planning"
+        }
+      ],
+      "commonDadQuestion": "Is it too early to plan childcare?",
+      "relatedTips": [
+        "tip-016",
+        "tip-029",
+        "tip-030"
+      ]
+    },
+    {
+      "weekNumber": 12,
+      "trimester": 1,
+      "title": "Week 12: Lime",
+      "babySize": "Lime (~3 inches)",
+      "babyDevelopment": "All organs, limbs, bones, and muscles are in place and continuing to develop. The baby can stretch, kick, and make breathing movements. Reflexes are developing \u2014 the baby will start to respond to touch. Miscarriage risk drops significantly after this week.",
+      "partnerExperience": "Energy is often returning as the first trimester ends. Nausea may be fading. She might start showing slightly. This is often when couples feel ready to share the news.",
+      "howToHelp": [
+        "Celebrate reaching this milestone together",
+        "Help plan how to announce the pregnancy",
+        "Start creating the baby registry together",
+        "Support her in telling friends and family when she's ready"
+      ],
+      "actionItems": [
+        {
+          "id": "w12-a1",
+          "text": "Plan the pregnancy announcement",
+          "category": "emotional"
+        },
+        {
+          "id": "w12-a2",
+          "text": "Start creating a baby registry",
+          "category": "gear"
+        },
+        {
+          "id": "w12-a3",
+          "text": "Begin looking at nursery furniture options",
+          "category": "gear"
+        }
+      ],
+      "commonDadQuestion": "When is it safe to share the news?",
+      "relatedTips": [
+        "tip-017",
+        "tip-028",
+        "tip-029"
+      ]
+    },
+    {
+      "weekNumber": 13,
+      "trimester": 1,
+      "title": "Week 13: Peapod",
+      "babySize": "Peapod",
+      "babyDevelopment": "Vocal cords are forming. The baby's unique fingerprints are developing. Intestines move from the umbilical cord into the abdomen. The end of the first trimester marks a major milestone \u2014 miscarriage risk drops dramatically.",
+      "partnerExperience": "Appetite is increasing as nausea fades. She may feel a surge of relief and energy. The transition to the second trimester often brings improved mood and reduced anxiety.",
+      "howToHelp": [
+        "Notify your employer and start planning paternity leave",
+        "Celebrate the end of the first trimester together",
+        "Start thinking about a babymoon or special trip during the second trimester",
+        "Help her enjoy this renewed energy phase"
+      ],
+      "actionItems": [
+        {
+          "id": "w13-a1",
+          "text": "Tell your employer and discuss paternity leave options",
+          "category": "planning"
+        },
+        {
+          "id": "w13-a2",
+          "text": "Get term life insurance quotes",
+          "category": "financial"
+        },
+        {
+          "id": "w13-a3",
+          "text": "Schedule any remaining first-trimester screenings",
+          "category": "medical"
+        }
+      ],
+      "commonDadQuestion": "How do I tell my boss?",
+      "relatedTips": [
+        "tip-015",
+        "tip-016",
+        "tip-030"
+      ]
+    },
+    {
+      "weekNumber": 14,
+      "trimester": 2,
+      "title": "Week 14: Lemon",
+      "babySize": "Lemon",
+      "babyDevelopment": "Welcome to the second trimester. Fingerprints are fully formed \u2014 your baby is already unique. The baby can make facial expressions like squinting and frowning. The body is catching up to the head in proportional size.",
+      "partnerExperience": "Round ligament pain may begin \u2014 sharp pains on the sides of the abdomen as the uterus stretches. Energy levels are typically improving. The pregnancy brain fog some women experience may start.",
+      "howToHelp": [
+        "Share pregnancy news with your wider circle",
+        "Learn about round ligament pain so you understand what she's feeling",
+        "Take advantage of her improved energy to do things together",
+        "Continue attending prenatal appointments"
+      ],
+      "actionItems": [
+        {
+          "id": "w14-a1",
+          "text": "Share pregnancy news with extended family and friends",
+          "category": "emotional"
+        },
+        {
+          "id": "w14-a2",
+          "text": "Research childbirth education classes",
+          "category": "planning"
+        },
+        {
+          "id": "w14-a3",
+          "text": "Start a baby name list together",
+          "category": "emotional"
+        }
+      ],
+      "commonDadQuestion": "Why does her side hurt?",
+      "relatedTips": [
+        "tip-006",
+        "tip-007",
+        "tip-017"
+      ]
+    },
+    {
+      "weekNumber": 15,
+      "trimester": 2,
+      "title": "Week 15: Apple",
+      "babySize": "Apple",
+      "babyDevelopment": "The lungs are developing and practicing breathing movements with amniotic fluid. The baby's skeleton is hardening from cartilage to bone. Taste buds are functional \u2014 the baby can taste what your partner eats through the amniotic fluid.",
+      "partnerExperience": "Nasal congestion is common due to increased blood flow to mucous membranes. Back pain may begin as the center of gravity shifts. Skin changes like darkening of the nipples or a linea nigra line may appear.",
+      "howToHelp": [
+        "Start the baby registry if you haven't already",
+        "Help her stay comfortable with pillows and positioning",
+        "Offer back rubs \u2014 they'll be increasingly appreciated",
+        "Research baby gear together \u2014 focus on the essentials"
+      ],
+      "actionItems": [
+        {
+          "id": "w15-a1",
+          "text": "Create and share your baby registry",
+          "category": "gear"
+        },
+        {
+          "id": "w15-a2",
+          "text": "Research and compare car seats",
+          "category": "gear"
+        },
+        {
+          "id": "w15-a3",
+          "text": "Look into hospital pre-registration",
+          "category": "planning"
+        }
+      ],
+      "commonDadQuestion": "What do we actually need to buy?",
+      "relatedTips": [
+        "tip-017",
+        "tip-018",
+        "tip-029"
+      ]
+    },
+    {
+      "weekNumber": 16,
+      "trimester": 2,
+      "title": "Week 16: Avocado",
+      "babySize": "Avocado (~5 inches)",
+      "babyDevelopment": "The ears can now hear sounds from outside the womb. The baby's eyes are sensitive to light even though the eyelids are still sealed. The circulatory and urinary systems are fully functioning. Toenails are starting to grow.",
+      "partnerExperience": "Back pain is becoming more common. She may start feeling tiny flutters of movement, though first-time moms often don't notice until weeks 18-22. Sleep disturbances may begin as finding a comfortable position gets harder.",
+      "howToHelp": [
+        "Begin nursery planning \u2014 pick a room, measure, dream together",
+        "Start talking and singing to the bump \u2014 your baby can hear you now",
+        "Help with back pain by offering massages and warm compresses",
+        "Research nursery furniture \u2014 order by week 20 to avoid delays"
+      ],
+      "actionItems": [
+        {
+          "id": "w16-a1",
+          "text": "Begin nursery planning and measurements",
+          "category": "gear"
+        },
+        {
+          "id": "w16-a2",
+          "text": "Start talking to the baby \u2014 they can hear you",
+          "category": "emotional"
+        },
+        {
+          "id": "w16-a3",
+          "text": "Order nursery furniture (allow 4-8 weeks for delivery)",
+          "category": "gear"
+        }
+      ],
+      "commonDadQuestion": "Can the baby hear me yet?",
+      "relatedTips": [
+        "tip-008",
+        "tip-017",
+        "tip-018"
+      ]
+    },
+    {
+      "weekNumber": 17,
+      "trimester": 2,
+      "title": "Week 17: Turnip",
+      "babySize": "Turnip",
+      "babyDevelopment": "A waxy coating called vernix is forming to protect the baby's skin in the amniotic fluid. The umbilical cord is growing thicker and stronger. Fat stores are beginning to develop under the skin. The baby's skeleton is transitioning from soft cartilage to hardened bone.",
+      "partnerExperience": "Increased vaginal discharge is normal and healthy. She may feel warmer than usual due to increased blood volume. Itchy skin on the stretching belly is common. Vivid dreams may begin.",
+      "howToHelp": [
+        "Start talking and reading to the bump regularly",
+        "Buy her a good belly moisturizer to help with itchy, stretching skin",
+        "Be patient with vivid dreams and sleep disruptions",
+        "Keep communication open about how you're both feeling"
+      ],
+      "actionItems": [
+        {
+          "id": "w17-a1",
+          "text": "Start reading to the baby each night",
+          "category": "emotional"
+        },
+        {
+          "id": "w17-a2",
+          "text": "Research pediatricians in your area",
+          "category": "medical"
+        },
+        {
+          "id": "w17-a3",
+          "text": "Schedule the anatomy scan (weeks 18-22)",
+          "category": "medical"
+        }
+      ],
+      "commonDadQuestion": "Does talking to the belly really matter?",
+      "relatedTips": [
+        "tip-008",
+        "tip-009",
+        "tip-028"
+      ]
+    },
+    {
+      "weekNumber": 18,
+      "trimester": 2,
+      "title": "Week 18: Bell Pepper",
+      "babySize": "Bell pepper",
+      "babyDevelopment": "The baby can hear sounds from outside the womb clearly now. Myelin \u2014 a protective coating \u2014 is forming around the nerves. If your baby is female, her uterus and fallopian tubes are formed. The baby is increasingly active and may respond to loud noises.",
+      "partnerExperience": "First flutters (quickening) may be felt \u2014 like butterflies or gas bubbles. Not all women feel them this early, especially with a first pregnancy. Round ligament pain continues. Appetite is strong.",
+      "howToHelp": [
+        "Sing and read to the bump \u2014 your voice is bonding with the baby",
+        "Be excited when she feels the first movements",
+        "Sign up for childbirth education classes together",
+        "Start interviewing pediatricians"
+      ],
+      "actionItems": [
+        {
+          "id": "w18-a1",
+          "text": "Sing and read aloud to the baby daily",
+          "category": "emotional"
+        },
+        {
+          "id": "w18-a2",
+          "text": "Register for a childbirth education class",
+          "category": "planning"
+        },
+        {
+          "id": "w18-a3",
+          "text": "Begin interviewing pediatricians",
+          "category": "medical"
+        }
+      ],
+      "commonDadQuestion": "When will I feel the baby kick?",
+      "relatedTips": [
+        "tip-008",
+        "tip-009",
+        "tip-010"
+      ]
+    },
+    {
+      "weekNumber": 19,
+      "trimester": 2,
+      "title": "Week 19: Tomato",
+      "babySize": "Tomato",
+      "babyDevelopment": "Each baby now has completely unique fingerprints. The sensory areas of the brain are developing rapidly for taste, smell, hearing, sight, and touch. The baby is developing a regular sleep-wake cycle. Vernix coating continues to thicken.",
+      "partnerExperience": "Quickening is likely happening \u2014 she may feel definite kicks and movements. Round ligament pain, back aches, and hip pain are common. Her belly is clearly visible now. She may be adjusting to her changing body.",
+      "howToHelp": [
+        "Place your hand on her belly and wait for kicks \u2014 be patient",
+        "Don't comment on her size \u2014 just tell her she's beautiful",
+        "Support her body image with affirming words",
+        "Help around the house without being asked"
+      ],
+      "actionItems": [
+        {
+          "id": "w19-a1",
+          "text": "Feel for baby's movements together",
+          "category": "emotional"
+        },
+        {
+          "id": "w19-a2",
+          "text": "Practice body-affirming language",
+          "category": "emotional"
+        },
+        {
+          "id": "w19-a3",
+          "text": "Tour potential childcare facilities",
+          "category": "planning"
+        }
+      ],
+      "commonDadQuestion": "Is sex still safe?",
+      "relatedTips": [
+        "tip-009",
+        "tip-010",
+        "tip-011"
+      ]
+    },
+    {
+      "weekNumber": 20,
+      "trimester": 2,
+      "title": "Week 20: Banana",
+      "babySize": "Banana (~10 inches)",
+      "babyDevelopment": "Halfway point! All five senses are developing. The baby can swallow, and meconium (first stool) is accumulating. The baby is about 10 inches long from head to heel. Eyebrows and eyelashes are growing. This week's anatomy scan provides a detailed look at the baby's development.",
+      "partnerExperience": "Kicks are clearly felt now. She may feel energetic and relatively comfortable \u2014 the second trimester sweet spot. The anatomy scan is a major milestone that can be deeply emotional for both parents.",
+      "howToHelp": [
+        "Attend the anatomy scan together \u2014 this is a must",
+        "Celebrate the halfway milestone together",
+        "Discuss whether to find out the baby's sex",
+        "Use this good-energy period to tackle nursery projects"
+      ],
+      "actionItems": [
+        {
+          "id": "w20-a1",
+          "text": "Attend the anatomy scan ultrasound",
+          "category": "medical"
+        },
+        {
+          "id": "w20-a2",
+          "text": "Celebrate the halfway milestone together",
+          "category": "emotional"
+        },
+        {
+          "id": "w20-a3",
+          "text": "Finalize major nursery furniture decisions",
+          "category": "gear"
+        }
+      ],
+      "commonDadQuestion": "Should we find out the gender?",
+      "relatedTips": [
+        "tip-008",
+        "tip-017",
+        "tip-018"
+      ]
+    },
+    {
+      "weekNumber": 21,
+      "trimester": 2,
+      "title": "Week 21: Carrot",
+      "babySize": "Carrot",
+      "babyDevelopment": "Bone marrow is now producing blood cells, taking over from the liver and spleen. The baby's movements are increasingly coordinated. The digestive system is practicing by absorbing small amounts of amniotic fluid.",
+      "partnerExperience": "Stretch marks may start appearing on the belly, breasts, hips, or thighs. Varicose veins are possible. Braxton Hicks practice contractions may start occasionally. She may feel left out of conversations that aren't about the baby.",
+      "howToHelp": [
+        "Register for childbirth classes if you haven't already",
+        "Ask about HER \u2014 not just the baby \u2014 to affirm her identity",
+        "Acknowledge that her body is doing incredible work",
+        "Start discussing birth plan preferences casually"
+      ],
+      "actionItems": [
+        {
+          "id": "w21-a1",
+          "text": "Register for childbirth education class",
+          "category": "planning"
+        },
+        {
+          "id": "w21-a2",
+          "text": "Ask about her as a person, not just as a mom-to-be",
+          "category": "emotional"
+        },
+        {
+          "id": "w21-a3",
+          "text": "Begin casually discussing birth preferences",
+          "category": "planning"
+        }
+      ],
+      "commonDadQuestion": "Why do I feel left out?",
+      "relatedTips": [
+        "tip-009",
+        "tip-010",
+        "tip-011"
+      ]
+    },
+    {
+      "weekNumber": 22,
+      "trimester": 2,
+      "title": "Week 22: Spaghetti Squash",
+      "babySize": "Spaghetti squash",
+      "babyDevelopment": "The baby can grasp the umbilical cord and touch their face. Eyebrows are visible. The inner ear is fully developed, giving the baby a sense of balance. The baby looks like a miniature newborn, just thinner.",
+      "partnerExperience": "Melasma (darkened skin patches) or linea nigra (dark line on the belly) may appear. Swelling in hands and feet is possible. She may feel clumsy as her center of gravity shifts. Emotional wellbeing is generally good.",
+      "howToHelp": [
+        "Interview and select a pediatrician together",
+        "Start assembling nursery furniture if it's arrived",
+        "Plan a date night or babymoon while travel is still comfortable",
+        "Keep supporting her changing body with kind words"
+      ],
+      "actionItems": [
+        {
+          "id": "w22-a1",
+          "text": "Interview and shortlist pediatricians",
+          "category": "medical"
+        },
+        {
+          "id": "w22-a2",
+          "text": "Assemble any nursery furniture that's arrived",
+          "category": "gear"
+        },
+        {
+          "id": "w22-a3",
+          "text": "Plan a babymoon or special outing together",
+          "category": "emotional"
+        }
+      ],
+      "commonDadQuestion": "How do I choose a pediatrician?",
+      "relatedTips": [
+        "tip-017",
+        "tip-018",
+        "tip-030"
+      ]
+    },
+    {
+      "weekNumber": 23,
+      "trimester": 2,
+      "title": "Week 23: Large Mango",
+      "babySize": "Large mango",
+      "babyDevelopment": "This is the earliest viability milestone \u2014 if born now, survival rates range from about 10-35% with intensive care. The lungs are developing surfactant, a substance critical for breathing air. The brain is growing rapidly. The baby responds to familiar voices.",
+      "partnerExperience": "Braxton Hicks contractions may start \u2014 practice contractions that are irregular and not painful. Swelling in ankles and feet is common by late afternoon. Heartburn may increase as the uterus pushes up on the stomach.",
+      "howToHelp": [
+        "Schedule a hospital tour to see the labor and delivery ward",
+        "Learn what Braxton Hicks contractions are so you don't panic",
+        "Help her elevate her feet in the evening to reduce swelling",
+        "Keep attending prenatal appointments together"
+      ],
+      "actionItems": [
+        {
+          "id": "w23-a1",
+          "text": "Schedule a hospital tour",
+          "category": "planning"
+        },
+        {
+          "id": "w23-a2",
+          "text": "Learn the difference between Braxton Hicks and real labor",
+          "category": "planning"
+        },
+        {
+          "id": "w23-a3",
+          "text": "Pre-register at the hospital",
+          "category": "planning"
+        }
+      ],
+      "commonDadQuestion": "What are Braxton Hicks?",
+      "relatedTips": [
+        "tip-019",
+        "tip-020",
+        "tip-030"
+      ]
+    },
+    {
+      "weekNumber": 24,
+      "trimester": 2,
+      "title": "Week 24: Ear of Corn",
+      "babySize": "Ear of corn (~12 inches)",
+      "babyDevelopment": "The lungs are fully formed structurally, though not ready to breathe air yet. The baby's face is fully formed with eyelashes, eyebrows, and hair. The inner ear's balance structures are maturing. If born now, survival rates with NICU care are much improved.",
+      "partnerExperience": "The glucose challenge test is due around this time to screen for gestational diabetes. Backaches are common. She may feel the baby hiccup \u2014 a rhythmic, repetitive sensation. Sleep is becoming harder to find.",
+      "howToHelp": [
+        "Update your will and life insurance beneficiaries",
+        "Support her through the glucose test \u2014 it's not fun",
+        "Help her find comfortable sleeping positions (left side is best)",
+        "Research the BRAIN framework for birth decisions"
+      ],
+      "actionItems": [
+        {
+          "id": "w24-a1",
+          "text": "Update will and life insurance designations",
+          "category": "financial"
+        },
+        {
+          "id": "w24-a2",
+          "text": "Support her through the glucose challenge test",
+          "category": "medical"
+        },
+        {
+          "id": "w24-a3",
+          "text": "Research the BRAIN decision-making framework for birth",
+          "category": "planning"
+        }
+      ],
+      "commonDadQuestion": "What if the baby comes early?",
+      "relatedTips": [
+        "tip-015",
+        "tip-019",
+        "tip-020"
+      ]
+    },
+    {
+      "weekNumber": 25,
+      "trimester": 2,
+      "title": "Week 25: Rutabaga",
+      "babySize": "Rutabaga",
+      "babyDevelopment": "The nervous system is maturing rapidly. The baby can now respond to touch and sound more consistently. Blood vessels in the lungs are developing to prepare for breathing. The nostrils begin to open.",
+      "partnerExperience": "Heartburn is increasing as the growing uterus pushes stomach acid upward. Hemorrhoids are unfortunately common. She may feel short of breath during physical activity. Leg cramps at night are possible.",
+      "howToHelp": [
+        "Finalize the baby registry \u2014 baby showers typically happen around weeks 28-34",
+        "Help with heartburn by keeping antacids available and elevating the head of the bed",
+        "Offer foot and leg massages for cramps",
+        "Continue attending childbirth classes together"
+      ],
+      "actionItems": [
+        {
+          "id": "w25-a1",
+          "text": "Finalize the baby registry",
+          "category": "gear"
+        },
+        {
+          "id": "w25-a2",
+          "text": "Stock antacids for heartburn relief",
+          "category": "health"
+        },
+        {
+          "id": "w25-a3",
+          "text": "Continue attending childbirth education classes",
+          "category": "planning"
+        }
+      ],
+      "commonDadQuestion": "Is heartburn harmful to the baby?",
+      "relatedTips": [
+        "tip-017",
+        "tip-018",
+        "tip-019"
+      ]
+    },
+    {
+      "weekNumber": 26,
+      "trimester": 2,
+      "title": "Week 26: Scallion (length)",
+      "babySize": "Scallion (length)",
+      "babyDevelopment": "Surfactant production begins in the lungs \u2014 this is the substance that prevents lungs from collapsing after each breath. The eyes are opening and the baby can see light and shadow. Brain wave activity begins for visual and auditory systems.",
+      "partnerExperience": "Swelling in hands and feet is increasing. She may notice Braxton Hicks more frequently. Her belly button may pop out. The third trimester is approaching and nesting instincts may begin.",
+      "howToHelp": [
+        "Begin interviewing childcare providers if you haven't started",
+        "Help her find ways to reduce swelling \u2014 elevation, hydration, comfortable shoes",
+        "Start thinking about a birth plan together",
+        "Attend your hospital tour if scheduled"
+      ],
+      "actionItems": [
+        {
+          "id": "w26-a1",
+          "text": "Begin childcare interviews and facility tours",
+          "category": "planning"
+        },
+        {
+          "id": "w26-a2",
+          "text": "Discuss birth plan preferences in detail",
+          "category": "planning"
+        },
+        {
+          "id": "w26-a3",
+          "text": "Complete your hospital tour",
+          "category": "planning"
+        }
+      ],
+      "commonDadQuestion": "When should we start the daycare search?",
+      "relatedTips": [
+        "tip-016",
+        "tip-019",
+        "tip-020"
+      ]
+    },
+    {
+      "weekNumber": 27,
+      "trimester": 2,
+      "title": "Week 27: Cauliflower",
+      "babySize": "Cauliflower (~15 inches)",
+      "babyDevelopment": "The eyes open for the first time! The baby can now blink and has distinct sleep-wake cycles. The brain is incredibly active, and the baby can dream. Lungs continue maturing. This is the final week of the second trimester.",
+      "partnerExperience": "Shortness of breath is starting as the uterus pushes up against the diaphragm. Sleep disturbances are common. She may feel anxious about the third trimester. The glucose screening should be completed by now.",
+      "howToHelp": [
+        "Complete the glucose screening if not already done",
+        "Celebrate entering the third trimester \u2014 the home stretch",
+        "Start discussing who should be in the delivery room",
+        "Be emotionally present \u2014 third trimester anxiety often resurfaces"
+      ],
+      "actionItems": [
+        {
+          "id": "w27-a1",
+          "text": "Complete glucose screening if not done",
+          "category": "medical"
+        },
+        {
+          "id": "w27-a2",
+          "text": "Celebrate entering the third trimester together",
+          "category": "emotional"
+        },
+        {
+          "id": "w27-a3",
+          "text": "Discuss labor support preferences \u2014 who's in the room?",
+          "category": "planning"
+        }
+      ],
+      "commonDadQuestion": "How much weight should she be gaining?",
+      "relatedTips": [
+        "tip-019",
+        "tip-020",
+        "tip-021"
+      ]
+    },
+    {
+      "weekNumber": 28,
+      "trimester": 3,
+      "title": "Week 28: Large Eggplant",
+      "babySize": "Large eggplant",
+      "babyDevelopment": "The baby may turn head-down in preparation for birth. The brain is developing billions of neurons. Fat layers continue building under the skin. Eyelashes are fully formed. If born now, survival rates exceed 90% with NICU care.",
+      "partnerExperience": "Back pain worsens as the baby gets heavier. Prenatal appointments switch to every 2 weeks. Sleep is increasingly difficult. Braxton Hicks may feel stronger and more frequent.",
+      "howToHelp": [
+        "Start drafting your birth plan together",
+        "Begin childbirth classes if you haven't already",
+        "Learn comfort measures: counter-pressure, hip squeezes, massage",
+        "Attend biweekly prenatal appointments"
+      ],
+      "actionItems": [
+        {
+          "id": "w28-a1",
+          "text": "Draft a birth plan together",
+          "category": "planning"
+        },
+        {
+          "id": "w28-a2",
+          "text": "Begin or continue childbirth classes",
+          "category": "planning"
+        },
+        {
+          "id": "w28-a3",
+          "text": "Practice comfort measures for labor",
+          "category": "planning"
+        },
+        {
+          "id": "w28-a4",
+          "text": "Start fetal kick counting (10 movements in 2 hours)",
+          "category": "health"
+        }
+      ],
+      "commonDadQuestion": "What goes in a birth plan?",
+      "relatedTips": [
+        "tip-019",
+        "tip-020",
+        "tip-021"
+      ]
+    },
+    {
+      "weekNumber": 29,
+      "trimester": 3,
+      "title": "Week 29: Butternut Squash",
+      "babySize": "Butternut squash",
+      "babyDevelopment": "Fat accumulation continues, smoothing out wrinkled skin. The baby is gaining about half a pound per week now. Muscles and lungs continue maturing. The baby's movements may feel different \u2014 more rolling and stretching, less jabbing.",
+      "partnerExperience": "Fatigue returns with a vengeance as the body carries more weight. She may feel breathless climbing stairs. Heartburn and indigestion are common. Emotional intensity may resurface.",
+      "howToHelp": [
+        "Begin childbirth classes together if not started",
+        "Help her conserve energy where possible",
+        "Take over more physical tasks around the house",
+        "Start preparing freezer meals for after the birth"
+      ],
+      "actionItems": [
+        {
+          "id": "w29-a1",
+          "text": "Begin or continue childbirth classes",
+          "category": "planning"
+        },
+        {
+          "id": "w29-a2",
+          "text": "Start researching freezer meal recipes",
+          "category": "postpartum"
+        },
+        {
+          "id": "w29-a3",
+          "text": "Help with physical tasks around the house",
+          "category": "emotional"
+        }
+      ],
+      "commonDadQuestion": "What happens in childbirth class?",
+      "relatedTips": [
+        "tip-019",
+        "tip-020",
+        "tip-021"
+      ]
+    },
+    {
+      "weekNumber": 30,
+      "trimester": 3,
+      "title": "Week 30: Cabbage",
+      "babySize": "Cabbage (~18 inches)",
+      "babyDevelopment": "The brain is maturing rapidly, developing more complex neural connections. Survival rate exceeds 95% if born now. The baby's bone marrow has taken over red blood cell production completely. The baby can turn toward light sources.",
+      "partnerExperience": "Difficulty sleeping is nearly universal at this point. Frequent bathroom trips at night. Braxton Hicks continue. She may be emotional and anxious about labor and delivery. Nesting instinct may kick in.",
+      "howToHelp": [
+        "Start fetal kick counts together \u2014 10 movements in 2 hours is healthy",
+        "Begin freezer meal prep (aim for 25-50 portions)",
+        "Help her find comfortable sleeping positions",
+        "Be her emotional anchor \u2014 anxiety about labor is normal"
+      ],
+      "actionItems": [
+        {
+          "id": "w30-a1",
+          "text": "Start daily fetal kick counts",
+          "category": "health"
+        },
+        {
+          "id": "w30-a2",
+          "text": "Begin freezer meal prep for postpartum",
+          "category": "postpartum"
+        },
+        {
+          "id": "w30-a3",
+          "text": "Purchase remaining baby supplies",
+          "category": "gear"
+        }
+      ],
+      "commonDadQuestion": "How often should the baby kick?",
+      "relatedTips": [
+        "tip-020",
+        "tip-021",
+        "tip-022"
+      ]
+    },
+    {
+      "weekNumber": 31,
+      "trimester": 3,
+      "title": "Week 31: Coconut",
+      "babySize": "Coconut",
+      "babyDevelopment": "The brain is processing information from all five senses. The baby has regular sleep cycles and may even dream. The irises can dilate and constrict in response to light. The baby is getting plumper each day.",
+      "partnerExperience": "Pelvic pressure increases as the baby grows. She may waddle slightly when walking. Shortness of breath continues. Nesting urges may lead to cleaning and organizing marathons.",
+      "howToHelp": [
+        "Babyproof the house \u2014 anchor furniture, cover outlets, set water heater to 120\u00b0F",
+        "Support her nesting instincts \u2014 help organize and prepare",
+        "Keep the hospital bag conversation going",
+        "Don't overcommit her to social events \u2014 rest is important"
+      ],
+      "actionItems": [
+        {
+          "id": "w31-a1",
+          "text": "Start babyproofing: anchor furniture, cover outlets",
+          "category": "gear"
+        },
+        {
+          "id": "w31-a2",
+          "text": "Set water heater to 120\u00b0F maximum",
+          "category": "gear"
+        },
+        {
+          "id": "w31-a3",
+          "text": "Install smoke and CO detectors on every floor",
+          "category": "gear"
+        }
+      ],
+      "commonDadQuestion": "When should we have the bag packed?",
+      "relatedTips": [
+        "tip-020",
+        "tip-021",
+        "tip-022"
+      ]
+    },
+    {
+      "weekNumber": 32,
+      "trimester": 3,
+      "title": "Week 32: Jicama",
+      "babySize": "Jicama",
+      "babyDevelopment": "The skin is no longer see-through as fat continues to build. The baby is practicing breathing movements with amniotic fluid. All five senses are functional. The baby is about 17 inches long and weighs around 4 pounds.",
+      "partnerExperience": "Heartburn may worsen as the baby presses against the stomach. She may feel clumsy and off-balance. Braxton Hicks are more noticeable. Baby shower time \u2014 help her enjoy it.",
+      "howToHelp": [
+        "Help organize and enjoy the baby shower",
+        "Continue freezer meal prep \u2014 label everything clearly",
+        "Learn about your role during labor \u2014 coaching, advocacy, comfort",
+        "Practice breathing exercises together for labor"
+      ],
+      "actionItems": [
+        {
+          "id": "w32-a1",
+          "text": "Continue freezer meal prep \u2014 aim for 20+ meals",
+          "category": "postpartum"
+        },
+        {
+          "id": "w32-a2",
+          "text": "Learn about your specific role during labor",
+          "category": "planning"
+        },
+        {
+          "id": "w32-a3",
+          "text": "Practice breathing exercises for labor together",
+          "category": "planning"
+        }
+      ],
+      "commonDadQuestion": "What's my role during labor?",
+      "relatedTips": [
+        "tip-020",
+        "tip-021",
+        "tip-022"
+      ]
+    },
+    {
+      "weekNumber": 33,
+      "trimester": 3,
+      "title": "Week 33: Pineapple",
+      "babySize": "Pineapple",
+      "babyDevelopment": "Bones are hardening throughout the body, except the skull which stays soft for delivery. The baby's immune system is getting a boost from antibodies transferred through the placenta. Brain development continues at a rapid pace.",
+      "partnerExperience": "Colostrum (early breast milk) may leak from the nipples. She may feel very large and uncomfortable. Anxiety about labor and motherhood is common. Sleep quality continues to decline.",
+      "howToHelp": [
+        "Finish the nursery \u2014 make it a calm, welcoming space",
+        "Have conversations about your fears too \u2014 vulnerability builds connection",
+        "Reassure her that feeling unprepared is completely normal",
+        "Set up the crib: firm mattress, fitted sheet only, nothing else"
+      ],
+      "actionItems": [
+        {
+          "id": "w33-a1",
+          "text": "Finish nursery setup: crib, dresser, changing area",
+          "category": "gear"
+        },
+        {
+          "id": "w33-a2",
+          "text": "Set up the crib safely: firm mattress, fitted sheet only",
+          "category": "gear"
+        },
+        {
+          "id": "w33-a3",
+          "text": "Share your own feelings and fears openly",
+          "category": "emotional"
+        }
+      ],
+      "commonDadQuestion": "Will I be a good father?",
+      "relatedTips": [
+        "tip-012",
+        "tip-013",
+        "tip-022"
+      ]
+    },
+    {
+      "weekNumber": 34,
+      "trimester": 3,
+      "title": "Week 34: Cantaloupe",
+      "babySize": "Cantaloupe",
+      "babyDevelopment": "Survival rate exceeds 98% if born now. The vernix coating is thickening. The central nervous system and lungs are still maturing. The baby is about 18 inches long and weighs around 5 pounds. Most babies are in the head-down position by now.",
+      "partnerExperience": "Braxton Hicks contractions are more frequent and may be stronger. She may feel a mix of excitement and anxiety. Fatigue is significant. She may have trouble finding any comfortable position.",
+      "howToHelp": [
+        "Buy any remaining baby items \u2014 diapers, wipes, onesies, swaddles",
+        "Make sure the nursery is fully stocked and ready",
+        "Double-check that your car seat is purchased",
+        "Review your birth plan together one more time"
+      ],
+      "actionItems": [
+        {
+          "id": "w34-a1",
+          "text": "Purchase remaining baby essentials",
+          "category": "gear"
+        },
+        {
+          "id": "w34-a2",
+          "text": "Stock up on diapers (newborn and size 1) and wipes",
+          "category": "gear"
+        },
+        {
+          "id": "w34-a3",
+          "text": "Review the birth plan one more time together",
+          "category": "planning"
+        }
+      ],
+      "commonDadQuestion": "Are we actually ready?",
+      "relatedTips": [
+        "tip-020",
+        "tip-021",
+        "tip-022"
+      ]
+    },
+    {
+      "weekNumber": 35,
+      "trimester": 3,
+      "title": "Week 35: Honeydew",
+      "babySize": "Honeydew (~19 inches)",
+      "babyDevelopment": "The brain is still growing rapidly. Fat continues to accumulate, making the baby plumper. The kidneys are fully developed. The baby is running out of room and movements may feel different \u2014 more squirming than kicking.",
+      "partnerExperience": "Nesting instinct may be in full force \u2014 she wants everything perfect. Sleep deprivation is significant. She may feel emotionally fragile. Braxton Hicks are a regular occurrence.",
+      "howToHelp": [
+        "Pack hospital bags for BOTH of you \u2014 by this week",
+        "Include chargers, snacks, comfortable clothes, and documents",
+        "Pack a going-home outfit for baby in two sizes (NB and 0-3M)",
+        "Keep the car gas tank full from now on"
+      ],
+      "actionItems": [
+        {
+          "id": "w35-a1",
+          "text": "Pack hospital bags for both parents and baby",
+          "category": "planning"
+        },
+        {
+          "id": "w35-a2",
+          "text": "Keep the car gas tank full at all times",
+          "category": "planning"
+        },
+        {
+          "id": "w35-a3",
+          "text": "Confirm who will care for pets during hospital stay",
+          "category": "planning"
+        }
+      ],
+      "commonDadQuestion": "What do I pack for the hospital?",
+      "relatedTips": [
+        "tip-021",
+        "tip-022",
+        "tip-023"
+      ]
+    },
+    {
+      "weekNumber": 36,
+      "trimester": 3,
+      "title": "Week 36: Romaine Lettuce",
+      "babySize": "Romaine lettuce",
+      "babyDevelopment": "The fine lanugo hair is falling off and real hair is growing. The baby is dropping lower into the pelvis (lightening). The digestive system is ready to process breast milk. The baby weighs about 6 pounds.",
+      "partnerExperience": "The baby dropping may ease breathing but increase pelvic pressure. Appointments switch to weekly. She may lose the mucus plug (normal). The GBS screening test happens this week.",
+      "howToHelp": [
+        "Install the car seat rear-facing and get it inspected at a certified station",
+        "Support her through the GBS screening",
+        "Attend weekly prenatal appointments from now on",
+        "Know the fastest route to the hospital and a backup route"
+      ],
+      "actionItems": [
+        {
+          "id": "w36-a1",
+          "text": "Install car seat rear-facing and get it inspected",
+          "category": "gear"
+        },
+        {
+          "id": "w36-a2",
+          "text": "Support her through the GBS screening",
+          "category": "medical"
+        },
+        {
+          "id": "w36-a3",
+          "text": "Map the fastest route to the hospital",
+          "category": "planning"
+        },
+        {
+          "id": "w36-a4",
+          "text": "Identify a backup route to the hospital",
+          "category": "planning"
+        }
+      ],
+      "commonDadQuestion": "How do I install the car seat?",
+      "relatedTips": [
+        "tip-021",
+        "tip-022",
+        "tip-023"
+      ]
+    },
+    {
+      "weekNumber": 37,
+      "trimester": 3,
+      "title": "Week 37: Swiss Chard",
+      "babySize": "Swiss chard",
+      "babyDevelopment": "The baby is now considered early term. Toenails are complete. The baby is practicing breathing, sucking, and gripping. Head circumference and abdominal circumference are about the same. The baby gains about half an ounce per day.",
+      "partnerExperience": "The mucus plug may loosen \u2014 this can happen days or weeks before labor. Braxton Hicks may intensify. She may feel restless and anxious. Cervical exams at appointments will check for dilation.",
+      "howToHelp": [
+        "Finalize the birth plan with your care provider",
+        "Learn the signs of real labor vs. false labor",
+        "Review the BRAIN framework: Benefits, Risks, Alternatives, Intuition, Nothing",
+        "Know what NOT to say during labor \u2014 be supportive, not directive"
+      ],
+      "actionItems": [
+        {
+          "id": "w37-a1",
+          "text": "Finalize birth plan with your care provider",
+          "category": "planning"
+        },
+        {
+          "id": "w37-a2",
+          "text": "Learn the signs of real vs. false labor",
+          "category": "planning"
+        },
+        {
+          "id": "w37-a3",
+          "text": "Review the BRAIN decision-making framework",
+          "category": "planning"
+        },
+        {
+          "id": "w37-a4",
+          "text": "Confirm your support team and communication plan",
+          "category": "planning"
+        }
+      ],
+      "commonDadQuestion": "What are the signs of real labor?",
+      "relatedTips": [
+        "tip-022",
+        "tip-023",
+        "tip-024"
+      ]
+    },
+    {
+      "weekNumber": 38,
+      "trimester": 3,
+      "title": "Week 38: Leek",
+      "babySize": "Leek",
+      "babyDevelopment": "The baby is gaining about half a pound per week. The brain and nervous system are fine-tuning connections. The baby's grasp is firm. All organ systems are ready for life outside the womb, with lungs and brain continuing final maturation.",
+      "partnerExperience": "She may notice a bloody show \u2014 pink or brown tinged mucus discharge, which is normal. Braxton Hicks may be more intense. She may feel exhausted and ready to be done. Emotional intensity is high.",
+      "howToHelp": [
+        "Finalize all logistics: hospital route, emergency contacts, pet care",
+        "Charge devices, pack snacks, and confirm hospital bag contents",
+        "Be emotionally available \u2014 she needs reassurance right now",
+        "Keep your phone charged and nearby at all times"
+      ],
+      "actionItems": [
+        {
+          "id": "w38-a1",
+          "text": "Finalize hospital logistics and emergency contacts",
+          "category": "planning"
+        },
+        {
+          "id": "w38-a2",
+          "text": "Charge all devices and confirm hospital bag",
+          "category": "planning"
+        },
+        {
+          "id": "w38-a3",
+          "text": "Write a priority contact list for family notifications",
+          "category": "planning"
+        }
+      ],
+      "commonDadQuestion": "When do we go to the hospital?",
+      "relatedTips": [
+        "tip-022",
+        "tip-023",
+        "tip-024"
+      ]
+    },
+    {
+      "weekNumber": 39,
+      "trimester": 3,
+      "title": "Week 39: Mini-Watermelon",
+      "babySize": "Mini-watermelon",
+      "babyDevelopment": "The baby is officially full-term! The brain and lungs are completing their final maturation. The baby weighs 7-8 pounds on average. The chest is more prominent. The baby has settled into a ready position for birth.",
+      "partnerExperience": "Cervical changes are happening \u2014 she may be dilating. Irregular contractions are common. She may feel a burst of energy (nesting) or complete exhaustion. Every twinge feels like it could be labor.",
+      "howToHelp": [
+        "Attend the weekly prenatal visit together",
+        "Help her stay comfortable and distracted",
+        "Keep the car packed and ready to go",
+        "Learn the 5-1-1 rule: contractions 5 minutes apart, lasting 1 minute, for 1 hour"
+      ],
+      "actionItems": [
+        {
+          "id": "w39-a1",
+          "text": "Attend weekly prenatal visit",
+          "category": "medical"
+        },
+        {
+          "id": "w39-a2",
+          "text": "Learn the 5-1-1 rule for when to go to the hospital",
+          "category": "planning"
+        },
+        {
+          "id": "w39-a3",
+          "text": "Keep car packed, gas full, phone charged",
+          "category": "planning"
+        }
+      ],
+      "commonDadQuestion": "What if she goes past the due date?",
+      "relatedTips": [
+        "tip-023",
+        "tip-024",
+        "tip-025"
+      ]
+    },
+    {
+      "weekNumber": 40,
+      "trimester": 3,
+      "title": "Week 40: Small Pumpkin",
+      "babySize": "Small pumpkin (7-9 lbs)",
+      "babyDevelopment": "The baby is fully developed and ready for birth. Average weight is 7-9 pounds, length is 19-21 inches. The skull bones are not fused, allowing them to overlap slightly for delivery. Your baby is ready to meet you.",
+      "partnerExperience": "Regular contractions may begin. Water may break. She may experience a rush of emotions \u2014 excitement, fear, anticipation. If labor doesn't start, the provider may discuss induction options around 41 weeks.",
+      "howToHelp": [
+        "Support your partner through labor \u2014 be her advocate and comfort",
+        "Time contractions using the 5-1-1 rule",
+        "Call the hospital when it's time",
+        "Be present, calm, and encouraging \u2014 you've prepared for this"
+      ],
+      "actionItems": [
+        {
+          "id": "w40-a1",
+          "text": "Support partner through labor as her advocate",
+          "category": "emotional"
+        },
+        {
+          "id": "w40-a2",
+          "text": "Time contractions and call the hospital when ready",
+          "category": "planning"
+        },
+        {
+          "id": "w40-a3",
+          "text": "Be present, calm, and encouraging during delivery",
+          "category": "emotional"
+        },
+        {
+          "id": "w40-a4",
+          "text": "Enjoy skin-to-skin contact when your baby arrives",
+          "category": "emotional"
+        }
+      ],
+      "commonDadQuestion": "What do I do when labor starts?",
+      "relatedTips": [
+        "tip-023",
+        "tip-024",
+        "tip-025"
+      ]
+    }
+  ]
+}
