@@ -39,6 +39,21 @@ struct HomeView: View {
                                 .foregroundColor(Color(hex: "1A2B42"))
                         }
                         Spacer()
+                        NavigationLink(destination: SettingsView(profile: profile)) {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 10)
+                                    .fill(.white)
+                                    .frame(width: 38, height: 38)
+                                    .shadow(color: .black.opacity(0.04), radius: 3, y: 1)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .stroke(Color(hex: "E4EAF1"), lineWidth: 1)
+                                    )
+                                Image(systemName: "gearshape")
+                                    .font(.system(size: 16))
+                                    .foregroundColor(Color(hex: "5A6B80"))
+                            }
+                        }
                     }
                     .padding(.horizontal, 20)
                     .padding(.top, 8)

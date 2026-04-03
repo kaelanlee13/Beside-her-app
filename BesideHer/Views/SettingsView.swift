@@ -1,0 +1,399 @@
+//
+//  SettingsView.swift
+//  BesideHer
+//
+//  Settings screen for editing due date, notifications, bookmarks, and app info
+//
+
+import SwiftUI
+
+struct SettingsView: View {
+    let profile: UserProfile
+    let content = ContentService.shared
+    
+    @State private var showDatePicker = false
+    @State private var editedDueDate: Date = Date()
+    
+    var bookmarkedTips: [Tip] {
+        content.tips(withIDs: profile.bookmarkedTips)
+    }
+    
+    var body: some View {
+        ScrollView {
+            VStack(spacing: 20) {
+                // Pregnancy Info
+                VStack(spacing: 0) {
+                    settingsRow(
+                        icon: "📅",
+                        label: "Due Date",
+                        value: formattedDueDate,
+                        showChevron: true,
+                        action: {
+                            editedDueDate = profile.dueDate
+                            showDatePicker = true
+                        }
+                    )
+                    
+                    Divider().padding(.leading, 52)
+                    
+                    settingsRow(
+                        icon: "📍",
+                        label: "Current Week",
+                        value: "Week \(profile.currentWeek)",
+                        showChevron: false,
+                        action: {}
+                    )
+                    
+                    Divider().padding(.leading, 52)
+                    
+                    settingsRow(
+                        icon: "🗓️",
+                        label: "Trimester",
+                        value: trimesterLabel,
+                        showChevron: false,
+                        action: {}
+                    )
+                }
+                .background(
+                    RoundedRectangle(cornerRadius: 14)
+                        .fill(.white)
+                        .shadow(color: .black.opacity(0.04), radius: 3, y: 1)
+                )
+                .overlay(
+                    RoundedRectangle(cornerRadius: 14)
+                        .stroke(Color(hex: "E4EAF1"), lineWidth: 1)
+                )
+                .padding(.horizontal, 20)
+                
+                // Notifications
+                sectionHeader("Notifications")
+                
+                VStack(spacing: 0) {
+                    HStack(spacing: 12) {
+                        Text("🔔")
+                            .font(.system(size: 18))
+                        Text("Weekly Reminders")
+                            .font(.system(size: 15))
+                            .foregroundColor(Color(hex: "1A2B42"))
+                        Spacer()
+                        Toggle("", isOn: Binding(
+                            get: { profile.notificationsEnabled },
+                            set: { newValue in
+                                profile.notificationsEnabled = newValue
+                                if newValue {
+                                    requestNotifications()
+                                }
+                            }
+                        ))
+                        .tint(Color(hex: "3B7DD8"))
+                    }
+                    .padding(.horizontal, 14)
+                    .padding(.vertical, 12)
+                }
+                .background(
+                    RoundedRectangle(cornerRadius: 14)
+                        .fill(.white)
+                        .shadow(color: .black.opacity(0.04), radius: 3, y: 1)
+                )
+                .overlay(
+                    RoundedRectangle(cornerRadius: 14)
+                        .stroke(Color(hex: "E4EAF1"), lineWidth: 1)
+                )
+                .padding(.horizontal, 20)
+                
+                // Bookmarks
+                sectionHeader("Saved")
+                
+                VStack(spacing: 0) {
+                    if bookmarkedTips.isEmpty {
+                        HStack(spacing: 12) {
+                            Text("🔖")
+                                .font(.system(size: 18))
+                            Text("No bookmarked tips yet")
+                                .font(.system(size: 15))
+                                .foregroundColor(Color(hex: "8E9BAD"))
+                            Spacer()
+                        }
+                        .padding(.horizontal, 14)
+                        .padding(.vertical, 12)
+                    } else {
+                        NavigationLink(destination: BookmarkedTipsView(profile: profile)) {
+                            HStack(spacing: 12) {
+                                Text("🔖")
+                                    .font(.system(size: 18))
+                                Text("Bookmarked Tips")
+                                    .font(.system(size: 15))
+                                    .foregroundColor(Color(hex: "1A2B42"))
+                                Spacer()
+                                Text("\(bookmarkedTips.count) saved")
+                                    .font(.system(size: 13))
+                                    .foregroundColor(Color(hex: "5A6B80"))
+                                Image(systemName: "chevron.right")
+                                    .font(.system(size: 12))
+                                    .foregroundColor(Color(hex: "8E9BAD"))
+                            }
+                            .padding(.horizontal, 14)
+                            .padding(.vertical, 12)
+                        }
+                    }
+                }
+                .background(
+                    RoundedRectangle(cornerRadius: 14)
+                        .fill(.white)
+                        .shadow(color: .black.opacity(0.04), radius: 3, y: 1)
+                )
+                .overlay(
+                    RoundedRectangle(cornerRadius: 14)
+                        .stroke(Color(hex: "E4EAF1"), lineWidth: 1)
+                )
+                .padding(.horizontal, 20)
+                
+                // About
+                sectionHeader("About")
+                
+                VStack(spacing: 0) {
+                    aboutRow(icon: "ℹ️", label: "About BesideHer")
+                    Divider().padding(.leading, 52)
+                    aboutRow(icon: "⭐", label: "Rate the App")
+                    Divider().padding(.leading, 52)
+                    aboutRow(icon: "💬", label: "Send Feedback")
+                }
+                .background(
+                    RoundedRectangle(cornerRadius: 14)
+                        .fill(.white)
+                        .shadow(color: .black.opacity(0.04), radius: 3, y: 1)
+                )
+                .overlay(
+                    RoundedRectangle(cornerRadius: 14)
+                        .stroke(Color(hex: "E4EAF1"), lineWidth: 1)
+                )
+                .padding(.horizontal, 20)
+                
+                // Version
+                Text("BesideHer v1.0 · Made with ❤️")
+                    .font(.system(size: 12))
+                    .foregroundColor(Color(hex: "8E9BAD"))
+                    .padding(.top, 8)
+                    .padding(.bottom, 24)
+            }
+            .padding(.top, 12)
+        }
+        .background(Color(hex: "F7F9FC"))
+        .navigationTitle("Settings")
+        .navigationBarTitleDisplayMode(.large)
+        .sheet(isPresented: $showDatePicker) {
+            DatePickerSheet(
+                dueDate: $editedDueDate,
+                onSave: {
+                    profile.dueDate = editedDueDate
+                    showDatePicker = false
+                },
+                onCancel: {
+                    showDatePicker = false
+                }
+            )
+        }
+    }
+    
+    // MARK: - Helper Views
+    
+    private func settingsRow(icon: String, label: String, value: String, showChevron: Bool, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            HStack(spacing: 12) {
+                Text(icon)
+                    .font(.system(size: 18))
+                Text(label)
+                    .font(.system(size: 15))
+                    .foregroundColor(Color(hex: "1A2B42"))
+                Spacer()
+                Text(value)
+                    .font(.system(size: 14, weight: .semibold))
+                    .foregroundColor(Color(hex: "3B7DD8"))
+                if showChevron {
+                    Image(systemName: "chevron.right")
+                        .font(.system(size: 12))
+                        .foregroundColor(Color(hex: "8E9BAD"))
+                }
+            }
+            .padding(.horizontal, 14)
+            .padding(.vertical, 12)
+        }
+        .disabled(!showChevron)
+    }
+    
+    private func aboutRow(icon: String, label: String) -> some View {
+        HStack(spacing: 12) {
+            Text(icon)
+                .font(.system(size: 18))
+            Text(label)
+                .font(.system(size: 15))
+                .foregroundColor(Color(hex: "1A2B42"))
+            Spacer()
+            Image(systemName: "chevron.right")
+                .font(.system(size: 12))
+                .foregroundColor(Color(hex: "8E9BAD"))
+        }
+        .padding(.horizontal, 14)
+        .padding(.vertical, 12)
+    }
+    
+    private func sectionHeader(_ title: String) -> some View {
+        HStack {
+            Text(title.uppercased())
+                .font(.system(size: 11, weight: .semibold))
+                .foregroundColor(Color(hex: "8E9BAD"))
+                .tracking(0.5)
+            Spacer()
+        }
+        .padding(.horizontal, 24)
+    }
+    
+    // MARK: - Computed Properties
+    
+    private var formattedDueDate: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d, yyyy"
+        return formatter.string(from: profile.dueDate)
+    }
+    
+    private var trimesterLabel: String {
+        switch profile.currentTrimester {
+        case 1: return "1st Trimester"
+        case 2: return "2nd Trimester"
+        case 3: return "3rd Trimester"
+        default: return "Trimester \(profile.currentTrimester)"
+        }
+    }
+    
+    private func requestNotifications() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { _, _ in }
+    }
+}
+
+// MARK: - Date Picker Sheet
+
+struct DatePickerSheet: View {
+    @Binding var dueDate: Date
+    var onSave: () -> Void
+    var onCancel: () -> Void
+    
+    var body: some View {
+        NavigationStack {
+            VStack {
+                DatePicker(
+                    "Due Date",
+                    selection: $dueDate,
+                    displayedComponents: .date
+                )
+                .datePickerStyle(.graphical)
+                .tint(Color(hex: "3B7DD8"))
+                .padding()
+                
+                Spacer()
+            }
+            .navigationTitle("Edit Due Date")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel", action: onCancel)
+                }
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Save", action: onSave)
+                        .fontWeight(.semibold)
+                }
+            }
+        }
+    }
+}
+
+// MARK: - Bookmarked Tips View
+
+struct BookmarkedTipsView: View {
+    let profile: UserProfile
+    let content = ContentService.shared
+    
+    var bookmarkedTips: [Tip] {
+        content.tips(withIDs: profile.bookmarkedTips)
+    }
+    
+    var body: some View {
+        ScrollView {
+            VStack(spacing: 12) {
+                if bookmarkedTips.isEmpty {
+                    VStack(spacing: 12) {
+                        Text("🔖")
+                            .font(.system(size: 40))
+                        Text("No bookmarks yet")
+                            .font(.system(size: 17, weight: .semibold))
+                            .foregroundColor(Color(hex: "1A2B42"))
+                        Text("Tap the bookmark icon on any tip to save it here.")
+                            .font(.system(size: 14))
+                            .foregroundColor(Color(hex: "5A6B80"))
+                            .multilineTextAlignment(.center)
+                    }
+                    .padding(.top, 60)
+                } else {
+                    ForEach(bookmarkedTips) { tip in
+                        VStack(alignment: .leading, spacing: 8) {
+                            HStack {
+                                Text(tip.title)
+                                    .font(.system(size: 15, weight: .bold))
+                                    .foregroundColor(Color(hex: "1A2B42"))
+                                Spacer()
+                                Button(action: {
+                                    withAnimation {
+                                        profile.toggleBookmark(tip.id)
+                                    }
+                                }) {
+                                    Image(systemName: "bookmark.fill")
+                                        .font(.system(size: 14))
+                                        .foregroundColor(Color(hex: "3B7DD8"))
+                                }
+                            }
+                            
+                            Text(tip.content)
+                                .font(.system(size: 14))
+                                .foregroundColor(Color(hex: "5A6B80"))
+                                .lineSpacing(4)
+                            
+                            Text(tip.categoryDisplayName)
+                                .font(.system(size: 11, weight: .semibold))
+                                .foregroundColor(Color(hex: "3B7DD8"))
+                                .padding(.horizontal, 8)
+                                .padding(.vertical, 3)
+                                .background(
+                                    Capsule()
+                                        .fill(Color(hex: "E8F0FE"))
+                                )
+                        }
+                        .padding(16)
+                        .background(
+                            RoundedRectangle(cornerRadius: 14)
+                                .fill(.white)
+                                .shadow(color: .black.opacity(0.04), radius: 3, y: 1)
+                        )
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 14)
+                                .stroke(Color(hex: "E4EAF1"), lineWidth: 1)
+                        )
+                    }
+                }
+            }
+            .padding(.horizontal, 20)
+            .padding(.vertical, 12)
+        }
+        .background(Color(hex: "F7F9FC"))
+        .navigationTitle("Bookmarked Tips")
+        .navigationBarTitleDisplayMode(.large)
+    }
+}
+
+#Preview {
+    NavigationStack {
+        SettingsView(profile: UserProfile(
+            dueDate: Calendar.current.date(byAdding: .weekOfYear, value: 16, to: Date())!,
+            onboardingCompleted: true,
+            notificationsEnabled: true
+        ))
+    }
+}
