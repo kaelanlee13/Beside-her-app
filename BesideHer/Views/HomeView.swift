@@ -143,6 +143,22 @@ struct HomeView: View {
                         .padding(.horizontal, 20)
                     }
                     
+                    // Quick action buttons
+                    HStack(spacing: 10) {
+                        NavigationLink(destination: ChecklistsView(profile: profile)) {
+                            quickActionButton(icon: "checklist", label: "Checklists")
+                        }
+                        
+                        NavigationLink(destination: AllWeeksView(profile: profile)) {
+                            quickActionButton(icon: "calendar", label: "All Weeks")
+                        }
+                        
+                        NavigationLink(destination: TipsCategoryView(profile: profile)) {
+                            quickActionButton(icon: "heart.fill", label: "Tips")
+                        }
+                    }
+                    .padding(.horizontal, 20)
+                    
                     // This week's tasks
                     if let week = currentWeekContent {
                         VStack(alignment: .leading, spacing: 12) {
@@ -205,6 +221,28 @@ struct HomeView: View {
             }
             .background(Color(hex: "F7F9FC"))
         }
+    }
+    
+    private func quickActionButton(icon: String, label: String) -> some View {
+        VStack(spacing: 6) {
+            Image(systemName: icon)
+                .font(.system(size: 20))
+                .foregroundColor(Color(hex: "3B7DD8"))
+            Text(label)
+                .font(.system(size: 11, weight: .semibold))
+                .foregroundColor(Color(hex: "5A6B80"))
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, 16)
+        .background(
+            RoundedRectangle(cornerRadius: 12)
+                .fill(.white)
+                .shadow(color: .black.opacity(0.04), radius: 3, y: 1)
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 12)
+                .stroke(Color(hex: "E4EAF1"), lineWidth: 1)
+        )
     }
     
     private func articleFor(_ word: String) -> String {
