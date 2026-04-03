@@ -96,47 +96,50 @@ struct HomeView: View {
                     )
                     .padding(.horizontal, 20)
                     
-                    // This week card
+                    // This week card — tappable
                     if let week = currentWeekContent {
-                        VStack(alignment: .leading, spacing: 8) {
-                            HStack {
-                                VStack(alignment: .leading, spacing: 4) {
-                                    Text("THIS WEEK")
-                                        .font(.system(size: 10, weight: .semibold))
-                                        .foregroundColor(.white.opacity(0.7))
-                                        .tracking(1)
-                                    
-                                    Text("Baby is the size of \(week.babySize.lowercased().hasPrefix("a") || week.babySize.lowercased().hasPrefix("e") ? "an" : "a") \(week.babySize.lowercased())")
-                                        .font(.system(size: 16, weight: .bold))
-                                        .foregroundColor(.white)
-                                    
-                                    Text(week.commonDadQuestion)
-                                        .font(.system(size: 12))
-                                        .foregroundColor(.white.opacity(0.8))
-                                        .padding(.top, 2)
+                        NavigationLink(destination: WeekDetailView(week: week, profile: profile)) {
+                            VStack(alignment: .leading, spacing: 8) {
+                                HStack {
+                                    VStack(alignment: .leading, spacing: 4) {
+                                        Text("THIS WEEK")
+                                            .font(.system(size: 10, weight: .semibold))
+                                            .foregroundColor(.white.opacity(0.7))
+                                            .tracking(1)
+                                        
+                                        Text("Baby is the size of \(articleFor(week.babySize)) \(week.babySize.lowercased())")
+                                            .font(.system(size: 16, weight: .bold))
+                                            .foregroundColor(.white)
+                                            .multilineTextAlignment(.leading)
+                                        
+                                        Text(week.commonDadQuestion)
+                                            .font(.system(size: 12))
+                                            .foregroundColor(.white.opacity(0.8))
+                                            .padding(.top, 2)
+                                    }
+                                    Spacer()
                                 }
-                                Spacer()
+                                
+                                Divider()
+                                    .background(.white.opacity(0.2))
+                                
+                                Text("Read full week guide →")
+                                    .font(.system(size: 13, weight: .semibold))
+                                    .foregroundColor(.white)
                             }
-                            
-                            Divider()
-                                .background(.white.opacity(0.2))
-                            
-                            Text("Read full week guide →")
-                                .font(.system(size: 13, weight: .semibold))
-                                .foregroundColor(.white)
-                        }
-                        .padding(16)
-                        .background(
-                            RoundedRectangle(cornerRadius: 14)
-                                .fill(
-                                    LinearGradient(
-                                        colors: [Color(hex: "3B7DD8"), Color(hex: "2B5EA7")],
-                                        startPoint: .topLeading,
-                                        endPoint: .bottomTrailing
+                            .padding(16)
+                            .background(
+                                RoundedRectangle(cornerRadius: 14)
+                                    .fill(
+                                        LinearGradient(
+                                            colors: [Color(hex: "3B7DD8"), Color(hex: "2B5EA7")],
+                                            startPoint: .topLeading,
+                                            endPoint: .bottomTrailing
+                                        )
                                     )
-                                )
-                                .shadow(color: Color(hex: "3B7DD8").opacity(0.25), radius: 8, y: 4)
-                        )
+                                    .shadow(color: Color(hex: "3B7DD8").opacity(0.25), radius: 8, y: 4)
+                            )
+                        }
                         .padding(.horizontal, 20)
                     }
                     
@@ -202,6 +205,15 @@ struct HomeView: View {
             }
             .background(Color(hex: "F7F9FC"))
         }
+    }
+    
+    private func articleFor(_ word: String) -> String {
+        let lower = word.lowercased()
+        let vowels: [Character] = ["a", "e", "i", "o", "u"]
+        if let first = lower.first, vowels.contains(first) {
+            return "an"
+        }
+        return "a"
     }
 }
 
