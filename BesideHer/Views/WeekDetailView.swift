@@ -11,27 +11,57 @@ struct WeekDetailView: View {
     let week: Week
     let profile: UserProfile
     let content = ContentService.shared
-    
+
     var body: some View {
         ScrollView {
             VStack(spacing: 14) {
                 // Week header
                 VStack(spacing: 4) {
-                    Text(week.babySize)
-                        .font(.system(size: 40))
-                    
                     Text(week.title)
                         .font(.system(size: 22, weight: .bold))
                         .foregroundColor(Color(hex: "1A2B42"))
                         .multilineTextAlignment(.center)
-                    
+
                     Text("Trimester \(week.trimester) · \(trimesterMonth)")
                         .font(.system(size: 13))
                         .foregroundColor(Color(hex: "5A6B80"))
                 }
                 .padding(.top, 8)
                 .padding(.bottom, 4)
-                
+
+                // Baby Size Illustration Card
+                VStack(spacing: 12) {
+                    Text("SIZE THIS WEEK")
+                        .font(.system(size: 11, weight: .semibold))
+                        .foregroundColor(Color(hex: "3B7DD8"))
+                        .tracking(1.0)
+
+                    ZStack {
+                        Circle()
+                            .fill(Color(hex: "E8F4F0"))
+                            .frame(width: 110, height: 110)
+                            .shadow(color: .black.opacity(0.06), radius: 6, y: 3)
+                        Text(sizeEmoji)
+                            .font(.system(size: 62))
+                    }
+
+                    Text(week.babySize)
+                        .font(.system(size: 15, weight: .semibold))
+                        .foregroundColor(Color(hex: "1A2B42"))
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 20)
+                .background(
+                    RoundedRectangle(cornerRadius: 16)
+                        .fill(.white)
+                        .shadow(color: .black.opacity(0.04), radius: 3, y: 1)
+                )
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(Color(hex: "E4EAF1"), lineWidth: 1)
+                )
+                .padding(.horizontal, 20)
+
                 // Baby Development
                 sectionCard(
                     icon: "👶",
@@ -39,7 +69,7 @@ struct WeekDetailView: View {
                     title: "Baby Development",
                     content: week.babyDevelopment
                 )
-                
+
                 // Partner Experience
                 sectionCard(
                     icon: "🤰",
@@ -47,7 +77,7 @@ struct WeekDetailView: View {
                     title: "Partner Experience",
                     content: week.partnerExperience
                 )
-                
+
                 // How to Help
                 VStack(alignment: .leading, spacing: 10) {
                     HStack(spacing: 8) {
@@ -62,14 +92,14 @@ struct WeekDetailView: View {
                             .font(.system(size: 15, weight: .bold))
                             .foregroundColor(Color(hex: "1A2B42"))
                     }
-                    
+
                     ForEach(week.howToHelp, id: \.self) { tip in
                         HStack(alignment: .top, spacing: 10) {
                             Circle()
                                 .fill(Color(hex: "56B89F"))
                                 .frame(width: 5, height: 5)
                                 .padding(.top, 7)
-                            
+
                             Text(tip)
                                 .font(.system(size: 14))
                                 .foregroundColor(Color(hex: "5A6B80"))
@@ -88,13 +118,13 @@ struct WeekDetailView: View {
                         .stroke(Color(hex: "E4EAF1"), lineWidth: 1)
                 )
                 .padding(.horizontal, 20)
-                
+
                 // Action Items
                 VStack(alignment: .leading, spacing: 10) {
                     Text("Action Items")
                         .font(.system(size: 15, weight: .bold))
                         .foregroundColor(Color(hex: "1A2B42"))
-                    
+
                     ForEach(week.actionItems) { item in
                         HStack(spacing: 12) {
                             Button(action: {
@@ -110,7 +140,7 @@ struct WeekDetailView: View {
                                             RoundedRectangle(cornerRadius: 5)
                                                 .stroke(profile.isActionItemCompleted(item.id) ? Color.clear : Color(hex: "E4EAF1"), lineWidth: 1.5)
                                         )
-                                    
+
                                     if profile.isActionItemCompleted(item.id) {
                                         Image(systemName: "checkmark")
                                             .font(.system(size: 11, weight: .bold))
@@ -118,19 +148,19 @@ struct WeekDetailView: View {
                                     }
                                 }
                             }
-                            
+
                             VStack(alignment: .leading, spacing: 2) {
                                 Text(item.text)
                                     .font(.system(size: 14))
                                     .foregroundColor(profile.isActionItemCompleted(item.id) ? Color(hex: "8E9BAD") : Color(hex: "1A2B42"))
                                     .strikethrough(profile.isActionItemCompleted(item.id))
-                                
+
                                 Text(item.category.capitalized)
                                     .font(.system(size: 11))
                                     .foregroundColor(Color(hex: "8E9BAD"))
                             }
                         }
-                        
+
                         if item.id != week.actionItems.last?.id {
                             Divider()
                         }
@@ -147,14 +177,14 @@ struct WeekDetailView: View {
                         .stroke(Color(hex: "E4EAF1"), lineWidth: 1)
                 )
                 .padding(.horizontal, 20)
-                
+
                 // Common Dad Question
                 VStack(spacing: 8) {
                     Text("Common Dad Question")
                         .font(.system(size: 11, weight: .semibold))
                         .foregroundColor(Color(hex: "3B7DD8"))
                         .tracking(0.5)
-                    
+
                     Text(week.commonDadQuestion)
                         .font(.system(size: 16, weight: .semibold))
                         .foregroundColor(Color(hex: "1A2B42"))
@@ -167,7 +197,7 @@ struct WeekDetailView: View {
                         .fill(Color(hex: "E8F0FE"))
                 )
                 .padding(.horizontal, 20)
-                
+
                 // Week navigation
                 HStack {
                     if week.weekNumber > 1 {
@@ -193,9 +223,9 @@ struct WeekDetailView: View {
         .background(Color(hex: "F7F9FC"))
         .navigationBarTitleDisplayMode(.inline)
     }
-    
+
     // MARK: - Helper Views
-    
+
     private func sectionCard(icon: String, iconBackground: Color, title: String, content: String) -> some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack(spacing: 8) {
@@ -210,7 +240,7 @@ struct WeekDetailView: View {
                     .font(.system(size: 15, weight: .bold))
                     .foregroundColor(Color(hex: "1A2B42"))
             }
-            
+
             Text(content)
                 .font(.system(size: 14))
                 .foregroundColor(Color(hex: "5A6B80"))
@@ -228,9 +258,53 @@ struct WeekDetailView: View {
         )
         .padding(.horizontal, 20)
     }
-    
+
     // MARK: - Computed Properties
-    
+
+    private var sizeEmoji: String {
+        switch week.weekNumber {
+        case 1:  return "🔬"   // Microscopic
+        case 4:  return "🌸"   // Poppy seed
+        case 5:  return "🫘"   // Peppercorn
+        case 6:  return "💎"   // Pomegranate seed
+        case 7:  return "🫐"   // Blueberry
+        case 8:  return "🫘"   // Bean
+        case 9:  return "🍒"   // Cherry
+        case 10: return "🍊"   // Kumquat
+        case 11: return "🥦"   // Brussels sprout
+        case 12: return "🍋"   // Lime
+        case 13: return "🫛"   // Peapod
+        case 14: return "🍋"   // Lemon
+        case 15: return "🍎"   // Apple
+        case 16: return "🥑"   // Avocado
+        case 17: return "🥔"   // Turnip
+        case 18: return "🫑"   // Bell pepper
+        case 19: return "🍅"   // Tomato
+        case 20: return "🍌"   // Banana
+        case 21: return "🥕"   // Carrot
+        case 22: return "🎃"   // Spaghetti squash
+        case 23: return "🥭"   // Large mango
+        case 24: return "🌽"   // Ear of corn
+        case 25: return "🥔"   // Rutabaga
+        case 26: return "🌿"   // Scallion
+        case 27: return "🥦"   // Cauliflower
+        case 28: return "🍆"   // Large eggplant
+        case 29: return "🎃"   // Butternut squash
+        case 30: return "🥬"   // Cabbage
+        case 31: return "🥥"   // Coconut
+        case 32: return "🥔"   // Jicama
+        case 33: return "🍍"   // Pineapple
+        case 34: return "🍈"   // Cantaloupe
+        case 35: return "🍈"   // Honeydew
+        case 36: return "🥬"   // Romaine lettuce
+        case 37: return "🥬"   // Swiss chard
+        case 38: return "🧅"   // Leek
+        case 39: return "🍉"   // Mini-watermelon
+        case 40: return "🎃"   // Small pumpkin
+        default: return "🌱"
+        }
+    }
+
     private var trimesterMonth: String {
         let monthMap: [Int: String] = [
             1: "Month 1", 4: "Month 1", 5: "Month 2", 6: "Month 2",
@@ -247,7 +321,7 @@ struct WeekDetailView: View {
         ]
         return monthMap[week.weekNumber] ?? "Month \(week.weekNumber / 4 + 1)"
     }
-    
+
     private var previousWeekNumber: Int {
         let weeks = content.weeks.map { $0.weekNumber }.sorted()
         if let index = weeks.firstIndex(of: week.weekNumber), index > 0 {
@@ -255,7 +329,7 @@ struct WeekDetailView: View {
         }
         return week.weekNumber - 1
     }
-    
+
     private var nextWeekNumber: Int {
         let weeks = content.weeks.map { $0.weekNumber }.sorted()
         if let index = weeks.firstIndex(of: week.weekNumber), index < weeks.count - 1 {
