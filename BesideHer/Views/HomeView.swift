@@ -37,6 +37,9 @@ struct HomeView: View {
                             Text("Week \(profile.currentWeek)")
                                 .font(.system(size: 28, weight: .bold))
                                 .foregroundColor(Color(hex: "1A2B42"))
+                            Text(countdownText)
+                                .font(.system(size: 13, weight: .semibold))
+                                .foregroundColor(Color(hex: "3B7DD8"))
                         }
                         Spacer()
                         NavigationLink(destination: SettingsView(profile: profile)) {
@@ -260,6 +263,20 @@ struct HomeView: View {
         )
     }
     
+    private var countdownText: String {
+        let calendar = Calendar.current
+        let today = calendar.startOfDay(for: Date())
+        let due = calendar.startOfDay(for: profile.dueDate)
+        let days = calendar.dateComponents([.day], from: today, to: due).day ?? 0
+
+        switch days {
+        case ..<0: return "Overdue by \(abs(days)) day\(abs(days) == 1 ? "" : "s")"
+        case 0:    return "Today is your due date!"
+        case 1:    return "1 day to go"
+        default:   return "\(days) days to go"
+        }
+    }
+
     private func articleFor(_ word: String) -> String {
         let lower = word.lowercased()
         let vowels: [Character] = ["a", "e", "i", "o", "u"]
