@@ -45,8 +45,8 @@ struct ContentView: View {
             }
         }
         .onAppear {
-            // Show launch screen for 1.5 seconds
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            // Show launch screen for 2.5 seconds
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
                 withAnimation(.easeOut(duration: 0.4)) {
                     showLaunchScreen = false
                 }
