@@ -162,17 +162,18 @@ struct HomeView: View {
                     }
                     
                     // Quick action buttons
-                    HStack(spacing: 10) {
+                    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 10) {
                         NavigationLink(destination: ChecklistsView(profile: profile)) {
                             quickActionButton(icon: "checklist", label: "Checklists")
                         }
-                        
                         NavigationLink(destination: AllWeeksView(profile: profile)) {
                             quickActionButton(icon: "calendar", label: "All Weeks")
                         }
-                        
                         NavigationLink(destination: TipsCategoryView(profile: profile)) {
                             quickActionButton(icon: "heart.fill", label: "Tips")
+                        }
+                        NavigationLink(destination: ContractionTimerView()) {
+                            quickActionButton(icon: "waveform.path.ecg", label: "Contractions")
                         }
                     }
                     .padding(.horizontal, 20)
