@@ -125,7 +125,7 @@ struct HomeView: View {
                                             .foregroundColor(.white.opacity(0.7))
                                             .tracking(1)
                                         
-                                        Text("\(sizeEmoji(for: week.weekNumber)) Baby is the size of \(articleFor(week.babySize)) \(week.babySize.lowercased())")
+                                        Text("\(week.sizeEmoji) Baby is the size of \(articleFor(week.sizeComparison)) \(week.sizeComparison.lowercased())")
                                             .font(.system(size: 16, weight: .bold))
                                             .foregroundColor(.white)
                                             .multilineTextAlignment(.leading)
@@ -306,50 +306,6 @@ struct HomeView: View {
         case 0:    return "Today is your due date!"
         case 1:    return "1 day to go"
         default:   return "\(days) days to go"
-        }
-    }
-
-    private func sizeEmoji(for weekNumber: Int) -> String {
-        switch weekNumber {
-        case 1:  return "🔬"
-        case 4:  return "🌸"
-        case 5:  return "🫘"
-        case 6:  return "💎"
-        case 7:  return "🫐"
-        case 8:  return "🫘"
-        case 9:  return "🍒"
-        case 10: return "🍊"
-        case 11: return "🥦"
-        case 12: return "🍋"
-        case 13: return "🫛"
-        case 14: return "🍋"
-        case 15: return "🍎"
-        case 16: return "🥑"
-        case 17: return "🥔"
-        case 18: return "🫑"
-        case 19: return "🍅"
-        case 20: return "🍌"
-        case 21: return "🥕"
-        case 22: return "🎃"
-        case 23: return "🥭"
-        case 24: return "🌽"
-        case 25: return "🥔"
-        case 26: return "🌿"
-        case 27: return "🥦"
-        case 28: return "🍆"
-        case 29: return "🎃"
-        case 30: return "🥬"
-        case 31: return "🥥"
-        case 32: return "🥔"
-        case 33: return "🍍"
-        case 34: return "🍈"
-        case 35: return "🍈"
-        case 36: return "🥬"
-        case 37: return "🥬"
-        case 38: return "🧅"
-        case 39: return "🍉"
-        case 40: return "🎃"
-        default: return "🌱"
         }
     }
 

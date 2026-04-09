@@ -12,7 +12,8 @@ struct Week: Codable, Identifiable {
     let weekNumber: Int
     let trimester: Int
     let title: String
-    let babySize: String
+    let sizeComparison: String
+    let sizeEmoji: String
     let babyDevelopment: String
     let partnerExperience: String
     let howToHelp: [String]

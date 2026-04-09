@@ -43,11 +43,11 @@ struct WeekDetailView: View {
                             .fill(Color(hex: "E8F4F0"))
                             .frame(width: 110, height: 110)
                             .shadow(color: .black.opacity(0.06), radius: 6, y: 3)
-                        Text(sizeEmoji)
+                        Text(week.sizeEmoji)
                             .font(.system(size: 62))
                     }
 
-                    Text(week.babySize)
+                    Text(week.sizeComparison)
                         .font(.system(size: 15, weight: .semibold))
                         .foregroundColor(Color(hex: "1A2B42"))
                 }
@@ -288,50 +288,6 @@ struct WeekDetailView: View {
     }
 
     // MARK: - Computed Properties
-
-    private var sizeEmoji: String {
-        switch week.weekNumber {
-        case 1:  return "🔬"   // Microscopic
-        case 4:  return "🌸"   // Poppy seed
-        case 5:  return "🫘"   // Peppercorn
-        case 6:  return "💎"   // Pomegranate seed
-        case 7:  return "🫐"   // Blueberry
-        case 8:  return "🫘"   // Bean
-        case 9:  return "🍒"   // Cherry
-        case 10: return "🍊"   // Kumquat
-        case 11: return "🥦"   // Brussels sprout
-        case 12: return "🍋"   // Lime
-        case 13: return "🫛"   // Peapod
-        case 14: return "🍋"   // Lemon
-        case 15: return "🍎"   // Apple
-        case 16: return "🥑"   // Avocado
-        case 17: return "🥔"   // Turnip
-        case 18: return "🫑"   // Bell pepper
-        case 19: return "🍅"   // Tomato
-        case 20: return "🍌"   // Banana
-        case 21: return "🥕"   // Carrot
-        case 22: return "🎃"   // Spaghetti squash
-        case 23: return "🥭"   // Large mango
-        case 24: return "🌽"   // Ear of corn
-        case 25: return "🥔"   // Rutabaga
-        case 26: return "🌿"   // Scallion
-        case 27: return "🥦"   // Cauliflower
-        case 28: return "🍆"   // Large eggplant
-        case 29: return "🎃"   // Butternut squash
-        case 30: return "🥬"   // Cabbage
-        case 31: return "🥥"   // Coconut
-        case 32: return "🥔"   // Jicama
-        case 33: return "🍍"   // Pineapple
-        case 34: return "🍈"   // Cantaloupe
-        case 35: return "🍈"   // Honeydew
-        case 36: return "🥬"   // Romaine lettuce
-        case 37: return "🥬"   // Swiss chard
-        case 38: return "🧅"   // Leek
-        case 39: return "🍉"   // Mini-watermelon
-        case 40: return "🎃"   // Small pumpkin
-        default: return "🌱"
-        }
-    }
 
     private var trimesterMonth: String {
         let monthMap: [Int: String] = [

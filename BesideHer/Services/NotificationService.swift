@@ -90,7 +90,7 @@ class NotificationService {
     
     private func weekNotificationBody(for week: Week) -> String {
         let messages = [
-            "Baby is the size of \(week.babySize.lowercased()). Tap to see what's new this week.",
+            "Baby is the size of \(week.sizeComparison.lowercased()). Tap to see what's new this week.",
             "New week, new milestones. \(week.commonDadQuestion) Find out inside.",
             "Week \(week.weekNumber) is here. Your partner needs you — here's how to show up.",
             "Your baby is growing! Tap to see this week's action items.",

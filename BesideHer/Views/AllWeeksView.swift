@@ -39,7 +39,7 @@ struct AllWeeksView: View {
                                     .foregroundColor(Color(hex: "1A2B42"))
                                     .lineLimit(1)
                                 
-                                Text("Baby size: \(week.babySize)")
+                                Text("Baby size: \(week.sizeComparison)")
                                     .font(.system(size: 12))
                                     .foregroundColor(Color(hex: "5A6B80"))
                             }
