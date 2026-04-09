@@ -63,6 +63,8 @@ struct DueDateView: View {
             )
             .datePickerStyle(.graphical)
             .tint(Color(hex: "3B7DD8"))
+            .frame(height: 360)
+            .clipped()
             .padding(.horizontal, 24)
             
             Spacer()
