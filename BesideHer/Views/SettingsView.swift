@@ -10,9 +10,10 @@ import SwiftUI
 struct SettingsView: View {
     let profile: UserProfile
     let content = ContentService.shared
-    
+
     @State private var showDatePicker = false
     @State private var editedDueDate: Date = Date()
+    @State private var showAbout = false
     
     var bookmarkedTips: [Tip] {
         content.tips(withIDs: profile.bookmarkedTips)
@@ -152,11 +153,21 @@ struct SettingsView: View {
                 sectionHeader("About")
                 
                 VStack(spacing: 0) {
-                    aboutRow(icon: "ℹ️", label: "About BesideHer")
+                    aboutRow(icon: "ℹ️", label: "About BesideHer") {
+                        showAbout = true
+                    }
                     Divider().padding(.leading, 52)
-                    aboutRow(icon: "⭐", label: "Rate the App")
+                    aboutRow(icon: "⭐", label: "Rate the App") {
+                        if let url = URL(string: "https://apps.apple.com/app/id6743770424") {
+                            UIApplication.shared.open(url)
+                        }
+                    }
                     Divider().padding(.leading, 52)
-                    aboutRow(icon: "💬", label: "Send Feedback")
+                    aboutRow(icon: "💬", label: "Send Feedback") {
+                        if let url = URL(string: "mailto:feedback@besideher.app?subject=BesideHer%20Feedback") {
+                            UIApplication.shared.open(url)
+                        }
+                    }
                 }
                 .background(
                     RoundedRectangle(cornerRadius: 14)
@@ -181,6 +192,9 @@ struct SettingsView: View {
         .background(Color(hex: "F7F9FC"))
         .navigationTitle("Settings")
         .navigationBarTitleDisplayMode(.large)
+        .sheet(isPresented: $showAbout) {
+            AboutView()
+        }
         .sheet(isPresented: $showDatePicker) {
             DatePickerSheet(
                 dueDate: $editedDueDate,
@@ -221,20 +235,22 @@ struct SettingsView: View {
         .disabled(!showChevron)
     }
     
-    private func aboutRow(icon: String, label: String) -> some View {
-        HStack(spacing: 12) {
-            Text(icon)
-                .font(.system(size: 18))
-            Text(label)
-                .font(.system(size: 15))
-                .foregroundColor(Color(hex: "1A2B42"))
-            Spacer()
-            Image(systemName: "chevron.right")
-                .font(.system(size: 12))
-                .foregroundColor(Color(hex: "8E9BAD"))
+    private func aboutRow(icon: String, label: String, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            HStack(spacing: 12) {
+                Text(icon)
+                    .font(.system(size: 18))
+                Text(label)
+                    .font(.system(size: 15))
+                    .foregroundColor(Color(hex: "1A2B42"))
+                Spacer()
+                Image(systemName: "chevron.right")
+                    .font(.system(size: 12))
+                    .foregroundColor(Color(hex: "8E9BAD"))
+            }
+            .padding(.horizontal, 14)
+            .padding(.vertical, 12)
         }
-        .padding(.horizontal, 14)
-        .padding(.vertical, 12)
     }
     
     private func sectionHeader(_ title: String) -> some View {
@@ -385,6 +401,72 @@ struct BookmarkedTipsView: View {
         .background(Color(hex: "F7F9FC"))
         .navigationTitle("Bookmarked Tips")
         .navigationBarTitleDisplayMode(.large)
+    }
+}
+
+// MARK: - About View
+
+struct AboutView: View {
+    @Environment(\.dismiss) private var dismiss
+
+    var body: some View {
+        NavigationStack {
+            ScrollView {
+                VStack(spacing: 24) {
+                    Image("BesideHerLogo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 80, height: 80)
+                        .clipShape(RoundedRectangle(cornerRadius: 18))
+                        .padding(.top, 32)
+
+                    VStack(spacing: 6) {
+                        Text("BesideHer")
+                            .font(.system(size: 22, weight: .bold))
+                            .foregroundColor(Color(hex: "1A2B42"))
+                        Text("Version 1.0")
+                            .font(.system(size: 14))
+                            .foregroundColor(Color(hex: "8E9BAD"))
+                    }
+
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text("About the App")
+                            .font(.system(size: 16, weight: .semibold))
+                            .foregroundColor(Color(hex: "1A2B42"))
+
+                        Text("BesideHer is a pregnancy companion designed for first-time dads. From week-by-week development updates to hospital bag checklists and partner support tips, BesideHer helps you stay engaged, prepared, and present every step of the way.")
+                            .font(.system(size: 15))
+                            .foregroundColor(Color(hex: "5A6B80"))
+                            .lineSpacing(5)
+                    }
+                    .padding(20)
+                    .background(
+                        RoundedRectangle(cornerRadius: 14)
+                            .fill(.white)
+                            .shadow(color: .black.opacity(0.04), radius: 3, y: 1)
+                    )
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 14)
+                            .stroke(Color(hex: "E4EAF1"), lineWidth: 1)
+                    )
+                    .padding(.horizontal, 20)
+
+                    Text("Made with ❤️ for expectant fathers")
+                        .font(.system(size: 13))
+                        .foregroundColor(Color(hex: "8E9BAD"))
+                        .padding(.bottom, 32)
+                }
+            }
+            .background(Color(hex: "F7F9FC"))
+            .navigationTitle("About BesideHer")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Done") { dismiss() }
+                        .fontWeight(.semibold)
+                }
+            }
+        }
     }
 }
 
