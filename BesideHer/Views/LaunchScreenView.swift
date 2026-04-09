@@ -8,55 +8,34 @@
 import SwiftUI
 
 struct LaunchScreenView: View {
-    @State private var iconScale: CGFloat = 0.6
-    @State private var iconOpacity: Double = 0
-    @State private var textOpacity: Double = 0
-    
+    @State private var logoScale: CGFloat = 0.85
+    @State private var logoOpacity: Double = 0
+
     var body: some View {
         ZStack {
             Color(hex: "F7F9FC")
                 .ignoresSafeArea()
-            
-            VStack(spacing: 16) {
-                // App icon
-                ZStack {
-                    RoundedRectangle(cornerRadius: 24)
-                        .fill(
-                            LinearGradient(
-                                colors: [Color(hex: "3B7DD8"), Color(hex: "2B5EA7")],
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            )
-                        )
-                        .frame(width: 80, height: 80)
-                        .shadow(color: Color(hex: "3B7DD8").opacity(0.3), radius: 16, y: 6)
-                    
-                    Text("👶")
-                        .font(.system(size: 36))
-                }
-                .scaleEffect(iconScale)
-                .opacity(iconOpacity)
-                
-                // App name
-                VStack(spacing: 4) {
-                    Text("BesideHer")
-                        .font(.system(size: 28, weight: .bold))
-                        .foregroundColor(Color(hex: "1A2B42"))
-                    
-                    Text("Be the partner she needs")
-                        .font(.system(size: 14))
-                        .foregroundColor(Color(hex: "5A6B80"))
-                }
-                .opacity(textOpacity)
+
+            VStack(spacing: 10) {
+                // Wordmark
+                Text("besideher")
+                    .font(Font.custom("Georgia", size: 46))
+                    .foregroundColor(Color(hex: "3A6F8F"))
+                    .tracking(1.3)
+
+                // Tagline
+                Text("BESIDE HER THROUGH IT ALL")
+                    .font(.system(size: 11, weight: .regular))
+                    .foregroundColor(Color(hex: "6FA8C4"))
+                    .tracking(3.2)
             }
+            .scaleEffect(logoScale)
+            .opacity(logoOpacity)
         }
         .onAppear {
-            withAnimation(.spring(response: 0.6, dampingFraction: 0.7).delay(0.1)) {
-                iconScale = 1.0
-                iconOpacity = 1.0
-            }
-            withAnimation(.easeOut(duration: 0.5).delay(0.4)) {
-                textOpacity = 1.0
+            withAnimation(.spring(response: 0.7, dampingFraction: 0.75).delay(0.1)) {
+                logoScale = 1.0
+                logoOpacity = 1.0
             }
         }
     }

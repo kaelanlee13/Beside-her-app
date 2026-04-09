@@ -14,29 +14,19 @@ struct WelcomeView: View {
         VStack(spacing: 0) {
             Spacer()
             
-            // App icon
-            ZStack {
-                RoundedRectangle(cornerRadius: 24)
-                    .fill(
-                        LinearGradient(
-                            colors: [Color(hex: "3B7DD8"), Color(hex: "2B5EA7")],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
-                    )
-                    .frame(width: 80, height: 80)
-                    .shadow(color: Color(hex: "3B7DD8").opacity(0.3), radius: 12, y: 4)
-                
-                Text("👶")
-                    .font(.system(size: 36))
+            // Logo
+            VStack(spacing: 10) {
+                Text("besideher")
+                    .font(Font.custom("Georgia", size: 46))
+                    .foregroundColor(Color(hex: "3A6F8F"))
+                    .tracking(1.3)
+                Text("BESIDE HER THROUGH IT ALL")
+                    .font(.system(size: 11, weight: .regular))
+                    .foregroundColor(Color(hex: "6FA8C4"))
+                    .tracking(3.2)
             }
             .padding(.bottom, 24)
-            
-            // Title
-            Text("BesideHer")
-                .font(.system(size: 32, weight: .bold))
-                .foregroundColor(Color(hex: "1A2B42"))
-            
+
             // Subtitle
             Text("Your week-by-week guide to\nsupporting your partner\nthrough pregnancy")
                 .font(.system(size: 16))
