@@ -34,6 +34,42 @@ struct ChecklistsView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
+                // Hospital Bag shortcut
+                NavigationLink(destination: LaborBagView(profile: profile)) {
+                    HStack(spacing: 14) {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(Color(hex: "E8F0FE"))
+                                .frame(width: 44, height: 44)
+                            Text("🏥")
+                                .font(.system(size: 22))
+                        }
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text("Hospital Bag")
+                                .font(.system(size: 15, weight: .bold))
+                                .foregroundColor(Color(hex: "1A2B42"))
+                            Text("Pack before week 36")
+                                .font(.system(size: 12))
+                                .foregroundColor(Color(hex: "5A6B80"))
+                        }
+                        Spacer()
+                        Image(systemName: "chevron.right")
+                            .font(.system(size: 13, weight: .semibold))
+                            .foregroundColor(Color(hex: "8E9BAD"))
+                    }
+                    .padding(14)
+                    .background(
+                        RoundedRectangle(cornerRadius: 14)
+                            .fill(.white)
+                            .shadow(color: .black.opacity(0.04), radius: 3, y: 1)
+                    )
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 14)
+                            .stroke(Color(hex: "E4EAF1"), lineWidth: 1)
+                    )
+                }
+                .padding(.horizontal, 20)
+
                 // Trimester tabs
                 HStack(spacing: 8) {
                     ForEach(1...3, id: \.self) { trimester in
