@@ -12,6 +12,8 @@ struct WeekDetailView: View {
     let profile: UserProfile
     let content = ContentService.shared
 
+    @State private var showDadAnswer = false
+
     var body: some View {
         ScrollView {
             VStack(spacing: 14) {
@@ -179,23 +181,49 @@ struct WeekDetailView: View {
                 .padding(.horizontal, 20)
 
                 // Common Dad Question
-                VStack(spacing: 8) {
-                    Text("Common Dad Question")
-                        .font(.system(size: 11, weight: .semibold))
-                        .foregroundColor(Color(hex: "3B7DD8"))
-                        .tracking(0.5)
+                Button(action: {
+                    withAnimation(.easeInOut(duration: 0.25)) {
+                        showDadAnswer.toggle()
+                    }
+                }) {
+                    VStack(spacing: 8) {
+                        HStack {
+                            Text("Common Dad Question")
+                                .font(.system(size: 11, weight: .semibold))
+                                .foregroundColor(Color(hex: "3B7DD8"))
+                                .tracking(0.5)
+                            Spacer()
+                            Image(systemName: showDadAnswer ? "chevron.up" : "chevron.down")
+                                .font(.system(size: 11, weight: .semibold))
+                                .foregroundColor(Color(hex: "3B7DD8"))
+                        }
 
-                    Text(week.commonDadQuestion)
-                        .font(.system(size: 16, weight: .semibold))
-                        .foregroundColor(Color(hex: "1A2B42"))
-                        .multilineTextAlignment(.center)
+                        Text(week.commonDadQuestion)
+                            .font(.system(size: 16, weight: .semibold))
+                            .foregroundColor(Color(hex: "1A2B42"))
+                            .multilineTextAlignment(.leading)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+
+                        if showDadAnswer {
+                            Divider()
+                                .background(Color(hex: "3B7DD8").opacity(0.2))
+
+                            Text(week.commonDadAnswer)
+                                .font(.system(size: 14))
+                                .foregroundColor(Color(hex: "5A6B80"))
+                                .multilineTextAlignment(.leading)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .fixedSize(horizontal: false, vertical: true)
+                        }
+                    }
+                    .padding(16)
+                    .frame(maxWidth: .infinity)
+                    .background(
+                        RoundedRectangle(cornerRadius: 14)
+                            .fill(Color(hex: "E8F0FE"))
+                    )
                 }
-                .padding(16)
-                .frame(maxWidth: .infinity)
-                .background(
-                    RoundedRectangle(cornerRadius: 14)
-                        .fill(Color(hex: "E8F0FE"))
-                )
+                .buttonStyle(.plain)
                 .padding(.horizontal, 20)
 
                 // Week navigation
