@@ -416,17 +416,20 @@ struct AboutView: View {
                     Image("BesideHerLogo")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 80, height: 80)
-                        .clipShape(RoundedRectangle(cornerRadius: 18))
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 80)
+                        .padding(.horizontal, 32)
                         .padding(.top, 32)
 
-                    VStack(spacing: 6) {
-                        Text("BesideHer")
-                            .font(.system(size: 22, weight: .bold))
-                            .foregroundColor(Color(hex: "1A2B42"))
+                    VStack(spacing: 8) {
+                        Text("Your pregnancy companion for dads")
+                            .font(.system(size: 15, weight: .medium))
+                            .foregroundColor(Color(hex: "3B7DD8"))
+                            .multilineTextAlignment(.center)
                         Text("Version 1.0")
-                            .font(.system(size: 14))
+                            .font(.system(size: 13))
                             .foregroundColor(Color(hex: "8E9BAD"))
+                            .padding(.top, 2)
                     }
 
                     VStack(alignment: .leading, spacing: 12) {
