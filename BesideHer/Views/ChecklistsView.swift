@@ -12,20 +12,34 @@ struct ChecklistsView: View {
     let content = ContentService.shared
     
     @State private var selectedTrimester = 1
-    
+    @State private var selectedCategory: String? = nil
+
     var currentChecklist: Checklist? {
         content.checklist(forTrimester: selectedTrimester)
     }
-    
+
+    var availableCategories: [String] {
+        guard let checklist = currentChecklist else { return [] }
+        var seen = Set<String>()
+        return checklist.items.compactMap { item in
+            seen.insert(item.category).inserted ? item.category : nil
+        }
+    }
+
+    var filteredItems: [ChecklistItem] {
+        guard let checklist = currentChecklist else { return [] }
+        guard let category = selectedCategory else { return checklist.items }
+        return checklist.items.filter { $0.category == category }
+    }
+
     var completedCount: Int {
-        guard let checklist = currentChecklist else { return 0 }
-        return checklist.items.filter { profile.isChecklistItemCompleted($0.id) }.count
+        filteredItems.filter { profile.isChecklistItemCompleted($0.id) }.count
     }
-    
+
     var totalCount: Int {
-        currentChecklist?.items.count ?? 0
+        filteredItems.count
     }
-    
+
     var progressPercentage: Double {
         guard totalCount > 0 else { return 0 }
         return Double(completedCount) / Double(totalCount)
@@ -96,7 +110,27 @@ struct ChecklistsView: View {
                 }
                 .padding(.horizontal, 20)
                 .padding(.top, 8)
-                
+
+                // Category filter
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 8) {
+                        CategoryFilterPill(label: "All", isSelected: selectedCategory == nil) {
+                            withAnimation(.easeInOut(duration: 0.2)) { selectedCategory = nil }
+                        }
+                        ForEach(availableCategories, id: \.self) { category in
+                            CategoryFilterPill(
+                                label: ChecklistItem.categoryDisplayName(for: category),
+                                isSelected: selectedCategory == category
+                            ) {
+                                withAnimation(.easeInOut(duration: 0.2)) {
+                                    selectedCategory = selectedCategory == category ? nil : category
+                                }
+                            }
+                        }
+                    }
+                    .padding(.horizontal, 20)
+                }
+
                 // Progress card
                 VStack(spacing: 8) {
                     HStack {
@@ -135,9 +169,9 @@ struct ChecklistsView: View {
                 .padding(.horizontal, 20)
                 
                 // Checklist items
-                if let checklist = currentChecklist {
+                if !filteredItems.isEmpty {
                     VStack(spacing: 0) {
-                        ForEach(Array(checklist.items.enumerated()), id: \.element.id) { index, item in
+                        ForEach(Array(filteredItems.enumerated()), id: \.element.id) { index, item in
                             VStack(spacing: 0) {
                                 if index > 0 {
                                     Divider()
@@ -213,6 +247,9 @@ struct ChecklistsView: View {
             // Default to the user's current trimester
             selectedTrimester = profile.currentTrimester
         }
+        .onChange(of: selectedTrimester) { _, _ in
+            selectedCategory = nil
+        }
     }
     
     private func trimesterLabel(_ trimester: Int) -> String {
@@ -221,6 +258,32 @@ struct ChecklistsView: View {
         case 2: return "2nd Tri"
         case 3: return "3rd Tri"
         default: return "Tri \(trimester)"
+        }
+    }
+}
+
+// MARK: - Category Filter Pill
+
+private struct CategoryFilterPill: View {
+    let label: String
+    let isSelected: Bool
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            Text(label)
+                .font(.system(size: 12, weight: .semibold))
+                .foregroundColor(isSelected ? .white : Color(hex: "5A6B80"))
+                .padding(.horizontal, 12)
+                .padding(.vertical, 7)
+                .background(
+                    Capsule()
+                        .fill(isSelected ? Color(hex: "3B7DD8") : .white)
+                )
+                .overlay(
+                    Capsule()
+                        .stroke(isSelected ? Color.clear : Color(hex: "E4EAF1"), lineWidth: 1)
+                )
         }
     }
 }

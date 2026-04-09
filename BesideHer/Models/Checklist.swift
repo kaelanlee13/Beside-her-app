@@ -24,6 +24,10 @@ struct ChecklistItem: Codable, Identifiable {
     
     /// Returns a user-friendly category name for display
     var categoryDisplayName: String {
+        ChecklistItem.categoryDisplayName(for: category)
+    }
+
+    static func categoryDisplayName(for category: String) -> String {
         switch category {
         case "medical": return "Medical"
         case "financial": return "Financial"
