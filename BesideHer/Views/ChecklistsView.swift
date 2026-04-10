@@ -44,6 +44,10 @@ struct ChecklistsView: View {
         guard totalCount > 0 else { return 0 }
         return Double(completedCount) / Double(totalCount)
     }
+
+    var uncheckedItems: [ChecklistItem] {
+        filteredItems.filter { !profile.isChecklistItemCompleted($0.id) }
+    }
     
     var body: some View {
         ScrollView {
@@ -169,9 +173,23 @@ struct ChecklistsView: View {
                 .padding(.horizontal, 20)
                 
                 // Checklist items
-                if !filteredItems.isEmpty {
+                if uncheckedItems.isEmpty && !filteredItems.isEmpty {
+                    VStack(spacing: 6) {
+                        Text("✅")
+                            .font(.system(size: 32))
+                        Text("All done!")
+                            .font(.system(size: 15, weight: .semibold))
+                            .foregroundColor(Color(hex: "1A2B42"))
+                        Text("All items in this list are checked off.")
+                            .font(.system(size: 13))
+                            .foregroundColor(Color(hex: "5A6B80"))
+                            .multilineTextAlignment(.center)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 32)
+                } else if !uncheckedItems.isEmpty {
                     VStack(spacing: 0) {
-                        ForEach(Array(filteredItems.enumerated()), id: \.element.id) { index, item in
+                        ForEach(Array(uncheckedItems.enumerated()), id: \.element.id) { index, item in
                             VStack(spacing: 0) {
                                 if index > 0 {
                                     Divider()
