@@ -19,6 +19,7 @@ struct Checklist: Codable, Identifiable {
 struct ChecklistItem: Codable, Identifiable {
     let id: String
     let text: String
+    let description: String?
     let category: String
     let weekRecommended: Int
     
@@ -36,10 +37,13 @@ struct ChecklistItem: Codable, Identifiable {
         case "emotional": return "Emotional"
         case "planning": return "Planning"
         case "postpartum": return "Postpartum"
+        case "relationship": return "Relationship"
+        case "practical": return "Practical"
+        case "learning": return "Learning"
         default: return category.capitalized
         }
     }
-    
+
     /// Returns an SF Symbol icon name for the category
     var categoryIcon: String {
         switch category {
@@ -50,6 +54,9 @@ struct ChecklistItem: Codable, Identifiable {
         case "emotional": return "face.smiling"
         case "planning": return "calendar"
         case "postpartum": return "figure.and.child.holdinghands"
+        case "relationship": return "heart.text.square"
+        case "practical": return "house"
+        case "learning": return "book"
         default: return "checklist"
         }
     }

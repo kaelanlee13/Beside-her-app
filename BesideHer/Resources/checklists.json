@@ -7,75 +7,192 @@
       "items": [
         {
           "id": "t1-c1",
-          "text": "Schedule and attend first prenatal appointment (weeks 8-10)",
-          "category": "medical",
-          "weekRecommended": 8
+          "text": "Confirm the pregnancy together",
+          "description": "When that test turns positive, be fully present. Put the phone down. Follow her lead on how she wants to react — some partners cry, some laugh, some go quiet. All of it is normal.",
+          "category": "emotional",
+          "weekRecommended": 4
         },
         {
           "id": "t1-c2",
-          "text": "Discuss genetic screening options (NIPT, NT scan) with partner",
+          "text": "Call to schedule the first prenatal appointment",
+          "description": "Most OB offices book the first visit for weeks 8–10, and popular practices fill up 2–4 weeks out. Call now to secure a slot. You'll need her last menstrual period (LMP) date.",
           "category": "medical",
-          "weekRecommended": 10
+          "weekRecommended": 4
         },
         {
           "id": "t1-c3",
-          "text": "Begin taking prenatal vitamins (600 mcg folic acid, 27 mg iron)",
-          "category": "health",
+          "text": "Agree on who knows and who doesn't — yet",
+          "description": "Have an explicit conversation about the secrecy plan. Most couples wait until week 12–13 for the wider circle. Agree on a shared story for declining alcohol or dodging questions. Be her cover in social situations.",
+          "category": "relationship",
           "weekRecommended": 4
         },
         {
           "id": "t1-c4",
-          "text": "Review health insurance \u2014 deductibles, copays, out-of-pocket max",
+          "text": "Review your health insurance coverage",
+          "description": "Pull up your plan documents and understand your deductible, copays for prenatal visits, in-network hospitals and OBs, and out-of-pocket maximums for delivery. Pregnancy can span two plan years, meaning two deductibles.",
           "category": "financial",
-          "weekRecommended": 9
-        },
-        {
-          "id": "t1-c5",
-          "text": "Start building emergency fund (target: 6 months expenses)",
-          "category": "financial",
-          "weekRecommended": 6
-        },
-        {
-          "id": "t1-c6",
-          "text": "Research car seats, cribs, and strollers",
-          "category": "gear",
-          "weekRecommended": 11
-        },
-        {
-          "id": "t1-c7",
-          "text": "Discuss when to share pregnancy news with family",
-          "category": "emotional",
-          "weekRecommended": 8
-        },
-        {
-          "id": "t1-c8",
-          "text": "Learn foods to avoid and adjust household meals",
-          "category": "health",
           "weekRecommended": 5
         },
         {
-          "id": "t1-c9",
-          "text": "Practice active listening and emotional support techniques",
+          "id": "t1-c5",
+          "text": "Take over cooking and kitchen duties",
+          "description": "Morning sickness hits 70–80% of pregnant women, and cooking smells are a top trigger. Stock the house with crackers, ginger ale, bland snacks, and whatever she can tolerate. This isn't a one-week thing — nausea can last through week 14 or beyond.",
+          "category": "practical",
+          "weekRecommended": 5
+        },
+        {
+          "id": "t1-c6",
+          "text": "Start a pregnancy journal or shared note",
+          "description": "Record the positive test date, LMP, early symptoms, and how you both felt. This can be a physical journal, a shared Google Doc, or voice memos. Doctors will ask for dates, and your future kid will want to read this someday.",
           "category": "emotional",
+          "weekRecommended": 5
+        },
+        {
+          "id": "t1-c7",
+          "text": "Research and select an OB-GYN or midwife",
+          "description": "Consider hospital affiliation, insurance acceptance, proximity to home/work, and practice philosophy. OB-GYNs handle the full spectrum including surgical birth; Certified Nurse Midwives offer a more personalized approach for lower-risk pregnancies.",
+          "category": "medical",
+          "weekRecommended": 6
+        },
+        {
+          "id": "t1-c8",
+          "text": "Understand what she's going through physically",
+          "description": "Estrogen and progesterone are surging, causing nausea, breast tenderness, extreme fatigue, mood swings, food aversions, and a heightened sense of smell. This isn't being dramatic — it's biology. Read one pregnancy resource cover to cover.",
+          "category": "learning",
+          "weekRecommended": 6
+        },
+        {
+          "id": "t1-c9",
+          "text": "Pick up the household slack without being asked",
+          "description": "First-trimester fatigue is profound — far beyond normal tiredness. Take over laundry, dishes, groceries, and cleaning without making it a production. Don't keep score. Don't wait to be asked. Just handle it.",
+          "category": "practical",
           "weekRecommended": 6
         },
         {
           "id": "t1-c10",
-          "text": "Research your employer's paternity leave policy",
-          "category": "planning",
-          "weekRecommended": 9
+          "text": "Be her confidant through the secrecy phase",
+          "description": "She may feel terrible — nauseated, exhausted, emotional — but can't explain why to coworkers or friends. This isolation is one of the hardest parts of early pregnancy. Be the person she can vent to without judgment.",
+          "category": "emotional",
+          "weekRecommended": 7
         },
         {
           "id": "t1-c11",
-          "text": "Get term life insurance quotes from at least 3 providers",
-          "category": "financial",
-          "weekRecommended": 10
+          "text": "Ensure she's on a quality prenatal vitamin",
+          "description": "Look for at least 600mcg folic acid, 27mg iron, 1,000mg calcium, 450mg choline, and 200–300mg DHA daily. Many over-the-counter prenatals don't hit all these targets. If she can't keep pills down, gummy prenatals are better than nothing.",
+          "category": "medical",
+          "weekRecommended": 7
         },
         {
           "id": "t1-c12",
-          "text": "Start a pregnancy budget spreadsheet",
+          "text": "Attend the first ultrasound",
+          "description": "The dating/viability ultrasound typically happens between weeks 6–8. This confirms the pregnancy is in the uterus, estimates a due date, and often detects the heartbeat for the first time. Cancel whatever you need to cancel — this is non-negotiable.",
+          "category": "medical",
+          "weekRecommended": 8
+        },
+        {
+          "id": "t1-c13",
+          "text": "Bring a list of questions to the first appointment",
+          "description": "Write these down in advance: What's the estimated due date? What genetic screening is recommended? What symptoms warrant an ER visit? How do we reach the office after hours? What medications are safe? You'll be too overwhelmed in the moment to remember.",
+          "category": "medical",
+          "weekRecommended": 8
+        },
+        {
+          "id": "t1-c14",
+          "text": "Research paternity leave policies",
+          "description": "Check your employer's handbook or HR portal — you can do this without disclosing the pregnancy. Understand FMLA eligibility (12 weeks unpaid, job-protected leave). Check if your state offers paid family leave. Start saving now if any portion will be unpaid.",
           "category": "financial",
           "weekRecommended": 8
+        },
+        {
+          "id": "t1-c15",
+          "text": "Begin life insurance research",
+          "description": "Apply during the first trimester while both of you are healthy — complications later can affect premiums. Term life insurance is most practical: affordable 10–30 year terms. Coverage should equal roughly 10x annual salary plus estimated college costs. Both parents need coverage.",
+          "category": "financial",
+          "weekRecommended": 9
+        },
+        {
+          "id": "t1-c16",
+          "text": "Start the conversation about wills and guardianship",
+          "description": "Who would raise your child if something happened to both of you? You don't need an answer this week — just start talking about it. Basic wills can be done online for $150–300, or through an attorney for $500–2,000.",
+          "category": "financial",
+          "weekRecommended": 9
+        },
+        {
+          "id": "t1-c17",
+          "text": "Acknowledge your own emotions",
+          "description": "Expectant fathers experience significant anxiety, identity shifts, and even depression during pregnancy. Talk to a friend who's been through it, journal about what you're feeling, or consider a therapist. Your mental health matters too.",
+          "category": "emotional",
+          "weekRecommended": 9
+        },
+        {
+          "id": "t1-c18",
+          "text": "Discuss genetic screening options together",
+          "description": "NIPT (Non-Invasive Prenatal Testing) is available starting around week 10. It's a simple blood draw that screens for Down syndrome, trisomy 18, and trisomy 13 with over 99% detection accuracy. It also reveals fetal sex. Have this conversation before the testing window.",
+          "category": "medical",
+          "weekRecommended": 10
+        },
+        {
+          "id": "t1-c19",
+          "text": "Research cord blood banking",
+          "description": "You don't need to decide yet (final call around week 34), but start reading now. Public banking is free and donated for anyone's use. Private banking costs $1,000–$2,300 upfront plus $100+/year storage. ACOG and AAP encourage public donation when available.",
+          "category": "learning",
+          "weekRecommended": 10
+        },
+        {
+          "id": "t1-c20",
+          "text": "Attend the nuchal translucency scan",
+          "description": "This specialized ultrasound at weeks 11–13 measures fluid at the back of the baby's neck to screen for chromosomal conditions. Combined with blood markers, it has a ~96% detection rate for Down syndrome. You'll see a recognizable baby shape for the first time.",
+          "category": "medical",
+          "weekRecommended": 11
+        },
+        {
+          "id": "t1-c21",
+          "text": "Create a pregnancy budget",
+          "description": "Map out copays for 12–14 prenatal visits, lab work, ultrasounds, delivery costs, nursery setup, baby gear, and first-year recurring costs (diapers, childcare, formula). Start a dedicated baby fund savings account.",
+          "category": "financial",
+          "weekRecommended": 11
+        },
+        {
+          "id": "t1-c22",
+          "text": "Research birth setting options",
+          "description": "Start exploring: hospital birth (full medical team and NICU access), freestanding birth center (midwife-led, lower intervention rates), or home birth (very low-risk pregnancies only). Insurance coverage varies dramatically. This research helps inform your provider choice.",
+          "category": "learning",
+          "weekRecommended": 11
+        },
+        {
+          "id": "t1-c23",
+          "text": "Plan the pregnancy announcement together",
+          "description": "Miscarriage risk drops to ~1–2% after week 12, and most couples feel ready to share. Let your partner lead on timing and style. Be sensitive to anyone in your circle dealing with infertility or loss.",
+          "category": "relationship",
+          "weekRecommended": 12
+        },
+        {
+          "id": "t1-c24",
+          "text": "Navigate telling your employer",
+          "description": "You're not legally required to disclose in the first trimester, but start thinking strategically. When you do share, come prepared with a tentative plan for your leave dates. Begin quietly documenting your work processes.",
+          "category": "practical",
+          "weekRecommended": 12
+        },
+        {
+          "id": "t1-c25",
+          "text": "Address lingering anxiety even as risk drops",
+          "description": "Crossing into the second trimester doesn't flip an emotional switch. You or your partner may still carry worry — that's completely normal. Keep communicating openly. If worry becomes persistent or overwhelming, professional support helps.",
+          "category": "emotional",
+          "weekRecommended": 12
+        },
+        {
+          "id": "t1-c26",
+          "text": "Check in on her nutritional needs",
+          "description": "Help ensure she's getting enough iron, calcium (1,000mg/day), vitamin D (600 IU), and choline (450mg — found in eggs). If she's still struggling with nausea, small frequent meals beat three large ones. Stock the fridge with what works for her.",
+          "category": "practical",
+          "weekRecommended": 13
+        },
+        {
+          "id": "t1-c27",
+          "text": "Celebrate surviving the first trimester",
+          "description": "You both just navigated one of the most emotionally intense and physically taxing phases of pregnancy — largely in secret. Acknowledge it. A small date night, a heartfelt card, or just an honest conversation about how you're each feeling goes a long way.",
+          "category": "relationship",
+          "weekRecommended": 13
         }
       ]
     },
@@ -86,93 +203,269 @@
       "items": [
         {
           "id": "t2-c1",
-          "text": "Attend the anatomy scan together (weeks 18-22)",
-          "category": "medical",
-          "weekRecommended": 20
+          "text": "Celebrate the honeymoon trimester",
+          "description": "Energy typically returns, nausea fades, and the baby bump starts appearing. Plan regular date nights — go to restaurants, take walks, enjoy each other's company. You're investing in your relationship before the demands of a newborn change everything.",
+          "category": "relationship",
+          "weekRecommended": 14
         },
         {
           "id": "t2-c2",
-          "text": "Complete glucose challenge test (weeks 24-28)",
-          "category": "medical",
-          "weekRecommended": 26
+          "text": "Start researching baby registries",
+          "description": "The ideal window to create a registry is weeks 14–20. Begin with a private wishlist — don't share it yet. Research safety standards for big-ticket items (car seats, cribs, strollers). Focus on needs over wants.",
+          "category": "practical",
+          "weekRecommended": 14
         },
         {
           "id": "t2-c3",
-          "text": "Purchase major baby gear: crib, car seat, stroller",
-          "category": "gear",
-          "weekRecommended": 22
+          "text": "Open the parenting values conversation",
+          "description": "Start talking about discipline philosophy, screen time approach, religious or spiritual upbringing, and division of parenting responsibilities. The goal is to start these conversations while you're both relaxed, not sleep-deprived.",
+          "category": "relationship",
+          "weekRecommended": 14
         },
         {
           "id": "t2-c4",
-          "text": "Research childcare options and get on daycare waitlists",
-          "category": "planning",
-          "weekRecommended": 18
+          "text": "Understand the quad screen if she's having it",
+          "description": "The quad screen is available weeks 15–22, with optimal timing at weeks 16–18. It screens for Down syndrome, trisomy 18, and neural tube defects. A positive result is not a diagnosis — it means further testing may be offered.",
+          "category": "medical",
+          "weekRecommended": 15
         },
         {
           "id": "t2-c5",
-          "text": "Enroll in a childbirth education class",
-          "category": "planning",
-          "weekRecommended": 22
+          "text": "Research childbirth education classes",
+          "description": "Classes fill up fast, and most recommend completing them by week 36. Start looking now: hospital-based multi-week series, weekend intensives, or online courses. Both of you should attend.",
+          "category": "learning",
+          "weekRecommended": 15
         },
         {
           "id": "t2-c6",
-          "text": "Start discussing birth plan preferences",
-          "category": "planning",
-          "weekRecommended": 24
+          "text": "Start exploring daycare and childcare options",
+          "description": "Many facilities have 6–12 month waitlists for infant spots. Tour centers, understand costs in your area, check state licensing, and ask about caregiver-to-child ratios. Get on waitlists early.",
+          "category": "practical",
+          "weekRecommended": 15
         },
         {
           "id": "t2-c7",
-          "text": "Review and update life insurance and beneficiaries",
-          "category": "financial",
-          "weekRecommended": 24
+          "text": "Begin your pediatrician search",
+          "description": "Ask friends for recommendations, check insurance networks, and start a shortlist. Good questions for a meet-and-greet: after-hours policies, hospital affiliation, and approach to vaccines.",
+          "category": "medical",
+          "weekRecommended": 16
         },
         {
           "id": "t2-c8",
-          "text": "Begin babyproofing: anchor furniture, outlet covers, water heater to 120\u00b0F",
-          "category": "gear",
-          "weekRecommended": 26
+          "text": "Schedule a hospital tour",
+          "description": "Most hospitals recommend touring around weeks 24–28, but popular tours book up. Sign up now. During the tour, ask about visitor policies, what the hospital provides, where dads sleep, and parking logistics.",
+          "category": "practical",
+          "weekRecommended": 16
         },
         {
           "id": "t2-c9",
-          "text": "Create and share baby registry",
-          "category": "gear",
+          "text": "Support her changing body with genuine compliments",
+          "description": "Her belly is becoming visible, blood volume is increasing 40–50%, and weight gain is accelerating. Your job: consistent, genuine affirmation. Tell her she looks incredible. Never compare to her pre-pregnancy body. Never comment on weight gain.",
+          "category": "emotional",
           "weekRecommended": 16
         },
         {
           "id": "t2-c10",
-          "text": "Order nursery furniture (allow 4-8 weeks delivery)",
-          "category": "gear",
-          "weekRecommended": 20
+          "text": "Deep-dive baby gear research",
+          "description": "Learn the landscape: infant car seats vs. convertible, travel system strollers vs. full-size, bassinets vs. cribs. Check NHTSA safety ratings for car seats and CPSC certification for cribs. Don't buy yet — just get informed.",
+          "category": "home_gear",
+          "weekRecommended": 17
         },
         {
           "id": "t2-c11",
-          "text": "Notify employer about upcoming paternity leave",
-          "category": "planning",
-          "weekRecommended": 14
+          "text": "Discuss gender reveal or sex announcement plans",
+          "description": "If you're finding out the sex at the anatomy scan (weeks 18–22), decide together how you want to handle it. Keep it private? Throw a reveal event? Find out together or have it be a surprise? Align before the sonographer asks.",
+          "category": "relationship",
+          "weekRecommended": 17
         },
         {
           "id": "t2-c12",
-          "text": "Interview and select a pediatrician",
+          "text": "Attend the anatomy scan",
+          "description": "This is the big ultrasound — a ~45-minute examination at weeks 18–22 that evaluates every fetal organ, growth, placental position, and amniotic fluid. Most parents learn the baby's sex here. Clear your schedule — this is one of the most significant moments of the pregnancy.",
           "category": "medical",
-          "weekRecommended": 22
+          "weekRecommended": 18
         },
         {
           "id": "t2-c13",
-          "text": "Pre-register at the hospital",
-          "category": "planning",
-          "weekRecommended": 24
+          "text": "Start talking to the baby",
+          "description": "Baby's ears are developing and can begin detecting sound from around week 18. Talk to the belly, sing, read aloud. Studies show babies can distinguish familiar voices from unfamiliar ones after birth. It might feel awkward at first. Do it anyway.",
+          "category": "emotional",
+          "weekRecommended": 18
         },
         {
           "id": "t2-c14",
-          "text": "Open a 529 college savings plan",
-          "category": "financial",
-          "weekRecommended": 20
+          "text": "Research birth photography or videography",
+          "description": "If you want professional photos or video of the birth, book early — experienced birth photographers fill their calendars months in advance. Even if you skip the pro route, discuss your phone-photo plan with your partner.",
+          "category": "practical",
+          "weekRecommended": 18
         },
         {
           "id": "t2-c15",
-          "text": "Schedule and take a hospital tour",
-          "category": "planning",
+          "text": "Plan a babymoon",
+          "description": "The sweet spot for travel is weeks 21–28. ACOG recommends the second trimester as the safest travel window. Book something: a weekend getaway, a beach trip, a staycation. Choose somewhere near medical facilities. This trip matters more than you think.",
+          "category": "relationship",
+          "weekRecommended": 19
+        },
+        {
+          "id": "t2-c16",
+          "text": "Learn breastfeeding basics",
+          "description": "Understanding the process makes you a dramatically better support partner. Learn about latching, cluster feeding, pumping mechanics, milk storage guidelines, and common challenges. Your role postpartum: bring baby for night feeds, burp afterward, manage bottles, and run interference so she can rest.",
+          "category": "learning",
+          "weekRecommended": 19
+        },
+        {
+          "id": "t2-c17",
+          "text": "Coordinate baby shower logistics",
+          "description": "Showers typically happen at weeks 28–36. If someone is hosting, they'll need the registry at least 4 weeks before the event. Touch base with the host now to share the registry link and any preferences.",
+          "category": "practical",
+          "weekRecommended": 19
+        },
+        {
+          "id": "t2-c18",
+          "text": "Finalize the nursery plan and order furniture",
+          "description": "You're at the midpoint. Finalize the room layout, choose paint colors, and order the crib, dresser, and changing table. Delivery times can be 4–8 weeks, so ordering now means everything arrives well before the third trimester crunch.",
+          "category": "home_gear",
+          "weekRecommended": 20
+        },
+        {
+          "id": "t2-c19",
+          "text": "Pre-register at the hospital",
+          "description": "Many hospitals allow you to complete admissions paperwork online or by phone weeks before delivery. Do it now. This eliminates filling out insurance and consent forms while she's in labor.",
+          "category": "practical",
+          "weekRecommended": 20
+        },
+        {
+          "id": "t2-c20",
+          "text": "Understand the anatomy scan results together",
+          "description": "Review the findings with your provider. Most results are reassuring. If anything is flagged, your OB may refer you to a maternal-fetal medicine specialist. Ask questions, take notes, and don't spiral on internet searches.",
+          "category": "medical",
+          "weekRecommended": 20
+        },
+        {
+          "id": "t2-c21",
+          "text": "Practice installing the car seat",
+          "description": "Don't wait until week 39. Learn the basics: rear-facing in the back seat, LATCH system vs. seatbelt installation. 59% of car seats are installed incorrectly. Use NHTSA's inspection station locator to find a free check from a certified technician later.",
+          "category": "home_gear",
+          "weekRecommended": 21
+        },
+        {
+          "id": "t2-c22",
+          "text": "Discuss division of labor after baby arrives",
+          "description": "Who handles night feedings? Diaper changes at 3 AM? Cooking? Laundry? Don't assume — discuss explicitly. Couples who have these conversations before baby arrives experience significantly less conflict postpartum.",
+          "category": "relationship",
+          "weekRecommended": 21
+        },
+        {
+          "id": "t2-c23",
+          "text": "Finalize and share the baby registry",
+          "description": "By now you should know the sex (if you chose to learn), the nursery theme, and your gear preferences. Finalize the registry with big-ticket items and essentials. Enable group gifting for expensive items.",
+          "category": "practical",
+          "weekRecommended": 22
+        },
+        {
+          "id": "t2-c24",
+          "text": "Research travel restrictions for later pregnancy",
+          "description": "If any travel is planned for the third trimester, check now: domestic airlines typically allow travel until 36 weeks. International airlines vary. Cruise lines may cut off at 24–28 weeks.",
+          "category": "learning",
+          "weekRecommended": 22
+        },
+        {
+          "id": "t2-c25",
+          "text": "Sign up for childbirth education classes",
+          "description": "If you haven't registered yet, do it now — classes fill up and you want to complete them by week 36. Hospital-based classes typically run 4–6 weeks; weekend intensive options compress everything into one session.",
+          "category": "learning",
           "weekRecommended": 23
+        },
+        {
+          "id": "t2-c26",
+          "text": "Run a mental health check-in for both of you",
+          "description": "Depression and anxiety during pregnancy affect both partners. Ask her directly: 'How are you really doing?' And answer honestly yourself. Watch for persistent sadness, withdrawal, excessive worry, or loss of interest. Normalize seeking help early.",
+          "category": "emotional",
+          "weekRecommended": 23
+        },
+        {
+          "id": "t2-c27",
+          "text": "Support the glucose screening test",
+          "description": "The 1-hour glucose challenge happens between weeks 24–28. She drinks a sugary solution and has blood drawn an hour later. It screens for gestational diabetes. Drive her, bring snacks for afterward, and know that a positive screen means a follow-up test — not automatic diagnosis.",
+          "category": "medical",
+          "weekRecommended": 24
+        },
+        {
+          "id": "t2-c28",
+          "text": "Feel the baby kick",
+          "description": "Most partners can feel baby kick from the outside by weeks 24–28. Try resting your hand on her belly during the baby's active time (often evenings). Be patient — placental position and baby's orientation affect when you'll feel it. When it happens, parenthood gets real.",
+          "category": "emotional",
+          "weekRecommended": 24
+        },
+        {
+          "id": "t2-c29",
+          "text": "Open a 529 college savings plan",
+          "description": "The earlier you start, the more compound growth works in your favor. You can open a 529 in your name now and transfer to the child after birth. Even $50/month from birth adds up significantly over 18 years.",
+          "category": "financial",
+          "weekRecommended": 24
+        },
+        {
+          "id": "t2-c30",
+          "text": "Set up the nursery",
+          "description": "Painting should be done by now. Assemble the crib with a firm mattress, fitted sheet only — no bumpers, blankets, or toys per AAP safe sleep guidelines. Set up the changing station, organize storage, and wash all baby clothes in fragrance-free detergent.",
+          "category": "home_gear",
+          "weekRecommended": 25
+        },
+        {
+          "id": "t2-c31",
+          "text": "Keep up regular date nights",
+          "description": "You're still in the comfortable trimester — don't waste it. Go to dinner, see a movie, take evening walks. This investment in your relationship creates a buffer against the stress that's coming.",
+          "category": "relationship",
+          "weekRecommended": 25
+        },
+        {
+          "id": "t2-c32",
+          "text": "Finalize your pediatrician selection",
+          "description": "Schedule a meet-and-greet with your top choice. Confirm insurance, after-hours protocols, hospital affiliation, and breastfeeding support philosophy. Lock this in — baby needs an appointment within 2–5 days of discharge.",
+          "category": "medical",
+          "weekRecommended": 26
+        },
+        {
+          "id": "t2-c33",
+          "text": "Get your Tdap vaccine",
+          "description": "Partners, grandparents, and anyone around the newborn should receive Tdap at least 2 weeks before meeting the baby. This protects the infant from pertussis (whooping cough), which can be life-threatening for newborns. Schedule yours now.",
+          "category": "medical",
+          "weekRecommended": 26
+        },
+        {
+          "id": "t2-c34",
+          "text": "Learn about car seat installation for real",
+          "description": "Go beyond YouTube. Find a certified Child Passenger Safety technician through NHTSA's inspection station locator. They'll spend 20–30 minutes educating you on proper installation — for free.",
+          "category": "learning",
+          "weekRecommended": 26
+        },
+        {
+          "id": "t2-c35",
+          "text": "Complete the hospital tour",
+          "description": "Know the route to the hospital and time it during different traffic conditions. Know where to park, where to enter after hours, and where to check in. Do a practice drive. Note where labor rooms, recovery rooms, and NICU are located.",
+          "category": "practical",
+          "weekRecommended": 27
+        },
+        {
+          "id": "t2-c36",
+          "text": "Start drafting a birth plan together",
+          "description": "Begin discussing preferences: pain management, who's in the delivery room, cord blood banking, skin-to-skin contact, delayed cord clamping, feeding intentions, and circumcision if applicable. You'll finalize in the third trimester.",
+          "category": "medical",
+          "weekRecommended": 27
+        },
+        {
+          "id": "t2-c37",
+          "text": "Confirm all financial prep is on track",
+          "description": "Quick checkpoint: Is life insurance in place? Are wills drafted? Are FSA/HSA contributions maximized? Is the baby budget built? Do you understand your hospital's estimated delivery costs? Don't let these slip into the rushed third trimester.",
+          "category": "financial",
+          "weekRecommended": 27
+        },
+        {
+          "id": "t2-c38",
+          "text": "Reflect and celebrate the milestone",
+          "description": "You've made it through two-thirds of the pregnancy. Express gratitude for her strength and the partnership you're building. Write a letter to your unborn baby — your hopes, your fears, what you're feeling right now. Save it for them to read someday.",
+          "category": "emotional",
+          "weekRecommended": 27
         }
       ]
     },
@@ -183,111 +476,465 @@
       "items": [
         {
           "id": "t3-c1",
-          "text": "Attend biweekly appointments (28-36), then weekly",
+          "text": "Start daily kick count support",
+          "description": "ACOG recommends fetal movement counting starting at 28 weeks. The goal: 10 movements within 2 hours. Download the Count the Kicks app. Remind her to do kick counts at the same time each day. If fewer than 10 movements in 2 hours, call the provider immediately.",
           "category": "medical",
           "weekRecommended": 28
         },
         {
           "id": "t3-c2",
-          "text": "Complete GBS screening at week 36",
+          "text": "Enroll in a childbirth preparation class together",
+          "description": "The ideal window for completing classes is weeks 28–36. Courses cover stages of labor, breathing techniques, comfort measures, pain management options, and recovery. These teach you how to actively support her during labor.",
+          "category": "learning",
+          "weekRecommended": 28
+        },
+        {
+          "id": "t3-c3",
+          "text": "Sign up for an infant CPR class",
+          "description": "Take this between weeks 28–36 while you still have time. American Red Cross and many hospital programs offer 2–3 hour courses. Learn infant CPR, choking response, and basic first aid.",
+          "category": "learning",
+          "weekRecommended": 28
+        },
+        {
+          "id": "t3-c4",
+          "text": "Support the RhoGAM shot if she's Rh-negative",
+          "description": "If your partner's blood type is Rh-negative, she'll receive a RhoGAM injection around week 28 to prevent Rh incompatibility — a condition that can cause serious complications. Know her blood type and accompany her.",
+          "category": "medical",
+          "weekRecommended": 28
+        },
+        {
+          "id": "t3-c5",
+          "text": "Finalize your pediatrician choice",
+          "description": "If you haven't locked this in yet, do it now. Baby needs a visit within 2–5 days of hospital discharge. Confirm insurance acceptance and after-hours protocols one final time. Save the office number in both your phones.",
+          "category": "medical",
+          "weekRecommended": 29
+        },
+        {
+          "id": "t3-c6",
+          "text": "Discuss postpartum help and support plans",
+          "description": "Who can help during the first 2–4 weeks? When should family visit (and when should they not)? Would a postpartum doula be worth it? Set up a meal train. The strongest thing you can do is build a support system before you need it.",
+          "category": "practical",
+          "weekRecommended": 29
+        },
+        {
+          "id": "t3-c7",
+          "text": "Start creating the birth plan in writing",
+          "description": "Put discussions on paper. Include preferred pain management, labor positions, who's in the room, skin-to-skin preferences, delayed cord clamping, cord cutting, feeding plan, and C-section contingency. Keep it to one page. Print multiple copies.",
+          "category": "medical",
+          "weekRecommended": 30
+        },
+        {
+          "id": "t3-c8",
+          "text": "Pre-register at the hospital if you haven't yet",
+          "description": "Download the hospital's patient portal app. Set up accounts for both parents. Complete any remaining intake forms, insurance verification, and consent paperwork online.",
+          "category": "practical",
+          "weekRecommended": 30
+        },
+        {
+          "id": "t3-c9",
+          "text": "Research newborn care basics",
+          "description": "Learn safe sleep (back to sleep, firm surface, empty crib), feeding schedules (every 2–3 hours initially), diaper expectations (8–12 changes/day for newborns), umbilical cord stump care, and the critical rule: fever over 100.4°F rectally in the first 3 months is a medical emergency.",
+          "category": "learning",
+          "weekRecommended": 30
+        },
+        {
+          "id": "t3-c10",
+          "text": "Install the car seat",
+          "description": "Install it rear-facing in the back seat. Read both the car seat manual and your vehicle manual. Then schedule a free inspection with a certified CPS technician. You will not leave the hospital without a properly installed seat. Register the seat for recall alerts.",
+          "category": "home_gear",
+          "weekRecommended": 31
+        },
+        {
+          "id": "t3-c11",
+          "text": "Assemble remaining baby gear",
+          "description": "Crib, changing table, stroller, bassinet — follow manufacturer instructions exactly. Test everything: does the stroller fold easily? Does the car seat click into the base smoothly? Identify anything missing and order it now.",
+          "category": "home_gear",
+          "weekRecommended": 31
+        },
+        {
+          "id": "t3-c12",
+          "text": "Create a game day logistics document",
+          "description": "Write down: fastest route to the hospital (timed in different traffic), backup routes, after-hours parking, pet care plan, who to call when labor starts, bag locations, key phone numbers (OB office, hospital L&D, pediatrician), and your work notification plan.",
+          "category": "practical",
+          "weekRecommended": 31
+        },
+        {
+          "id": "t3-c13",
+          "text": "Start packing hospital bags",
+          "description": "Dad's bag: 2 changes of clothes, toiletries, phone + charger + backup battery, snacks (labor can last 12–24+ hours), water bottle, travel pillow, entertainment, cash for vending, comfortable shoes, insurance cards, birth plan copies, and a massage ball for back labor.",
+          "category": "practical",
+          "weekRecommended": 32
+        },
+        {
+          "id": "t3-c14",
+          "text": "Pack her bag and baby's bag",
+          "description": "For her: button-front pajamas, nursing bra, toiletries, grip socks, her own pillow, lip balm, nipple cream, and a going-home outfit (maternity clothes — she'll still look about 6 months pregnant after delivery). For baby: going-home outfit in newborn size, swaddle blanket, hat, and mittens.",
+          "category": "practical",
+          "weekRecommended": 32
+        },
+        {
+          "id": "t3-c15",
+          "text": "Begin learning labor support techniques",
+          "description": "Know what to do during labor: back massage, counter-pressure with your fist or tennis ball, hip squeezes, breathing together, encouraging position changes, offering ice chips, keeping the room calm, and being her advocate with medical staff. Practice now.",
+          "category": "learning",
+          "weekRecommended": 32
+        },
+        {
+          "id": "t3-c16",
+          "text": "Deep clean the house and support nesting",
+          "description": "Her nesting instinct may be in overdrive — this is biologically driven and normal. Help with deep cleaning the nursery, kitchen, and bathrooms. Wash every piece of baby clothing and linen in fragrance-free detergent. Organize baby supplies.",
+          "category": "practical",
+          "weekRecommended": 33
+        },
+        {
+          "id": "t3-c17",
+          "text": "Stock up on newborn essentials",
+          "description": "Buy and organize: newborn diapers in sizes NB and 1 (at least 200 of each), fragrance-free wipes, diaper cream, baby wash, burp cloths, bottles and formula (even if planning to breastfeed — have backup), swaddles, and a white noise machine.",
+          "category": "home_gear",
+          "weekRecommended": 33
+        },
+        {
+          "id": "t3-c18",
+          "text": "Learn about the fourth trimester",
+          "description": "The first 12 weeks after birth are called the fourth trimester. Newborns need constant warmth, feeding, and skin-to-skin contact. Learn Harvey Karp's 5 S's technique (Swaddling, Side/Stomach position, Shushing, Swinging, Sucking) for soothing a crying newborn.",
+          "category": "learning",
+          "weekRecommended": 33
+        },
+        {
+          "id": "t3-c19",
+          "text": "Finalize paternity leave paperwork",
+          "description": "Submit formal leave documents to your employer. Prepare a detailed work handoff for colleagues. Clarify your exact start date and total duration. Document everything critical about your projects. Don't procrastinate — babies can arrive early.",
+          "category": "financial",
+          "weekRecommended": 34
+        },
+        {
+          "id": "t3-c20",
+          "text": "Make a cord blood banking decision",
+          "description": "If banking privately, order the collection kit and coordinate with the hospital — the kit needs to be at the birth. If donating publicly, confirm your hospital participates. If opting out, that's valid too. Just make the decision and move on.",
+          "category": "medical",
+          "weekRecommended": 34
+        },
+        {
+          "id": "t3-c21",
+          "text": "Set up baby monitoring equipment",
+          "description": "Install the baby monitor (video preferred). Test range throughout your home, including from the nursery to your bedroom, kitchen, and living room. Check for interference. Charge backup batteries.",
+          "category": "home_gear",
+          "weekRecommended": 34
+        },
+        {
+          "id": "t3-c22",
+          "text": "Start meal prepping and building a freezer stash",
+          "description": "This is one of the single most impactful things you can do. You will not have time or energy to cook for the first 2–4 weeks. Spend weekends cooking and freezing soups, stews, casseroles, chili, pasta bakes, breakfast items, and energy snacks. Aim for 2–4 weeks of meals.",
+          "category": "practical",
+          "weekRecommended": 35
+        },
+        {
+          "id": "t3-c23",
+          "text": "Stock postpartum recovery supplies for her",
+          "description": "Buy a peri bottle, witch hazel pads, stool softener, heavy-flow pads, comfortable high-waisted underwear, nipple cream (if breastfeeding), nursing pads, and a reusable water bottle with a straw. Having these ready is an act of love.",
+          "category": "practical",
+          "weekRecommended": 35
+        },
+        {
+          "id": "t3-c24",
+          "text": "Start basic childproofing",
+          "description": "Baby won't be mobile for months, but do this now while you have energy. Install outlet covers, cabinet locks in the kitchen and bathrooms, secure heavy furniture to walls with anti-tip straps, and set your water heater to 120°F or below.",
+          "category": "home_gear",
+          "weekRecommended": 35
+        },
+        {
+          "id": "t3-c25",
+          "text": "Attend the GBS test appointment",
+          "description": "Group B Strep screening happens at 36–37 weeks. If positive (about 25% of women carry GBS), she'll receive IV antibiotics during labor to protect the baby. Know the result and what it means for your birth plan.",
           "category": "medical",
           "weekRecommended": 36
         },
         {
-          "id": "t3-c3",
-          "text": "Finalize and share birth plan with care provider",
-          "category": "planning",
+          "id": "t3-c26",
+          "text": "Learn the signs of labor — for real",
+          "description": "Know the 5-1-1 Rule: go to the hospital when contractions are 5 minutes apart, lasting 1 minute each, for 1 consecutive hour. Also go immediately if her water breaks, there's significant bleeding, severe headache with vision changes, or baby stops moving.",
+          "category": "medical",
           "weekRecommended": 36
         },
         {
-          "id": "t3-c4",
-          "text": "Install car seat rear-facing and get it inspected",
-          "category": "gear",
+          "id": "t3-c27",
+          "text": "Understand the stages of labor",
+          "description": "Stage 1: Cervix dilates to 10 cm (early labor at home, active labor head to hospital, transition is most intense). Stage 2: Pushing and delivery. Stage 3: Placenta delivery. Know what each phase looks like so you can be calm when she can't be.",
+          "category": "learning",
           "weekRecommended": 36
         },
         {
-          "id": "t3-c5",
-          "text": "Pack hospital bags for both parents by week 36",
-          "category": "planning",
-          "weekRecommended": 35
+          "id": "t3-c28",
+          "text": "Understand the C-section possibility",
+          "description": "About 32% of US births are via cesarean — planned or emergency. You can typically be in the OR, recovery takes longer (2–4 day stay vs. 1–2 for vaginal), and she'll need significantly more help postpartum. Discuss this contingency so neither of you is blindsided.",
+          "category": "learning",
+          "weekRecommended": 36
         },
         {
-          "id": "t3-c6",
-          "text": "Prepare 15-20 freezer meals for postpartum",
-          "category": "postpartum",
-          "weekRecommended": 32
-        },
-        {
-          "id": "t3-c7",
-          "text": "Set up nursery: crib with firm mattress, fitted sheet only, 68-72\u00b0F",
-          "category": "gear",
-          "weekRecommended": 33
-        },
-        {
-          "id": "t3-c8",
-          "text": "Confirm insurance pre-authorization for delivery",
-          "category": "financial",
-          "weekRecommended": 34
-        },
-        {
-          "id": "t3-c9",
-          "text": "Learn the 5-1-1 rule for when to go to the hospital",
-          "category": "planning",
+          "id": "t3-c29",
+          "text": "Ensure hospital bags are packed and by the door",
+          "description": "Everything should be packed, zipped, and placed by the front door or in the trunk. Run through the checklist one final time: car seat installed, bags packed, insurance cards accessible, birth plan printed, phone chargers included, pediatrician info written down.",
+          "category": "practical",
           "weekRecommended": 37
         },
         {
-          "id": "t3-c10",
-          "text": "Draft a birth plan together",
-          "category": "planning",
-          "weekRecommended": 28
+          "id": "t3-c30",
+          "text": "Do a final birth plan review with your partner",
+          "description": "Read through the birth plan together one more time. You are her advocate in the delivery room — you need to know her preferences cold so you can speak up if she can't. This is about honoring her wishes while staying flexible.",
+          "category": "medical",
+          "weekRecommended": 37
         },
         {
-          "id": "t3-c11",
-          "text": "Practice labor comfort measures together",
-          "category": "planning",
-          "weekRecommended": 30
+          "id": "t3-c31",
+          "text": "Process your fears honestly",
+          "description": "First-time fathers commonly experience fear about labor complications, anxiety about being an adequate parent, financial worry, and concern about relationship changes. Have an honest conversation with your partner, a friend, or a therapist.",
+          "category": "emotional",
+          "weekRecommended": 37
         },
         {
-          "id": "t3-c12",
-          "text": "Complete childbirth classes",
-          "category": "planning",
-          "weekRecommended": 32
+          "id": "t3-c32",
+          "text": "Plan your final couple date nights",
+          "description": "Go to dinner. See a movie. Take a slow walk. After baby arrives, uninterrupted couple time becomes extraordinarily rare for months. These last dates are relationship maintenance that pays dividends during the hard early weeks.",
+          "category": "relationship",
+          "weekRecommended": 38
         },
         {
-          "id": "t3-c13",
-          "text": "Know the fastest route to the hospital (and a backup)",
-          "category": "planning",
+          "id": "t3-c33",
+          "text": "Take last bump photos",
+          "description": "Professional or phone — doesn't matter. Capture this moment. She's done something extraordinary growing a human. Include photos of both of you together, not just the bump.",
+          "category": "relationship",
+          "weekRecommended": 38
+        },
+        {
+          "id": "t3-c34",
+          "text": "Write a letter to your baby",
+          "description": "Write down what you're feeling — the anticipation, the fear, the love that already exists for someone you haven't met. Describe the world they're entering, the home you've prepared, the person you want to be for them. Seal it for them to read someday.",
+          "category": "emotional",
+          "weekRecommended": 38
+        },
+        {
+          "id": "t3-c35",
+          "text": "Plan the push present or post-birth celebration",
+          "description": "Many partners give a meaningful gift after delivery — jewelry, a heartfelt letter, a spa gift card, or a keepsake. Plan this now while your brain still works. It doesn't need to be expensive — it needs to be thoughtful.",
+          "category": "relationship",
+          "weekRecommended": 38
+        },
+        {
+          "id": "t3-c36",
+          "text": "Enter high-alert mode",
+          "description": "Baby is now full term per ACOG (39 weeks). Keep your phone charged and on you at all times. Stay within reasonable distance of your partner. Gas up the car. Confirm your pet care plan. Make sure work knows baby could come any day.",
+          "category": "practical",
+          "weekRecommended": 39
+        },
+        {
+          "id": "t3-c37",
+          "text": "Know exactly when to go to the hospital",
+          "description": "Quick recall: 5-1-1 rule for contractions. Water breaks (note time, color, odor). Significant bleeding. Severe headache with vision changes. Baby stops moving. If your gut says go — go. No one will judge you for a false alarm.",
+          "category": "medical",
+          "weekRecommended": 39
+        },
+        {
+          "id": "t3-c38",
+          "text": "Continue daily kick counts",
+          "description": "Movement should not significantly decrease at full term. The quality may change — more rolling, less sharp kicks — but the quantity should remain consistent. Any notable decrease warrants an immediate call to the provider.",
+          "category": "medical",
+          "weekRecommended": 39
+        },
+        {
+          "id": "t3-c39",
+          "text": "Finalize the postpartum support schedule",
+          "description": "Confirm: Who's helping and when? Who's handling meals for week one? Is the freezer stocked? Are postpartum supplies purchased? Is the family visit schedule set with boundaries? Is the pediatrician's first appointment scheduled?",
+          "category": "practical",
+          "weekRecommended": 39
+        },
+        {
+          "id": "t3-c40",
+          "text": "Understand the insurance enrollment clock",
+          "description": "After birth, you typically have 30 days to add baby to employer-based insurance (60 days for marketplace plans). Coverage is retroactive to the birth date. Know exactly who to call and what forms to submit. Have the documents ready now.",
+          "category": "financial",
+          "weekRecommended": 39
+        },
+        {
+          "id": "t3-c41",
+          "text": "Shield her from 'still no baby?' messages",
+          "description": "Going past the due date is extremely common — only about 5% of babies arrive on the exact date. Field the well-meaning but maddening texts from family and friends yourself. A group message saves her from having that conversation forty times a day.",
+          "category": "emotional",
+          "weekRecommended": 40
+        },
+        {
+          "id": "t3-c42",
+          "text": "Attend every appointment this week and beyond",
+          "description": "Weekly visits continue with close monitoring. If pregnancy reaches 41 weeks, the provider will likely discuss induction. Your presence shows her she's not in this alone.",
+          "category": "medical",
+          "weekRecommended": 40
+        },
+        {
+          "id": "t3-c43",
+          "text": "Discuss induction calmly and supportively",
+          "description": "If induction is recommended, understand why: ACOG advises induction between 41–42 weeks due to increasing risks. Methods include membrane sweeping, cervical ripening agents, and Pitocin. It is not a failure of any kind — it's a medical decision made for safety.",
+          "category": "medical",
+          "weekRecommended": 40
+        },
+        {
+          "id": "t3-c44",
+          "text": "Keep daily life running smoothly",
+          "description": "Gas in the car. Groceries in the fridge. Laundry done. Pets fed. Bills paid. House clean. She should be focused on resting and preparing mentally — not worrying about whether there's milk in the refrigerator.",
+          "category": "practical",
+          "weekRecommended": 40
+        },
+        {
+          "id": "t3-c45",
+          "text": "Stay emotionally present and grounded",
+          "description": "The final days of waiting are an emotional pressure cooker. Don't disappear into your phone or work. Be in the room with her. Hold her hand. Remind her that you're ready, she's strong, and you're doing this together.",
+          "category": "emotional",
+          "weekRecommended": 40
+        },
+        {
+          "id": "t3-c46",
+          "text": "Learn about postpartum depression in both parents",
+          "description": "Maternal PPD affects about 1 in 8 mothers. Paternal PPD affects 8–10% of new fathers, peaking at 3–6 months. If one partner has PPD, the other's risk increases by 50%. Agree in advance that you'll seek help without shame if needed.",
+          "category": "learning",
           "weekRecommended": 36
         },
         {
-          "id": "t3-c14",
-          "text": "Finalize will and guardianship designations",
+          "id": "t3-c47",
+          "text": "Understand birth certificate and SSN procedures",
+          "description": "The hospital provides forms for both before discharge. You'll fill out the birth certificate application and Social Security number request during your stay. The SSN card arrives by mail in 2–4 weeks.",
           "category": "financial",
-          "weekRecommended": 34
+          "weekRecommended": 37
         },
         {
-          "id": "t3-c15",
-          "text": "Pre-fill insurance enrollment forms for adding baby",
-          "category": "financial",
-          "weekRecommended": 35
-        },
-        {
-          "id": "t3-c16",
-          "text": "Learn newborn care basics: diapering, swaddling, feeding cues",
-          "category": "postpartum",
-          "weekRecommended": 34
-        },
-        {
-          "id": "t3-c17",
-          "text": "Set up visitor policy with partner",
-          "category": "postpartum",
-          "weekRecommended": 35
-        },
-        {
-          "id": "t3-c18",
-          "text": "Keep car gas tank full from week 36 onward",
-          "category": "planning",
+          "id": "t3-c48",
+          "text": "Prepare a visitors policy for after birth",
+          "description": "Discuss and agree: Who can visit in the hospital? Who comes to the house in the first week? How long can they stay? Having clear boundaries set in advance — and being willing to enforce them as the gatekeeper — protects her recovery.",
+          "category": "relationship",
           "weekRecommended": 36
+        },
+        {
+          "id": "t3-c49",
+          "text": "Set up postpartum recovery station at home",
+          "description": "Create a dedicated space with water bottles, snacks, phone charger, nursing pillow, burp cloths, diapers and wipes, TV remote, and postpartum recovery supplies. She shouldn't have to get up for basic needs in the first days.",
+          "category": "practical",
+          "weekRecommended": 37
+        },
+        {
+          "id": "t3-c50",
+          "text": "Test-run all baby gear",
+          "description": "Practice folding the stroller one-handed, clicking the car seat in and out of the base, swaddling with a blanket and velcro swaddle, using the monitor, and operating the breast pump if applicable. Fumbling at 2 AM while a baby screams is the wrong time to read instructions.",
+          "category": "home_gear",
+          "weekRecommended": 36
+        },
+        {
+          "id": "t3-c51",
+          "text": "Set up auto-pay and simplify finances",
+          "description": "Put every recurring bill on auto-pay. Stock up on household essentials. Order diapers and wipes on subscription. Simplify anything that requires regular attention — your cognitive bandwidth is about to shrink dramatically.",
+          "category": "financial",
+          "weekRecommended": 37
+        },
+        {
+          "id": "t3-c52",
+          "text": "Know the when to call the pediatrician rules",
+          "description": "Memorize: rectal temperature above 100.4°F in the first 3 months = emergency ER visit. Other call-worthy signs: persistent vomiting, refusal to eat, jaundice, fewer than 6 wet diapers per day after day 4, inconsolable crying for 2+ hours.",
+          "category": "learning",
+          "weekRecommended": 37
+        },
+        {
+          "id": "t3-c53",
+          "text": "Make a plan for your own postpartum adjustment",
+          "description": "Line up support: a dad friend you can text at 3 AM, a therapist if you're open to it, a fatherhood group (online or local), and permission to not have everything figured out. You don't have to be perfect — you just have to show up.",
+          "category": "emotional",
+          "weekRecommended": 38
+        },
+        {
+          "id": "t3-c54",
+          "text": "Prepare to add baby to insurance immediately",
+          "description": "Have your HR contact info, insurance policy number, and enrollment forms ready. The 30-day clock starts at birth. Mark calendar reminders for day 1 and day 14 post-birth. This is one of the few true deadlines in postpartum chaos.",
+          "category": "financial",
+          "weekRecommended": 38
+        },
+        {
+          "id": "t3-c55",
+          "text": "Make peace with the uncertainty",
+          "description": "Birth plans change. Timelines shift. Babies come early, late, and every way you didn't expect. You will feel unprepared. That's the universal experience of becoming a parent. You've done the work. You've shown up. You're ready — even if you don't feel like it yet.",
+          "category": "emotional",
+          "weekRecommended": 39
+        }
+      ]
+    },
+    {
+      "id": "checklist-ongoing",
+      "title": "Ongoing Throughout Pregnancy",
+      "trimester": 0,
+      "items": [
+        {
+          "id": "on-c1",
+          "text": "Attend every prenatal appointment you can",
+          "description": "Every 4 weeks in the first/second trimester, every 2 weeks from 28–36, weekly from 36–40. Your presence is correlated with better outcomes. Take notes. Ask questions. Being there says more than any words.",
+          "category": "medical",
+          "weekRecommended": 0
+        },
+        {
+          "id": "on-c2",
+          "text": "Ask 'What do you need from me right now?'",
+          "description": "Her needs change week to week, sometimes hour to hour. Don't assume — ask. Sometimes she needs you to solve a problem. Sometimes she needs you to just listen. Learn to tell the difference.",
+          "category": "emotional",
+          "weekRecommended": 0
+        },
+        {
+          "id": "on-c3",
+          "text": "Do a regular mental health check-in — for both of you",
+          "description": "Prenatal depression and anxiety affect both partners. Paternal prenatal depression affects roughly 10% of expectant fathers. In men, it often shows up as irritability, withdrawal, anger, or increased substance use. Check in honestly.",
+          "category": "emotional",
+          "weekRecommended": 0
+        },
+        {
+          "id": "on-c4",
+          "text": "Handle grocery shopping and meal planning",
+          "description": "Her dietary needs and aversions shift throughout pregnancy. Keep the fridge stocked with what she can actually eat. Focus on iron-rich foods, calcium sources, and whatever she's craving. Don't editorialize her food choices.",
+          "category": "practical",
+          "weekRecommended": 0
+        },
+        {
+          "id": "on-c5",
+          "text": "Manage household finances and bills",
+          "description": "Keep bills paid, accounts monitored, and the baby budget on track. As delivery approaches, set up auto-pay for recurring bills so nothing lapses during the chaotic postpartum weeks.",
+          "category": "financial",
+          "weekRecommended": 0
+        },
+        {
+          "id": "on-c6",
+          "text": "Read something about pregnancy or fatherhood",
+          "description": "Stay informed. Read a chapter of a pregnancy book each week, follow a week-by-week guide, or listen to a fatherhood podcast. When dads are informed and involved, mothers are more likely to stay on top of healthcare.",
+          "category": "learning",
+          "weekRecommended": 0
+        },
+        {
+          "id": "on-c7",
+          "text": "Nurture your relationship beyond the pregnancy",
+          "description": "You are partners first, parents second. Regular date nights, honest conversations about your relationship (not just the baby), physical affection, and expressions of gratitude keep the foundation strong.",
+          "category": "relationship",
+          "weekRecommended": 0
+        },
+        {
+          "id": "on-c8",
+          "text": "Keep the house clean and organized",
+          "description": "A clean, organized home reduces her stress and frees her energy. Do the dishes, take out trash, keep bathrooms clean, and manage clutter. Don't wait for a request.",
+          "category": "practical",
+          "weekRecommended": 0
+        },
+        {
+          "id": "on-c9",
+          "text": "Manage family and social boundaries",
+          "description": "Be the buffer between your partner and overstepping family members, unwanted advice-givers, and people who want to touch her belly. Discuss boundaries together and enforce them. This is especially critical around delivery and postpartum.",
+          "category": "relationship",
+          "weekRecommended": 0
+        },
+        {
+          "id": "on-c10",
+          "text": "Document the journey",
+          "description": "Take bump photos each month. Record milestones, funny moments, cravings, and emotional breakthroughs. Save ultrasound images. Make sure you're capturing the dad's perspective too, not just the medical timeline.",
+          "category": "emotional",
+          "weekRecommended": 0
         }
       ]
     }

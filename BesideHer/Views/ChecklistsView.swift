@@ -86,7 +86,7 @@ struct ChecklistsView: View {
 
                 // Trimester tabs
                 HStack(spacing: 8) {
-                    ForEach(1...3, id: \.self) { trimester in
+                    ForEach([1, 2, 3, 0], id: \.self) { trimester in
                         Button(action: {
                             withAnimation(.easeInOut(duration: 0.2)) {
                                 selectedTrimester = trimester
@@ -209,7 +209,14 @@ struct ChecklistsView: View {
                                             .foregroundColor(profile.isChecklistItemCompleted(item.id) ? Color(hex: "8E9BAD") : Color(hex: "1A2B42"))
                                             .strikethrough(profile.isChecklistItemCompleted(item.id))
                                             .multilineTextAlignment(.leading)
-                                        
+
+                                        if let description = item.description {
+                                            Text(description)
+                                                .font(.system(size: 12))
+                                                .foregroundColor(Color(hex: "5A6B80"))
+                                                .multilineTextAlignment(.leading)
+                                        }
+
                                         HStack(spacing: 4) {
                                             Image(systemName: item.categoryIcon)
                                                 .font(.system(size: 9))
@@ -254,6 +261,7 @@ struct ChecklistsView: View {
     
     private func trimesterLabel(_ trimester: Int) -> String {
         switch trimester {
+        case 0: return "Ongoing"
         case 1: return "1st Tri"
         case 2: return "2nd Tri"
         case 3: return "3rd Tri"
