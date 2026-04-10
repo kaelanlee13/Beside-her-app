@@ -10,6 +10,7 @@ import SwiftUI
 struct LaunchScreenView: View {
     @State private var logoScale: CGFloat = 0.85
     @State private var logoOpacity: Double = 0
+    @State private var isExiting = false
 
     var body: some View {
         ZStack {
@@ -30,12 +31,17 @@ struct LaunchScreenView: View {
                     .tracking(3.2)
             }
             .scaleEffect(logoScale)
-            .opacity(logoOpacity)
+            .opacity(isExiting ? 0 : logoOpacity)
         }
         .onAppear {
+            // Fade in
             withAnimation(.spring(response: 0.7, dampingFraction: 0.75).delay(0.1)) {
                 logoScale = 1.0
                 logoOpacity = 1.0
+            }
+            // Fade out content before parent removes the view
+            withAnimation(.easeIn(duration: 0.5).delay(1.8)) {
+                isExiting = true
             }
         }
     }
