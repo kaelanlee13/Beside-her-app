@@ -2,7 +2,7 @@
 //  HomeView.swift
 //  BesideHer
 //
-//  Main home screen showing current week and pregnancy progress
+//  Main home screen — hero card, progress, tasks, dad question
 //
 
 import SwiftUI
@@ -10,7 +10,7 @@ import SwiftUI
 struct HomeView: View {
     let profile: UserProfile
     let content = ContentService.shared
-    
+
     var currentWeekContent: Week? {
         content.week(for: profile.currentWeek)
     }
@@ -18,332 +18,325 @@ struct HomeView: View {
     var weekChecklistItems: [ChecklistItem] {
         content.checklists.flatMap { $0.items }.filter { $0.weekRecommended == profile.currentWeek }
     }
-    
-    var greeting: String {
-        let hour = Calendar.current.component(.hour, from: Date())
-        switch hour {
-        case 5..<12: return "morning"
-        case 12..<17: return "afternoon"
-        default: return "evening"
-        }
-    }
-    
+
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(spacing: 16) {
-                    // Header
-                    HStack {
+                VStack(spacing: 0) {
+
+                    // ─── Hero Card ───────────────────────────────────────────
+                    heroCard
+                        .padding(.horizontal, 20)
+                        .padding(.top, 16)
+
+                    // ─── Progress ───────────────────────────────────────────
+                    progressCard
+                        .padding(.horizontal, 20)
+                        .padding(.top, 14)
+
+                    // ─── Contraction Timer CTA ──────────────────────────────
+                    contractionRow
+                        .padding(.horizontal, 20)
+                        .padding(.top, 12)
+
+                    // ─── This Week's Tasks ──────────────────────────────────
+                    if let week = currentWeekContent {
+                        tasksCard(week: week)
+                            .padding(.horizontal, 20)
+                            .padding(.top, 12)
+                    }
+
+                    // ─── Common Dad Question ────────────────────────────────
+                    if let week = currentWeekContent,
+                       let question = week.commonDadQuestion,
+                       let answer = week.commonDadAnswer {
+                        dadQuestionCard(question: question, answer: answer)
+                            .padding(.horizontal, 20)
+                            .padding(.top, 12)
+                    }
+
+                    Spacer(minLength: 32)
+                }
+            }
+            .background(AppTheme.background.ignoresSafeArea())
+            .navigationBarHidden(true)
+        }
+    }
+
+    // MARK: - Hero Card
+
+    private var heroCard: some View {
+        NavigationLink(destination: Group {
+            if let week = currentWeekContent {
+                WeekDetailView(week: week, profile: profile)
+            }
+        }) {
+            ZStack(alignment: .topTrailing) {
+                // Background gradient
+                RoundedRectangle(cornerRadius: AppTheme.cornerRadius)
+                    .fill(AppTheme.heroGradient)
+
+                VStack(alignment: .leading, spacing: 0) {
+
+                    // Top row: greeting + gear
+                    HStack(alignment: .top) {
                         VStack(alignment: .leading, spacing: 2) {
                             Text("Good \(greeting)")
-                                .font(.system(size: 14))
-                                .foregroundColor(Color(hex: "5A6B80"))
+                                .font(AppTheme.captionFont)
+                                .foregroundColor(.white.opacity(0.65))
                             Text("Week \(profile.currentWeek)")
-                                .font(.system(size: 28, weight: .bold))
-                                .foregroundColor(Color(hex: "1A2B42"))
-                            Text(countdownText)
-                                .font(.system(size: 13, weight: .semibold))
-                                .foregroundColor(Color(hex: "3B7DD8"))
+                                .font(AppTheme.serifHero(size: 56))
+                                .foregroundColor(.white)
+                                .lineSpacing(0)
                         }
                         Spacer()
                         NavigationLink(destination: SettingsView(profile: profile)) {
                             ZStack {
-                                RoundedRectangle(cornerRadius: 10)
-                                    .fill(.white)
+                                Circle()
+                                    .fill(.white.opacity(0.12))
                                     .frame(width: 38, height: 38)
-                                    .shadow(color: .black.opacity(0.04), radius: 3, y: 1)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 10)
-                                            .stroke(Color(hex: "E4EAF1"), lineWidth: 1)
-                                    )
                                 Image(systemName: "gearshape")
                                     .font(.system(size: 16))
-                                    .foregroundColor(Color(hex: "5A6B80"))
+                                    .foregroundColor(.white.opacity(0.85))
                             }
+                        }
+                        // Prevent gear tap from triggering the outer NavigationLink
+                        .simultaneousGesture(TapGesture())
+                    }
+
+                    // Baby size
+                    if let week = currentWeekContent {
+                        Text("\(week.sizeEmoji)  \(babyLabel) is the size of \(articleFor(week.sizeComparison)) \(week.sizeComparison.lowercased())")
+                            .font(.system(size: 15, weight: .semibold))
+                            .foregroundColor(.white.opacity(0.9))
+                            .padding(.top, 14)
+                    }
+
+                    // Countdown pill + CTA row
+                    HStack {
+                        Text(countdownText)
+                            .font(AppTheme.labelFont)
+                            .foregroundColor(AppTheme.accent)
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 6)
+                            .background(AppTheme.accent.opacity(0.15))
+                            .clipShape(Capsule())
+
+                        Spacer()
+
+                        HStack(spacing: 4) {
+                            Text("Week guide")
+                                .font(AppTheme.labelFont)
+                                .foregroundColor(.white)
+                            Image(systemName: "arrow.right")
+                                .font(.system(size: 12, weight: .semibold))
+                                .foregroundColor(.white.opacity(0.7))
                         }
                     }
-                    .padding(.horizontal, 20)
-                    .padding(.top, 8)
-                    
-                    // Progress card
-                    VStack(spacing: 8) {
-                        HStack {
-                            Text("Pregnancy Progress")
-                                .font(.system(size: 13, weight: .semibold))
-                                .foregroundColor(Color(hex: "5A6B80"))
-                            Spacer()
-                            Text("\(Int(profile.progressPercentage * 100))%")
-                                .font(.system(size: 13, weight: .bold))
-                                .foregroundColor(Color(hex: "3B7DD8"))
-                        }
-                        
-                        GeometryReader { geo in
-                            ZStack(alignment: .leading) {
-                                RoundedRectangle(cornerRadius: 4)
-                                    .fill(Color(hex: "E8F0FE"))
-                                    .frame(height: 8)
-                                
-                                RoundedRectangle(cornerRadius: 4)
-                                    .fill(
-                                        LinearGradient(
-                                            colors: [Color(hex: "3B7DD8"), Color(hex: "2B5EA7")],
-                                            startPoint: .leading,
-                                            endPoint: .trailing
-                                        )
-                                    )
-                                    .frame(width: geo.size.width * profile.progressPercentage, height: 8)
-                            }
-                        }
+                    .padding(.top, 20)
+                }
+                .padding(20)
+            }
+            .shadow(color: AppTheme.deepNavy.opacity(0.3), radius: 12, y: 6)
+        }
+        .buttonStyle(.plain)
+        // Only navigate when currentWeekContent exists
+        .disabled(currentWeekContent == nil)
+    }
+
+
+    // MARK: - Progress Card
+
+    private var progressCard: some View {
+        VStack(spacing: 8) {
+            HStack {
+                Text("Pregnancy Progress")
+                    .font(AppTheme.captionFont.weight(.semibold))
+                    .foregroundColor(AppTheme.textSecondary)
+                Spacer()
+                Text("\(Int(profile.progressPercentage * 100))%")
+                    .font(AppTheme.captionFont.weight(.bold))
+                    .foregroundColor(AppTheme.primary)
+            }
+
+            GeometryReader { geo in
+                ZStack(alignment: .leading) {
+                    RoundedRectangle(cornerRadius: 4)
+                        .fill(AppTheme.softBlue.opacity(0.25))
                         .frame(height: 8)
-                        
-                        HStack {
-                            Text("Week 1")
-                                .font(.system(size: 10))
-                                .foregroundColor(Color(hex: "8E9BAD"))
-                            Spacer()
-                            Text("Week 40")
-                                .font(.system(size: 10))
-                                .foregroundColor(Color(hex: "8E9BAD"))
-                        }
-                    }
-                    .padding(16)
-                    .background(
-                        RoundedRectangle(cornerRadius: 14)
-                            .fill(.white)
-                            .shadow(color: .black.opacity(0.04), radius: 3, y: 1)
-                    )
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 14)
-                            .stroke(Color(hex: "E4EAF1"), lineWidth: 1)
-                    )
-                    .padding(.horizontal, 20)
-                    
-                    // This week card — tappable
-                    if let week = currentWeekContent {
-                        NavigationLink(destination: WeekDetailView(week: week, profile: profile)) {
-                            VStack(alignment: .leading, spacing: 8) {
-                                HStack {
-                                    VStack(alignment: .leading, spacing: 4) {
-                                        Text("THIS WEEK")
-                                            .font(.system(size: 10, weight: .semibold))
-                                            .foregroundColor(.white.opacity(0.7))
-                                            .tracking(1)
-                                        
-                                        Text("\(week.sizeEmoji) \(babyLabel) is the size of \(articleFor(week.sizeComparison)) \(week.sizeComparison.lowercased())")
-                                            .font(.system(size: 16, weight: .bold))
-                                            .foregroundColor(.white)
-                                            .multilineTextAlignment(.leading)
-                                        
-                                    }
-                                    Spacer()
-                                }
-                                
-                                Divider()
-                                    .background(.white.opacity(0.2))
-                                
-                                Text("Read full week guide →")
-                                    .font(.system(size: 13, weight: .semibold))
-                                    .foregroundColor(.white)
-                            }
-                            .padding(16)
-                            .background(
-                                RoundedRectangle(cornerRadius: 14)
-                                    .fill(
-                                        LinearGradient(
-                                            colors: [Color(hex: "3B7DD8"), Color(hex: "2B5EA7")],
-                                            startPoint: .topLeading,
-                                            endPoint: .bottomTrailing
-                                        )
-                                    )
-                                    .shadow(color: Color(hex: "3B7DD8").opacity(0.25), radius: 8, y: 4)
-                            )
-                        }
-                        .padding(.horizontal, 20)
-                    }
-                    
-                    // Quick action buttons
-                    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 10) {
-                        NavigationLink(destination: ChecklistsView(profile: profile)) {
-                            quickActionButton(icon: "checklist", label: "Checklists")
-                        }
-                        NavigationLink(destination: AllWeeksView(profile: profile)) {
-                            quickActionButton(icon: "calendar", label: "All Weeks")
-                        }
-                        NavigationLink(destination: TipsCategoryView(profile: profile)) {
-                            quickActionButton(icon: "heart.fill", label: "Tips")
-                        }
-                        NavigationLink(destination: ContractionTimerView()) {
-                            quickActionButton(icon: "waveform.path.ecg", label: "Contractions")
-                        }
-                    }
-                    .padding(.horizontal, 20)
-                    
-                    // This week's tasks
-                    if let week = currentWeekContent {
-                        VStack(alignment: .leading, spacing: 12) {
-                            HStack {
-                                Text("This Week's Tasks")
-                                    .font(.system(size: 15, weight: .bold))
-                                    .foregroundColor(Color(hex: "1A2B42"))
-                                Spacer()
-                                let checklistItems = weekChecklistItems
-                                let totalCount = week.actionItems.count + checklistItems.count
-                                let completedCount = week.actionItems.filter { profile.isActionItemCompleted($0.id) }.count
-                                    + checklistItems.filter { profile.isChecklistItemCompleted($0.id) }.count
-                                Text("\(completedCount) of \(totalCount)")
-                                    .font(.system(size: 12, weight: .semibold))
-                                    .foregroundColor(Color(hex: "3B7DD8"))
-                            }
+                    RoundedRectangle(cornerRadius: 4)
+                        .fill(AppTheme.primaryGradient)
+                        .frame(width: geo.size.width * profile.progressPercentage, height: 8)
+                }
+            }
+            .frame(height: 8)
 
-                            ForEach(week.actionItems) { item in
-                                HStack(spacing: 12) {
-                                    Button(action: {
-                                        withAnimation(.easeInOut(duration: 0.2)) {
-                                            profile.toggleActionItem(item.id)
-                                        }
-                                    }) {
-                                        ZStack {
-                                            RoundedRectangle(cornerRadius: 5)
-                                                .fill(profile.isActionItemCompleted(item.id) ? Color(hex: "3B7DD8") : .clear)
-                                                .frame(width: 22, height: 22)
-                                                .overlay(
-                                                    RoundedRectangle(cornerRadius: 5)
-                                                        .stroke(profile.isActionItemCompleted(item.id) ? Color.clear : Color(hex: "E4EAF1"), lineWidth: 1.5)
-                                                )
+            HStack {
+                Text("Week 1")
+                    .font(.system(size: 10))
+                    .foregroundColor(AppTheme.textTertiary)
+                Spacer()
+                Text("Week 40")
+                    .font(.system(size: 10))
+                    .foregroundColor(AppTheme.textTertiary)
+            }
+        }
+        .padding(16)
+        .background(whiteCard)
+    }
 
-                                            if profile.isActionItemCompleted(item.id) {
-                                                Image(systemName: "checkmark")
-                                                    .font(.system(size: 11, weight: .bold))
-                                                    .foregroundColor(.white)
-                                            }
-                                        }
-                                    }
+    // MARK: - Contraction Timer Row
 
-                                    Text(item.text)
-                                        .font(.system(size: 14))
-                                        .foregroundColor(profile.isActionItemCompleted(item.id) ? Color(hex: "8E9BAD") : Color(hex: "1A2B42"))
-                                        .strikethrough(profile.isActionItemCompleted(item.id))
-                                }
-                            }
+    private var contractionRow: some View {
+        NavigationLink(destination: ContractionTimerView()) {
+            HStack(spacing: 14) {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(AppTheme.primary.opacity(0.1))
+                        .frame(width: 42, height: 42)
+                    Image(systemName: "waveform.path.ecg")
+                        .font(.system(size: 18))
+                        .foregroundColor(AppTheme.primary)
+                }
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Contraction Timer")
+                        .font(.system(size: 15, weight: .semibold))
+                        .foregroundColor(AppTheme.textPrimary)
+                    Text("Track contractions during labor")
+                        .font(AppTheme.captionFont)
+                        .foregroundColor(AppTheme.textSecondary)
+                }
+                Spacer()
+                Image(systemName: "chevron.right")
+                    .font(.system(size: 13, weight: .semibold))
+                    .foregroundColor(AppTheme.textTertiary)
+            }
+            .padding(16)
+            .background(whiteCard)
+        }
+        .buttonStyle(.plain)
+    }
 
-                            ForEach(weekChecklistItems) { item in
-                                HStack(spacing: 12) {
-                                    Button(action: {
-                                        withAnimation(.easeInOut(duration: 0.2)) {
-                                            profile.toggleChecklistItem(item.id)
-                                        }
-                                    }) {
-                                        ZStack {
-                                            RoundedRectangle(cornerRadius: 5)
-                                                .fill(profile.isChecklistItemCompleted(item.id) ? Color(hex: "3B7DD8") : .clear)
-                                                .frame(width: 22, height: 22)
-                                                .overlay(
-                                                    RoundedRectangle(cornerRadius: 5)
-                                                        .stroke(profile.isChecklistItemCompleted(item.id) ? Color.clear : Color(hex: "E4EAF1"), lineWidth: 1.5)
-                                                )
+    // MARK: - Tasks Card
 
-                                            if profile.isChecklistItemCompleted(item.id) {
-                                                Image(systemName: "checkmark")
-                                                    .font(.system(size: 11, weight: .bold))
-                                                    .foregroundColor(.white)
-                                            }
-                                        }
-                                    }
+    private func tasksCard(week: Week) -> some View {
+        let checklistItems = weekChecklistItems
+        let totalCount = week.actionItems.count + checklistItems.count
+        let completedCount = week.actionItems.filter { profile.isActionItemCompleted($0.id) }.count
+            + checklistItems.filter { profile.isChecklistItemCompleted($0.id) }.count
 
-                                    Text(item.text)
-                                        .font(.system(size: 14))
-                                        .foregroundColor(profile.isChecklistItemCompleted(item.id) ? Color(hex: "8E9BAD") : Color(hex: "1A2B42"))
-                                        .strikethrough(profile.isChecklistItemCompleted(item.id))
-                                }
-                            }
-                        }
-                        .padding(16)
-                        .background(
-                            RoundedRectangle(cornerRadius: 14)
-                                .fill(.white)
-                                .shadow(color: .black.opacity(0.04), radius: 3, y: 1)
-                        )
+        return VStack(alignment: .leading, spacing: 12) {
+            HStack {
+                Text("This Week's Tasks")
+                    .font(.system(size: 15, weight: .bold))
+                    .foregroundColor(AppTheme.textPrimary)
+                Spacer()
+                Text("\(completedCount) of \(totalCount)")
+                    .font(AppTheme.captionFont.weight(.semibold))
+                    .foregroundColor(AppTheme.primary)
+            }
+
+            ForEach(week.actionItems) { item in
+                taskRow(
+                    text: item.text,
+                    isCompleted: profile.isActionItemCompleted(item.id),
+                    onToggle: { profile.toggleActionItem(item.id) }
+                )
+            }
+
+            ForEach(checklistItems) { item in
+                taskRow(
+                    text: item.text,
+                    isCompleted: profile.isChecklistItemCompleted(item.id),
+                    onToggle: { profile.toggleChecklistItem(item.id) }
+                )
+            }
+        }
+        .padding(16)
+        .background(whiteCard)
+    }
+
+    private func taskRow(text: String, isCompleted: Bool, onToggle: @escaping () -> Void) -> some View {
+        HStack(spacing: 12) {
+            Button(action: {
+                withAnimation(.easeInOut(duration: 0.2)) { onToggle() }
+            }) {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 5)
+                        .fill(isCompleted ? AppTheme.primary : .clear)
+                        .frame(width: 22, height: 22)
                         .overlay(
-                            RoundedRectangle(cornerRadius: 14)
-                                .stroke(Color(hex: "E4EAF1"), lineWidth: 1)
+                            RoundedRectangle(cornerRadius: 5)
+                                .stroke(isCompleted ? Color.clear : AppTheme.border, lineWidth: 1.5)
                         )
-                        .padding(.horizontal, 20)
-                    }
-
-                    // Common Dad Question card
-                    if let week = currentWeekContent,
-                       let question = week.commonDadQuestion,
-                       let answer = week.commonDadAnswer {
-                        VStack(alignment: .leading, spacing: 10) {
-                            HStack(spacing: 6) {
-                                Image(systemName: "questionmark.circle.fill")
-                                    .font(.system(size: 14))
-                                    .foregroundColor(Color(hex: "3B7DD8"))
-                                Text("Common Dad Question")
-                                    .font(.system(size: 13, weight: .semibold))
-                                    .foregroundColor(Color(hex: "3B7DD8"))
-                            }
-
-                            Text(question)
-                                .font(.system(size: 14, weight: .semibold))
-                                .foregroundColor(Color(hex: "1A2B42"))
-
-                            Text(answer)
-                                .font(.system(size: 13))
-                                .foregroundColor(Color(hex: "5A6B80"))
-                                .lineSpacing(4)
-                        }
-                        .padding(16)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .background(
-                            RoundedRectangle(cornerRadius: 14)
-                                .fill(.white)
-                                .shadow(color: .black.opacity(0.04), radius: 3, y: 1)
-                        )
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 14)
-                                .stroke(Color(hex: "E4EAF1"), lineWidth: 1)
-                        )
-                        .padding(.horizontal, 20)
+                    if isCompleted {
+                        Image(systemName: "checkmark")
+                            .font(.system(size: 11, weight: .bold))
+                            .foregroundColor(.white)
                     }
                 }
-                .padding(.bottom, 24)
             }
-            .background(Color(hex: "F7F9FC"))
+            Text(text)
+                .font(.system(size: 14))
+                .foregroundColor(isCompleted ? AppTheme.textTertiary : AppTheme.textPrimary)
+                .strikethrough(isCompleted, color: AppTheme.textTertiary)
         }
     }
-    
-    private func quickActionButton(icon: String, label: String) -> some View {
-        VStack(spacing: 6) {
-            Image(systemName: icon)
-                .font(.system(size: 20))
-                .foregroundColor(Color(hex: "3B7DD8"))
-            Text(label)
-                .font(.system(size: 11, weight: .semibold))
-                .foregroundColor(Color(hex: "5A6B80"))
+
+    // MARK: - Dad Question Card
+
+    private func dadQuestionCard(question: String, answer: String) -> some View {
+        VStack(alignment: .leading, spacing: 10) {
+            HStack(spacing: 6) {
+                Image(systemName: "questionmark.circle.fill")
+                    .font(.system(size: 14))
+                    .foregroundColor(AppTheme.primary)
+                Text("Common Dad Question")
+                    .font(AppTheme.captionFont.weight(.semibold))
+                    .foregroundColor(AppTheme.primary)
+            }
+            Text(question)
+                .font(.system(size: 14, weight: .semibold))
+                .foregroundColor(AppTheme.textPrimary)
+            Text(answer)
+                .font(AppTheme.captionFont)
+                .foregroundColor(AppTheme.textSecondary)
+                .lineSpacing(4)
         }
-        .frame(maxWidth: .infinity)
-        .padding(.vertical, 16)
-        .background(
-            RoundedRectangle(cornerRadius: 12)
-                .fill(.white)
-                .shadow(color: .black.opacity(0.04), radius: 3, y: 1)
-        )
-        .overlay(
-            RoundedRectangle(cornerRadius: 12)
-                .stroke(Color(hex: "E4EAF1"), lineWidth: 1)
-        )
+        .padding(16)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(whiteCard)
     }
-    
+
+    // MARK: - Shared Helpers
+
+    private var whiteCard: some View {
+        RoundedRectangle(cornerRadius: AppTheme.cornerRadius)
+            .fill(AppTheme.card)
+            .shadow(color: AppTheme.cardShadow, radius: 4, y: 2)
+            .overlay(
+                RoundedRectangle(cornerRadius: AppTheme.cornerRadius)
+                    .stroke(AppTheme.border, lineWidth: 1)
+            )
+    }
+
+    private var greeting: String {
+        let hour = Calendar.current.component(.hour, from: Date())
+        switch hour {
+        case 5..<12: return "morning"
+        case 12..<17: return "afternoon"
+        default:     return "evening"
+        }
+    }
+
     private var countdownText: String {
         let calendar = Calendar.current
         let today = calendar.startOfDay(for: Date())
-        let due = calendar.startOfDay(for: profile.dueDate)
-        let days = calendar.dateComponents([.day], from: today, to: due).day ?? 0
-
+        let due   = calendar.startOfDay(for: profile.dueDate)
+        let days  = calendar.dateComponents([.day], from: today, to: due).day ?? 0
         switch days {
-        case ..<0: return "Overdue by \(abs(days)) day\(abs(days) == 1 ? "" : "s")"
-        case 0:    return "Today is your due date!"
+        case ..<0: return "Overdue by \(abs(days))d"
+        case 0:    return "Due today!"
         case 1:    return "1 day to go"
         default:   return "\(days) days to go"
         }
@@ -358,14 +351,12 @@ struct HomeView: View {
     }
 
     private func articleFor(_ word: String) -> String {
-        let lower = word.lowercased()
         let vowels: [Character] = ["a", "e", "i", "o", "u"]
-        if let first = lower.first, vowels.contains(first) {
-            return "an"
-        }
+        if let first = word.lowercased().first, vowels.contains(first) { return "an" }
         return "a"
     }
 }
+
 
 #Preview {
     HomeView(profile: UserProfile(
