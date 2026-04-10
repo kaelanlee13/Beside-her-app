@@ -14,6 +14,10 @@ struct HomeView: View {
     var currentWeekContent: Week? {
         content.week(for: profile.currentWeek)
     }
+
+    var weekChecklistItems: [ChecklistItem] {
+        content.checklists.flatMap { $0.items }.filter { $0.weekRecommended == profile.currentWeek }
+    }
     
     var greeting: String {
         let hour = Calendar.current.component(.hour, from: Date())
@@ -182,12 +186,15 @@ struct HomeView: View {
                                     .font(.system(size: 15, weight: .bold))
                                     .foregroundColor(Color(hex: "1A2B42"))
                                 Spacer()
-                                let completed = week.actionItems.filter { profile.isActionItemCompleted($0.id) }.count
-                                Text("\(completed) of \(week.actionItems.count)")
+                                let checklistItems = weekChecklistItems
+                                let totalCount = week.actionItems.count + checklistItems.count
+                                let completedCount = week.actionItems.filter { profile.isActionItemCompleted($0.id) }.count
+                                    + checklistItems.filter { profile.isChecklistItemCompleted($0.id) }.count
+                                Text("\(completedCount) of \(totalCount)")
                                     .font(.system(size: 12, weight: .semibold))
                                     .foregroundColor(Color(hex: "3B7DD8"))
                             }
-                            
+
                             ForEach(week.actionItems) { item in
                                 HStack(spacing: 12) {
                                     Button(action: {
@@ -203,7 +210,7 @@ struct HomeView: View {
                                                     RoundedRectangle(cornerRadius: 5)
                                                         .stroke(profile.isActionItemCompleted(item.id) ? Color.clear : Color(hex: "E4EAF1"), lineWidth: 1.5)
                                                 )
-                                            
+
                                             if profile.isActionItemCompleted(item.id) {
                                                 Image(systemName: "checkmark")
                                                     .font(.system(size: 11, weight: .bold))
@@ -211,11 +218,42 @@ struct HomeView: View {
                                             }
                                         }
                                     }
-                                    
+
                                     Text(item.text)
                                         .font(.system(size: 14))
                                         .foregroundColor(profile.isActionItemCompleted(item.id) ? Color(hex: "8E9BAD") : Color(hex: "1A2B42"))
                                         .strikethrough(profile.isActionItemCompleted(item.id))
+                                }
+                            }
+
+                            ForEach(weekChecklistItems) { item in
+                                HStack(spacing: 12) {
+                                    Button(action: {
+                                        withAnimation(.easeInOut(duration: 0.2)) {
+                                            profile.toggleChecklistItem(item.id)
+                                        }
+                                    }) {
+                                        ZStack {
+                                            RoundedRectangle(cornerRadius: 5)
+                                                .fill(profile.isChecklistItemCompleted(item.id) ? Color(hex: "3B7DD8") : .clear)
+                                                .frame(width: 22, height: 22)
+                                                .overlay(
+                                                    RoundedRectangle(cornerRadius: 5)
+                                                        .stroke(profile.isChecklistItemCompleted(item.id) ? Color.clear : Color(hex: "E4EAF1"), lineWidth: 1.5)
+                                                )
+
+                                            if profile.isChecklistItemCompleted(item.id) {
+                                                Image(systemName: "checkmark")
+                                                    .font(.system(size: 11, weight: .bold))
+                                                    .foregroundColor(.white)
+                                            }
+                                        }
+                                    }
+
+                                    Text(item.text)
+                                        .font(.system(size: 14))
+                                        .foregroundColor(profile.isChecklistItemCompleted(item.id) ? Color(hex: "8E9BAD") : Color(hex: "1A2B42"))
+                                        .strikethrough(profile.isChecklistItemCompleted(item.id))
                                 }
                             }
                         }
@@ -233,7 +271,9 @@ struct HomeView: View {
                     }
 
                     // Common Dad Question card
-                    if let week = currentWeekContent {
+                    if let week = currentWeekContent,
+                       let question = week.commonDadQuestion,
+                       let answer = week.commonDadAnswer {
                         VStack(alignment: .leading, spacing: 10) {
                             HStack(spacing: 6) {
                                 Image(systemName: "questionmark.circle.fill")
@@ -244,11 +284,11 @@ struct HomeView: View {
                                     .foregroundColor(Color(hex: "3B7DD8"))
                             }
 
-                            Text(week.commonDadQuestion)
+                            Text(question)
                                 .font(.system(size: 14, weight: .semibold))
                                 .foregroundColor(Color(hex: "1A2B42"))
 
-                            Text(week.commonDadAnswer)
+                            Text(answer)
                                 .font(.system(size: 13))
                                 .foregroundColor(Color(hex: "5A6B80"))
                                 .lineSpacing(4)
