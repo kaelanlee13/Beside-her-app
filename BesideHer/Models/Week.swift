@@ -18,9 +18,8 @@ struct Week: Codable, Identifiable {
     let partnerExperience: String
     let howToHelp: [String]
     let actionItems: [ActionItem]
-    let commonDadQuestion: String
-    let commonDadAnswer: String
-    let relatedTips: [String]
+    let commonDadQuestion: String?
+    let commonDadAnswer: String?
     
     var id: Int { weekNumber }
 }

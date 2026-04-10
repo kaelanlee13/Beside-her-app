@@ -12,6 +12,7 @@ struct OnboardingView: View {
     @Environment(\.modelContext) private var modelContext
     @State private var currentStep = 0
     @State private var dueDate = Calendar.current.date(byAdding: .month, value: 6, to: Date()) ?? Date()
+    @State private var babyGender = "unknown"
     
     var onComplete: () -> Void
     
@@ -51,8 +52,27 @@ struct OnboardingView: View {
                     insertion: .move(edge: .trailing),
                     removal: .move(edge: .leading)
                 ))
-                
+
             case 2:
+                GenderView(
+                    babyGender: $babyGender,
+                    onContinue: {
+                        withAnimation(.easeInOut(duration: 0.3)) {
+                            currentStep = 3
+                        }
+                    },
+                    onBack: {
+                        withAnimation(.easeInOut(duration: 0.3)) {
+                            currentStep = 1
+                        }
+                    }
+                )
+                .transition(.asymmetric(
+                    insertion: .move(edge: .trailing),
+                    removal: .move(edge: .leading)
+                ))
+
+            case 3:
                 NotificationView(
                     onEnable: {
                         requestNotifications()
@@ -63,7 +83,7 @@ struct OnboardingView: View {
                     },
                     onBack: {
                         withAnimation(.easeInOut(duration: 0.3)) {
-                            currentStep = 1
+                            currentStep = 2
                         }
                     }
                 )
@@ -79,11 +99,12 @@ struct OnboardingView: View {
     }
     
     private func completeOnboarding() {
-        // Create the user profile with the selected due date
+        // Create the user profile with the selected due date and gender
         let profile = UserProfile(
             dueDate: dueDate,
             onboardingCompleted: true,
-            notificationsEnabled: currentStep == 2
+            notificationsEnabled: currentStep == 3,
+            babyGender: babyGender
         )
         modelContext.insert(profile)
         

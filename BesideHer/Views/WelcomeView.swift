@@ -48,6 +48,9 @@ struct WelcomeView: View {
                 Capsule()
                     .fill(Color(hex: "E4EAF1"))
                     .frame(width: 10, height: 4)
+                Capsule()
+                    .fill(Color(hex: "E4EAF1"))
+                    .frame(width: 10, height: 4)
             }
             .padding(.bottom, 32)
             

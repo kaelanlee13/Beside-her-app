@@ -13,15 +13,17 @@ final class UserProfile {
     var dueDate: Date
     var onboardingCompleted: Bool
     var notificationsEnabled: Bool
+    var babyGender: String                 // "boy", "girl", or "unknown"
     var completedActionItems: [String]    // stores action item IDs
     var completedChecklistItems: [String] // stores checklist item IDs
     var bookmarkedTips: [String]          // stores tip IDs
     var createdAt: Date
-    
+
     init(
         dueDate: Date,
         onboardingCompleted: Bool = false,
         notificationsEnabled: Bool = false,
+        babyGender: String = "unknown",
         completedActionItems: [String] = [],
         completedChecklistItems: [String] = [],
         bookmarkedTips: [String] = [],
@@ -30,6 +32,7 @@ final class UserProfile {
         self.dueDate = dueDate
         self.onboardingCompleted = onboardingCompleted
         self.notificationsEnabled = notificationsEnabled
+        self.babyGender = babyGender
         self.completedActionItems = completedActionItems
         self.completedChecklistItems = completedChecklistItems
         self.bookmarkedTips = bookmarkedTips

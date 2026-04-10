@@ -24,7 +24,9 @@
           "text": "Have a conversation about parenting goals",
           "category": "emotional"
         }
-      ]
+      ],
+      "commonDadQuestion": "Is this really happening?",
+      "commonDadAnswer": "Yes — and it's completely normal to feel a mix of excitement and disbelief. Give yourself time to process. Many dads don't feel it's real until they hear the heartbeat or see the first ultrasound."
     },
     {
       "weekNumber": 2,
@@ -102,7 +104,9 @@
           "text": "Discuss when and how to share the news",
           "category": "emotional"
         }
-      ]
+      ],
+      "commonDadQuestion": "When do we tell people?",
+      "commonDadAnswer": "Most couples wait until after week 12-13 when miscarriage risk drops significantly. Until then, only tell people you'd want supporting you regardless of outcome."
     },
     {
       "weekNumber": 5,
@@ -128,7 +132,9 @@
           "text": "Research what to expect at the first prenatal visit",
           "category": "education"
         }
-      ]
+      ],
+      "commonDadQuestion": "Is morning sickness normal?",
+      "commonDadAnswer": "Very — up to 80% of pregnant women experience it, and it can hit any time of day. It usually peaks around weeks 8-10 and fades by week 14. Keep bland snacks on hand and help manage her triggers."
     },
     {
       "weekNumber": 6,
@@ -154,7 +160,9 @@
           "text": "Identify her nausea triggers and eliminate them",
           "category": "health"
         }
-      ]
+      ],
+      "commonDadQuestion": "What if she can't keep food down?",
+      "commonDadAnswer": "Try small frequent meals — crackers, ginger, cold foods, and bland options often help. If she can't hold down fluids for 24+ hours or is losing weight, call her OB. Severe nausea can need medical treatment."
     },
     {
       "weekNumber": 7,
@@ -180,7 +188,9 @@
           "text": "Prepare a list of questions for the first prenatal appointment",
           "category": "planning"
         }
-      ]
+      ],
+      "commonDadQuestion": "Should we see a doctor about the nausea?",
+      "commonDadAnswer": "Nausea is normal, but call the OB if she's losing weight, can't keep fluids down, or feels dizzy. There are safe prescription options — there's no reason she has to suffer through it."
     },
     {
       "weekNumber": 8,
@@ -206,7 +216,9 @@
           "text": "Review your health insurance coverage for pregnancy",
           "category": "financial"
         }
-      ]
+      ],
+      "commonDadQuestion": "What if we miscarry?",
+      "commonDadAnswer": "About 10-15% of known pregnancies end in miscarriage, most in the first trimester. If it happens, it's not her fault or yours. Allow space for grief, lean on each other, and talk to the OB — many couples go on to have healthy pregnancies."
     },
     {
       "weekNumber": 9,
@@ -232,7 +244,9 @@
           "text": "Start a baby budget spreadsheet",
           "category": "financial"
         }
-      ]
+      ],
+      "commonDadQuestion": "Can we afford this?",
+      "commonDadAnswer": "Most parents feel this way. Start by reviewing your budget and identifying savings. The biggest costs are childcare and parental leave — plan for those first. Many baby items can be borrowed or bought secondhand."
     },
     {
       "weekNumber": 10,
@@ -258,7 +272,9 @@
           "text": "Plan a relaxed date night this week",
           "category": "emotional"
         }
-      ]
+      ],
+      "commonDadQuestion": "Are genetic tests necessary?",
+      "commonDadAnswer": "Not required, but worth considering. Tests like the NIPT screen for chromosomal conditions with no risk to the baby and can reveal the sex. Talk to her OB about what makes sense for you."
     },
     {
       "weekNumber": 11,
@@ -284,7 +300,9 @@
           "text": "Review your company's paternity leave policy",
           "category": "financial"
         }
-      ]
+      ],
+      "commonDadQuestion": "Is it too early to plan childcare?",
+      "commonDadAnswer": "Actually, now is the right time. Infant daycare waitlists can be 6-12+ months in many cities. Start researching options now — daycare centers, nannies, family care — so you're not scrambling later."
     },
     {
       "weekNumber": 12,
@@ -310,7 +328,9 @@
           "text": "Celebrate the end of the first trimester together",
           "category": "emotional"
         }
-      ]
+      ],
+      "commonDadQuestion": "When is it safe to share the news?",
+      "commonDadAnswer": "Most couples share after week 12, when miscarriage risk drops to about 1%. But there's no rule. Some share earlier with close family, others wait until the anatomy scan. Do what feels right for you both."
     },
     {
       "weekNumber": 13,
@@ -336,7 +356,9 @@
           "text": "Share the news with family and friends",
           "category": "emotional"
         }
-      ]
+      ],
+      "commonDadQuestion": "How do I tell my boss?",
+      "commonDadAnswer": "You're not required to tell your employer until closer to leave. When you do, share your expected leave dates and any coverage needs. Review your company's parental leave policy now so there are no surprises."
     },
     {
       "weekNumber": 14,
@@ -362,7 +384,9 @@
           "text": "Begin researching what to put on the baby registry",
           "category": "planning"
         }
-      ]
+      ],
+      "commonDadQuestion": "Why does her side hurt?",
+      "commonDadAnswer": "Round ligament pain — totally normal. As the uterus grows, the ligaments supporting it stretch, causing sharp or aching pain in the lower abdomen or sides. It peaks in the second trimester and isn't harmful."
     },
     {
       "weekNumber": 15,
@@ -388,7 +412,9 @@
           "text": "Research car seat safety ratings",
           "category": "safety"
         }
-      ]
+      ],
+      "commonDadQuestion": "What do we actually need to buy?",
+      "commonDadAnswer": "The true essentials are a safe sleep surface, car seat, diapers, onesies, and feeding supplies. Skip the rest for now — many 'must-have' items aren't. You'll figure out what you actually need after baby arrives."
     },
     {
       "weekNumber": 16,
@@ -414,7 +440,9 @@
           "text": "Talk or sing to the baby bump",
           "category": "bonding"
         }
-      ]
+      ],
+      "commonDadQuestion": "Can the baby hear me yet?",
+      "commonDadAnswer": "Not quite yet — hearing develops around week 18-20. But it's never too early to start. Babies recognize their parents' voices at birth, so building the habit now means you'll be comfortable doing it later."
     },
     {
       "weekNumber": 17,
@@ -440,7 +468,9 @@
           "text": "Look into childbirth class schedules",
           "category": "planning"
         }
-      ]
+      ],
+      "commonDadQuestion": "Does talking to the belly really matter?",
+      "commonDadAnswer": "Yes. Research shows babies recognize their parents' voices at birth. Talking now builds that bond and familiarizes the baby with your voice. Even if it feels awkward, keep at it."
     },
     {
       "weekNumber": 18,
@@ -466,7 +496,9 @@
           "text": "Register for a childbirth class",
           "category": "planning"
         }
-      ]
+      ],
+      "commonDadQuestion": "When will I feel the baby kick?",
+      "commonDadAnswer": "Partners typically feel kicks from outside around weeks 20-24, once movements get strong enough. Your partner may feel flutters earlier. Put your hand on her belly often — be patient, it's worth the wait."
     },
     {
       "weekNumber": 19,
@@ -492,7 +524,9 @@
           "text": "Order key nursery furniture if not done yet",
           "category": "planning"
         }
-      ]
+      ],
+      "commonDadQuestion": "Is sex still safe?",
+      "commonDadAnswer": "For most uncomplicated pregnancies, yes — sex is safe throughout. Check with her OB if there's any specific concern. Positions may need to adjust as the belly grows. Check in with her regularly."
     },
     {
       "weekNumber": 20,
@@ -518,7 +552,9 @@
           "text": "Celebrate hitting the halfway mark",
           "category": "emotional"
         }
-      ]
+      ],
+      "commonDadQuestion": "Should we find out the gender?",
+      "commonDadAnswer": "Completely personal. Finding out can help with planning and bonding, but the surprise is special too. If you two disagree, talk it through — there's no wrong answer."
     },
     {
       "weekNumber": 21,
@@ -544,7 +580,9 @@
           "text": "Pick up belly oil or lotion to help with stretch marks",
           "category": "support"
         }
-      ]
+      ],
+      "commonDadQuestion": "Why do I feel left out?",
+      "commonDadAnswer": "This is one of the most common feelings dads report, and it makes sense — the physical experience is all hers. Stay involved: go to appointments, feel kicks, set up the nursery. Engagement is what matters."
     },
     {
       "weekNumber": 22,
@@ -570,7 +608,9 @@
           "text": "Check in on nursery progress and order anything missing",
           "category": "planning"
         }
-      ]
+      ],
+      "commonDadQuestion": "How do I choose a pediatrician?",
+      "commonDadAnswer": "Ask your OB or friends for referrals. Many pediatricians offer free meet-and-greet visits before birth. Look for someone accepting new patients, close to home, with a communication style that works for you. Choose before week 36."
     },
     {
       "weekNumber": 23,
@@ -596,7 +636,9 @@
           "text": "Learn the difference between Braxton Hicks and real contractions",
           "category": "education"
         }
-      ]
+      ],
+      "commonDadQuestion": "What are Braxton Hicks?",
+      "commonDadAnswer": "Practice contractions — the uterus tightening and releasing to prepare for labor. They're usually irregular and stop if she changes position or drinks water. Regular, painful contractions before week 37 should go to the OB."
     },
     {
       "weekNumber": 24,
@@ -622,7 +664,9 @@
           "text": "Support her through the glucose screening test",
           "category": "support"
         }
-      ]
+      ],
+      "commonDadQuestion": "What if the baby comes early?",
+      "commonDadAnswer": "Know the signs of preterm labor: regular contractions, pelvic pressure, or fluid leaking. If anything seems off, call the OB. By week 28+, outcomes are much better — every week in the womb matters."
     },
     {
       "weekNumber": 25,
@@ -648,7 +692,9 @@
           "text": "Pick up a pregnancy pillow if you haven't already",
           "category": "support"
         }
-      ]
+      ],
+      "commonDadQuestion": "Is heartburn harmful to the baby?",
+      "commonDadAnswer": "No — it's uncomfortable for her but doesn't affect the baby. The growing uterus pushes stomach acid up. Tums are generally safe (confirm with OB). Small meals and not eating before bed both help."
     },
     {
       "weekNumber": 26,
@@ -674,7 +720,9 @@
           "text": "Help reduce swelling with evening foot massages",
           "category": "support"
         }
-      ]
+      ],
+      "commonDadQuestion": "When should we start the daycare search?",
+      "commonDadAnswer": "Start now. Quality infant care often has 6-12+ month waitlists. Visit centers, get on multiple lists, and factor the cost into your budget — infant care can run $1,500-3,000+/month depending on location."
     },
     {
       "weekNumber": 27,
@@ -700,7 +748,9 @@
           "text": "Plan a relaxing babymoon weekend",
           "category": "emotional"
         }
-      ]
+      ],
+      "commonDadQuestion": "How much weight should she be gaining?",
+      "commonDadAnswer": "For a normal pre-pregnancy BMI, the typical range is 25-35 lbs total — about 1 lb/week in the second and third trimesters. Her OB is tracking this. Your job is to support healthy eating, not comment on her body."
     },
     {
       "weekNumber": 28,
@@ -726,7 +776,9 @@
           "text": "Complete the hospital tour",
           "category": "planning"
         }
-      ]
+      ],
+      "commonDadQuestion": "What goes in a birth plan?",
+      "commonDadAnswer": "A birth plan covers preferences like pain management, who's in the room, cord cutting, skin-to-skin contact, and feeding intentions. Keep it to one page, stay flexible, and review it with her OB in advance."
     },
     {
       "weekNumber": 29,
@@ -752,7 +804,9 @@
           "text": "Make sure the nursery is nearly complete",
           "category": "planning"
         }
-      ]
+      ],
+      "commonDadQuestion": "What happens in childbirth class?",
+      "commonDadAnswer": "You'll learn what to expect during labor, comfort and breathing techniques, when to go to the hospital, and what happens after delivery. It's worth it — dads who attend feel significantly more prepared and confident."
     },
     {
       "weekNumber": 30,
@@ -778,7 +832,9 @@
           "text": "Install the car seat and schedule a safety inspection",
           "category": "safety"
         }
-      ]
+      ],
+      "commonDadQuestion": "How often should the baby kick?",
+      "commonDadAnswer": "From week 28+, track kick counts: 10 movements within 2 hours, once a day after a meal. If she notices a significant decrease in movement at any point, call the OB right away. Don't wait and see."
     },
     {
       "weekNumber": 31,
@@ -804,7 +860,9 @@
           "text": "Learn the signs of labor",
           "category": "education"
         }
-      ]
+      ],
+      "commonDadQuestion": "When should we have the bag packed?",
+      "commonDadAnswer": "Have it ready by week 36. Pack in three categories: for her (comfort items, snacks, toiletries), for you (charger, snacks, change of clothes), and for baby (going-home outfit, installed car seat ready to go)."
     },
     {
       "weekNumber": 32,
@@ -830,7 +888,9 @@
           "text": "Map and drive the route to the hospital",
           "category": "planning"
         }
-      ]
+      ],
+      "commonDadQuestion": "What's my role during labor?",
+      "commonDadAnswer": "You're her advocate and anchor. Remind her she can do this, communicate her birth plan to nurses, keep her comfortable, and stay calm. You don't need to fix anything — your presence matters more than you know."
     },
     {
       "weekNumber": 33,
@@ -856,7 +916,9 @@
           "text": "Double-check the hospital bag is fully packed",
           "category": "planning"
         }
-      ]
+      ],
+      "commonDadQuestion": "Will I be a good father?",
+      "commonDadAnswer": "The fact that you're asking is a good sign. No dad feels fully ready. Good fathering isn't about being perfect — it's about showing up, being present, and learning as you go. You have what it takes."
     },
     {
       "weekNumber": 34,
@@ -882,7 +944,9 @@
           "text": "Confirm your paternity leave paperwork is filed",
           "category": "financial"
         }
-      ]
+      ],
+      "commonDadQuestion": "Are we actually ready?",
+      "commonDadAnswer": "More than you think. The nursery doesn't need to be perfect, and you don't need every item on the registry. The essentials are love, safety, and presence — you can figure out everything else as you go."
     },
     {
       "weekNumber": 35,
@@ -908,7 +972,9 @@
           "text": "Make sure your phone is charged and car has gas at all times",
           "category": "planning"
         }
-      ]
+      ],
+      "commonDadQuestion": "What do I pack for the hospital?",
+      "commonDadAnswer": "For you: snacks (the cafeteria may be closed at 3am), phone charger, a change of clothes, and something for early labor downtime. Don't overpack — most of what you need is already at the hospital."
     },
     {
       "weekNumber": 36,
@@ -934,7 +1000,9 @@
           "text": "Arrange care for pets or older children during delivery",
           "category": "planning"
         }
-      ]
+      ],
+      "commonDadQuestion": "How do I install the car seat?",
+      "commonDadAnswer": "Read the manual and use either the LATCH system or the seatbelt — not both. The seat should not move more than 1 inch side to side. Many fire stations offer free inspections. Get it checked before the due date."
     },
     {
       "weekNumber": 37,
@@ -960,7 +1028,9 @@
           "text": "Stay reachable — keep your phone on at all times",
           "category": "planning"
         }
-      ]
+      ],
+      "commonDadQuestion": "What are the signs of real labor?",
+      "commonDadAnswer": "Regular contractions that get closer together, stronger, and longer — unlike Braxton Hicks, they don't stop with movement or water. Other signs: water breaking, bloody show. When in doubt, call the OB."
     },
     {
       "weekNumber": 38,
@@ -986,7 +1056,9 @@
           "text": "Prepare a list of people to call or text after delivery",
           "category": "planning"
         }
-      ]
+      ],
+      "commonDadQuestion": "When do we go to the hospital?",
+      "commonDadAnswer": "For first-time parents, follow the 5-1-1 rule: contractions every 5 minutes, lasting 1 minute, for 1 hour. If her water breaks, go in immediately. Always call the OB or hospital first — they'll confirm when to come."
     },
     {
       "weekNumber": 39,
@@ -1012,7 +1084,9 @@
           "text": "Keep the car gassed up and ready",
           "category": "planning"
         }
-      ]
+      ],
+      "commonDadQuestion": "What if she goes past the due date?",
+      "commonDadAnswer": "It's common — only about 5% of babies arrive on their due date. Most OBs will induce by 41-42 weeks. Keep her comfortable, stay close to home, and make sure your bag is packed and car seat is installed."
     },
     {
       "weekNumber": 40,
@@ -1038,7 +1112,9 @@
           "text": "Capture the moment — take photos and video",
           "category": "bonding"
         }
-      ]
+      ],
+      "commonDadQuestion": "What do I do when labor starts?",
+      "commonDadAnswer": "Stay calm. Note the time of the first contraction and follow the 5-1-1 rule. If her water breaks, head in. Keep her comfortable, eat something yourself, and call the OB or hospital before leaving — they'll guide you."
     }
   ]
 }

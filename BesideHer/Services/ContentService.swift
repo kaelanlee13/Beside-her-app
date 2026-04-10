@@ -93,7 +93,7 @@ class ContentService {
         tips.filter { $0.trimester.contains(trimester) }
     }
     
-    /// Get tips by their IDs (used for relatedTips in Week)
+    /// Get tips by their IDs
     func tips(withIDs ids: [String]) -> [Tip] {
         tips.filter { ids.contains($0.id) }
     }

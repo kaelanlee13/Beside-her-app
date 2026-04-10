@@ -76,6 +76,9 @@ struct NotificationView: View {
                     .fill(Color(hex: "E4EAF1"))
                     .frame(width: 10, height: 4)
                 Capsule()
+                    .fill(Color(hex: "E4EAF1"))
+                    .frame(width: 10, height: 4)
+                Capsule()
                     .fill(Color(hex: "3B7DD8"))
                     .frame(width: 24, height: 4)
             }

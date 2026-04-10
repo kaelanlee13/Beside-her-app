@@ -33,7 +33,7 @@ struct DueDateView: View {
             Spacer()
             
             // Step label
-            Text("STEP 2 OF 3")
+            Text("STEP 2 OF 4")
                 .font(.system(size: 12, weight: .semibold))
                 .foregroundColor(Color(hex: "3B7DD8"))
                 .tracking(1)
@@ -77,6 +77,9 @@ struct DueDateView: View {
                 Capsule()
                     .fill(Color(hex: "3B7DD8"))
                     .frame(width: 24, height: 4)
+                Capsule()
+                    .fill(Color(hex: "E4EAF1"))
+                    .frame(width: 10, height: 4)
                 Capsule()
                     .fill(Color(hex: "E4EAF1"))
                     .frame(width: 10, height: 4)

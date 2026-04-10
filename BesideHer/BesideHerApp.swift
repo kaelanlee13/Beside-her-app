@@ -19,7 +19,14 @@ struct BesideHerApp: App {
         do {
             return try ModelContainer(for: schema, configurations: [modelConfiguration])
         } catch {
-            fatalError("Could not create ModelContainer: \(error)")
+            // Migration failed (e.g. schema changed). Delete the old store and start fresh.
+            // Safe pre-App Store: no real user data to preserve yet.
+            try? FileManager.default.removeItem(at: modelConfiguration.url)
+            do {
+                return try ModelContainer(for: schema, configurations: [modelConfiguration])
+            } catch {
+                fatalError("Could not create ModelContainer: \(error)")
+            }
         }
     }()
 

@@ -322,6 +322,7 @@ struct WeekDetailView: View {
                 .foregroundColor(Color(hex: "5A6B80"))
                 .lineSpacing(4)
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
         .padding(16)
         .background(
             RoundedRectangle(cornerRadius: 14)
