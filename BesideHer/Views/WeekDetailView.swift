@@ -22,10 +22,15 @@ struct WeekDetailView: View {
         ScrollView {
             VStack(spacing: 0) {
 
+                // ─── Week Navigation ─────────────────────────────────────
+                weekNavRow
+                    .padding(.horizontal, 20)
+                    .padding(.top, 16)
+
                 // ─── Hero ────────────────────────────────────────────────
                 heroHeader
                     .padding(.horizontal, 20)
-                    .padding(.top, 16)
+                    .padding(.top, 10)
 
                 // ─── Baby Development ────────────────────────────────────
                 sectionCard(
@@ -66,11 +71,7 @@ struct WeekDetailView: View {
                         .padding(.top, 12)
                 }
 
-                // ─── Week Navigation ─────────────────────────────────────
-                weekNavRow
-                    .padding(.horizontal, 20)
-                    .padding(.top, 20)
-                    .padding(.bottom, 32)
+                Spacer(minLength: 32)
             }
         }
         .background(AppTheme.background.ignoresSafeArea())
