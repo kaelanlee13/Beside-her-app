@@ -75,7 +75,7 @@ struct TipsCategoryView: View {
         }
         .background(AppTheme.background.ignoresSafeArea())
         .navigationTitle("Support Tips")
-        .navigationBarTitleDisplayMode(.large)
+        .navigationBarTitleDisplayMode(.inline)
         } // NavigationStack
     }
 }
@@ -173,7 +173,7 @@ struct TipsListView: View {
         }
         .background(AppTheme.background.ignoresSafeArea())
         .navigationTitle(categoryName)
-        .navigationBarTitleDisplayMode(.large)
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

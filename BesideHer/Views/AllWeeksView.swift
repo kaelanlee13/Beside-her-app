@@ -84,7 +84,7 @@ struct AllWeeksView: View {
         }
         .background(Color(hex: "F7F9FC"))
         .navigationTitle("All Weeks")
-        .navigationBarTitleDisplayMode(.large)
+        .navigationBarTitleDisplayMode(.inline)
         } // NavigationStack
     }
 }

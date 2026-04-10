@@ -350,7 +350,7 @@ struct ChecklistsView: View {
         }
         .background(Color(hex: "F7F9FC"))
         .navigationTitle("Checklists")
-        .navigationBarTitleDisplayMode(.large)
+        .navigationBarTitleDisplayMode(.inline)
         .onAppear {
             // Default to the user's current trimester
             selectedTrimester = profile.currentTrimester
