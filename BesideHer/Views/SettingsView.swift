@@ -15,18 +15,20 @@ struct SettingsView: View {
     @State private var editedDueDate: Date = Date()
     @State private var showGenderPicker = false
     @State private var showAbout = false
-    
+
     var bookmarkedTips: [Tip] {
         content.tips(withIDs: profile.bookmarkedTips)
     }
-    
+
     var body: some View {
         ScrollView {
             VStack(spacing: 20) {
-                // Pregnancy Info
+
+                // ─── Pregnancy Info ──────────────────────────────────────
                 VStack(spacing: 0) {
                     settingsRow(
-                        icon: "📅",
+                        systemImage: "calendar",
+                        iconColor: AppTheme.primary,
                         label: "Due Date",
                         value: formattedDueDate,
                         showChevron: true,
@@ -35,95 +37,72 @@ struct SettingsView: View {
                             showDatePicker = true
                         }
                     )
-                    
                     Divider().padding(.leading, 52)
-
                     settingsRow(
-                        icon: "👶",
+                        systemImage: "figure.child",
+                        iconColor: AppTheme.accent,
                         label: "Baby's Gender",
                         value: genderLabel,
                         showChevron: true,
                         action: { showGenderPicker = true }
                     )
-
                     Divider().padding(.leading, 52)
-
                     settingsRow(
-                        icon: "📍",
+                        systemImage: "calendar.badge.clock",
+                        iconColor: AppTheme.softBlue,
                         label: "Current Week",
                         value: "Week \(profile.currentWeek)",
                         showChevron: false,
                         action: {}
                     )
-                    
                     Divider().padding(.leading, 52)
-                    
                     settingsRow(
-                        icon: "🗓️",
+                        systemImage: "list.bullet.clipboard",
+                        iconColor: Color(hex: "8B6CC1"),
                         label: "Trimester",
                         value: trimesterLabel,
                         showChevron: false,
                         action: {}
                     )
                 }
-                .background(
-                    RoundedRectangle(cornerRadius: 14)
-                        .fill(.white)
-                        .shadow(color: .black.opacity(0.04), radius: 3, y: 1)
-                )
-                .overlay(
-                    RoundedRectangle(cornerRadius: 14)
-                        .stroke(Color(hex: "E4EAF1"), lineWidth: 1)
-                )
+                .background(whiteCard)
                 .padding(.horizontal, 20)
-                
-                // Notifications
+
+                // ─── Notifications ───────────────────────────────────────
                 sectionHeader("Notifications")
-                
+
                 VStack(spacing: 0) {
                     HStack(spacing: 12) {
-                        Text("🔔")
-                            .font(.system(size: 18))
+                        iconBadge(systemImage: "bell.fill", color: AppTheme.accent)
                         Text("Weekly Reminders")
                             .font(.system(size: 15))
-                            .foregroundColor(Color(hex: "1A2B42"))
+                            .foregroundColor(AppTheme.textPrimary)
                         Spacer()
                         Toggle("", isOn: Binding(
                             get: { profile.notificationsEnabled },
                             set: { newValue in
                                 profile.notificationsEnabled = newValue
-                                if newValue {
-                                    requestNotifications()
-                                }
+                                if newValue { requestNotifications() }
                             }
                         ))
-                        .tint(Color(hex: "3B7DD8"))
+                        .tint(AppTheme.primary)
                     }
                     .padding(.horizontal, 14)
                     .padding(.vertical, 12)
                 }
-                .background(
-                    RoundedRectangle(cornerRadius: 14)
-                        .fill(.white)
-                        .shadow(color: .black.opacity(0.04), radius: 3, y: 1)
-                )
-                .overlay(
-                    RoundedRectangle(cornerRadius: 14)
-                        .stroke(Color(hex: "E4EAF1"), lineWidth: 1)
-                )
+                .background(whiteCard)
                 .padding(.horizontal, 20)
-                
-                // Bookmarks
+
+                // ─── Saved ───────────────────────────────────────────────
                 sectionHeader("Saved")
-                
+
                 VStack(spacing: 0) {
                     if bookmarkedTips.isEmpty {
                         HStack(spacing: 12) {
-                            Text("🔖")
-                                .font(.system(size: 18))
+                            iconBadge(systemImage: "bookmark", color: AppTheme.textTertiary)
                             Text("No bookmarked tips yet")
                                 .font(.system(size: 15))
-                                .foregroundColor(Color(hex: "8E9BAD"))
+                                .foregroundColor(AppTheme.textTertiary)
                             Spacer()
                         }
                         .padding(.horizontal, 14)
@@ -131,78 +110,61 @@ struct SettingsView: View {
                     } else {
                         NavigationLink(destination: BookmarkedTipsView(profile: profile)) {
                             HStack(spacing: 12) {
-                                Text("🔖")
-                                    .font(.system(size: 18))
+                                iconBadge(systemImage: "bookmark.fill", color: AppTheme.primary)
                                 Text("Bookmarked Tips")
                                     .font(.system(size: 15))
-                                    .foregroundColor(Color(hex: "1A2B42"))
+                                    .foregroundColor(AppTheme.textPrimary)
                                 Spacer()
                                 Text("\(bookmarkedTips.count) saved")
                                     .font(.system(size: 13))
-                                    .foregroundColor(Color(hex: "5A6B80"))
+                                    .foregroundColor(AppTheme.textSecondary)
                                 Image(systemName: "chevron.right")
                                     .font(.system(size: 12))
-                                    .foregroundColor(Color(hex: "8E9BAD"))
+                                    .foregroundColor(AppTheme.textTertiary)
                             }
                             .padding(.horizontal, 14)
                             .padding(.vertical, 12)
                         }
                     }
                 }
-                .background(
-                    RoundedRectangle(cornerRadius: 14)
-                        .fill(.white)
-                        .shadow(color: .black.opacity(0.04), radius: 3, y: 1)
-                )
-                .overlay(
-                    RoundedRectangle(cornerRadius: 14)
-                        .stroke(Color(hex: "E4EAF1"), lineWidth: 1)
-                )
+                .background(whiteCard)
                 .padding(.horizontal, 20)
-                
-                // About
+
+                // ─── About ───────────────────────────────────────────────
                 sectionHeader("About")
-                
+
                 VStack(spacing: 0) {
-                    aboutRow(icon: "ℹ️", label: "About BesideHer") {
+                    aboutRow(systemImage: "info.circle.fill", iconColor: AppTheme.primary, label: "About BesideHer") {
                         showAbout = true
                     }
                     Divider().padding(.leading, 52)
-                    aboutRow(icon: "⭐", label: "Rate the App") {
+                    aboutRow(systemImage: "star.fill", iconColor: Color(hex: "F6AD55"), label: "Rate the App") {
                         if let url = URL(string: "https://apps.apple.com/app/id6743770424") {
                             UIApplication.shared.open(url)
                         }
                     }
                     Divider().padding(.leading, 52)
-                    aboutRow(icon: "💬", label: "Send Feedback") {
+                    aboutRow(systemImage: "envelope.fill", iconColor: Color(hex: "56B89F"), label: "Send Feedback") {
                         if let url = URL(string: "mailto:feedback@besideher.app?subject=BesideHer%20Feedback") {
                             UIApplication.shared.open(url)
                         }
                     }
                 }
-                .background(
-                    RoundedRectangle(cornerRadius: 14)
-                        .fill(.white)
-                        .shadow(color: .black.opacity(0.04), radius: 3, y: 1)
-                )
-                .overlay(
-                    RoundedRectangle(cornerRadius: 14)
-                        .stroke(Color(hex: "E4EAF1"), lineWidth: 1)
-                )
+                .background(whiteCard)
                 .padding(.horizontal, 20)
-                
-                // Version
-                Text("BesideHer v1.0 · Made with ❤️")
+
+                // ─── Version ─────────────────────────────────────────────
+                Text("BesideHer v1.0")
                     .font(.system(size: 12))
-                    .foregroundColor(Color(hex: "8E9BAD"))
+                    .foregroundColor(AppTheme.textTertiary)
                     .padding(.top, 8)
                     .padding(.bottom, 24)
             }
             .padding(.top, 12)
         }
-        .background(Color(hex: "F7F9FC"))
+        .background(AppTheme.background.ignoresSafeArea())
         .navigationTitle("Settings")
-        .navigationBarTitleDisplayMode(.large)
+        .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: $showAbout) {
             AboutView()
         }
@@ -223,31 +185,28 @@ struct SettingsView: View {
                     profile.dueDate = editedDueDate
                     showDatePicker = false
                 },
-                onCancel: {
-                    showDatePicker = false
-                }
+                onCancel: { showDatePicker = false }
             )
         }
     }
-    
+
     // MARK: - Helper Views
-    
-    private func settingsRow(icon: String, label: String, value: String, showChevron: Bool, action: @escaping () -> Void) -> some View {
+
+    private func settingsRow(systemImage: String, iconColor: Color, label: String, value: String, showChevron: Bool, action: @escaping () -> Void) -> some View {
         Button(action: action) {
             HStack(spacing: 12) {
-                Text(icon)
-                    .font(.system(size: 18))
+                iconBadge(systemImage: systemImage, color: iconColor)
                 Text(label)
                     .font(.system(size: 15))
-                    .foregroundColor(Color(hex: "1A2B42"))
+                    .foregroundColor(AppTheme.textPrimary)
                 Spacer()
                 Text(value)
                     .font(.system(size: 14, weight: .semibold))
-                    .foregroundColor(Color(hex: "3B7DD8"))
+                    .foregroundColor(AppTheme.primary)
                 if showChevron {
                     Image(systemName: "chevron.right")
                         .font(.system(size: 12))
-                        .foregroundColor(Color(hex: "8E9BAD"))
+                        .foregroundColor(AppTheme.textTertiary)
                 }
             }
             .padding(.horizontal, 14)
@@ -255,43 +214,63 @@ struct SettingsView: View {
         }
         .disabled(!showChevron)
     }
-    
-    private func aboutRow(icon: String, label: String, action: @escaping () -> Void) -> some View {
+
+    private func aboutRow(systemImage: String, iconColor: Color, label: String, action: @escaping () -> Void) -> some View {
         Button(action: action) {
             HStack(spacing: 12) {
-                Text(icon)
-                    .font(.system(size: 18))
+                iconBadge(systemImage: systemImage, color: iconColor)
                 Text(label)
                     .font(.system(size: 15))
-                    .foregroundColor(Color(hex: "1A2B42"))
+                    .foregroundColor(AppTheme.textPrimary)
                 Spacer()
                 Image(systemName: "chevron.right")
                     .font(.system(size: 12))
-                    .foregroundColor(Color(hex: "8E9BAD"))
+                    .foregroundColor(AppTheme.textTertiary)
             }
             .padding(.horizontal, 14)
             .padding(.vertical, 12)
         }
     }
-    
+
+    private func iconBadge(systemImage: String, color: Color) -> some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 8)
+                .fill(color.opacity(0.12))
+                .frame(width: 32, height: 32)
+            Image(systemName: systemImage)
+                .font(.system(size: 14, weight: .semibold))
+                .foregroundColor(color)
+        }
+    }
+
     private func sectionHeader(_ title: String) -> some View {
         HStack {
             Text(title.uppercased())
                 .font(.system(size: 11, weight: .semibold))
-                .foregroundColor(Color(hex: "8E9BAD"))
+                .foregroundColor(AppTheme.textTertiary)
                 .tracking(0.5)
             Spacer()
         }
         .padding(.horizontal, 24)
     }
-    
+
+    private var whiteCard: some View {
+        RoundedRectangle(cornerRadius: AppTheme.cornerRadius)
+            .fill(AppTheme.card)
+            .shadow(color: AppTheme.cardShadow, radius: 4, y: 2)
+            .overlay(
+                RoundedRectangle(cornerRadius: AppTheme.cornerRadius)
+                    .stroke(AppTheme.border, lineWidth: 1)
+            )
+    }
+
     // MARK: - Computed Properties
-    
+
     private var genderLabel: String {
         switch profile.babyGender {
-        case "boy": return "Boy"
+        case "boy":  return "Boy"
         case "girl": return "Girl"
-        default: return "Unknown"
+        default:     return "Unknown"
         }
     }
 
@@ -300,7 +279,7 @@ struct SettingsView: View {
         formatter.dateFormat = "MMM d, yyyy"
         return formatter.string(from: profile.dueDate)
     }
-    
+
     private var trimesterLabel: String {
         switch profile.currentTrimester {
         case 1: return "1st Trimester"
@@ -309,7 +288,7 @@ struct SettingsView: View {
         default: return "Trimester \(profile.currentTrimester)"
         }
     }
-    
+
     private func requestNotifications() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { _, _ in }
     }
@@ -341,10 +320,10 @@ struct GenderPickerSheet: View {
                 Button(action: { selected = "unknown" }) {
                     HStack(spacing: 8) {
                         Image(systemName: selected == "unknown" ? "checkmark.circle.fill" : "circle")
-                            .foregroundColor(selected == "unknown" ? Color(hex: "3B7DD8") : Color(hex: "C0CDD8"))
+                            .foregroundColor(selected == "unknown" ? AppTheme.primary : AppTheme.textTertiary)
                         Text("We don't know yet")
                             .font(.system(size: 15, weight: .medium))
-                            .foregroundColor(Color(hex: "5A6B80"))
+                            .foregroundColor(AppTheme.textSecondary)
                     }
                 }
 
@@ -369,15 +348,15 @@ struct GenderPickerSheet: View {
         return Button(action: { selected = value }) {
             Text(label)
                 .font(.system(size: 17, weight: .semibold))
-                .foregroundColor(isSelected ? Color(hex: "3B7DD8") : Color(hex: "1A2B42"))
+                .foregroundColor(isSelected ? AppTheme.primary : AppTheme.textPrimary)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 28)
                 .background(
                     RoundedRectangle(cornerRadius: 16)
-                        .fill(isSelected ? Color(hex: "EBF2FD") : Color.white)
+                        .fill(isSelected ? AppTheme.primary.opacity(0.08) : AppTheme.card)
                         .overlay(
                             RoundedRectangle(cornerRadius: 16)
-                                .stroke(isSelected ? Color(hex: "3B7DD8") : Color(hex: "E4EAF1"),
+                                .stroke(isSelected ? AppTheme.primary : AppTheme.border,
                                         lineWidth: isSelected ? 2 : 1)
                         )
                 )
@@ -391,7 +370,7 @@ struct DatePickerSheet: View {
     @Binding var dueDate: Date
     var onSave: () -> Void
     var onCancel: () -> Void
-    
+
     var body: some View {
         NavigationStack {
             VStack {
@@ -401,9 +380,9 @@ struct DatePickerSheet: View {
                     displayedComponents: .date
                 )
                 .datePickerStyle(.graphical)
-                .tint(Color(hex: "3B7DD8"))
+                .tint(AppTheme.primary)
                 .padding()
-                
+
                 Spacer()
             }
             .navigationTitle("Edit Due Date")
@@ -426,24 +405,25 @@ struct DatePickerSheet: View {
 struct BookmarkedTipsView: View {
     let profile: UserProfile
     let content = ContentService.shared
-    
+
     var bookmarkedTips: [Tip] {
         content.tips(withIDs: profile.bookmarkedTips)
     }
-    
+
     var body: some View {
         ScrollView {
             VStack(spacing: 12) {
                 if bookmarkedTips.isEmpty {
                     VStack(spacing: 12) {
-                        Text("🔖")
-                            .font(.system(size: 40))
+                        Image(systemName: "bookmark")
+                            .font(.system(size: 36))
+                            .foregroundColor(AppTheme.textTertiary)
                         Text("No bookmarks yet")
                             .font(.system(size: 17, weight: .semibold))
-                            .foregroundColor(Color(hex: "1A2B42"))
+                            .foregroundColor(AppTheme.textPrimary)
                         Text("Tap the bookmark icon on any tip to save it here.")
                             .font(.system(size: 14))
-                            .foregroundColor(Color(hex: "5A6B80"))
+                            .foregroundColor(AppTheme.textSecondary)
                             .multilineTextAlignment(.center)
                     }
                     .padding(.top, 60)
@@ -453,43 +433,36 @@ struct BookmarkedTipsView: View {
                             HStack {
                                 Text(tip.title)
                                     .font(.system(size: 15, weight: .bold))
-                                    .foregroundColor(Color(hex: "1A2B42"))
+                                    .foregroundColor(AppTheme.textPrimary)
                                 Spacer()
                                 Button(action: {
-                                    withAnimation {
-                                        profile.toggleBookmark(tip.id)
-                                    }
+                                    withAnimation { profile.toggleBookmark(tip.id) }
                                 }) {
                                     Image(systemName: "bookmark.fill")
                                         .font(.system(size: 14))
-                                        .foregroundColor(Color(hex: "3B7DD8"))
+                                        .foregroundColor(AppTheme.primary)
                                 }
                             }
-                            
                             Text(tip.content)
                                 .font(.system(size: 14))
-                                .foregroundColor(Color(hex: "5A6B80"))
+                                .foregroundColor(AppTheme.textSecondary)
                                 .lineSpacing(4)
-                            
                             Text(tip.categoryDisplayName)
                                 .font(.system(size: 11, weight: .semibold))
-                                .foregroundColor(Color(hex: "3B7DD8"))
+                                .foregroundColor(AppTheme.primary)
                                 .padding(.horizontal, 8)
                                 .padding(.vertical, 3)
-                                .background(
-                                    Capsule()
-                                        .fill(Color(hex: "E8F0FE"))
-                                )
+                                .background(Capsule().fill(AppTheme.primary.opacity(0.1)))
                         }
                         .padding(16)
                         .background(
-                            RoundedRectangle(cornerRadius: 14)
-                                .fill(.white)
-                                .shadow(color: .black.opacity(0.04), radius: 3, y: 1)
-                        )
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 14)
-                                .stroke(Color(hex: "E4EAF1"), lineWidth: 1)
+                            RoundedRectangle(cornerRadius: AppTheme.cornerRadius)
+                                .fill(AppTheme.card)
+                                .shadow(color: AppTheme.cardShadow, radius: 4, y: 2)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: AppTheme.cornerRadius)
+                                        .stroke(AppTheme.border, lineWidth: 1)
+                                )
                         )
                     }
                 }
@@ -497,9 +470,9 @@ struct BookmarkedTipsView: View {
             .padding(.horizontal, 20)
             .padding(.vertical, 12)
         }
-        .background(Color(hex: "F7F9FC"))
+        .background(AppTheme.background.ignoresSafeArea())
         .navigationTitle("Bookmarked Tips")
-        .navigationBarTitleDisplayMode(.large)
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
@@ -523,43 +496,42 @@ struct AboutView: View {
                     VStack(spacing: 8) {
                         Text("Your pregnancy companion for dads")
                             .font(.system(size: 15, weight: .medium))
-                            .foregroundColor(Color(hex: "3B7DD8"))
+                            .foregroundColor(AppTheme.primary)
                             .multilineTextAlignment(.center)
                         Text("Version 1.0")
                             .font(.system(size: 13))
-                            .foregroundColor(Color(hex: "8E9BAD"))
+                            .foregroundColor(AppTheme.textTertiary)
                             .padding(.top, 2)
                     }
 
                     VStack(alignment: .leading, spacing: 12) {
                         Text("About the App")
                             .font(.system(size: 16, weight: .semibold))
-                            .foregroundColor(Color(hex: "1A2B42"))
-
+                            .foregroundColor(AppTheme.textPrimary)
                         Text("BesideHer is a pregnancy companion designed for first-time dads. From week-by-week development updates to hospital bag checklists and partner support tips, BesideHer helps you stay engaged, prepared, and present every step of the way.")
                             .font(.system(size: 15))
-                            .foregroundColor(Color(hex: "5A6B80"))
+                            .foregroundColor(AppTheme.textSecondary)
                             .lineSpacing(5)
                     }
                     .padding(20)
                     .background(
-                        RoundedRectangle(cornerRadius: 14)
-                            .fill(.white)
-                            .shadow(color: .black.opacity(0.04), radius: 3, y: 1)
-                    )
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 14)
-                            .stroke(Color(hex: "E4EAF1"), lineWidth: 1)
+                        RoundedRectangle(cornerRadius: AppTheme.cornerRadius)
+                            .fill(AppTheme.card)
+                            .shadow(color: AppTheme.cardShadow, radius: 4, y: 2)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: AppTheme.cornerRadius)
+                                    .stroke(AppTheme.border, lineWidth: 1)
+                            )
                     )
                     .padding(.horizontal, 20)
 
-                    Text("Made with ❤️ for expectant fathers")
+                    Text("Made for expectant fathers")
                         .font(.system(size: 13))
-                        .foregroundColor(Color(hex: "8E9BAD"))
+                        .foregroundColor(AppTheme.textTertiary)
                         .padding(.bottom, 32)
                 }
             }
-            .background(Color(hex: "F7F9FC"))
+            .background(AppTheme.background.ignoresSafeArea())
             .navigationTitle("About BesideHer")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
