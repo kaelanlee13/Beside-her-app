@@ -12,6 +12,7 @@ struct AllWeeksView: View {
     let content = ContentService.shared
     
     var body: some View {
+        NavigationStack {
         ScrollView {
             VStack(spacing: 12) {
                 ForEach(content.weeks) { week in
@@ -84,6 +85,7 @@ struct AllWeeksView: View {
         .background(Color(hex: "F7F9FC"))
         .navigationTitle("All Weeks")
         .navigationBarTitleDisplayMode(.large)
+        } // NavigationStack
     }
 }
 

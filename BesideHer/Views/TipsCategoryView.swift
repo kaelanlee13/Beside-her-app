@@ -20,6 +20,7 @@ struct TipsCategoryView: View {
     ]
 
     var body: some View {
+        NavigationStack {
         ScrollView {
             VStack(spacing: 12) {
                 ForEach(categories, id: \.id) { category in
@@ -75,6 +76,7 @@ struct TipsCategoryView: View {
         .background(AppTheme.background.ignoresSafeArea())
         .navigationTitle("Support Tips")
         .navigationBarTitleDisplayMode(.large)
+        } // NavigationStack
     }
 }
 

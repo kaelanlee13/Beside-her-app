@@ -55,6 +55,7 @@ struct ChecklistsView: View {
     }
     
     var body: some View {
+        NavigationStack {
         ScrollView {
             VStack(spacing: 16) {
                 // Hospital Bag shortcut
@@ -358,6 +359,7 @@ struct ChecklistsView: View {
             selectedCategory = nil
             showCompleted = false
         }
+        } // NavigationStack
     }
     
     private func trimesterLabel(_ trimester: Int) -> String {
