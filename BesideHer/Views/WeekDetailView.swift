@@ -1,3 +1,4 @@
+
 //
 //  WeekDetailView.swift
 //  BesideHer
@@ -13,6 +14,10 @@ struct WeekDetailView: View {
     let content = ContentService.shared
 
     @State private var showDadAnswer = false
+
+    var weekChecklistItems: [ChecklistItem] {
+        content.checklists.flatMap { $0.items }.filter { $0.weekRecommended == week.weekNumber }
+    }
 
     var body: some View {
         ScrollView {
@@ -163,7 +168,48 @@ struct WeekDetailView: View {
                             }
                         }
 
-                        if item.id != week.actionItems.last?.id {
+                        if item.id != week.actionItems.last?.id || !weekChecklistItems.isEmpty {
+                            Divider()
+                        }
+                    }
+
+                    ForEach(weekChecklistItems) { item in
+                        HStack(spacing: 12) {
+                            Button(action: {
+                                withAnimation(.easeInOut(duration: 0.2)) {
+                                    profile.toggleChecklistItem(item.id)
+                                }
+                            }) {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 5)
+                                        .fill(profile.isChecklistItemCompleted(item.id) ? Color(hex: "3B7DD8") : .clear)
+                                        .frame(width: 22, height: 22)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 5)
+                                                .stroke(profile.isChecklistItemCompleted(item.id) ? Color.clear : Color(hex: "E4EAF1"), lineWidth: 1.5)
+                                        )
+
+                                    if profile.isChecklistItemCompleted(item.id) {
+                                        Image(systemName: "checkmark")
+                                            .font(.system(size: 11, weight: .bold))
+                                            .foregroundColor(.white)
+                                    }
+                                }
+                            }
+
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text(item.text)
+                                    .font(.system(size: 14))
+                                    .foregroundColor(profile.isChecklistItemCompleted(item.id) ? Color(hex: "8E9BAD") : Color(hex: "1A2B42"))
+                                    .strikethrough(profile.isChecklistItemCompleted(item.id))
+
+                                Text(item.categoryDisplayName)
+                                    .font(.system(size: 11))
+                                    .foregroundColor(Color(hex: "8E9BAD"))
+                            }
+                        }
+
+                        if item.id != weekChecklistItems.last?.id {
                             Divider()
                         }
                     }
@@ -181,50 +227,52 @@ struct WeekDetailView: View {
                 .padding(.horizontal, 20)
 
                 // Common Dad Question
-                Button(action: {
-                    withAnimation(.easeInOut(duration: 0.25)) {
-                        showDadAnswer.toggle()
-                    }
-                }) {
-                    VStack(spacing: 8) {
-                        HStack {
-                            Text("Common Dad Question")
-                                .font(.system(size: 11, weight: .semibold))
-                                .foregroundColor(Color(hex: "3B7DD8"))
-                                .tracking(0.5)
-                            Spacer()
-                            Image(systemName: showDadAnswer ? "chevron.up" : "chevron.down")
-                                .font(.system(size: 11, weight: .semibold))
-                                .foregroundColor(Color(hex: "3B7DD8"))
+                if let question = week.commonDadQuestion, let answer = week.commonDadAnswer {
+                    Button(action: {
+                        withAnimation(.easeInOut(duration: 0.25)) {
+                            showDadAnswer.toggle()
                         }
+                    }) {
+                        VStack(spacing: 8) {
+                            HStack {
+                                Text("Common Dad Question")
+                                    .font(.system(size: 11, weight: .semibold))
+                                    .foregroundColor(Color(hex: "3B7DD8"))
+                                    .tracking(0.5)
+                                Spacer()
+                                Image(systemName: showDadAnswer ? "chevron.up" : "chevron.down")
+                                    .font(.system(size: 11, weight: .semibold))
+                                    .foregroundColor(Color(hex: "3B7DD8"))
+                            }
 
-                        Text(week.commonDadQuestion)
-                            .font(.system(size: 16, weight: .semibold))
-                            .foregroundColor(Color(hex: "1A2B42"))
-                            .multilineTextAlignment(.leading)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-
-                        if showDadAnswer {
-                            Divider()
-                                .background(Color(hex: "3B7DD8").opacity(0.2))
-
-                            Text(week.commonDadAnswer)
-                                .font(.system(size: 14))
-                                .foregroundColor(Color(hex: "5A6B80"))
+                            Text(question)
+                                .font(.system(size: 16, weight: .semibold))
+                                .foregroundColor(Color(hex: "1A2B42"))
                                 .multilineTextAlignment(.leading)
                                 .frame(maxWidth: .infinity, alignment: .leading)
-                                .fixedSize(horizontal: false, vertical: true)
+
+                            if showDadAnswer {
+                                Divider()
+                                    .background(Color(hex: "3B7DD8").opacity(0.2))
+
+                                Text(answer)
+                                    .font(.system(size: 14))
+                                    .foregroundColor(Color(hex: "5A6B80"))
+                                    .multilineTextAlignment(.leading)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .fixedSize(horizontal: false, vertical: true)
+                            }
                         }
+                        .padding(16)
+                        .frame(maxWidth: .infinity)
+                        .background(
+                            RoundedRectangle(cornerRadius: 14)
+                                .fill(Color(hex: "E8F0FE"))
+                        )
                     }
-                    .padding(16)
-                    .frame(maxWidth: .infinity)
-                    .background(
-                        RoundedRectangle(cornerRadius: 14)
-                            .fill(Color(hex: "E8F0FE"))
-                    )
+                    .buttonStyle(.plain)
+                    .padding(.horizontal, 20)
                 }
-                .buttonStyle(.plain)
-                .padding(.horizontal, 20)
 
                 // Week navigation
                 HStack {
