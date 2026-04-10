@@ -13,6 +13,7 @@ struct ChecklistsView: View {
     
     @State private var selectedTrimester = 1
     @State private var selectedCategory: String? = nil
+    @State private var showCompleted = false
 
     var currentChecklist: Checklist? {
         content.checklist(forTrimester: selectedTrimester)
@@ -47,6 +48,10 @@ struct ChecklistsView: View {
 
     var uncheckedItems: [ChecklistItem] {
         filteredItems.filter { !profile.isChecklistItemCompleted($0.id) }
+    }
+
+    var checkedItems: [ChecklistItem] {
+        filteredItems.filter { profile.isChecklistItemCompleted($0.id) }
     }
     
     var body: some View {
@@ -262,6 +267,82 @@ struct ChecklistsView: View {
                     )
                     .padding(.horizontal, 20)
                 }
+
+                // Completed items toggle
+                if !checkedItems.isEmpty {
+                    Button(action: {
+                        withAnimation(.easeInOut(duration: 0.2)) {
+                            showCompleted.toggle()
+                        }
+                    }) {
+                        HStack {
+                            Text("Completed (\(checkedItems.count))")
+                                .font(.system(size: 13, weight: .semibold))
+                                .foregroundColor(Color(hex: "5A6B80"))
+                            Spacer()
+                            Image(systemName: showCompleted ? "chevron.up" : "chevron.down")
+                                .font(.system(size: 12, weight: .semibold))
+                                .foregroundColor(Color(hex: "8E9BAD"))
+                        }
+                        .padding(.horizontal, 20)
+                    }
+
+                    if showCompleted {
+                        VStack(spacing: 0) {
+                            ForEach(Array(checkedItems.enumerated()), id: \.element.id) { index, item in
+                                VStack(spacing: 0) {
+                                    if index > 0 {
+                                        Divider()
+                                            .padding(.leading, 44)
+                                    }
+                                    HStack(spacing: 12) {
+                                        Button(action: {
+                                            withAnimation(.easeInOut(duration: 0.2)) {
+                                                profile.toggleChecklistItem(item.id)
+                                            }
+                                        }) {
+                                            ZStack {
+                                                RoundedRectangle(cornerRadius: 5)
+                                                    .fill(Color(hex: "3B7DD8"))
+                                                    .frame(width: 22, height: 22)
+                                                Image(systemName: "checkmark")
+                                                    .font(.system(size: 11, weight: .bold))
+                                                    .foregroundColor(.white)
+                                            }
+                                        }
+                                        VStack(alignment: .leading, spacing: 3) {
+                                            Text(item.text)
+                                                .font(.system(size: 14))
+                                                .foregroundColor(Color(hex: "8E9BAD"))
+                                                .strikethrough(true)
+                                                .multilineTextAlignment(.leading)
+                                            HStack(spacing: 4) {
+                                                Image(systemName: item.categoryIcon)
+                                                    .font(.system(size: 9))
+                                                Text(item.categoryDisplayName)
+                                                    .font(.system(size: 11))
+                                            }
+                                            .foregroundColor(Color(hex: "8E9BAD"))
+                                        }
+                                        Spacer()
+                                    }
+                                    .padding(.vertical, 10)
+                                }
+                            }
+                        }
+                        .padding(.horizontal, 16)
+                        .background(
+                            RoundedRectangle(cornerRadius: 14)
+                                .fill(.white)
+                                .shadow(color: .black.opacity(0.04), radius: 3, y: 1)
+                        )
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 14)
+                                .stroke(Color(hex: "E4EAF1"), lineWidth: 1)
+                        )
+                        .padding(.horizontal, 20)
+                    }
+                }
             }
             .padding(.bottom, 24)
         }
@@ -274,6 +355,7 @@ struct ChecklistsView: View {
         }
         .onChange(of: selectedTrimester) { _, _ in
             selectedCategory = nil
+            showCompleted = false
         }
     }
     
