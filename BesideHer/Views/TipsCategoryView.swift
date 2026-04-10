@@ -87,10 +87,36 @@ struct TipsListView: View {
     let tips: [Tip]
     let profile: UserProfile
 
+    @State private var selectedTrimester: Int? = nil
+
+    var filteredTips: [Tip] {
+        guard let tri = selectedTrimester else { return tips }
+        return tips.filter { $0.trimester.contains(tri) }
+    }
+
     var body: some View {
         ScrollView {
             VStack(spacing: 12) {
-                ForEach(tips) { tip in
+
+                // Trimester filter pills
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 8) {
+                        TrimesterFilterPill(label: "All", isSelected: selectedTrimester == nil) {
+                            withAnimation(.easeInOut(duration: 0.2)) { selectedTrimester = nil }
+                        }
+                        ForEach([1, 2, 3], id: \.self) { tri in
+                            TrimesterFilterPill(label: "Trimester \(tri)", isSelected: selectedTrimester == tri) {
+                                withAnimation(.easeInOut(duration: 0.2)) {
+                                    selectedTrimester = selectedTrimester == tri ? nil : tri
+                                }
+                            }
+                        }
+                    }
+                    .padding(.horizontal, 20)
+                }
+                .padding(.top, 4)
+
+                ForEach(filteredTips) { tip in
                     VStack(alignment: .leading, spacing: 8) {
                         HStack {
                             Text(tip.title)
@@ -148,6 +174,30 @@ struct TipsListView: View {
         .background(AppTheme.background.ignoresSafeArea())
         .navigationTitle(categoryName)
         .navigationBarTitleDisplayMode(.large)
+    }
+}
+
+// MARK: - Trimester Filter Pill
+
+private struct TrimesterFilterPill: View {
+    let label: String
+    let isSelected: Bool
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            Text(label)
+                .font(.system(size: 12, weight: .semibold))
+                .foregroundColor(isSelected ? .white : AppTheme.textSecondary)
+                .padding(.horizontal, 12)
+                .padding(.vertical, 7)
+                .background(
+                    Capsule().fill(isSelected ? AppTheme.primary : AppTheme.card)
+                )
+                .overlay(
+                    Capsule().stroke(isSelected ? Color.clear : AppTheme.border, lineWidth: 1)
+                )
+        }
     }
 }
 
