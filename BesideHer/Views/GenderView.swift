@@ -56,8 +56,8 @@ struct GenderView: View {
 
             // Gender selection cards
             HStack(spacing: 16) {
-                genderCard(emoji: "👦", label: "Boy", value: "boy")
-                genderCard(emoji: "👧", label: "Girl", value: "girl")
+                genderCard(label: "Boy", value: "boy")
+                genderCard(label: "Girl", value: "girl")
             }
             .padding(.horizontal, 24)
 
@@ -114,7 +114,7 @@ struct GenderView: View {
         }
     }
 
-    private func genderCard(emoji: String, label: String, value: String) -> some View {
+    private func genderCard(label: String, value: String) -> some View {
         let isSelected = babyGender == value
         let fillColor = isSelected ? Color(hex: "EBF2FD") : Color.white
         let strokeColor = isSelected ? Color(hex: "3B7DD8") : Color(hex: "E4EAF1")
@@ -123,8 +123,6 @@ struct GenderView: View {
 
         return Button(action: { babyGender = value }) {
             VStack(spacing: 12) {
-                Text(emoji)
-                    .font(.system(size: 40))
                 Text(label)
                     .font(.system(size: 17, weight: .semibold))
                     .foregroundColor(labelColor)

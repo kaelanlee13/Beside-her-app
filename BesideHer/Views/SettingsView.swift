@@ -13,6 +13,7 @@ struct SettingsView: View {
 
     @State private var showDatePicker = false
     @State private var editedDueDate: Date = Date()
+    @State private var showGenderPicker = false
     @State private var showAbout = false
     
     var bookmarkedTips: [Tip] {
@@ -36,7 +37,17 @@ struct SettingsView: View {
                     )
                     
                     Divider().padding(.leading, 52)
-                    
+
+                    settingsRow(
+                        icon: "👶",
+                        label: "Baby's Gender",
+                        value: genderLabel,
+                        showChevron: true,
+                        action: { showGenderPicker = true }
+                    )
+
+                    Divider().padding(.leading, 52)
+
                     settingsRow(
                         icon: "📍",
                         label: "Current Week",
@@ -195,6 +206,16 @@ struct SettingsView: View {
         .sheet(isPresented: $showAbout) {
             AboutView()
         }
+        .sheet(isPresented: $showGenderPicker) {
+            GenderPickerSheet(
+                babyGender: profile.babyGender,
+                onSave: { newGender in
+                    profile.babyGender = newGender
+                    showGenderPicker = false
+                },
+                onCancel: { showGenderPicker = false }
+            )
+        }
         .sheet(isPresented: $showDatePicker) {
             DatePickerSheet(
                 dueDate: $editedDueDate,
@@ -266,6 +287,14 @@ struct SettingsView: View {
     
     // MARK: - Computed Properties
     
+    private var genderLabel: String {
+        switch profile.babyGender {
+        case "boy": return "Boy"
+        case "girl": return "Girl"
+        default: return "Unknown"
+        }
+    }
+
     private var formattedDueDate: String {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM d, yyyy"
@@ -283,6 +312,76 @@ struct SettingsView: View {
     
     private func requestNotifications() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { _, _ in }
+    }
+}
+
+// MARK: - Gender Picker Sheet
+
+struct GenderPickerSheet: View {
+    @State private var selected: String
+    var onSave: (String) -> Void
+    var onCancel: () -> Void
+
+    init(babyGender: String, onSave: @escaping (String) -> Void, onCancel: @escaping () -> Void) {
+        _selected = State(initialValue: babyGender)
+        self.onSave = onSave
+        self.onCancel = onCancel
+    }
+
+    var body: some View {
+        NavigationStack {
+            VStack(spacing: 24) {
+                HStack(spacing: 16) {
+                    genderCard(label: "Boy", value: "boy")
+                    genderCard(label: "Girl", value: "girl")
+                }
+                .padding(.horizontal, 24)
+                .padding(.top, 24)
+
+                Button(action: { selected = "unknown" }) {
+                    HStack(spacing: 8) {
+                        Image(systemName: selected == "unknown" ? "checkmark.circle.fill" : "circle")
+                            .foregroundColor(selected == "unknown" ? Color(hex: "3B7DD8") : Color(hex: "C0CDD8"))
+                        Text("We don't know yet")
+                            .font(.system(size: 15, weight: .medium))
+                            .foregroundColor(Color(hex: "5A6B80"))
+                    }
+                }
+
+                Spacer()
+            }
+            .navigationTitle("Baby's Gender")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel", action: onCancel)
+                }
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Save") { onSave(selected) }
+                        .fontWeight(.semibold)
+                }
+            }
+        }
+    }
+
+    private func genderCard(label: String, value: String) -> some View {
+        let isSelected = selected == value
+        return Button(action: { selected = value }) {
+            Text(label)
+                .font(.system(size: 17, weight: .semibold))
+                .foregroundColor(isSelected ? Color(hex: "3B7DD8") : Color(hex: "1A2B42"))
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 28)
+                .background(
+                    RoundedRectangle(cornerRadius: 16)
+                        .fill(isSelected ? Color(hex: "EBF2FD") : Color.white)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 16)
+                                .stroke(isSelected ? Color(hex: "3B7DD8") : Color(hex: "E4EAF1"),
+                                        lineWidth: isSelected ? 2 : 1)
+                        )
+                )
+        }
     }
 }
 
