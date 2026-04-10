@@ -320,29 +320,58 @@ struct WeekDetailView: View {
     // MARK: - Week Navigation
 
     private var weekNavRow: some View {
-        HStack {
+        HStack(spacing: 10) {
+            // Previous
             if week.weekNumber > 1, let prev = previousWeek {
                 NavigationLink(destination: WeekDetailView(week: prev, profile: profile)) {
                     HStack(spacing: 4) {
                         Image(systemName: "chevron.left")
                             .font(.system(size: 12, weight: .semibold))
                         Text("Week \(previousWeekNumber)")
+                            .font(.system(size: 13, weight: .semibold))
                     }
-                    .font(.system(size: 14, weight: .semibold))
                     .foregroundColor(AppTheme.primary)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 10)
+                    .background(
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(AppTheme.card)
+                    )
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(AppTheme.border, lineWidth: 1)
+                    )
                 }
+            } else {
+                // Placeholder to keep layout balanced
+                Color.clear
+                    .frame(maxWidth: .infinity, maxHeight: 40)
             }
-            Spacer()
+
+            // Next
             if week.weekNumber < 40, let next = nextWeek {
                 NavigationLink(destination: WeekDetailView(week: next, profile: profile)) {
                     HStack(spacing: 4) {
                         Text("Week \(nextWeekNumber)")
+                            .font(.system(size: 13, weight: .semibold))
                         Image(systemName: "chevron.right")
                             .font(.system(size: 12, weight: .semibold))
                     }
-                    .font(.system(size: 14, weight: .semibold))
                     .foregroundColor(AppTheme.primary)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 10)
+                    .background(
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(AppTheme.card)
+                    )
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(AppTheme.border, lineWidth: 1)
+                    )
                 }
+            } else {
+                Color.clear
+                    .frame(maxWidth: .infinity, maxHeight: 40)
             }
         }
     }

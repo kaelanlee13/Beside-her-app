@@ -62,10 +62,11 @@ struct ChecklistsView: View {
                     HStack(spacing: 14) {
                         ZStack {
                             RoundedRectangle(cornerRadius: 10)
-                                .fill(Color(hex: "E8F0FE"))
+                                .fill(AppTheme.primary.opacity(0.1))
                                 .frame(width: 44, height: 44)
-                            Text("🏥")
-                                .font(.system(size: 22))
+                            Image(systemName: "bag.fill")
+                                .font(.system(size: 18))
+                                .foregroundColor(AppTheme.primary)
                         }
                         VStack(alignment: .leading, spacing: 2) {
                             Text("Hospital Bag")
