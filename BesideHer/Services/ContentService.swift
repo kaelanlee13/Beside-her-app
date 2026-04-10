@@ -16,13 +16,11 @@ class ContentService {
     let weeks: [Week]
     let tips: [Tip]
     let checklists: [Checklist]
-    let pregnancyFacts: [PregnancyFact]
-
+    
     private init() {
         self.weeks = ContentService.loadWeeks()
         self.tips = ContentService.loadTips()
         self.checklists = ContentService.loadChecklists()
-        self.pregnancyFacts = ContentService.loadPregnancyFacts()
     }
     
     // MARK: - Loading Functions
@@ -60,17 +58,6 @@ class ContentService {
         }
     }
     
-    private static func loadPregnancyFacts() -> [PregnancyFact] {
-        guard let data = loadJSON(filename: "pregnancy_facts") else { return [] }
-        do {
-            let response = try JSONDecoder().decode(PregnancyFactsResponse.self, from: data)
-            return response.data
-        } catch {
-            print("Error decoding pregnancy_facts.json: \(error)")
-            return []
-        }
-    }
-
     private static func loadJSON(filename: String) -> Data? {
         guard let url = Bundle.main.url(forResource: filename, withExtension: "json") else {
             print("Could not find \(filename).json in bundle")
@@ -116,12 +103,6 @@ class ContentService {
         checklists.first { $0.trimester == trimester }
     }
     
-    /// Get the pregnancy fact for a specific week number
-    func pregnancyFact(for weekNumber: Int) -> PregnancyFact? {
-        let key = (weekNumber <= 2) ? "1-2" : "\(weekNumber)"
-        return pregnancyFacts.first { $0.week == key }
-    }
-
     /// Get all unique tip categories
     var tipCategories: [String] {
         Array(Set(tips.map { $0.category })).sorted()

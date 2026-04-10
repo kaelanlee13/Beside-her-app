@@ -232,19 +232,23 @@ struct HomeView: View {
                         .padding(.horizontal, 20)
                     }
 
-                    // Pregnancy Fact card
-                    if let pregnancyFact = content.pregnancyFact(for: profile.currentWeek) {
+                    // Common Dad Question card
+                    if let week = currentWeekContent {
                         VStack(alignment: .leading, spacing: 10) {
                             HStack(spacing: 6) {
-                                Image(systemName: "lightbulb.fill")
+                                Image(systemName: "questionmark.circle.fill")
                                     .font(.system(size: 14))
                                     .foregroundColor(Color(hex: "3B7DD8"))
-                                Text("Pregnancy Fact")
+                                Text("Common Dad Question")
                                     .font(.system(size: 13, weight: .semibold))
                                     .foregroundColor(Color(hex: "3B7DD8"))
                             }
 
-                            Text(pregnancyFact.fact)
+                            Text(week.commonDadQuestion)
+                                .font(.system(size: 14, weight: .semibold))
+                                .foregroundColor(Color(hex: "1A2B42"))
+
+                            Text(week.commonDadAnswer)
                                 .font(.system(size: 13))
                                 .foregroundColor(Color(hex: "5A6B80"))
                                 .lineSpacing(4)
