@@ -66,6 +66,7 @@ struct DueDateView: View {
             .frame(height: 360)
             .clipped()
             .padding(.horizontal, 24)
+            .transaction { $0.animation = nil }
             
             Spacer()
             
