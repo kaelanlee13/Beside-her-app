@@ -129,7 +129,7 @@ struct HomeView: View {
                                             .foregroundColor(.white.opacity(0.7))
                                             .tracking(1)
                                         
-                                        Text("\(week.sizeEmoji) Baby is the size of \(articleFor(week.sizeComparison)) \(week.sizeComparison.lowercased())")
+                                        Text("\(week.sizeEmoji) \(babyLabel) is the size of \(articleFor(week.sizeComparison)) \(week.sizeComparison.lowercased())")
                                             .font(.system(size: 16, weight: .bold))
                                             .foregroundColor(.white)
                                             .multilineTextAlignment(.leading)
@@ -346,6 +346,14 @@ struct HomeView: View {
         case 0:    return "Today is your due date!"
         case 1:    return "1 day to go"
         default:   return "\(days) days to go"
+        }
+    }
+
+    private var babyLabel: String {
+        switch profile.babyGender {
+        case "boy":  return "Baby boy"
+        case "girl": return "Baby girl"
+        default:     return "Baby"
         }
     }
 
