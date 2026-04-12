@@ -15,6 +15,8 @@ struct SettingsView: View {
     @State private var editedDueDate: Date = Date()
     @State private var showGenderPicker = false
     @State private var showAbout = false
+    @State private var showPrivacyPolicy = false
+    @State private var showTermsOfUse = false
 
     var bookmarkedTips: [Tip] {
         content.tips(withIDs: profile.bookmarkedTips)
@@ -153,6 +155,32 @@ struct SettingsView: View {
                 .background(whiteCard)
                 .padding(.horizontal, 20)
 
+                // ─── Legal ───────────────────────────────────────────────
+                sectionHeader("Legal")
+
+                VStack(spacing: 0) {
+                    aboutRow(systemImage: "hand.raised.fill", iconColor: Color(hex: "5A8FD6"), label: "Privacy Policy") {
+                        showPrivacyPolicy = true
+                    }
+                    Divider().padding(.leading, 52)
+                    aboutRow(systemImage: "doc.text.fill", iconColor: Color(hex: "7A9CC4"), label: "Terms of Use") {
+                        showTermsOfUse = true
+                    }
+                    Divider().padding(.leading, 52)
+                    HStack(alignment: .top, spacing: 12) {
+                        iconBadge(systemImage: "cross.circle.fill", color: AppTheme.textTertiary)
+                        Text("BesideHer is for informational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always consult your doctor or qualified healthcare provider with any questions about pregnancy.")
+                            .font(.system(size: 12))
+                            .foregroundColor(AppTheme.textTertiary)
+                            .lineSpacing(3)
+                        Spacer()
+                    }
+                    .padding(.horizontal, 14)
+                    .padding(.vertical, 12)
+                }
+                .background(whiteCard)
+                .padding(.horizontal, 20)
+
                 // ─── Version ─────────────────────────────────────────────
                 Text("BesideHer v1.0")
                     .font(.system(size: 12))
@@ -177,6 +205,12 @@ struct SettingsView: View {
                 },
                 onCancel: { showGenderPicker = false }
             )
+        }
+        .sheet(isPresented: $showPrivacyPolicy) {
+            PrivacyPolicyView()
+        }
+        .sheet(isPresented: $showTermsOfUse) {
+            TermsOfUseView()
         }
         .sheet(isPresented: $showDatePicker) {
             DatePickerSheet(
@@ -533,6 +567,74 @@ struct AboutView: View {
             }
             .background(AppTheme.background.ignoresSafeArea())
             .navigationTitle("About BesideHer")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Done") { dismiss() }
+                        .fontWeight(.semibold)
+                }
+            }
+        }
+    }
+}
+
+// MARK: - Privacy Policy View
+
+struct PrivacyPolicyView: View {
+    @Environment(\.dismiss) private var dismiss
+
+    var body: some View {
+        NavigationStack {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 16) {
+                    Text("Privacy Policy")
+                        .font(.system(size: 20, weight: .bold))
+                        .foregroundColor(AppTheme.textPrimary)
+                        .padding(.top, 8)
+
+                    Text("BesideHer does not collect, store, or share any personal data outside of your device. All information including your due date and preferences is stored locally on your device only. We do not use third-party analytics or advertising.")
+                        .font(.system(size: 15))
+                        .foregroundColor(AppTheme.textSecondary)
+                        .lineSpacing(5)
+                }
+                .padding(24)
+            }
+            .background(AppTheme.background.ignoresSafeArea())
+            .navigationTitle("Privacy Policy")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Done") { dismiss() }
+                        .fontWeight(.semibold)
+                }
+            }
+        }
+    }
+}
+
+// MARK: - Terms of Use View
+
+struct TermsOfUseView: View {
+    @Environment(\.dismiss) private var dismiss
+
+    var body: some View {
+        NavigationStack {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 16) {
+                    Text("Terms of Use")
+                        .font(.system(size: 20, weight: .bold))
+                        .foregroundColor(AppTheme.textPrimary)
+                        .padding(.top, 8)
+
+                    Text("BesideHer is provided for informational and educational purposes only. The content in this app is not medical advice and should not replace consultation with a qualified healthcare professional. Use of this app is at your own discretion.")
+                        .font(.system(size: 15))
+                        .foregroundColor(AppTheme.textSecondary)
+                        .lineSpacing(5)
+                }
+                .padding(24)
+            }
+            .background(AppTheme.background.ignoresSafeArea())
+            .navigationTitle("Terms of Use")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
