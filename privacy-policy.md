@@ -47,4 +47,4 @@ If this policy changes in a future update, the updated policy will be made avail
 
 If you have questions about this privacy policy, you can reach us at:
 
-**feedback@besideher.app**
+**besideherapp@gmail.com**

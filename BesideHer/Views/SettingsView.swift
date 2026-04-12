@@ -147,7 +147,7 @@ struct SettingsView: View {
                     }
                     Divider().padding(.leading, 52)
                     aboutRow(systemImage: "envelope.fill", iconColor: Color(hex: "56B89F"), label: "Send Feedback") {
-                        if let url = URL(string: "mailto:feedback@besideher.app?subject=BesideHer%20Feedback") {
+                        if let url = URL(string: "mailto:besideherapp@gmail.com?subject=BesideHer%20Feedback") {
                             UIApplication.shared.open(url)
                         }
                     }
