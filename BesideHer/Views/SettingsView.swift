@@ -84,7 +84,15 @@ struct SettingsView: View {
                             get: { profile.notificationsEnabled },
                             set: { newValue in
                                 profile.notificationsEnabled = newValue
-                                if newValue { requestNotifications() }
+                                if newValue {
+                                    NotificationService.shared.requestPermission { granted in
+                                        if granted {
+                                            NotificationService.shared.scheduleWeeklyNotifications(dueDate: profile.dueDate)
+                                        }
+                                    }
+                                } else {
+                                    NotificationService.shared.cancelAllNotifications()
+                                }
                             }
                         ))
                         .tint(AppTheme.primary)
@@ -217,6 +225,9 @@ struct SettingsView: View {
                 dueDate: $editedDueDate,
                 onSave: {
                     profile.dueDate = editedDueDate
+                    if profile.notificationsEnabled {
+                        NotificationService.shared.scheduleWeeklyNotifications(dueDate: editedDueDate)
+                    }
                     showDatePicker = false
                 },
                 onCancel: { showDatePicker = false }
@@ -323,9 +334,7 @@ struct SettingsView: View {
         }
     }
 
-    private func requestNotifications() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { _, _ in }
-    }
+
 }
 
 // MARK: - Gender Picker Sheet

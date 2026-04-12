@@ -31,7 +31,6 @@ class ContentService {
             let response = try JSONDecoder().decode(WeeksResponse.self, from: data)
             return response.weeks.sorted { $0.weekNumber < $1.weekNumber }
         } catch {
-            print("Error decoding weeks.json: \(error)")
             return []
         }
     }
@@ -42,7 +41,6 @@ class ContentService {
             let response = try JSONDecoder().decode(TipsResponse.self, from: data)
             return response.tips
         } catch {
-            print("Error decoding tips.json: \(error)")
             return []
         }
     }
@@ -53,20 +51,17 @@ class ContentService {
             let response = try JSONDecoder().decode(ChecklistsResponse.self, from: data)
             return response.checklists.sorted { $0.trimester < $1.trimester }
         } catch {
-            print("Error decoding checklists.json: \(error)")
             return []
         }
     }
     
     private static func loadJSON(filename: String) -> Data? {
         guard let url = Bundle.main.url(forResource: filename, withExtension: "json") else {
-            print("Could not find \(filename).json in bundle")
             return nil
         }
         do {
             return try Data(contentsOf: url)
         } catch {
-            print("Could not load \(filename).json: \(error)")
             return nil
         }
     }

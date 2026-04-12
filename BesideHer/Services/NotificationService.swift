@@ -17,12 +17,9 @@ class NotificationService {
     // MARK: - Permission
     
     func requestPermission(completion: @escaping (Bool) -> Void) {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, _ in
             DispatchQueue.main.async {
                 completion(granted)
-            }
-            if let error = error {
-                print("Notification permission error: \(error)")
             }
         }
     }
@@ -56,7 +53,7 @@ class NotificationService {
             notificationContent.sound = .default
             
             // Schedule for Monday at 9:00 AM
-            let triggerDate = calendar.date(byAdding: .weekOfYear, value: weekOffset, to: now)!
+            guard let triggerDate = calendar.date(byAdding: .weekOfYear, value: weekOffset, to: now) else { continue }
             var components = calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: triggerDate)
             components.weekday = 2  // Monday
             components.hour = 9
@@ -71,11 +68,7 @@ class NotificationService {
                     trigger: trigger
                 )
                 
-                UNUserNotificationCenter.current().add(request) { error in
-                    if let error = error {
-                        print("Error scheduling notification for week \(targetWeek): \(error)")
-                    }
-                }
+                UNUserNotificationCenter.current().add(request) { _ in }
             }
         }
     }

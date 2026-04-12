@@ -14,7 +14,7 @@ struct DueDateView: View {
 
     private static let validRange: ClosedRange<Date> = {
         let now = Date()
-        let upper = Calendar.current.date(byAdding: .month, value: 10, to: now)!
+        let upper = Calendar.current.date(byAdding: .month, value: 10, to: now) ?? now
         return now...upper
     }()
 
@@ -116,7 +116,8 @@ private struct CalendarGridView: View {
         self._selectedDate = selectedDate
         self.validRange = validRange
         let comps = Calendar.current.dateComponents([.year, .month], from: selectedDate.wrappedValue)
-        self._displayedMonth = State(initialValue: Calendar.current.date(from: comps)!)
+        let monthStart = Calendar.current.date(from: comps) ?? selectedDate.wrappedValue
+        self._displayedMonth = State(initialValue: monthStart)
     }
 
     var body: some View {
@@ -212,7 +213,8 @@ private struct CalendarGridView: View {
         var cursor = interval.start
         while cursor < interval.end {
             cells.append(cursor)
-            cursor = calendar.date(byAdding: .day, value: 1, to: cursor)!
+            guard let next = calendar.date(byAdding: .day, value: 1, to: cursor) else { break }
+            cursor = next
         }
         while cells.count < 42 { cells.append(nil) }
 

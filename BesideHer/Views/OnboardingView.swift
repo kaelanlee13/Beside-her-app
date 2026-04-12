@@ -75,11 +75,15 @@ struct OnboardingView: View {
             case 3:
                 NotificationView(
                     onEnable: {
-                        requestNotifications()
-                        completeOnboarding()
+                        completeOnboarding(notificationsEnabled: true)
+                        NotificationService.shared.requestPermission { granted in
+                            if granted {
+                                NotificationService.shared.scheduleWeeklyNotifications(dueDate: dueDate)
+                            }
+                        }
                     },
                     onSkip: {
-                        completeOnboarding()
+                        completeOnboarding(notificationsEnabled: false)
                     },
                     onBack: {
                         withAnimation(.easeInOut(duration: 0.3)) {
@@ -98,26 +102,15 @@ struct OnboardingView: View {
         }
     }
     
-    private func completeOnboarding() {
-        // Create the user profile with the selected due date and gender
+    private func completeOnboarding(notificationsEnabled: Bool) {
         let profile = UserProfile(
             dueDate: dueDate,
             onboardingCompleted: true,
-            notificationsEnabled: currentStep == 3,
+            notificationsEnabled: notificationsEnabled,
             babyGender: babyGender
         )
         modelContext.insert(profile)
-        
-        // Notify parent view that onboarding is done
         onComplete()
-    }
-    
-    private func requestNotifications() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
-            if let error = error {
-                print("Notification permission error: \(error)")
-            }
-        }
     }
 }
 
