@@ -85,7 +85,7 @@ struct ChecklistsView: View {
                     .padding(14)
                     .background(
                         RoundedRectangle(cornerRadius: 14)
-                            .fill(.white)
+                            .fill(Color.surface)
                             .shadow(color: .black.opacity(0.04), radius: 3, y: 1)
                     )
                     .overlay(
@@ -110,7 +110,7 @@ struct ChecklistsView: View {
                                 .padding(.vertical, 10)
                                 .background(
                                     RoundedRectangle(cornerRadius: 10)
-                                        .fill(selectedTrimester == trimester ? Color(hex: "3B7DD8") : .white)
+                                        .fill(selectedTrimester == trimester ? Color(hex: "3B7DD8") : Color.surface)
                                 )
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 10)
@@ -170,7 +170,7 @@ struct ChecklistsView: View {
                 .padding(14)
                 .background(
                     RoundedRectangle(cornerRadius: 12)
-                        .fill(.white)
+                        .fill(Color.surface)
                         .shadow(color: .black.opacity(0.04), radius: 3, y: 1)
                 )
                 .overlay(
@@ -260,7 +260,7 @@ struct ChecklistsView: View {
                     .padding(.horizontal, 16)
                     .background(
                         RoundedRectangle(cornerRadius: 14)
-                            .fill(.white)
+                            .fill(Color.surface)
                             .shadow(color: .black.opacity(0.04), radius: 3, y: 1)
                     )
                     .overlay(
@@ -335,7 +335,7 @@ struct ChecklistsView: View {
                         .padding(.horizontal, 16)
                         .background(
                             RoundedRectangle(cornerRadius: 14)
-                                .fill(.white)
+                                .fill(Color.surface)
                                 .shadow(color: .black.opacity(0.04), radius: 3, y: 1)
                         )
                         .overlay(
@@ -348,7 +348,7 @@ struct ChecklistsView: View {
             }
             .padding(.bottom, 24)
         }
-        .background(Color(hex: "F7F9FC"))
+        .background(Color.paper)
         .navigationTitle("Checklists")
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
@@ -389,7 +389,7 @@ private struct CategoryFilterPill: View {
                 .padding(.vertical, 7)
                 .background(
                     Capsule()
-                        .fill(isSelected ? Color(hex: "3B7DD8") : .white)
+                        .fill(isSelected ? Color(hex: "3B7DD8") : Color.surface)
                 )
                 .overlay(
                     Capsule()

@@ -19,7 +19,7 @@ struct OnboardingView: View {
     var body: some View {
         ZStack {
             // Background
-            Color(hex: "F7F9FC")
+            Color.paper
                 .ignoresSafeArea()
             
             switch currentStep {

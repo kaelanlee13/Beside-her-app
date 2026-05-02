@@ -50,7 +50,7 @@ struct ContractionTimerView: View {
             .padding(.top, 16)
             .padding(.bottom, 40)
         }
-        .background(Color(hex: "F7F9FC"))
+        .background(Color.paper)
         .navigationTitle("Contraction Timer")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -81,7 +81,7 @@ struct ContractionTimerView: View {
         .padding(24)
         .background(
             RoundedRectangle(cornerRadius: 20)
-                .fill(.white)
+                .fill(Color.surface)
                 .shadow(color: .black.opacity(0.05), radius: 8, y: 3)
         )
         .overlay(
@@ -209,7 +209,7 @@ struct ContractionTimerView: View {
         .padding(.vertical, 16)
         .background(
             RoundedRectangle(cornerRadius: 14)
-                .fill(.white)
+                .fill(Color.surface)
                 .shadow(color: .black.opacity(0.04), radius: 3, y: 1)
         )
         .overlay(
@@ -270,7 +270,7 @@ struct ContractionTimerView: View {
         .padding(16)
         .background(
             RoundedRectangle(cornerRadius: 14)
-                .fill(.white)
+                .fill(Color.surface)
                 .shadow(color: .black.opacity(0.04), radius: 3, y: 1)
         )
         .overlay(

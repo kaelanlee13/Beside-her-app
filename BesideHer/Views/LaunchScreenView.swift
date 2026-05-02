@@ -14,7 +14,7 @@ struct LaunchScreenView: View {
 
     var body: some View {
         ZStack {
-            Color(hex: "F7F9FC")
+            Color.paper
                 .ignoresSafeArea()
 
             VStack(spacing: 10) {

@@ -58,7 +58,7 @@ struct HomeView: View {
                     Spacer(minLength: 32)
                 }
             }
-            .background(AppTheme.background.ignoresSafeArea())
+            .background(Color.paper.ignoresSafeArea())
             .navigationBarHidden(true)
         }
     }
@@ -312,7 +312,7 @@ struct HomeView: View {
 
     private var whiteCard: some View {
         RoundedRectangle(cornerRadius: AppTheme.cornerRadius)
-            .fill(AppTheme.card)
+            .fill(Color.surface)
             .shadow(color: AppTheme.cardShadow, radius: 4, y: 2)
             .overlay(
                 RoundedRectangle(cornerRadius: AppTheme.cornerRadius)

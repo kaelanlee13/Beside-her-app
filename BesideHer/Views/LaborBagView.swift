@@ -88,7 +88,7 @@ struct LaborBagView: View {
             .padding(.horizontal, 20)
             .padding(.bottom, 32)
         }
-        .background(Color(hex: "F7F9FC"))
+        .background(Color.paper)
         .navigationTitle("Hospital Bag")
         .navigationBarTitleDisplayMode(.large)
     }
@@ -135,7 +135,7 @@ struct LaborBagView: View {
         .padding(14)
         .background(
             RoundedRectangle(cornerRadius: 12)
-                .fill(.white)
+                .fill(Color.surface)
                 .shadow(color: .black.opacity(0.04), radius: 3, y: 1)
         )
         .overlay(
@@ -224,7 +224,7 @@ struct LaborBagView: View {
         }
         .background(
             RoundedRectangle(cornerRadius: 14)
-                .fill(.white)
+                .fill(Color.surface)
                 .shadow(color: .black.opacity(0.04), radius: 3, y: 1)
         )
         .overlay(

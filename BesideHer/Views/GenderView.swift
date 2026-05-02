@@ -116,7 +116,7 @@ struct GenderView: View {
 
     private func genderCard(label: String, value: String) -> some View {
         let isSelected = babyGender == value
-        let fillColor = isSelected ? Color(hex: "EBF2FD") : Color.white
+        let fillColor = isSelected ? Color(hex: "EBF2FD") : Color.surface
         let strokeColor = isSelected ? Color(hex: "3B7DD8") : Color(hex: "E4EAF1")
         let strokeWidth: CGFloat = isSelected ? 2 : 1
         let labelColor = isSelected ? Color(hex: "3B7DD8") : Color(hex: "1A2B42")

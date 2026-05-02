@@ -21,10 +21,10 @@ struct AppTheme {
     static let softBlue = Color(hex: "7FB3E8")
 
     /// App page background — off-white, low-contrast base
-    static let background = Color(hex: "F7F8FA")
+    static let background = Color.paper
 
     /// Card surface — pure white on the page background
-    static let card = Color.white
+    static let card = Color.surface
 
     /// Near-black — primary body text
     static let textPrimary = Color(hex: "1A202C")
