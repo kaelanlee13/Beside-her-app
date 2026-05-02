@@ -42,7 +42,7 @@ struct SettingsView: View {
                     Divider().padding(.leading, 52)
                     settingsRow(
                         systemImage: "figure.child",
-                        iconColor: AppTheme.accent,
+                        iconColor: Color.sage,
                         label: "Baby's Gender",
                         value: genderLabel,
                         showChevron: true,
@@ -51,7 +51,7 @@ struct SettingsView: View {
                     Divider().padding(.leading, 52)
                     settingsRow(
                         systemImage: "calendar.badge.clock",
-                        iconColor: AppTheme.softBlue,
+                        iconColor: Color.accent,
                         label: "Current Week",
                         value: "Week \(profile.currentWeek)",
                         showChevron: false,
@@ -67,7 +67,7 @@ struct SettingsView: View {
                         action: {}
                     )
                 }
-                .background(whiteCard)
+                .background(surfaceCard)
                 .padding(.horizontal, 20)
 
                 // ─── Notifications ───────────────────────────────────────
@@ -75,10 +75,10 @@ struct SettingsView: View {
 
                 VStack(spacing: 0) {
                     HStack(spacing: 12) {
-                        iconBadge(systemImage: "bell.fill", color: AppTheme.accent)
+                        iconBadge(systemImage: "bell.fill", color: Color.accent)
                         Text("Weekly Reminders")
-                            .font(.system(size: 15))
-                            .foregroundColor(AppTheme.textPrimary)
+                            .font(.bodyText)
+                            .foregroundStyle(Color.ink)
                         Spacer()
                         Toggle("", isOn: Binding(
                             get: { profile.notificationsEnabled },
@@ -95,12 +95,12 @@ struct SettingsView: View {
                                 }
                             }
                         ))
-                        .tint(AppTheme.primary)
+                        .tint(Color.accent)
                     }
                     .padding(.horizontal, 14)
                     .padding(.vertical, 12)
                 }
-                .background(whiteCard)
+                .background(surfaceCard)
                 .padding(.horizontal, 20)
 
                 // ─── Saved ───────────────────────────────────────────────
@@ -109,10 +109,10 @@ struct SettingsView: View {
                 VStack(spacing: 0) {
                     if bookmarkedTips.isEmpty {
                         HStack(spacing: 12) {
-                            iconBadge(systemImage: "bookmark", color: AppTheme.textTertiary)
+                            iconBadge(systemImage: "bookmark", color: Color.inkSecondary)
                             Text("No bookmarked tips yet")
-                                .font(.system(size: 15))
-                                .foregroundColor(AppTheme.textTertiary)
+                                .font(.bodyText)
+                                .foregroundStyle(Color.inkSecondary)
                             Spacer()
                         }
                         .padding(.horizontal, 14)
@@ -120,24 +120,24 @@ struct SettingsView: View {
                     } else {
                         NavigationLink(destination: BookmarkedTipsView(profile: profile)) {
                             HStack(spacing: 12) {
-                                iconBadge(systemImage: "bookmark.fill", color: AppTheme.primary)
+                                iconBadge(systemImage: "bookmark.fill", color: Color.accent)
                                 Text("Bookmarked Tips")
-                                    .font(.system(size: 15))
-                                    .foregroundColor(AppTheme.textPrimary)
+                                    .font(.bodyText)
+                                    .foregroundStyle(Color.ink)
                                 Spacer()
                                 Text("\(bookmarkedTips.count) saved")
-                                    .font(.system(size: 13))
-                                    .foregroundColor(AppTheme.textSecondary)
+                                    .font(.captionText)
+                                    .foregroundStyle(Color.inkSecondary)
                                 Image(systemName: "chevron.right")
                                     .font(.system(size: 12))
-                                    .foregroundColor(AppTheme.textTertiary)
+                                    .foregroundStyle(Color.inkSecondary)
                             }
                             .padding(.horizontal, 14)
                             .padding(.vertical, 12)
                         }
                     }
                 }
-                .background(whiteCard)
+                .background(surfaceCard)
                 .padding(.horizontal, 20)
 
                 // ─── About ───────────────────────────────────────────────
@@ -160,7 +160,7 @@ struct SettingsView: View {
                         }
                     }
                 }
-                .background(whiteCard)
+                .background(surfaceCard)
                 .padding(.horizontal, 20)
 
                 // ─── Legal ───────────────────────────────────────────────
@@ -176,29 +176,29 @@ struct SettingsView: View {
                     }
                     Divider().padding(.leading, 52)
                     HStack(alignment: .top, spacing: 12) {
-                        iconBadge(systemImage: "cross.circle.fill", color: AppTheme.textTertiary)
+                        iconBadge(systemImage: "cross.circle.fill", color: Color.inkSecondary)
                         Text("BesideHer is for informational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always consult your doctor or qualified healthcare provider with any questions about pregnancy.")
-                            .font(.system(size: 12))
-                            .foregroundColor(AppTheme.textTertiary)
+                            .font(.captionText)
+                            .foregroundStyle(Color.inkSecondary)
                             .lineSpacing(3)
                         Spacer()
                     }
                     .padding(.horizontal, 14)
                     .padding(.vertical, 12)
                 }
-                .background(whiteCard)
+                .background(surfaceCard)
                 .padding(.horizontal, 20)
 
                 // ─── Version ─────────────────────────────────────────────
                 Text("BesideHer v1.0")
-                    .font(.system(size: 12))
-                    .foregroundColor(AppTheme.textTertiary)
+                    .font(.captionText)
+                    .foregroundStyle(Color.inkSecondary)
                     .padding(.top, 8)
                     .padding(.bottom, 24)
             }
             .padding(.top, 12)
         }
-        .background(AppTheme.background.ignoresSafeArea())
+        .background(Color.paper.ignoresSafeArea())
         .navigationTitle("Settings")
         .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: $showAbout) {
@@ -242,16 +242,16 @@ struct SettingsView: View {
             HStack(spacing: 12) {
                 iconBadge(systemImage: systemImage, color: iconColor)
                 Text(label)
-                    .font(.system(size: 15))
-                    .foregroundColor(AppTheme.textPrimary)
+                    .font(.bodyText)
+                    .foregroundStyle(Color.ink)
                 Spacer()
                 Text(value)
-                    .font(.system(size: 14, weight: .semibold))
-                    .foregroundColor(AppTheme.primary)
+                    .font(.captionText.weight(.semibold))
+                    .foregroundStyle(Color.accent)
                 if showChevron {
                     Image(systemName: "chevron.right")
                         .font(.system(size: 12))
-                        .foregroundColor(AppTheme.textTertiary)
+                        .foregroundStyle(Color.inkSecondary)
                 }
             }
             .padding(.horizontal, 14)
@@ -265,12 +265,12 @@ struct SettingsView: View {
             HStack(spacing: 12) {
                 iconBadge(systemImage: systemImage, color: iconColor)
                 Text(label)
-                    .font(.system(size: 15))
-                    .foregroundColor(AppTheme.textPrimary)
+                    .font(.bodyText)
+                    .foregroundStyle(Color.ink)
                 Spacer()
                 Image(systemName: "chevron.right")
                     .font(.system(size: 12))
-                    .foregroundColor(AppTheme.textTertiary)
+                    .foregroundStyle(Color.inkSecondary)
             }
             .padding(.horizontal, 14)
             .padding(.vertical, 12)
@@ -290,22 +290,20 @@ struct SettingsView: View {
 
     private func sectionHeader(_ title: String) -> some View {
         HStack {
-            Text(title.uppercased())
-                .font(.system(size: 11, weight: .semibold))
-                .foregroundColor(AppTheme.textTertiary)
-                .tracking(0.5)
+            Text(title)
+                .eyebrowStyle()
             Spacer()
         }
         .padding(.horizontal, 24)
     }
 
-    private var whiteCard: some View {
+    private var surfaceCard: some View {
         RoundedRectangle(cornerRadius: AppTheme.cornerRadius)
-            .fill(AppTheme.card)
+            .fill(Color.surface)
             .shadow(color: AppTheme.cardShadow, radius: 4, y: 2)
             .overlay(
                 RoundedRectangle(cornerRadius: AppTheme.cornerRadius)
-                    .stroke(AppTheme.border, lineWidth: 1)
+                    .stroke(Color.divider, lineWidth: 1)
             )
     }
 
@@ -333,8 +331,6 @@ struct SettingsView: View {
         default: return "Trimester \(profile.currentTrimester)"
         }
     }
-
-
 }
 
 // MARK: - Gender Picker Sheet
@@ -363,15 +359,16 @@ struct GenderPickerSheet: View {
                 Button(action: { selected = "unknown" }) {
                     HStack(spacing: 8) {
                         Image(systemName: selected == "unknown" ? "checkmark.circle.fill" : "circle")
-                            .foregroundColor(selected == "unknown" ? AppTheme.primary : AppTheme.textTertiary)
+                            .foregroundStyle(selected == "unknown" ? Color.accent : Color.inkSecondary)
                         Text("We don't know yet")
-                            .font(.system(size: 15, weight: .medium))
-                            .foregroundColor(AppTheme.textSecondary)
+                            .font(.bodyText)
+                            .foregroundStyle(Color.inkSecondary)
                     }
                 }
 
                 Spacer()
             }
+            .background(Color.paper.ignoresSafeArea())
             .navigationTitle("Baby's Gender")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -390,16 +387,16 @@ struct GenderPickerSheet: View {
         let isSelected = selected == value
         return Button(action: { selected = value }) {
             Text(label)
-                .font(.system(size: 17, weight: .semibold))
-                .foregroundColor(isSelected ? AppTheme.primary : AppTheme.textPrimary)
+                .font(.h2)
+                .foregroundStyle(isSelected ? Color.accent : Color.ink)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 28)
                 .background(
                     RoundedRectangle(cornerRadius: 16)
-                        .fill(isSelected ? AppTheme.primary.opacity(0.08) : AppTheme.card)
+                        .fill(isSelected ? Color.accentSoft : Color.surface)
                         .overlay(
                             RoundedRectangle(cornerRadius: 16)
-                                .stroke(isSelected ? AppTheme.primary : AppTheme.border,
+                                .stroke(isSelected ? Color.accent : Color.divider,
                                         lineWidth: isSelected ? 2 : 1)
                         )
                 )
@@ -423,11 +420,12 @@ struct DatePickerSheet: View {
                     displayedComponents: .date
                 )
                 .datePickerStyle(.graphical)
-                .tint(AppTheme.primary)
+                .tint(Color.accent)
                 .padding()
 
                 Spacer()
             }
+            .background(Color.paper.ignoresSafeArea())
             .navigationTitle("Edit Due Date")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -460,13 +458,13 @@ struct BookmarkedTipsView: View {
                     VStack(spacing: 12) {
                         Image(systemName: "bookmark")
                             .font(.system(size: 36))
-                            .foregroundColor(AppTheme.textTertiary)
+                            .foregroundStyle(Color.inkSecondary)
                         Text("No bookmarks yet")
-                            .font(.system(size: 17, weight: .semibold))
-                            .foregroundColor(AppTheme.textPrimary)
+                            .font(.h2)
+                            .foregroundStyle(Color.ink)
                         Text("Tap the bookmark icon on any tip to save it here.")
-                            .font(.system(size: 14))
-                            .foregroundColor(AppTheme.textSecondary)
+                            .font(.bodyText)
+                            .foregroundStyle(Color.inkSecondary)
                             .multilineTextAlignment(.center)
                     }
                     .padding(.top, 60)
@@ -475,36 +473,36 @@ struct BookmarkedTipsView: View {
                         VStack(alignment: .leading, spacing: 8) {
                             HStack {
                                 Text(tip.title)
-                                    .font(.system(size: 15, weight: .bold))
-                                    .foregroundColor(AppTheme.textPrimary)
+                                    .font(.h2)
+                                    .foregroundStyle(Color.ink)
                                 Spacer()
                                 Button(action: {
                                     withAnimation { profile.toggleBookmark(tip.id) }
                                 }) {
                                     Image(systemName: "bookmark.fill")
                                         .font(.system(size: 14))
-                                        .foregroundColor(AppTheme.primary)
+                                        .foregroundStyle(Color.accent)
                                 }
                             }
                             Text(tip.content)
-                                .font(.system(size: 14))
-                                .foregroundColor(AppTheme.textSecondary)
+                                .font(.bodyText)
+                                .foregroundStyle(Color.inkSecondary)
                                 .lineSpacing(4)
                             Text(tip.categoryDisplayName)
-                                .font(.system(size: 11, weight: .semibold))
-                                .foregroundColor(AppTheme.primary)
+                                .font(.captionText.weight(.semibold))
+                                .foregroundStyle(Color.accent)
                                 .padding(.horizontal, 8)
                                 .padding(.vertical, 3)
-                                .background(Capsule().fill(AppTheme.primary.opacity(0.1)))
+                                .background(Capsule().fill(Color.accentSoft))
                         }
                         .padding(16)
                         .background(
                             RoundedRectangle(cornerRadius: AppTheme.cornerRadius)
-                                .fill(AppTheme.card)
+                                .fill(Color.surface)
                                 .shadow(color: AppTheme.cardShadow, radius: 4, y: 2)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: AppTheme.cornerRadius)
-                                        .stroke(AppTheme.border, lineWidth: 1)
+                                        .stroke(Color.divider, lineWidth: 1)
                                 )
                         )
                     }
@@ -513,7 +511,7 @@ struct BookmarkedTipsView: View {
             .padding(.horizontal, 20)
             .padding(.vertical, 12)
         }
-        .background(AppTheme.background.ignoresSafeArea())
+        .background(Color.paper.ignoresSafeArea())
         .navigationTitle("Bookmarked Tips")
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -538,43 +536,43 @@ struct AboutView: View {
 
                     VStack(spacing: 8) {
                         Text("Your pregnancy companion for dads")
-                            .font(.system(size: 15, weight: .medium))
-                            .foregroundColor(AppTheme.primary)
+                            .font(.bodyText.weight(.medium))
+                            .foregroundStyle(Color.accent)
                             .multilineTextAlignment(.center)
                         Text("Version 1.0")
-                            .font(.system(size: 13))
-                            .foregroundColor(AppTheme.textTertiary)
+                            .font(.captionText)
+                            .foregroundStyle(Color.inkSecondary)
                             .padding(.top, 2)
                     }
 
                     VStack(alignment: .leading, spacing: 12) {
                         Text("About the App")
-                            .font(.system(size: 16, weight: .semibold))
-                            .foregroundColor(AppTheme.textPrimary)
+                            .font(.h2)
+                            .foregroundStyle(Color.ink)
                         Text("BesideHer is a pregnancy companion designed for first-time dads. From week-by-week development updates to hospital bag checklists and partner support tips, BesideHer helps you stay engaged, prepared, and present every step of the way.")
-                            .font(.system(size: 15))
-                            .foregroundColor(AppTheme.textSecondary)
+                            .font(.bodyText)
+                            .foregroundStyle(Color.inkSecondary)
                             .lineSpacing(5)
                     }
                     .padding(20)
                     .background(
                         RoundedRectangle(cornerRadius: AppTheme.cornerRadius)
-                            .fill(AppTheme.card)
+                            .fill(Color.surface)
                             .shadow(color: AppTheme.cardShadow, radius: 4, y: 2)
                             .overlay(
                                 RoundedRectangle(cornerRadius: AppTheme.cornerRadius)
-                                    .stroke(AppTheme.border, lineWidth: 1)
+                                    .stroke(Color.divider, lineWidth: 1)
                             )
                     )
                     .padding(.horizontal, 20)
 
                     Text("Made for expectant fathers")
-                        .font(.system(size: 13))
-                        .foregroundColor(AppTheme.textTertiary)
+                        .font(.captionText)
+                        .foregroundStyle(Color.inkSecondary)
                         .padding(.bottom, 32)
                 }
             }
-            .background(AppTheme.background.ignoresSafeArea())
+            .background(Color.paper.ignoresSafeArea())
             .navigationTitle("About BesideHer")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -597,18 +595,18 @@ struct PrivacyPolicyView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
                     Text("Privacy Policy")
-                        .font(.system(size: 20, weight: .bold))
-                        .foregroundColor(AppTheme.textPrimary)
+                        .font(.h1)
+                        .foregroundStyle(Color.ink)
                         .padding(.top, 8)
 
                     Text("BesideHer does not collect, store, or share any personal data outside of your device. All information including your due date and preferences is stored locally on your device only. We do not use third-party analytics or advertising.")
-                        .font(.system(size: 15))
-                        .foregroundColor(AppTheme.textSecondary)
+                        .font(.bodyText)
+                        .foregroundStyle(Color.inkSecondary)
                         .lineSpacing(5)
                 }
                 .padding(24)
             }
-            .background(AppTheme.background.ignoresSafeArea())
+            .background(Color.paper.ignoresSafeArea())
             .navigationTitle("Privacy Policy")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -631,18 +629,18 @@ struct TermsOfUseView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
                     Text("Terms of Use")
-                        .font(.system(size: 20, weight: .bold))
-                        .foregroundColor(AppTheme.textPrimary)
+                        .font(.h1)
+                        .foregroundStyle(Color.ink)
                         .padding(.top, 8)
 
                     Text("BesideHer is provided for informational and educational purposes only. The content in this app is not medical advice and should not replace consultation with a qualified healthcare professional. Use of this app is at your own discretion.")
-                        .font(.system(size: 15))
-                        .foregroundColor(AppTheme.textSecondary)
+                        .font(.bodyText)
+                        .foregroundStyle(Color.inkSecondary)
                         .lineSpacing(5)
                 }
                 .padding(24)
             }
-            .background(AppTheme.background.ignoresSafeArea())
+            .background(Color.paper.ignoresSafeArea())
             .navigationTitle("Terms of Use")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

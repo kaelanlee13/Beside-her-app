@@ -26,9 +26,10 @@ struct LaunchScreenView: View {
 
                 // Tagline
                 Text("BESIDE HER THROUGH IT ALL")
-                    .font(.system(size: 11, weight: .regular))
-                    .foregroundColor(Color(hex: "6FA8C4"))
+                    .font(.eyebrow)
+                    .textCase(.uppercase)
                     .tracking(3.2)
+                    .foregroundStyle(Color.inkSecondary)
             }
             .scaleEffect(logoScale)
             .opacity(isExiting ? 0 : logoOpacity)

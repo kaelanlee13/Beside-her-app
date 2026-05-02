@@ -36,6 +36,7 @@ struct WeekDetailView: View {
                 sectionCard(
                     systemImage: "figure.child",
                     accentColor: AppTheme.primary,
+                    eyebrow: "DEVELOPMENT",
                     title: "Baby Development",
                     body: week.babyDevelopment
                 )
@@ -46,6 +47,7 @@ struct WeekDetailView: View {
                 sectionCard(
                     systemImage: "figure.arms.open",
                     accentColor: AppTheme.accent,
+                    eyebrow: "YOUR PARTNER",
                     title: "Partner Experience",
                     body: week.partnerExperience
                 )
@@ -74,7 +76,7 @@ struct WeekDetailView: View {
                 Spacer(minLength: 32)
             }
         }
-        .background(AppTheme.background.ignoresSafeArea())
+        .background(Color.paper.ignoresSafeArea())
         .navigationBarTitleDisplayMode(.inline)
     }
 
@@ -86,20 +88,17 @@ struct WeekDetailView: View {
                 .fill(AppTheme.heroGradient)
 
             VStack(alignment: .leading, spacing: 0) {
-                // Trimester / month pill
                 Text("Trimester \(week.trimester)  ·  \(trimesterMonth)")
-                    .font(AppTheme.captionFont)
+                    .font(.captionText)
                     .foregroundColor(.white.opacity(0.65))
 
-                // Large serif week number
                 Text("Week \(week.weekNumber)")
-                    .font(AppTheme.serifHero(size: 56))
+                    .font(.hero)
                     .foregroundColor(.white)
                     .padding(.top, 2)
 
-                // Week title
                 Text(week.title)
-                    .font(AppTheme.serifTitle(size: 18))
+                    .font(.h2)
                     .foregroundColor(.white.opacity(0.9))
                     .padding(.top, 4)
 
@@ -107,17 +106,17 @@ struct WeekDetailView: View {
                     .background(.white.opacity(0.2))
                     .padding(.vertical, 14)
 
-                // Baby size row
                 HStack(spacing: 10) {
                     Text(week.sizeEmoji)
                         .font(.system(size: 28))
                     VStack(alignment: .leading, spacing: 2) {
                         Text("SIZE THIS WEEK")
-                            .font(.system(size: 10, weight: .semibold))
+                            .font(.eyebrow)
+                            .textCase(.uppercase)
+                            .tracking(1.4)
                             .foregroundColor(.white.opacity(0.55))
-                            .tracking(1.0)
                         Text(week.sizeComparison)
-                            .font(.system(size: 15, weight: .semibold))
+                            .font(.bodyText.weight(.semibold))
                             .foregroundColor(.white)
                     }
                 }
@@ -130,8 +129,11 @@ struct WeekDetailView: View {
 
     // MARK: - Section Card (Baby Dev / Partner Exp)
 
-    private func sectionCard(systemImage: String, accentColor: Color, title: String, body: String) -> some View {
+    private func sectionCard(systemImage: String, accentColor: Color, eyebrow: String, title: String, body: String) -> some View {
         VStack(alignment: .leading, spacing: 10) {
+            Text(eyebrow)
+                .eyebrowStyle()
+
             HStack(spacing: 10) {
                 ZStack {
                     RoundedRectangle(cornerRadius: 8)
@@ -142,63 +144,69 @@ struct WeekDetailView: View {
                         .foregroundColor(accentColor)
                 }
                 Text(title)
-                    .font(.system(size: 15, weight: .bold))
-                    .foregroundColor(AppTheme.textPrimary)
+                    .font(.h2)
+                    .foregroundStyle(Color.ink)
             }
 
             Text(body)
-                .font(.system(size: 14))
-                .foregroundColor(AppTheme.textSecondary)
+                .font(.bodyText)
+                .foregroundStyle(Color.inkSecondary)
                 .lineSpacing(4)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(16)
-        .background(whiteCard)
+        .background(surfaceCard)
     }
 
     // MARK: - How to Help Card
 
     private var howToHelpCard: some View {
         VStack(alignment: .leading, spacing: 10) {
+            Text("YOUR ROLE")
+                .eyebrowStyle()
+
             HStack(spacing: 10) {
                 ZStack {
                     RoundedRectangle(cornerRadius: 8)
-                        .fill(Color.green.opacity(0.10))
+                        .fill(Color.sage.opacity(0.12))
                         .frame(width: 32, height: 32)
                     Image(systemName: "hands.sparkles")
                         .font(.system(size: 15, weight: .semibold))
-                        .foregroundColor(.green)
+                        .foregroundColor(Color.sage)
                 }
                 Text("How to Help")
-                    .font(.system(size: 15, weight: .bold))
-                    .foregroundColor(AppTheme.textPrimary)
+                    .font(.h2)
+                    .foregroundStyle(Color.ink)
             }
 
             ForEach(week.howToHelp, id: \.self) { tip in
                 HStack(alignment: .top, spacing: 10) {
                     Circle()
-                        .fill(AppTheme.primary)
+                        .fill(Color.accent)
                         .frame(width: 5, height: 5)
                         .padding(.top, 7)
                     Text(tip)
-                        .font(.system(size: 14))
-                        .foregroundColor(AppTheme.textSecondary)
+                        .font(.bodyText)
+                        .foregroundStyle(Color.inkSecondary)
                         .lineSpacing(3)
                 }
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(16)
-        .background(whiteCard)
+        .background(surfaceCard)
     }
 
     // MARK: - Action Items Card
 
     private var actionItemsCard: some View {
         VStack(alignment: .leading, spacing: 10) {
+            Text("YOUR TASKS")
+                .eyebrowStyle()
+
             Text("Action Items")
-                .font(.system(size: 15, weight: .bold))
-                .foregroundColor(AppTheme.textPrimary)
+                .font(.h2)
+                .foregroundStyle(Color.ink)
 
             ForEach(week.actionItems) { item in
                 taskRow(
@@ -227,7 +235,7 @@ struct WeekDetailView: View {
             }
         }
         .padding(16)
-        .background(whiteCard)
+        .background(surfaceCard)
     }
 
     private func taskRow(text: String, subtitle: String, isCompleted: Bool, onToggle: @escaping () -> Void) -> some View {
@@ -237,27 +245,27 @@ struct WeekDetailView: View {
             }) {
                 ZStack {
                     RoundedRectangle(cornerRadius: 5)
-                        .fill(isCompleted ? AppTheme.primary : .clear)
+                        .fill(isCompleted ? Color.accent : .clear)
                         .frame(width: 22, height: 22)
                         .overlay(
                             RoundedRectangle(cornerRadius: 5)
-                                .stroke(isCompleted ? Color.clear : AppTheme.border, lineWidth: 1.5)
+                                .stroke(isCompleted ? Color.clear : Color.divider, lineWidth: 1.5)
                         )
                     if isCompleted {
                         Image(systemName: "checkmark")
                             .font(.system(size: 11, weight: .bold))
-                            .foregroundColor(.white)
+                            .foregroundColor(Color.onAccent)
                     }
                 }
             }
             VStack(alignment: .leading, spacing: 2) {
                 Text(text)
-                    .font(.system(size: 14))
-                    .foregroundColor(isCompleted ? AppTheme.textTertiary : AppTheme.textPrimary)
-                    .strikethrough(isCompleted, color: AppTheme.textTertiary)
+                    .font(.bodyText)
+                    .foregroundStyle(isCompleted ? Color.inkSecondary : Color.ink)
+                    .strikethrough(isCompleted, color: Color.inkSecondary)
                 Text(subtitle)
-                    .font(.system(size: 11))
-                    .foregroundColor(AppTheme.textTertiary)
+                    .font(.captionText)
+                    .foregroundStyle(Color.inkSecondary)
             }
         }
     }
@@ -275,28 +283,27 @@ struct WeekDetailView: View {
                     HStack(spacing: 6) {
                         Image(systemName: "questionmark.circle.fill")
                             .font(.system(size: 13))
-                            .foregroundColor(AppTheme.primary)
-                        Text("Common Dad Question")
-                            .font(AppTheme.captionFont.weight(.semibold))
-                            .foregroundColor(AppTheme.primary)
+                            .foregroundStyle(Color.inkSecondary)
+                        Text("DAD QUESTION")
+                            .eyebrowStyle()
                     }
                     Spacer()
                     Image(systemName: showDadAnswer ? "chevron.up" : "chevron.down")
                         .font(.system(size: 11, weight: .semibold))
-                        .foregroundColor(AppTheme.primary)
+                        .foregroundStyle(Color.inkSecondary)
                 }
 
                 Text(question)
-                    .font(.system(size: 15, weight: .semibold))
-                    .foregroundColor(AppTheme.textPrimary)
+                    .font(.h2)
+                    .foregroundStyle(Color.ink)
                     .multilineTextAlignment(.leading)
                     .frame(maxWidth: .infinity, alignment: .leading)
 
                 if showDadAnswer {
                     Divider()
                     Text(answer)
-                        .font(.system(size: 14))
-                        .foregroundColor(AppTheme.textSecondary)
+                        .font(.bodyText)
+                        .foregroundStyle(Color.inkSecondary)
                         .multilineTextAlignment(.leading)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .fixedSize(horizontal: false, vertical: true)
@@ -307,10 +314,10 @@ struct WeekDetailView: View {
             .frame(maxWidth: .infinity)
             .background(
                 RoundedRectangle(cornerRadius: AppTheme.cornerRadius)
-                    .fill(AppTheme.primary.opacity(0.07))
+                    .fill(Color.accentSoft)
                     .overlay(
                         RoundedRectangle(cornerRadius: AppTheme.cornerRadius)
-                            .stroke(AppTheme.primary.opacity(0.15), lineWidth: 1)
+                            .stroke(Color.accent.opacity(0.25), lineWidth: 1)
                     )
             )
         }
@@ -321,39 +328,36 @@ struct WeekDetailView: View {
 
     private var weekNavRow: some View {
         HStack(spacing: 10) {
-            // Previous
             if week.weekNumber > 1, let prev = previousWeek {
                 NavigationLink(destination: WeekDetailView(week: prev, profile: profile)) {
                     HStack(spacing: 4) {
                         Image(systemName: "chevron.left")
                             .font(.system(size: 12, weight: .semibold))
                         Text("Week \(previousWeekNumber)")
-                            .font(.system(size: 13, weight: .semibold))
+                            .font(.captionText.weight(.semibold))
                     }
                     .foregroundColor(AppTheme.primary)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 10)
                     .background(
                         RoundedRectangle(cornerRadius: 10)
-                            .fill(AppTheme.card)
+                            .fill(Color.surface)
                     )
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)
-                            .stroke(AppTheme.border, lineWidth: 1)
+                            .stroke(Color.divider, lineWidth: 1)
                     )
                 }
             } else {
-                // Placeholder to keep layout balanced
                 Color.clear
                     .frame(maxWidth: .infinity, maxHeight: 40)
             }
 
-            // Next
             if week.weekNumber < 40, let next = nextWeek {
                 NavigationLink(destination: WeekDetailView(week: next, profile: profile)) {
                     HStack(spacing: 4) {
                         Text("Week \(nextWeekNumber)")
-                            .font(.system(size: 13, weight: .semibold))
+                            .font(.captionText.weight(.semibold))
                         Image(systemName: "chevron.right")
                             .font(.system(size: 12, weight: .semibold))
                     }
@@ -362,11 +366,11 @@ struct WeekDetailView: View {
                     .padding(.vertical, 10)
                     .background(
                         RoundedRectangle(cornerRadius: 10)
-                            .fill(AppTheme.card)
+                            .fill(Color.surface)
                     )
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)
-                            .stroke(AppTheme.border, lineWidth: 1)
+                            .stroke(Color.divider, lineWidth: 1)
                     )
                 }
             } else {
@@ -378,13 +382,13 @@ struct WeekDetailView: View {
 
     // MARK: - Shared Style
 
-    private var whiteCard: some View {
+    private var surfaceCard: some View {
         RoundedRectangle(cornerRadius: AppTheme.cornerRadius)
-            .fill(AppTheme.card)
+            .fill(Color.surface)
             .shadow(color: AppTheme.cardShadow, radius: 4, y: 2)
             .overlay(
                 RoundedRectangle(cornerRadius: AppTheme.cornerRadius)
-                    .stroke(AppTheme.border, lineWidth: 1)
+                    .stroke(Color.divider, lineWidth: 1)
             )
     }
 

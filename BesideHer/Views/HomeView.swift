@@ -71,118 +71,119 @@ struct HomeView: View {
                 WeekDetailView(week: week, profile: profile)
             }
         }) {
-            ZStack(alignment: .topTrailing) {
-                // Background gradient
-                RoundedRectangle(cornerRadius: AppTheme.cornerRadius)
-                    .fill(AppTheme.heroGradient)
+            VStack(alignment: .leading, spacing: Spacing.lg) {
 
-                VStack(alignment: .leading, spacing: 0) {
+                // Top section: text + illustration
+                HStack(alignment: .top, spacing: Spacing.md) {
+                    VStack(alignment: .leading, spacing: Spacing.sm) {
+                        Text("WEEK \(profile.currentWeek) OF 40")
+                            .eyebrowStyle()
 
-                    // Top row: greeting + gear
-                    HStack(alignment: .top) {
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text("Good \(greeting)")
-                                .font(AppTheme.captionFont)
-                                .foregroundColor(.white.opacity(0.65))
-                            Text("Week \(profile.currentWeek)")
-                                .font(AppTheme.serifHero(size: 56))
-                                .foregroundColor(.white)
-                                .lineSpacing(0)
-                        }
-                        Spacer()
-                        NavigationLink(destination: SettingsView(profile: profile)) {
-                            ZStack {
-                                Circle()
-                                    .fill(.white.opacity(0.12))
-                                    .frame(width: 38, height: 38)
-                                Image(systemName: "gearshape")
-                                    .font(.system(size: 16))
-                                    .foregroundColor(.white.opacity(0.85))
-                            }
-                        }
-                        // Prevent gear tap from triggering the outer NavigationLink
-                        .simultaneousGesture(TapGesture())
+                        Text(heroHeadlineText)
+                            .font(.hero)
+                            .foregroundStyle(Color.ink)
+                            .fixedSize(horizontal: false, vertical: true)
                     }
 
-                    // Baby size
-                    if let week = currentWeekContent {
-                        Text("\(week.sizeEmoji)  \(babyLabel) is the size of \(articleFor(week.sizeComparison)) \(week.sizeComparison.lowercased())")
-                            .font(.system(size: 15, weight: .semibold))
-                            .foregroundColor(.white.opacity(0.9))
-                            .padding(.top, 14)
-                    }
+                    Spacer(minLength: Spacing.sm)
 
-                    // Countdown pill + CTA row
-                    HStack {
-                        Text(countdownText)
-                            .font(AppTheme.labelFont)
-                            .foregroundColor(AppTheme.accent)
-                            .padding(.horizontal, 12)
-                            .padding(.vertical, 6)
-                            .background(AppTheme.accent.opacity(0.15))
-                            .clipShape(Capsule())
-
-                        Spacer()
-
-                        HStack(spacing: 4) {
-                            Text("Week guide")
-                                .font(AppTheme.labelFont)
-                                .foregroundColor(.white)
-                            Image(systemName: "arrow.right")
-                                .font(.system(size: 12, weight: .semibold))
-                                .foregroundColor(.white.opacity(0.7))
-                        }
-                    }
-                    .padding(.top, 20)
+                    Image(systemName: "leaf.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 80, height: 80)
+                        .foregroundStyle(Color.accent.opacity(0.18))
                 }
-                .padding(20)
+
+                if let week = currentWeekContent {
+                    Text(heroBodyText(week))
+                        .font(.bodyText)
+                        .foregroundStyle(Color.inkSecondary)
+                        .lineLimit(2)
+                }
+
+                // Progress ruler — full-width, no label
+                GeometryReader { geo in
+                    ZStack(alignment: .leading) {
+                        Rectangle()
+                            .fill(Color.divider)
+                            .frame(height: 1)
+                        Rectangle()
+                            .fill(Color.accent)
+                            .frame(width: geo.size.width * min(profile.progressPercentage, 1.0), height: 1)
+                            .animation(.easeInOut(duration: 0.4), value: profile.progressPercentage)
+                    }
+                }
+                .frame(height: 1)
             }
-            .shadow(color: AppTheme.deepNavy.opacity(0.3), radius: 12, y: 6)
+            .padding(Spacing.xl)
+            .background(
+                RoundedRectangle(cornerRadius: Radius.card)
+                    .fill(Color.paperTinted)
+                    .premiumShadow()
+            )
         }
         .buttonStyle(.plain)
-        // Only navigate when currentWeekContent exists
         .disabled(currentWeekContent == nil)
+    }
+
+    private var heroHeadlineText: String {
+        guard let week = currentWeekContent else { return "" }
+        let subject: String
+        switch profile.babyGender {
+        case "boy":  subject = "He's"
+        case "girl": subject = "She's"
+        default:     subject = "Baby is"
+        }
+        return "\(subject) the size of \(articleFor(week.sizeComparison)) \(week.sizeComparison.lowercased())."
+    }
+
+    private func heroBodyText(_ week: Week) -> String {
+        "\(week.title)  ·  \(countdownText)"
     }
 
 
     // MARK: - Progress Card
 
     private var progressCard: some View {
-        VStack(spacing: 8) {
-            HStack {
-                Text("Pregnancy Progress")
-                    .font(AppTheme.captionFont.weight(.semibold))
-                    .foregroundColor(AppTheme.textSecondary)
-                Spacer()
-                Text("\(Int(profile.progressPercentage * 100))%")
-                    .font(AppTheme.captionFont.weight(.bold))
-                    .foregroundColor(AppTheme.primary)
-            }
+        VStack(alignment: .leading, spacing: Spacing.md) {
+            Text("PROGRESS")
+                .eyebrowStyle()
 
-            GeometryReader { geo in
-                ZStack(alignment: .leading) {
-                    RoundedRectangle(cornerRadius: 4)
-                        .fill(AppTheme.softBlue.opacity(0.25))
-                        .frame(height: 8)
-                    RoundedRectangle(cornerRadius: 4)
-                        .fill(AppTheme.primaryGradient)
-                        .frame(width: geo.size.width * profile.progressPercentage, height: 8)
-                }
-            }
-            .frame(height: 8)
+            Text(progressHeadlineText)
+                .font(.h1)
+                .foregroundStyle(Color.ink)
 
-            HStack {
-                Text("Week 1")
-                    .font(.system(size: 10))
-                    .foregroundColor(AppTheme.textTertiary)
-                Spacer()
-                Text("Week 40")
-                    .font(.system(size: 10))
-                    .foregroundColor(AppTheme.textTertiary)
-            }
+            HairlineProgressRuler(
+                progress: profile.progressPercentage,
+                ticks: [13.0 / 40.0, 27.0 / 40.0]
+            )
+            .padding(.vertical, Spacing.xs)
+
+            Text("Week \(profile.currentWeek) of 40")
+                .font(.captionText)
+                .foregroundStyle(Color.inkSecondary)
         }
-        .padding(16)
-        .background(whiteCard)
+        .padding(Spacing.xl)
+        .background(
+            RoundedRectangle(cornerRadius: Radius.card)
+                .fill(Color.surface)
+                .premiumShadow()
+        )
+    }
+
+    private var progressHeadlineText: String {
+        let cal = Calendar.current
+        let days = cal.dateComponents([.day], from: cal.startOfDay(for: Date()),
+                                      to: cal.startOfDay(for: profile.dueDate)).day ?? 0
+        switch days {
+        case ..<0:  return "Baby may have arrived"
+        case 0:     return "Due today"
+        case 1:     return "1 day to go"
+        case 2..<14: return "\(days) days to go"
+        default:
+            let weeks = (days + 6) / 7
+            return "\(weeks) week\(weeks == 1 ? "" : "s") to go"
+        }
     }
 
     // MARK: - Contraction Timer Row
@@ -200,19 +201,19 @@ struct HomeView: View {
                 }
                 VStack(alignment: .leading, spacing: 2) {
                     Text("Contraction Timer")
-                        .font(.system(size: 15, weight: .semibold))
-                        .foregroundColor(AppTheme.textPrimary)
+                        .font(.h2)
+                        .foregroundStyle(Color.ink)
                     Text("Track contractions during labor")
-                        .font(AppTheme.captionFont)
-                        .foregroundColor(AppTheme.textSecondary)
+                        .font(.captionText)
+                        .foregroundStyle(Color.inkSecondary)
                 }
                 Spacer()
                 Image(systemName: "chevron.right")
                     .font(.system(size: 13, weight: .semibold))
-                    .foregroundColor(AppTheme.textTertiary)
+                    .foregroundStyle(Color.inkSecondary)
             }
             .padding(16)
-            .background(whiteCard)
+            .background(surfaceCard)
         }
         .buttonStyle(.plain)
     }
@@ -221,66 +222,43 @@ struct HomeView: View {
 
     private func tasksCard(week: Week) -> some View {
         let checklistItems = weekChecklistItems
-        let totalCount = week.actionItems.count + checklistItems.count
+        let actionCount = week.actionItems.count
+        let totalCount = actionCount + checklistItems.count
         let completedCount = week.actionItems.filter { profile.isActionItemCompleted($0.id) }.count
             + checklistItems.filter { profile.isChecklistItemCompleted($0.id) }.count
 
-        return VStack(alignment: .leading, spacing: 12) {
+        return VStack(alignment: .leading, spacing: 0) {
             HStack {
-                Text("This Week's Tasks")
-                    .font(.system(size: 15, weight: .bold))
-                    .foregroundColor(AppTheme.textPrimary)
+                Text("THIS WEEK")
+                    .eyebrowStyle()
                 Spacer()
                 Text("\(completedCount) of \(totalCount)")
-                    .font(AppTheme.captionFont.weight(.semibold))
-                    .foregroundColor(AppTheme.primary)
+                    .font(.captionText.weight(.semibold))
+                    .foregroundStyle(Color.accent)
             }
+            .padding(.bottom, Spacing.md)
 
-            ForEach(week.actionItems) { item in
-                taskRow(
-                    text: item.text,
-                    isCompleted: profile.isActionItemCompleted(item.id),
-                    onToggle: { profile.toggleActionItem(item.id) }
+            ForEach(Array(week.actionItems.enumerated()), id: \.element.id) { index, item in
+                let isLastAction = index == actionCount - 1
+                ChecklistRow(
+                    title: item.text,
+                    isComplete: profile.isActionItemCompleted(item.id),
+                    onToggle: { profile.toggleActionItem(item.id) },
+                    showDivider: !(isLastAction && checklistItems.isEmpty)
                 )
             }
 
-            ForEach(checklistItems) { item in
-                taskRow(
-                    text: item.text,
-                    isCompleted: profile.isChecklistItemCompleted(item.id),
-                    onToggle: { profile.toggleChecklistItem(item.id) }
+            ForEach(Array(checklistItems.enumerated()), id: \.element.id) { index, item in
+                ChecklistRow(
+                    title: item.text,
+                    isComplete: profile.isChecklistItemCompleted(item.id),
+                    onToggle: { profile.toggleChecklistItem(item.id) },
+                    showDivider: index < checklistItems.count - 1
                 )
             }
         }
-        .padding(16)
-        .background(whiteCard)
-    }
-
-    private func taskRow(text: String, isCompleted: Bool, onToggle: @escaping () -> Void) -> some View {
-        HStack(spacing: 12) {
-            Button(action: {
-                withAnimation(.easeInOut(duration: 0.2)) { onToggle() }
-            }) {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 5)
-                        .fill(isCompleted ? AppTheme.primary : .clear)
-                        .frame(width: 22, height: 22)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 5)
-                                .stroke(isCompleted ? Color.clear : AppTheme.border, lineWidth: 1.5)
-                        )
-                    if isCompleted {
-                        Image(systemName: "checkmark")
-                            .font(.system(size: 11, weight: .bold))
-                            .foregroundColor(.white)
-                    }
-                }
-            }
-            Text(text)
-                .font(.system(size: 14))
-                .foregroundColor(isCompleted ? AppTheme.textTertiary : AppTheme.textPrimary)
-                .strikethrough(isCompleted, color: AppTheme.textTertiary)
-        }
+        .padding(Spacing.xl)
+        .background(surfaceCard)
     }
 
     // MARK: - Dad Question Card
@@ -290,43 +268,33 @@ struct HomeView: View {
             HStack(spacing: 6) {
                 Image(systemName: "questionmark.circle.fill")
                     .font(.system(size: 14))
-                    .foregroundColor(AppTheme.primary)
-                Text("Common Dad Question")
-                    .font(AppTheme.captionFont.weight(.semibold))
-                    .foregroundColor(AppTheme.primary)
+                    .foregroundStyle(Color.inkSecondary)
+                Text("DAD QUESTION")
+                    .eyebrowStyle()
             }
             Text(question)
-                .font(.system(size: 14, weight: .semibold))
-                .foregroundColor(AppTheme.textPrimary)
+                .font(.h2)
+                .foregroundStyle(Color.ink)
             Text(answer)
-                .font(AppTheme.captionFont)
-                .foregroundColor(AppTheme.textSecondary)
+                .font(.bodyText)
+                .foregroundStyle(Color.inkSecondary)
                 .lineSpacing(4)
         }
         .padding(16)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(whiteCard)
+        .background(surfaceCard)
     }
 
     // MARK: - Shared Helpers
 
-    private var whiteCard: some View {
+    private var surfaceCard: some View {
         RoundedRectangle(cornerRadius: AppTheme.cornerRadius)
             .fill(Color.surface)
             .shadow(color: AppTheme.cardShadow, radius: 4, y: 2)
             .overlay(
                 RoundedRectangle(cornerRadius: AppTheme.cornerRadius)
-                    .stroke(AppTheme.border, lineWidth: 1)
+                    .stroke(Color.divider, lineWidth: 1)
             )
-    }
-
-    private var greeting: String {
-        let hour = Calendar.current.component(.hour, from: Date())
-        switch hour {
-        case 5..<12: return "morning"
-        case 12..<17: return "afternoon"
-        default:     return "evening"
-        }
     }
 
     private var countdownText: String {

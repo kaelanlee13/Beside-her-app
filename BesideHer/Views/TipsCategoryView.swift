@@ -43,28 +43,28 @@ struct TipsCategoryView: View {
 
                             VStack(alignment: .leading, spacing: 3) {
                                 Text(category.name)
-                                    .font(.system(size: 15, weight: .semibold))
-                                    .foregroundColor(AppTheme.textPrimary)
+                                    .font(.h2)
+                                    .foregroundStyle(Color.ink)
                                 Text("\(tips.count) tips")
-                                    .font(.system(size: 12))
-                                    .foregroundColor(AppTheme.textSecondary)
+                                    .font(.captionText)
+                                    .foregroundStyle(Color.inkSecondary)
                             }
 
                             Spacer()
 
                             Image(systemName: "chevron.right")
                                 .font(.system(size: 12))
-                                .foregroundColor(AppTheme.textTertiary)
+                                .foregroundStyle(Color.inkSecondary)
                         }
                         .padding(14)
                         .background(
                             RoundedRectangle(cornerRadius: AppTheme.cornerRadius)
-                                .fill(AppTheme.card)
+                                .fill(Color.surface)
                                 .shadow(color: AppTheme.cardShadow, radius: 4, y: 2)
                         )
                         .overlay(
                             RoundedRectangle(cornerRadius: AppTheme.cornerRadius)
-                                .stroke(AppTheme.border, lineWidth: 1)
+                                .stroke(Color.divider, lineWidth: 1)
                         )
                     }
                     .buttonStyle(.plain)
@@ -73,7 +73,7 @@ struct TipsCategoryView: View {
             .padding(.horizontal, 20)
             .padding(.vertical, 12)
         }
-        .background(AppTheme.background.ignoresSafeArea())
+        .background(Color.paper.ignoresSafeArea())
         .navigationTitle("Support Tips")
         .navigationBarTitleDisplayMode(.inline)
         } // NavigationStack
@@ -98,7 +98,6 @@ struct TipsListView: View {
         ScrollView {
             VStack(spacing: 12) {
 
-                // Trimester filter pills
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 8) {
                         TrimesterFilterPill(label: "All", isSelected: selectedTrimester == nil) {
@@ -120,8 +119,8 @@ struct TipsListView: View {
                     VStack(alignment: .leading, spacing: 8) {
                         HStack {
                             Text(tip.title)
-                                .font(.system(size: 15, weight: .bold))
-                                .foregroundColor(AppTheme.textPrimary)
+                                .font(.h2)
+                                .foregroundStyle(Color.ink)
 
                             Spacer()
 
@@ -132,26 +131,25 @@ struct TipsListView: View {
                             }) {
                                 Image(systemName: profile.isTipBookmarked(tip.id) ? "bookmark.fill" : "bookmark")
                                     .font(.system(size: 14))
-                                    .foregroundColor(profile.isTipBookmarked(tip.id) ? AppTheme.primary : AppTheme.textTertiary)
+                                    .foregroundStyle(profile.isTipBookmarked(tip.id) ? Color.accent : Color.inkSecondary)
                             }
                         }
 
                         Text(tip.content)
-                            .font(.system(size: 14))
-                            .foregroundColor(AppTheme.textSecondary)
+                            .font(.bodyText)
+                            .foregroundStyle(Color.inkSecondary)
                             .lineSpacing(4)
 
-                        // Trimester tags
                         HStack(spacing: 6) {
                             ForEach(tip.trimester, id: \.self) { tri in
                                 Text("T\(tri)")
-                                    .font(.system(size: 10, weight: .semibold))
-                                    .foregroundColor(AppTheme.primary)
+                                    .font(.captionText.weight(.semibold))
+                                    .foregroundStyle(Color.accent)
                                     .padding(.horizontal, 8)
                                     .padding(.vertical, 3)
                                     .background(
                                         Capsule()
-                                            .fill(AppTheme.primary.opacity(0.1))
+                                            .fill(Color.accentSoft)
                                     )
                             }
                         }
@@ -159,19 +157,19 @@ struct TipsListView: View {
                     .padding(16)
                     .background(
                         RoundedRectangle(cornerRadius: AppTheme.cornerRadius)
-                            .fill(AppTheme.card)
+                            .fill(Color.surface)
                             .shadow(color: AppTheme.cardShadow, radius: 4, y: 2)
                     )
                     .overlay(
                         RoundedRectangle(cornerRadius: AppTheme.cornerRadius)
-                            .stroke(AppTheme.border, lineWidth: 1)
+                            .stroke(Color.divider, lineWidth: 1)
                     )
                 }
             }
             .padding(.horizontal, 20)
             .padding(.vertical, 12)
         }
-        .background(AppTheme.background.ignoresSafeArea())
+        .background(Color.paper.ignoresSafeArea())
         .navigationTitle(categoryName)
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -187,15 +185,15 @@ private struct TrimesterFilterPill: View {
     var body: some View {
         Button(action: action) {
             Text(label)
-                .font(.system(size: 12, weight: .semibold))
-                .foregroundColor(isSelected ? .white : AppTheme.textSecondary)
+                .font(.captionText.weight(.semibold))
+                .foregroundColor(isSelected ? .white : Color.inkSecondary)
                 .padding(.horizontal, 12)
                 .padding(.vertical, 7)
                 .background(
-                    Capsule().fill(isSelected ? AppTheme.primary : AppTheme.card)
+                    Capsule().fill(isSelected ? Color.accent : Color.surface)
                 )
                 .overlay(
-                    Capsule().stroke(isSelected ? Color.clear : AppTheme.border, lineWidth: 1)
+                    Capsule().stroke(isSelected ? Color.clear : Color.divider, lineWidth: 1)
                 )
         }
     }

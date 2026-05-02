@@ -10,7 +10,7 @@ import SwiftUI
 struct AllWeeksView: View {
     let profile: UserProfile
     let content = ContentService.shared
-    
+
     var body: some View {
         NavigationStack {
         ScrollView {
@@ -18,51 +18,48 @@ struct AllWeeksView: View {
                 ForEach(content.weeks) { week in
                     NavigationLink(destination: WeekDetailView(week: week, profile: profile)) {
                         HStack(spacing: 14) {
-                            // Week number badge
                             ZStack {
                                 Circle()
                                     .fill(week.weekNumber == profile.currentWeek
-                                          ? Color(hex: "3B7DD8")
-                                          : Color(hex: "E8F0FE"))
+                                          ? Color.accent
+                                          : Color.accentSoft)
                                     .frame(width: 40, height: 40)
-                                
+
                                 Text("\(week.weekNumber)")
-                                    .font(.system(size: 15, weight: .bold))
+                                    .font(.captionText.weight(.bold))
                                     .foregroundColor(week.weekNumber == profile.currentWeek
-                                                     ? .white
-                                                     : Color(hex: "3B7DD8"))
+                                                     ? Color.onAccent
+                                                     : Color.accent)
                             }
-                            
-                            // Week info
+
                             VStack(alignment: .leading, spacing: 3) {
                                 Text(week.title)
-                                    .font(.system(size: 14, weight: .semibold))
-                                    .foregroundColor(Color(hex: "1A2B42"))
+                                    .font(.h2)
+                                    .foregroundStyle(Color.ink)
                                     .lineLimit(1)
-                                
+
                                 Text("Baby size: \(week.sizeComparison)")
-                                    .font(.system(size: 12))
-                                    .foregroundColor(Color(hex: "5A6B80"))
+                                    .font(.captionText)
+                                    .foregroundStyle(Color.inkSecondary)
                             }
-                            
+
                             Spacer()
-                            
-                            // Current week indicator
+
                             if week.weekNumber == profile.currentWeek {
                                 Text("NOW")
-                                    .font(.system(size: 10, weight: .bold))
-                                    .foregroundColor(Color(hex: "3B7DD8"))
+                                    .font(.captionText.weight(.bold))
+                                    .foregroundStyle(Color.accent)
                                     .padding(.horizontal, 8)
                                     .padding(.vertical, 3)
                                     .background(
                                         Capsule()
-                                            .fill(Color(hex: "E8F0FE"))
+                                            .fill(Color.accentSoft)
                                     )
                             }
-                            
+
                             Image(systemName: "chevron.right")
                                 .font(.system(size: 12))
-                                .foregroundColor(Color(hex: "8E9BAD"))
+                                .foregroundStyle(Color.inkSecondary)
                         }
                         .padding(14)
                         .background(
@@ -73,10 +70,11 @@ struct AllWeeksView: View {
                         .overlay(
                             RoundedRectangle(cornerRadius: 12)
                                 .stroke(week.weekNumber == profile.currentWeek
-                                        ? Color(hex: "3B7DD8").opacity(0.3)
-                                        : Color(hex: "E4EAF1"), lineWidth: 1)
+                                        ? Color.accent.opacity(0.3)
+                                        : Color.divider, lineWidth: 1)
                         )
                     }
+                    .buttonStyle(.plain)
                 }
             }
             .padding(.horizontal, 20)

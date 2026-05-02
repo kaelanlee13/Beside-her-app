@@ -20,16 +20,15 @@ struct DueDateView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            // Header
             HStack {
                 Button(action: onBack) {
                     HStack(spacing: 4) {
                         Image(systemName: "chevron.left")
                             .font(.system(size: 14, weight: .semibold))
                         Text("Back")
-                            .font(.system(size: 16, weight: .semibold))
+                            .font(.bodyText.weight(.semibold))
                     }
-                    .foregroundColor(Color(hex: "3B7DD8"))
+                    .foregroundStyle(Color.accent)
                 }
                 Spacer()
             }
@@ -38,61 +37,56 @@ struct DueDateView: View {
 
             Spacer()
 
-            // Step label
             Text("STEP 2 OF 4")
-                .font(.system(size: 12, weight: .semibold))
-                .foregroundColor(Color(hex: "3B7DD8"))
-                .tracking(1)
+                .font(.eyebrow)
+                .textCase(.uppercase)
+                .tracking(1.4)
+                .foregroundStyle(Color.accent)
                 .padding(.bottom, 8)
 
-            // Title
             Text("When is the\ndue date?")
-                .font(.system(size: 28, weight: .bold))
-                .foregroundColor(Color(hex: "1A2B42"))
+                .font(.h1)
+                .foregroundStyle(Color.ink)
                 .multilineTextAlignment(.center)
 
-            // Description
             Text("We'll calculate which week you're in\nand personalize your content.")
-                .font(.system(size: 15))
-                .foregroundColor(Color(hex: "5A6B80"))
+                .font(.bodyText)
+                .foregroundStyle(Color.inkSecondary)
                 .multilineTextAlignment(.center)
                 .lineSpacing(2)
                 .padding(.top, 8)
                 .padding(.bottom, 24)
 
-            // Custom calendar picker
             CalendarGridView(selectedDate: $dueDate, validRange: Self.validRange)
                 .padding(.horizontal, 24)
 
             Spacer()
 
-            // Page indicator
             HStack(spacing: 6) {
                 Capsule()
-                    .fill(Color(hex: "E4EAF1"))
+                    .fill(Color.divider)
                     .frame(width: 10, height: 4)
                 Capsule()
-                    .fill(Color(hex: "3B7DD8"))
+                    .fill(Color.accent)
                     .frame(width: 24, height: 4)
                 Capsule()
-                    .fill(Color(hex: "E4EAF1"))
+                    .fill(Color.divider)
                     .frame(width: 10, height: 4)
                 Capsule()
-                    .fill(Color(hex: "E4EAF1"))
+                    .fill(Color.divider)
                     .frame(width: 10, height: 4)
             }
             .padding(.bottom, 32)
 
-            // Continue button
             Button(action: onContinue) {
                 Text("Continue")
-                    .font(.system(size: 17, weight: .semibold))
+                    .font(.bodyText.weight(.semibold))
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 16)
                     .background(
                         RoundedRectangle(cornerRadius: 14)
-                            .fill(Color(hex: "3B7DD8"))
+                            .fill(Color.accent)
                     )
             }
             .padding(.horizontal, 24)
@@ -128,52 +122,45 @@ private struct CalendarGridView: View {
         }
     }
 
-    // MARK: Month navigation header
-
     private var monthHeader: some View {
         HStack {
             Button(action: goToPreviousMonth) {
                 Image(systemName: "chevron.left")
                     .font(.system(size: 14, weight: .semibold))
-                    .foregroundColor(canGoPrevious ? Color(hex: "3B7DD8") : Color(hex: "E4EAF1"))
+                    .foregroundStyle(canGoPrevious ? Color.accent : Color.divider)
             }
             .disabled(!canGoPrevious)
 
             Spacer()
 
             Text(monthYearString)
-                .font(.system(size: 17, weight: .semibold))
-                .foregroundColor(Color(hex: "1A2B42"))
+                .font(.h2)
+                .foregroundStyle(Color.ink)
 
             Spacer()
 
             Button(action: goToNextMonth) {
                 Image(systemName: "chevron.right")
                     .font(.system(size: 14, weight: .semibold))
-                    .foregroundColor(canGoNext ? Color(hex: "3B7DD8") : Color(hex: "E4EAF1"))
+                    .foregroundStyle(canGoNext ? Color.accent : Color.divider)
             }
             .disabled(!canGoNext)
         }
         .padding(.horizontal, 8)
     }
 
-    // MARK: Weekday label row
-
     private var weekdayHeader: some View {
         HStack(spacing: 0) {
             ForEach(weekdayLabels, id: \.self) { label in
                 Text(label)
-                    .font(.system(size: 13, weight: .medium))
-                    .foregroundColor(Color(hex: "5A6B80"))
+                    .font(.captionText.weight(.medium))
+                    .foregroundStyle(Color.inkSecondary)
                     .frame(width: 40, height: 24)
             }
         }
     }
 
-    // MARK: Day cells — always 6 rows so height never changes
-
     private var dayGrid: some View {
-        // Fixed spacing of 4 between rows regardless of selection state
         VStack(spacing: 4) {
             ForEach(Array(weeks.enumerated()), id: \.offset) { _, week in
                 HStack(spacing: 0) {
@@ -187,7 +174,6 @@ private struct CalendarGridView: View {
                                 selectedDate = date
                             }
                         } else {
-                            // Empty placeholder — same fixed frame keeps columns aligned
                             Color.clear.frame(width: 40, height: 40)
                         }
                     }
@@ -196,15 +182,12 @@ private struct CalendarGridView: View {
         }
     }
 
-    // MARK: Helpers
-
     private var monthYearString: String {
         let f = DateFormatter()
         f.dateFormat = "MMMM yyyy"
         return f.string(from: displayedMonth)
     }
 
-    /// Always returns exactly 6 rows (42 cells) so the grid height is constant.
     private var weeks: [[Date?]] {
         guard let interval = calendar.dateInterval(of: .month, for: displayedMonth) else { return [] }
         let firstWeekday = calendar.component(.weekday, from: interval.start) - 1
@@ -264,12 +247,11 @@ private struct DayCellView: View {
         Button(action: action) {
             Text("\(calendar.component(.day, from: date))")
                 .font(.system(size: 15, weight: isSelected ? .semibold : .regular))
-                .foregroundColor(labelColor)
-                // Fixed frame so the circle highlight never shifts surrounding cells
+                .foregroundStyle(labelColor)
                 .frame(width: 40, height: 40)
                 .background(
                     Circle()
-                        .fill(isSelected ? Color(hex: "3B7DD8") : Color.clear)
+                        .fill(isSelected ? Color.accent : Color.clear)
                 )
         }
         .buttonStyle(.plain)
@@ -277,9 +259,9 @@ private struct DayCellView: View {
     }
 
     private var labelColor: Color {
-        if isSelected { return .white }
-        if !isEnabled { return Color(hex: "5A6B80").opacity(0.3) }
-        return Color(hex: "1A2B42")
+        if isSelected { return Color.onAccent }
+        if !isEnabled { return Color.inkSecondary.opacity(0.3) }
+        return Color.ink
     }
 }
 

@@ -96,51 +96,39 @@ struct LaborBagView: View {
     // MARK: - Progress Card
 
     private var progressCard: some View {
-        VStack(spacing: 8) {
-            HStack {
+        VStack(alignment: .leading, spacing: Spacing.md) {
+            Text("PACKING STATUS")
+                .eyebrowStyle()
+
+            HStack(alignment: .lastTextBaseline) {
                 Text("Packing Progress")
-                    .font(.system(size: 13, weight: .semibold))
-                    .foregroundColor(Color(hex: "1A2B42"))
+                    .font(.h2)
+                    .foregroundStyle(Color.ink)
                 Spacer()
                 Text("\(completedCount) of \(totalCount)")
-                    .font(.system(size: 13, weight: .bold))
-                    .foregroundColor(Color(hex: "3B7DD8"))
+                    .font(.captionText.weight(.bold))
+                    .foregroundStyle(Color.accent)
             }
 
-            GeometryReader { geo in
-                ZStack(alignment: .leading) {
-                    RoundedRectangle(cornerRadius: 3)
-                        .fill(Color(hex: "E8F0FE"))
-                        .frame(height: 6)
-                    RoundedRectangle(cornerRadius: 3)
-                        .fill(Color(hex: "3B7DD8"))
-                        .frame(width: geo.size.width * progress, height: 6)
-                        .animation(.easeInOut(duration: 0.3), value: progress)
-                }
-            }
-            .frame(height: 6)
+            HairlineProgressRuler(progress: progress)
+                .padding(.vertical, Spacing.xs)
 
             if completedCount == totalCount && totalCount > 0 {
                 HStack(spacing: 6) {
                     Image(systemName: "checkmark.circle.fill")
-                        .foregroundColor(Color(hex: "56B89F"))
+                        .foregroundStyle(Color.sage)
                         .font(.system(size: 13))
                     Text("Bag is packed — you're ready!")
-                        .font(.system(size: 13, weight: .semibold))
-                        .foregroundColor(Color(hex: "56B89F"))
+                        .font(.captionText.weight(.semibold))
+                        .foregroundStyle(Color.sage)
                 }
-                .padding(.top, 2)
             }
         }
-        .padding(14)
+        .padding(Spacing.xl)
         .background(
-            RoundedRectangle(cornerRadius: 12)
+            RoundedRectangle(cornerRadius: Radius.card)
                 .fill(Color.surface)
-                .shadow(color: .black.opacity(0.04), radius: 3, y: 1)
-        )
-        .overlay(
-            RoundedRectangle(cornerRadius: 12)
-                .stroke(Color(hex: "E4EAF1"), lineWidth: 1)
+                .premiumShadow()
         )
     }
 
@@ -148,7 +136,6 @@ struct LaborBagView: View {
 
     private func sectionCard(_ section: LaborBagSection) -> some View {
         VStack(alignment: .leading, spacing: 0) {
-            // Section header
             HStack(spacing: 8) {
                 ZStack {
                     RoundedRectangle(cornerRadius: 6)
@@ -158,15 +145,15 @@ struct LaborBagView: View {
                         .font(.system(size: 15))
                 }
                 Text(section.title)
-                    .font(.system(size: 15, weight: .bold))
-                    .foregroundColor(Color(hex: "1A2B42"))
+                    .font(.h2)
+                    .foregroundStyle(Color.ink)
 
                 Spacer()
 
                 let done = section.items.filter { profile.isChecklistItemCompleted($0.id) }.count
                 Text("\(done)/\(section.items.count)")
-                    .font(.system(size: 12, weight: .semibold))
-                    .foregroundColor(Color(hex: "8E9BAD"))
+                    .font(.captionText.weight(.semibold))
+                    .foregroundStyle(Color.inkSecondary)
             }
             .padding(.horizontal, 16)
             .padding(.vertical, 14)
@@ -174,7 +161,6 @@ struct LaborBagView: View {
             Divider()
                 .padding(.horizontal, 16)
 
-            // Items
             ForEach(Array(section.items.enumerated()), id: \.element.id) { index, item in
                 VStack(spacing: 0) {
                     if index > 0 {
@@ -190,12 +176,12 @@ struct LaborBagView: View {
                         }) {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 5)
-                                    .fill(profile.isChecklistItemCompleted(item.id) ? Color(hex: "3B7DD8") : .clear)
+                                    .fill(profile.isChecklistItemCompleted(item.id) ? Color.accent : .clear)
                                     .frame(width: 22, height: 22)
                                     .overlay(
                                         RoundedRectangle(cornerRadius: 5)
                                             .stroke(
-                                                profile.isChecklistItemCompleted(item.id) ? Color.clear : Color(hex: "E4EAF1"),
+                                                profile.isChecklistItemCompleted(item.id) ? Color.clear : Color.divider,
                                                 lineWidth: 1.5
                                             )
                                     )
@@ -203,14 +189,14 @@ struct LaborBagView: View {
                                 if profile.isChecklistItemCompleted(item.id) {
                                     Image(systemName: "checkmark")
                                         .font(.system(size: 11, weight: .bold))
-                                        .foregroundColor(.white)
+                                        .foregroundColor(Color.onAccent)
                                 }
                             }
                         }
 
                         Text(item.text)
-                            .font(.system(size: 14))
-                            .foregroundColor(profile.isChecklistItemCompleted(item.id) ? Color(hex: "8E9BAD") : Color(hex: "1A2B42"))
+                            .font(.bodyText)
+                            .foregroundStyle(profile.isChecklistItemCompleted(item.id) ? Color.inkSecondary : Color.ink)
                             .strikethrough(profile.isChecklistItemCompleted(item.id))
                             .multilineTextAlignment(.leading)
                             .fixedSize(horizontal: false, vertical: true)
@@ -229,7 +215,7 @@ struct LaborBagView: View {
         )
         .overlay(
             RoundedRectangle(cornerRadius: 14)
-                .stroke(Color(hex: "E4EAF1"), lineWidth: 1)
+                .stroke(Color.divider, lineWidth: 1)
         )
     }
 }

@@ -15,7 +15,7 @@ private struct ContractionRecord: Identifiable {
     let number: Int
     let startTime: Date
     let duration: TimeInterval
-    let interval: TimeInterval? // start-to-start from previous contraction
+    let interval: TimeInterval?
 }
 
 private enum ContractionState {
@@ -57,7 +57,7 @@ struct ContractionTimerView: View {
             if !records.isEmpty {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Reset") { reset() }
-                        .foregroundColor(Color(hex: "FF6B6B"))
+                        .foregroundColor(Color.alert)
                 }
             }
         }
@@ -86,7 +86,7 @@ struct ContractionTimerView: View {
         )
         .overlay(
             RoundedRectangle(cornerRadius: 20)
-                .stroke(Color(hex: "E4EAF1"), lineWidth: 1)
+                .stroke(Color.divider, lineWidth: 1)
         )
     }
 
@@ -94,13 +94,13 @@ struct ContractionTimerView: View {
         VStack(spacing: 12) {
             Image(systemName: "timer")
                 .font(.system(size: 52))
-                .foregroundColor(Color(hex: "3B7DD8").opacity(0.25))
+                .foregroundStyle(Color.accent.opacity(0.3))
             Text("Ready to track")
-                .font(.system(size: 18, weight: .semibold))
-                .foregroundColor(Color(hex: "1A2B42"))
+                .font(.h2)
+                .foregroundStyle(Color.ink)
             Text("Tap the button when a\ncontraction begins")
-                .font(.system(size: 14))
-                .foregroundColor(Color(hex: "5A6B80"))
+                .font(.bodyText)
+                .foregroundStyle(Color.inkSecondary)
                 .multilineTextAlignment(.center)
         }
         .padding(.vertical, 12)
@@ -109,13 +109,14 @@ struct ContractionTimerView: View {
     private var activeDisplay: some View {
         VStack(spacing: 8) {
             Text("CONTRACTION IN PROGRESS")
-                .font(.system(size: 11, weight: .semibold))
-                .foregroundColor(Color(hex: "FF6B6B"))
-                .tracking(1.2)
+                .font(.eyebrow)
+                .textCase(.uppercase)
+                .tracking(1.4)
+                .foregroundStyle(Color.alert)
 
             Text(formatTime(elapsedSeconds))
-                .font(.system(size: 68, weight: .bold, design: .monospaced))
-                .foregroundColor(Color(hex: "FF6B6B"))
+                .font(.timerNumeral)
+                .foregroundStyle(Color.alert)
                 .scaleEffect(isPulsing ? 1.04 : 1.0)
                 .animation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true), value: isPulsing)
                 .onAppear { isPulsing = true }
@@ -123,8 +124,8 @@ struct ContractionTimerView: View {
 
             if let last = records.last {
                 Text("Last contraction: \(formatTime(Int(last.duration)))")
-                    .font(.system(size: 12))
-                    .foregroundColor(Color(hex: "8E9BAD"))
+                    .font(.captionText)
+                    .foregroundStyle(Color.inkSecondary)
             }
         }
         .padding(.vertical, 8)
@@ -133,32 +134,30 @@ struct ContractionTimerView: View {
     private func betweenDisplay(lastDuration: TimeInterval) -> some View {
         VStack(spacing: 20) {
             Text("REST PERIOD")
-                .font(.system(size: 11, weight: .semibold))
-                .foregroundColor(Color(hex: "8E9BAD"))
-                .tracking(1.2)
+                .eyebrowStyle()
 
             HStack(spacing: 0) {
                 VStack(spacing: 4) {
                     Text(formatTime(Int(lastDuration)))
-                        .font(.system(size: 38, weight: .bold, design: .monospaced))
-                        .foregroundColor(Color(hex: "56B89F"))
+                        .font(.system(size: 38, weight: .light, design: .serif).monospacedDigit())
+                        .foregroundStyle(Color.sage)
                     Text("last duration")
-                        .font(.system(size: 12))
-                        .foregroundColor(Color(hex: "8E9BAD"))
+                        .font(.captionText)
+                        .foregroundStyle(Color.inkSecondary)
                 }
                 .frame(maxWidth: .infinity)
 
                 Rectangle()
-                    .fill(Color(hex: "E4EAF1"))
+                    .fill(Color.divider)
                     .frame(width: 1, height: 56)
 
                 VStack(spacing: 4) {
                     Text(formatTime(restSeconds))
-                        .font(.system(size: 38, weight: .bold, design: .monospaced))
-                        .foregroundColor(Color(hex: "3B7DD8"))
+                        .font(.system(size: 38, weight: .light, design: .serif).monospacedDigit())
+                        .foregroundStyle(Color.ink)
                     Text("resting")
-                        .font(.system(size: 12))
-                        .foregroundColor(Color(hex: "8E9BAD"))
+                        .font(.captionText)
+                        .foregroundStyle(Color.inkSecondary)
                 }
                 .frame(maxWidth: .infinity)
             }
@@ -171,7 +170,7 @@ struct ContractionTimerView: View {
     private var actionButton: some View {
         Button(action: handleTap) {
             Text(buttonLabel)
-                .font(.system(size: 17, weight: .bold))
+                .font(.bodyText.weight(.bold))
                 .foregroundColor(.white)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 18)
@@ -192,8 +191,8 @@ struct ContractionTimerView: View {
     }
 
     private var buttonColor: Color {
-        if case .active = state { return Color(hex: "FF6B6B") }
-        return Color(hex: "3B7DD8")
+        if case .active = state { return Color.alert }
+        return Color.accent
     }
 
     // MARK: - Stats Card
@@ -214,18 +213,18 @@ struct ContractionTimerView: View {
         )
         .overlay(
             RoundedRectangle(cornerRadius: 14)
-                .stroke(Color(hex: "E4EAF1"), lineWidth: 1)
+                .stroke(Color.divider, lineWidth: 1)
         )
     }
 
     private func statItem(value: String, label: String) -> some View {
         VStack(spacing: 3) {
             Text(value)
-                .font(.system(size: 22, weight: .bold))
-                .foregroundColor(Color(hex: "1A2B42"))
+                .font(.h2)
+                .foregroundStyle(Color.ink)
             Text(label)
-                .font(.system(size: 11))
-                .foregroundColor(Color(hex: "8E9BAD"))
+                .font(.captionText)
+                .foregroundStyle(Color.inkSecondary)
         }
         .frame(maxWidth: .infinity)
     }
@@ -234,31 +233,34 @@ struct ContractionTimerView: View {
 
     private var historyCard: some View {
         VStack(alignment: .leading, spacing: 12) {
+            Text("CONTRACTION LOG")
+                .eyebrowStyle()
+
             Text("History")
-                .font(.system(size: 15, weight: .bold))
-                .foregroundColor(Color(hex: "1A2B42"))
+                .font(.h2)
+                .foregroundStyle(Color.ink)
 
             ForEach(records.reversed()) { record in
                 HStack {
                     Text("#\(record.number)")
-                        .font(.system(size: 13, weight: .semibold))
-                        .foregroundColor(Color(hex: "8E9BAD"))
+                        .font(.captionText.weight(.semibold))
+                        .foregroundStyle(Color.inkSecondary)
                         .frame(width: 28, alignment: .leading)
 
                     Text(formatTime(Int(record.duration)))
                         .font(.system(size: 14, weight: .semibold, design: .monospaced))
-                        .foregroundColor(Color(hex: "56B89F"))
+                        .foregroundStyle(Color.sage)
 
                     Spacer()
 
                     if let interval = record.interval {
                         Text("every \(formatTime(Int(interval)))")
-                            .font(.system(size: 13))
-                            .foregroundColor(Color(hex: "8E9BAD"))
+                            .font(.captionText)
+                            .foregroundStyle(Color.inkSecondary)
                     } else {
                         Text("first")
-                            .font(.system(size: 13))
-                            .foregroundColor(Color(hex: "8E9BAD"))
+                            .font(.captionText)
+                            .foregroundStyle(Color.inkSecondary)
                     }
                 }
 
@@ -275,7 +277,7 @@ struct ContractionTimerView: View {
         )
         .overlay(
             RoundedRectangle(cornerRadius: 14)
-                .stroke(Color(hex: "E4EAF1"), lineWidth: 1)
+                .stroke(Color.divider, lineWidth: 1)
         )
     }
 
@@ -284,17 +286,17 @@ struct ContractionTimerView: View {
     private var ruleCard: some View {
         HStack(alignment: .top, spacing: 10) {
             Image(systemName: "info.circle.fill")
-                .foregroundColor(Color(hex: "3B7DD8"))
+                .foregroundStyle(Color.accent)
                 .font(.system(size: 14))
                 .padding(.top, 1)
 
             VStack(alignment: .leading, spacing: 4) {
                 Text("The 5-1-1 Rule")
-                    .font(.system(size: 13, weight: .semibold))
-                    .foregroundColor(Color(hex: "3B7DD8"))
+                    .font(.captionText.weight(.semibold))
+                    .foregroundStyle(Color.accent)
                 Text("Head to the hospital when contractions are 5 minutes apart, last at least 1 minute each, for 1 hour.")
-                    .font(.system(size: 13))
-                    .foregroundColor(Color(hex: "5A6B80"))
+                    .font(.captionText)
+                    .foregroundStyle(Color.inkSecondary)
                     .lineSpacing(3)
             }
         }
@@ -302,7 +304,7 @@ struct ContractionTimerView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(
             RoundedRectangle(cornerRadius: 14)
-                .fill(Color(hex: "E8F0FE"))
+                .fill(Color.accentSoft)
         )
     }
 
