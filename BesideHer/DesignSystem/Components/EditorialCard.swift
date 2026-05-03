@@ -64,7 +64,7 @@ struct EditorialCard: View {
             .premiumShadow()
         }
         .buttonStyle(ScalePressStyle())
-        .sensoryFeedback(.impact(weight: .soft), trigger: hapticTrigger)
+        .sensoryFeedback(.impact(weight: .light), trigger: hapticTrigger)
     }
 }
 
