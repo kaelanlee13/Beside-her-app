@@ -58,6 +58,7 @@ struct HomeView: View {
                     Spacer(minLength: 32)
                 }
             }
+            .softScrollEdgeEffect()
             .background(Color.paper.ignoresSafeArea())
             .navigationBarHidden(true)
         }
@@ -78,6 +79,8 @@ struct HomeView: View {
                     VStack(alignment: .leading, spacing: Spacing.sm) {
                         Text("WEEK \(profile.currentWeek) OF 40")
                             .eyebrowStyle()
+                            .contentTransition(.numericText())
+                            .animation(.easeInOut(duration: 0.6), value: profile.currentWeek)
 
                         Text(heroHeadlineText)
                             .font(.hero)
@@ -110,7 +113,7 @@ struct HomeView: View {
                         Rectangle()
                             .fill(Color.accent)
                             .frame(width: geo.size.width * min(profile.progressPercentage, 1.0), height: 1)
-                            .animation(.easeInOut(duration: 0.4), value: profile.progressPercentage)
+                            .animation(.easeInOut(duration: 1.2), value: profile.currentWeek)
                     }
                 }
                 .frame(height: 1)
@@ -122,7 +125,7 @@ struct HomeView: View {
                     .premiumShadow()
             )
         }
-        .buttonStyle(.plain)
+        .buttonStyle(.pressable)
         .disabled(currentWeekContent == nil)
     }
 
@@ -162,6 +165,8 @@ struct HomeView: View {
             Text("Week \(profile.currentWeek) of 40")
                 .font(.captionText)
                 .foregroundStyle(Color.inkSecondary)
+                .contentTransition(.numericText())
+                .animation(.easeInOut(duration: 0.6), value: profile.currentWeek)
         }
         .padding(Spacing.xl)
         .background(
@@ -215,7 +220,7 @@ struct HomeView: View {
             .padding(16)
             .background(surfaceCard)
         }
-        .buttonStyle(.plain)
+        .buttonStyle(.pressable)
     }
 
     // MARK: - Tasks Card

@@ -32,6 +32,7 @@ struct ContractionTimerView: View {
     @State private var elapsedSeconds: Int = 0
     @State private var restSeconds: Int = 0
     @State private var isPulsing: Bool = false
+    @State private var timerStarted: Bool = false
 
     private let ticker = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
@@ -108,11 +109,20 @@ struct ContractionTimerView: View {
 
     private var activeDisplay: some View {
         VStack(spacing: 8) {
-            Text("CONTRACTION IN PROGRESS")
-                .font(.eyebrow)
-                .textCase(.uppercase)
-                .tracking(1.4)
-                .foregroundStyle(Color.alert)
+            HStack(spacing: 8) {
+                Circle()
+                    .fill(Color.alert)
+                    .frame(width: 8, height: 8)
+                    .scaleEffect(isPulsing ? 1.4 : 1.0)
+                    .opacity(isPulsing ? 0.6 : 1.0)
+                    .animation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true), value: isPulsing)
+
+                Text("CONTRACTION IN PROGRESS")
+                    .font(.eyebrow)
+                    .textCase(.uppercase)
+                    .tracking(1.4)
+                    .foregroundStyle(Color.alert)
+            }
 
             Text(formatTime(elapsedSeconds))
                 .font(.timerNumeral)
@@ -180,6 +190,7 @@ struct ContractionTimerView: View {
                         .shadow(color: buttonColor.opacity(0.35), radius: 8, y: 4)
                 )
         }
+        .sensoryFeedback(.impact(weight: .light), trigger: timerStarted)
     }
 
     private var buttonLabel: String {
@@ -316,6 +327,7 @@ struct ContractionTimerView: View {
         case .idle:
             state = .active(startedAt: now)
             elapsedSeconds = 0
+            timerStarted.toggle()
 
         case .active(let startedAt):
             let duration = now.timeIntervalSince(startedAt)
@@ -335,6 +347,7 @@ struct ContractionTimerView: View {
             state = .active(startedAt: now)
             elapsedSeconds = 0
             restSeconds = 0
+            timerStarted.toggle()
         }
     }
 

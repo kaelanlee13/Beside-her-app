@@ -63,17 +63,8 @@ struct EditorialCard: View {
             .clipShape(RoundedRectangle(cornerRadius: Radius.card))
             .premiumShadow()
         }
-        .buttonStyle(ScalePressStyle())
+        .buttonStyle(.pressable)
         .sensoryFeedback(.impact(weight: .light), trigger: hapticTrigger)
-    }
-}
-
-// Subtle scale-down on press, spring back on release.
-private struct ScalePressStyle: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .scaleEffect(configuration.isPressed ? 0.98 : 1.0)
-            .animation(.spring(response: 0.25, dampingFraction: 0.8), value: configuration.isPressed)
     }
 }
 

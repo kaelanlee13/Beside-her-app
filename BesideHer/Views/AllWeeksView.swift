@@ -124,7 +124,7 @@ struct AllWeeksView: View {
                     .premiumShadow()
             )
         }
-        .buttonStyle(.plain)
+        .buttonStyle(.pressable)
     }
 
     // MARK: - Magazine TOC row
@@ -169,7 +169,7 @@ struct AllWeeksView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .contentShape(Rectangle())
         }
-        .buttonStyle(.plain)
+        .buttonStyle(.pressable)
         .opacity(isPast ? 0.55 : 1.0)
     }
 

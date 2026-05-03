@@ -35,6 +35,7 @@ struct ChecklistRow: View {
                             Image(systemName: "checkmark")
                                 .font(.system(size: 11, weight: .semibold))
                                 .foregroundStyle(Color.onAccent)
+                                .symbolEffect(.bounce, value: isComplete)
                         }
                     }
                     .frame(width: 22, height: 22)
