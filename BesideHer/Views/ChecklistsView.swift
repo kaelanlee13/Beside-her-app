@@ -97,78 +97,72 @@ struct ChecklistsView: View {
                 .buttonStyle(.plain)
                 .padding(.horizontal, 20)
 
-                // Trimester tabs
-                HStack(spacing: 8) {
-                    ForEach([1, 2, 3, 0], id: \.self) { trimester in
-                        Button(action: {
-                            withAnimation(.easeInOut(duration: 0.2)) {
-                                selectedTrimester = trimester
-                            }
-                        }) {
-                            Text(trimesterLabel(trimester))
-                                .font(.captionText.weight(.semibold))
-                                .foregroundColor(selectedTrimester == trimester ? .white : Color.inkSecondary)
-                                .frame(maxWidth: .infinity)
-                                .padding(.vertical, 10)
-                                .background(
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .fill(selectedTrimester == trimester ? Color.accent : Color.surface)
-                                )
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .stroke(selectedTrimester == trimester ? Color.clear : Color.divider, lineWidth: 1)
-                                )
-                        }
-                    }
-                }
-                .padding(.horizontal, 20)
-                .padding(.top, 8)
-
-                // Category filter pills
+                // Trimester selector
                 ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 8) {
-                        CategoryFilterPill(label: "All", isSelected: selectedCategory == nil) {
-                            withAnimation(.easeInOut(duration: 0.2)) { selectedCategory = nil }
-                        }
-                        ForEach(availableCategories, id: \.self) { category in
-                            CategoryFilterPill(
-                                label: ChecklistItem.categoryDisplayName(for: category),
-                                isSelected: selectedCategory == category
-                            ) {
-                                withAnimation(.easeInOut(duration: 0.2)) {
-                                    selectedCategory = selectedCategory == category ? nil : category
-                                }
-                            }
+                    HStack(spacing: Spacing.sm) {
+                        ForEach([1, 2, 3, 0], id: \.self) { trimester in
+                            FilterChip(
+                                title: trimesterLabel(trimester),
+                                isSelected: selectedTrimester == trimester,
+                                action: {
+                                    withAnimation(.spring(response: 0.3, dampingFraction: 0.75)) {
+                                        selectedTrimester = trimester
+                                    }
+                                },
+                                horizontalPadding: 18,
+                                verticalPadding: 10
+                            )
                         }
                     }
                     .padding(.horizontal, 20)
+                    .padding(.vertical, 2)
                 }
+                .scrollIndicators(.hidden)
+                .padding(.top, 8)
 
-                // Progress card
-                VStack(alignment: .leading, spacing: Spacing.md) {
-                    Text("YOUR PROGRESS")
+                // Category filter
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: Spacing.sm) {
+                        FilterChip(
+                            title: "All",
+                            isSelected: selectedCategory == nil,
+                            action: {
+                                withAnimation(.spring(response: 0.3, dampingFraction: 0.75)) {
+                                    selectedCategory = nil
+                                }
+                            }
+                        )
+                        ForEach(availableCategories, id: \.self) { category in
+                            FilterChip(
+                                title: ChecklistItem.categoryDisplayName(for: category),
+                                isSelected: selectedCategory == category,
+                                action: {
+                                    withAnimation(.spring(response: 0.3, dampingFraction: 0.75)) {
+                                        selectedCategory = selectedCategory == category ? nil : category
+                                    }
+                                }
+                            )
+                        }
+                    }
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 2)
+                }
+                .scrollIndicators(.hidden)
+
+                // Quiet progress header — no card, sits on Color.paper
+                VStack(alignment: .leading, spacing: Spacing.sm) {
+                    Text("PROGRESS")
                         .eyebrowStyle()
 
-                    HStack(alignment: .lastTextBaseline) {
-                        Text("\(trimesterLabel(selectedTrimester)) Progress")
-                            .font(.h2)
-                            .foregroundStyle(Color.ink)
-                        Spacer()
-                        Text("\(completedCount) of \(totalCount)")
-                            .font(.captionText.weight(.bold))
-                            .foregroundStyle(Color.accent)
-                    }
+                    Text("\(completedCount) of \(totalCount) complete")
+                        .font(.h1)
+                        .foregroundStyle(Color.ink)
 
                     HairlineProgressRuler(progress: progressPercentage)
-                        .padding(.vertical, Spacing.xs)
+                        .padding(.top, Spacing.xs)
                 }
-                .padding(Spacing.xl)
-                .background(
-                    RoundedRectangle(cornerRadius: Radius.card)
-                        .fill(Color.surface)
-                        .premiumShadow()
-                )
                 .padding(.horizontal, 20)
+                .padding(.top, Spacing.sm)
 
                 // Checklist items — editorial flat rows, grouped by category
                 if filteredItems.isEmpty {
@@ -232,28 +226,3 @@ struct ChecklistsView: View {
     }
 }
 
-// MARK: - Category Filter Pill
-
-private struct CategoryFilterPill: View {
-    let label: String
-    let isSelected: Bool
-    let action: () -> Void
-
-    var body: some View {
-        Button(action: action) {
-            Text(label)
-                .font(.captionText.weight(.semibold))
-                .foregroundColor(isSelected ? .white : Color.inkSecondary)
-                .padding(.horizontal, 12)
-                .padding(.vertical, 7)
-                .background(
-                    Capsule()
-                        .fill(isSelected ? Color.accent : Color.surface)
-                )
-                .overlay(
-                    Capsule()
-                        .stroke(isSelected ? Color.clear : Color.divider, lineWidth: 1)
-                )
-        }
-    }
-}
