@@ -50,30 +50,28 @@ struct AllWeeksView: View {
     @ViewBuilder
     private func trimesterSection(_ section: TrimesterSection) -> some View {
         let weeksInRange = content.weeks.filter { section.range.contains($0.weekNumber) }
-        let currentWeekHere = section.range.contains(profile.currentWeek)
-            ? content.weeks.first(where: { $0.weekNumber == profile.currentWeek })
-            : nil
-        let otherWeeks = weeksInRange.filter { $0.weekNumber != profile.currentWeek }
 
         VStack(alignment: .leading, spacing: Spacing.md) {
             Text(section.label)
                 .eyebrowStyle()
                 .padding(.horizontal, 20)
 
-            if let current = currentWeekHere {
-                currentWeekHero(week: current)
-                    .padding(.horizontal, 20)
-            }
-
             VStack(alignment: .leading, spacing: 0) {
-                ForEach(Array(otherWeeks.enumerated()), id: \.element.id) { idx, week in
-                    weekRow(week)
-                    if idx < otherWeeks.count - 1 {
-                        Rectangle()
-                            .fill(Color.divider)
-                            .frame(height: 1)
-                            .padding(.leading, Spacing.lg + 40 + Spacing.lg)
-                            .padding(.trailing, Spacing.lg)
+                ForEach(Array(weeksInRange.enumerated()), id: \.element.id) { idx, week in
+                    if week.weekNumber == profile.currentWeek {
+                        currentWeekHero(week: week)
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, Spacing.sm)
+                    } else {
+                        weekRow(week)
+                        if idx < weeksInRange.count - 1,
+                           weeksInRange[idx + 1].weekNumber != profile.currentWeek {
+                            Rectangle()
+                                .fill(Color.divider)
+                                .frame(height: 1)
+                                .padding(.leading, Spacing.lg + 40 + Spacing.lg)
+                                .padding(.trailing, Spacing.lg)
+                        }
                     }
                 }
             }
