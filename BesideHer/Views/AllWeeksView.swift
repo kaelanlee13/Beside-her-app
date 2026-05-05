@@ -28,6 +28,7 @@ struct AllWeeksView: View {
                 .padding(.top, Spacing.md)
                 .padding(.bottom, Spacing.xxl)
             }
+            .softScrollEdgeEffect()
             .background(Color.paper.ignoresSafeArea())
             .navigationBarTitleDisplayMode(.inline)
         }

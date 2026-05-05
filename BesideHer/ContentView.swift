@@ -57,10 +57,47 @@ struct ContentView: View {
 
 struct MainTabView: View {
     let profile: UserProfile
+    @State private var selectedTab: Int = 0
 
-    /// Keeps tab bar background opaque white with no blur artifact
     init(profile: UserProfile) {
         self.profile = profile
+        Self.configureTabBarAppearance()
+    }
+
+    var body: some View {
+        TabView(selection: $selectedTab) {
+            HomeView(profile: profile)
+                .tabItem {
+                    Label("Home", systemImage: selectedTab == 0 ? "house.fill" : "house")
+                }
+                .tag(0)
+
+            AllWeeksView(profile: profile)
+                .tabItem {
+                    Label("Weeks", systemImage: "calendar")
+                }
+                .tag(1)
+
+            ChecklistsView(profile: profile)
+                .tabItem {
+                    Label("Checklist", systemImage: selectedTab == 2 ? "checkmark.circle.fill" : "checkmark.circle")
+                }
+                .tag(2)
+
+            TipsCategoryView(profile: profile)
+                .tabItem {
+                    Label("Tips", systemImage: selectedTab == 3 ? "lightbulb.fill" : "lightbulb")
+                }
+                .tag(3)
+        }
+        .tint(Color.accent)
+        .toolbarBackground(Color.surface, for: .tabBar)
+        .toolbarBackground(.visible, for: .tabBar)
+        .toolbarColorScheme(.light, for: .tabBar)
+        .tabBarMinimizeOnScrollDownIfAvailable()
+    }
+
+    private static func configureTabBarAppearance() {
         let appearance = UITabBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = UIColor { trait in
@@ -73,33 +110,48 @@ struct MainTabView: View {
                 ? UIColor(red: 0x2E/255, green: 0x29/255, blue: 0x25/255, alpha: 1) // divider dark
                 : UIColor(red: 0xE7/255, green: 0xDF/255, blue: 0xD2/255, alpha: 1) // divider light
         }
+
+        // SF Pro Rounded 10pt Semibold for tab labels
+        let labelFont: UIFont = {
+            let base = UIFont.systemFont(ofSize: 10, weight: .semibold)
+            if let rounded = base.fontDescriptor.withDesign(.rounded) {
+                return UIFont(descriptor: rounded, size: 10)
+            }
+            return base
+        }()
+        let item = UITabBarItemAppearance()
+        item.normal.titleTextAttributes = [.font: labelFont]
+        item.selected.titleTextAttributes = [.font: labelFont]
+        appearance.stackedLayoutAppearance = item
+        appearance.inlineLayoutAppearance = item
+        appearance.compactInlineLayoutAppearance = item
+
         UITabBar.appearance().standardAppearance = appearance
         UITabBar.appearance().scrollEdgeAppearance = appearance
     }
+}
 
-    var body: some View {
-        TabView {
-            HomeView(profile: profile)
-                .tabItem {
-                    Label("Home", systemImage: "house.fill")
-                }
+// MARK: - iOS 26 conditional modifiers
 
-            AllWeeksView(profile: profile)
-                .tabItem {
-                    Label("Weeks", systemImage: "calendar")
-                }
-
-            ChecklistsView(profile: profile)
-                .tabItem {
-                    Label("Checklist", systemImage: "checkmark.circle.fill")
-                }
-
-            TipsCategoryView(profile: profile)
-                .tabItem {
-                    Label("Tips", systemImage: "lightbulb.fill")
-                }
+extension View {
+    /// Applies `tabBarMinimizeBehavior(.onScrollDown)` on iOS 26+; no-op otherwise.
+    @ViewBuilder
+    func tabBarMinimizeOnScrollDownIfAvailable() -> some View {
+        if #available(iOS 26.0, *) {
+            self.tabBarMinimizeBehavior(.onScrollDown)
+        } else {
+            self
         }
-        .tint(AppTheme.primary)
+    }
+
+    /// Applies `scrollEdgeEffectStyle(.soft, for: .all)` on iOS 26+; no-op otherwise.
+    @ViewBuilder
+    func softScrollEdgeEffect() -> some View {
+        if #available(iOS 26.0, *) {
+            self.scrollEdgeEffectStyle(.soft, for: .all)
+        } else {
+            self
+        }
     }
 }
 

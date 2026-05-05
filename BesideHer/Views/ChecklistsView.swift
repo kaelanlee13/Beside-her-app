@@ -203,6 +203,7 @@ struct ChecklistsView: View {
             }
             .padding(.bottom, 32)
         }
+        .softScrollEdgeEffect()
         .background(Color.paper)
         .navigationTitle("Checklists")
         .navigationBarTitleDisplayMode(.inline)

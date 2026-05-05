@@ -38,6 +38,7 @@ struct TipsCategoryView: View {
                 .padding(.horizontal, 20)
                 .padding(.vertical, 12)
             }
+            .softScrollEdgeEffect()
             .background(Color.paper.ignoresSafeArea())
             .navigationTitle("Support Tips")
             .navigationBarTitleDisplayMode(.inline)

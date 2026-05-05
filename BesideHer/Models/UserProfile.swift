@@ -39,14 +39,17 @@ final class UserProfile {
         self.createdAt = createdAt
     }
     
-    /// Calculates the current pregnancy week based on the due date
-    /// Pregnancy is 40 weeks, so current week = 40 - (weeks until due date)
+    /// Current pregnancy week (1–40), measured as completed weeks since LMP.
+    /// Pregnancy is 280 days; due date is day 280. Day-precision avoids the
+    /// off-by-one that .weekOfYear introduces when there's a partial week.
     var currentWeek: Int {
         let calendar = Calendar.current
-        let now = Date()
-        let weeksUntilDue = calendar.dateComponents([.weekOfYear], from: now, to: dueDate).weekOfYear ?? 0
-        let week = 40 - weeksUntilDue
-        return min(max(week, 1), 40) // clamp between 1 and 40
+        let today = calendar.startOfDay(for: Date())
+        let due = calendar.startOfDay(for: dueDate)
+        let daysUntilDue = calendar.dateComponents([.day], from: today, to: due).day ?? 0
+        let daysIntoPregnancy = 280 - daysUntilDue
+        let week = daysIntoPregnancy / 7
+        return min(max(week, 1), 40)
     }
     
     /// Returns the current trimester (1, 2, or 3)
