@@ -24,10 +24,15 @@ struct HomeView: View {
             ScrollView {
                 VStack(spacing: 0) {
 
+                    // ─── Top utility row ────────────────────────────────────
+                    settingsRow
+                        .padding(.horizontal, 20)
+                        .padding(.top, 8)
+
                     // ─── Hero Card ───────────────────────────────────────────
                     heroCard
                         .padding(.horizontal, 20)
-                        .padding(.top, 16)
+                        .padding(.top, 4)
 
                     // ─── Progress ───────────────────────────────────────────
                     progressCard
@@ -72,6 +77,23 @@ struct HomeView: View {
             .softScrollEdgeEffect()
             .background(Color.paper.ignoresSafeArea())
             .navigationBarHidden(true)
+        }
+    }
+
+    // MARK: - Settings Row
+
+    private var settingsRow: some View {
+        HStack {
+            Spacer()
+            NavigationLink(destination: SettingsView(profile: profile)) {
+                Image(systemName: "gearshape")
+                    .font(.system(size: 18, weight: .regular))
+                    .foregroundStyle(Color.inkSecondary)
+                    .frame(width: 36, height: 36, alignment: .trailing)
+                    .contentShape(Rectangle())
+            }
+            .buttonStyle(.plain)
+            .accessibilityLabel("Settings")
         }
     }
 
