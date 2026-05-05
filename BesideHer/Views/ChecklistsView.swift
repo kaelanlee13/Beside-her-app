@@ -166,11 +166,17 @@ struct ChecklistsView: View {
 
                 // Checklist items — editorial flat rows, grouped by category
                 if filteredItems.isEmpty {
-                    Text("No items for this selection.")
-                        .font(.captionText)
-                        .foregroundStyle(Color.inkSecondary)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 32)
+                    EmptyStateView(
+                        illustrationName: "tray",
+                        headline: "Nothing here yet.",
+                        caption: "Try a different trimester or category."
+                    )
+                } else if completedCount == totalCount {
+                    EmptyStateView(
+                        illustrationName: "checkmark.seal",
+                        headline: "You're ahead of the curve.",
+                        caption: "Nothing left this trimester."
+                    )
                 } else {
                     LazyVStack(alignment: .leading, spacing: 0) {
                         ForEach(groupedItems, id: \.category) { group in

@@ -108,6 +108,15 @@ struct TipsListView: View {
                 .scrollIndicators(.hidden)
                 .padding(.top, 4)
 
+                if filteredTips.isEmpty {
+                    EmptyStateView(
+                        illustrationName: "book.closed",
+                        headline: "Pick where to start.",
+                        caption: "Articles are short and dad-tested.",
+                        tintColor: Color.sage
+                    )
+                }
+
                 ForEach(filteredTips) { tip in
                     VStack(alignment: .leading, spacing: Spacing.sm) {
                         HStack(alignment: .top) {

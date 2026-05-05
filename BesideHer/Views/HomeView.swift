@@ -41,9 +41,20 @@ struct HomeView: View {
 
                     // ─── This Week's Tasks ──────────────────────────────────
                     if let week = currentWeekContent {
-                        tasksCard(week: week)
+                        if week.actionItems.isEmpty && weekChecklistItems.isEmpty {
+                            EmptyStateView(
+                                illustrationName: "leaf",
+                                headline: "A quiet week.",
+                                caption: "Rest, hydrate, and check in with her.",
+                                tintColor: Color.sage
+                            )
                             .padding(.horizontal, 20)
                             .padding(.top, 12)
+                        } else {
+                            tasksCard(week: week)
+                                .padding(.horizontal, 20)
+                                .padding(.top, 12)
+                        }
                     }
 
                     // ─── Common Dad Question ────────────────────────────────
