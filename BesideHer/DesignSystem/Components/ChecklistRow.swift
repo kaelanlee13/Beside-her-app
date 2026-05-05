@@ -17,15 +17,17 @@ struct ChecklistRow: View {
     let onToggle: () -> Void
     var showDivider: Bool = true
 
+    @State private var isExpanded: Bool = false
+
     var body: some View {
         VStack(spacing: 0) {
-            Button(action: {
-                withAnimation(.spring(response: 0.35, dampingFraction: 0.8)) {
-                    onToggle()
-                }
-            }) {
-                HStack(alignment: .top, spacing: 12) {
-                    // 22pt circle checkbox
+            HStack(alignment: .top, spacing: 12) {
+                // 22pt circle checkbox — tap toggles completion
+                Button(action: {
+                    withAnimation(.spring(response: 0.35, dampingFraction: 0.8)) {
+                        onToggle()
+                    }
+                }) {
                     ZStack {
                         Circle()
                             .strokeBorder(isComplete ? Color.clear : Color.divider, lineWidth: 1)
@@ -40,8 +42,17 @@ struct ChecklistRow: View {
                     }
                     .frame(width: 22, height: 22)
                     .animation(.spring(response: 0.35, dampingFraction: 0.8), value: isComplete)
+                    .contentShape(Rectangle())
+                }
+                .buttonStyle(.plain)
 
-                    // Text stack
+                // Text stack — tap toggles description expansion
+                Button(action: {
+                    guard description != nil else { return }
+                    withAnimation(.spring(response: 0.35, dampingFraction: 0.85)) {
+                        isExpanded.toggle()
+                    }
+                }) {
                     VStack(alignment: .leading, spacing: 4) {
                         Text(title)
                             .font(.bodyText)
@@ -55,8 +66,9 @@ struct ChecklistRow: View {
                             Text(description)
                                 .font(.captionText)
                                 .foregroundStyle(Color.inkSecondary)
-                                .lineLimit(3)
+                                .lineLimit(isExpanded ? nil : 3)
                                 .multilineTextAlignment(.leading)
+                                .frame(maxWidth: .infinity, alignment: .leading)
                         }
 
                         if let category {
@@ -64,11 +76,11 @@ struct ChecklistRow: View {
                                 .eyebrowStyle()
                         }
                     }
+                    .contentShape(Rectangle())
                 }
-                .padding(.vertical, 12)
-                .contentShape(Rectangle())
+                .buttonStyle(.plain)
             }
-            .buttonStyle(.plain)
+            .padding(.vertical, 12)
 
             if showDivider {
                 Rectangle()
