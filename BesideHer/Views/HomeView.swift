@@ -174,7 +174,8 @@ struct HomeView: View {
     }
 
     private func heroBodyText(_ week: Week) -> String {
-        "\(week.title)  ·  \(countdownText)"
+        let weekLabel = week.title.split(separator: ":", maxSplits: 1).first.map(String.init) ?? week.title
+        return "\(weekLabel)  ·  \(countdownText)"
     }
 
 
