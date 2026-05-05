@@ -2,33 +2,24 @@
 //  ContractionTimerView.swift
 //  BesideHer
 //
-//  Tracks contraction duration and frequency during labor
+//  Tracks contraction duration and frequency during labor.
+//
+//  History and in-progress timer are persisted via SwiftData (ContractionRecord),
+//  so closing or killing the app — even mid-contraction — preserves all data.
 //
 
 import SwiftUI
+import SwiftData
 import Combine
-
-// MARK: - Models
-
-private struct ContractionRecord: Identifiable {
-    let id = UUID()
-    let number: Int
-    let startTime: Date
-    let duration: TimeInterval
-    let interval: TimeInterval?
-}
-
-private enum ContractionState {
-    case idle
-    case active(startedAt: Date)
-    case between(lastEnd: Date, lastDuration: TimeInterval, lastStart: Date)
-}
 
 // MARK: - View
 
 struct ContractionTimerView: View {
-    @State private var state: ContractionState = .idle
-    @State private var records: [ContractionRecord] = []
+    @Environment(\.modelContext) private var modelContext
+
+    @Query(sort: \ContractionRecord.startTime, order: .forward)
+    private var records: [ContractionRecord]
+
     @State private var elapsedSeconds: Int = 0
     @State private var restSeconds: Int = 0
     @State private var isPulsing: Bool = false
@@ -36,12 +27,40 @@ struct ContractionTimerView: View {
 
     private let ticker = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
+    // MARK: - Derived state
+
+    private enum DisplayState {
+        case idle
+        case active(startedAt: Date)
+        case between(lastEnd: Date, lastDuration: TimeInterval)
+    }
+
+    private var liveRecord: ContractionRecord? {
+        records.last(where: { $0.isActive })
+    }
+
+    private var completedRecords: [ContractionRecord] {
+        records.filter { !$0.isActive }
+    }
+
+    private var displayState: DisplayState {
+        if let liveRecord {
+            return .active(startedAt: liveRecord.startTime)
+        }
+        if let last = completedRecords.last,
+           let endTime = last.endTime,
+           let duration = last.duration {
+            return .between(lastEnd: endTime, lastDuration: duration)
+        }
+        return .idle
+    }
+
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
                 mainDisplayCard
                 actionButton
-                if !records.isEmpty {
+                if !completedRecords.isEmpty {
                     statsCard
                     historyCard
                 }
@@ -62,6 +81,7 @@ struct ContractionTimerView: View {
                 }
             }
         }
+        .onAppear { tick() }
         .onReceive(ticker) { _ in tick() }
     }
 
@@ -69,12 +89,12 @@ struct ContractionTimerView: View {
 
     private var mainDisplayCard: some View {
         Group {
-            switch state {
+            switch displayState {
             case .idle:
                 idleDisplay
             case .active:
                 activeDisplay
-            case .between(_, let lastDuration, _):
+            case .between(_, let lastDuration):
                 betweenDisplay(lastDuration: lastDuration)
             }
         }
@@ -132,8 +152,8 @@ struct ContractionTimerView: View {
                 .onAppear { isPulsing = true }
                 .onDisappear { isPulsing = false }
 
-            if let last = records.last {
-                Text("Last contraction: \(formatTime(Int(last.duration)))")
+            if let last = completedRecords.last, let duration = last.duration {
+                Text("Last contraction: \(formatTime(Int(duration)))")
                     .font(.captionText)
                     .foregroundStyle(Color.inkSecondary)
             }
@@ -194,7 +214,7 @@ struct ContractionTimerView: View {
     }
 
     private var buttonLabel: String {
-        switch state {
+        switch displayState {
         case .idle:    return "Start Contraction"
         case .active:  return "Stop Contraction"
         case .between: return "Start Next Contraction"
@@ -202,7 +222,7 @@ struct ContractionTimerView: View {
     }
 
     private var buttonColor: Color {
-        if case .active = state { return Color.alert }
+        if case .active = displayState { return Color.alert }
         return Color.accent
     }
 
@@ -210,7 +230,7 @@ struct ContractionTimerView: View {
 
     private var statsCard: some View {
         HStack(spacing: 0) {
-            statItem(value: "\(records.count)", label: "Contractions")
+            statItem(value: "\(completedRecords.count)", label: "Contractions")
             Divider().frame(height: 44)
             statItem(value: avgDuration, label: "Avg Duration")
             Divider().frame(height: 44)
@@ -243,7 +263,8 @@ struct ContractionTimerView: View {
     // MARK: - History Card
 
     private var historyCard: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        let rows = historyRows
+        return VStack(alignment: .leading, spacing: 12) {
             Text("CONTRACTION LOG")
                 .eyebrowStyle()
 
@@ -251,20 +272,20 @@ struct ContractionTimerView: View {
                 .font(.h2)
                 .foregroundStyle(Color.ink)
 
-            ForEach(records.reversed()) { record in
+            ForEach(Array(rows.enumerated()), id: \.element.id) { index, row in
                 HStack {
-                    Text("#\(record.number)")
+                    Text("#\(row.number)")
                         .font(.captionText.weight(.semibold))
                         .foregroundStyle(Color.inkSecondary)
                         .frame(width: 28, alignment: .leading)
 
-                    Text(formatTime(Int(record.duration)))
+                    Text(formatTime(Int(row.duration)))
                         .font(.system(size: 14, weight: .semibold, design: .monospaced))
                         .foregroundStyle(Color.sage)
 
                     Spacer()
 
-                    if let interval = record.interval {
+                    if let interval = row.interval {
                         Text("every \(formatTime(Int(interval)))")
                             .font(.captionText)
                             .foregroundStyle(Color.inkSecondary)
@@ -275,7 +296,7 @@ struct ContractionTimerView: View {
                     }
                 }
 
-                if record.id != records.first?.id {
+                if index < rows.count - 1 {
                     Divider()
                 }
             }
@@ -290,6 +311,33 @@ struct ContractionTimerView: View {
             RoundedRectangle(cornerRadius: Radius.card)
                 .stroke(Color.divider, lineWidth: 1)
         )
+    }
+
+    private struct HistoryRow {
+        let id: PersistentIdentifier
+        let number: Int
+        let duration: TimeInterval
+        let interval: TimeInterval?
+    }
+
+    /// Numbers contractions chronologically, computes intervals between
+    /// successive starts, then reverses for newest-first display.
+    private var historyRows: [HistoryRow] {
+        let chronological = completedRecords
+        var rows: [HistoryRow] = []
+        rows.reserveCapacity(chronological.count)
+        for (index, record) in chronological.enumerated() {
+            let interval: TimeInterval? = index > 0
+                ? record.startTime.timeIntervalSince(chronological[index - 1].startTime)
+                : nil
+            rows.append(HistoryRow(
+                id: record.persistentModelID,
+                number: index + 1,
+                duration: record.duration ?? 0,
+                interval: interval
+            ))
+        }
+        return rows.reversed()
     }
 
     // MARK: - 5-1-1 Rule Card
@@ -323,28 +371,15 @@ struct ContractionTimerView: View {
 
     private func handleTap() {
         let now = Date()
-        switch state {
-        case .idle:
-            state = .active(startedAt: now)
-            elapsedSeconds = 0
-            timerStarted.toggle()
-
-        case .active(let startedAt):
-            let duration = now.timeIntervalSince(startedAt)
-            let interval = records.last.map { startedAt.timeIntervalSince($0.startTime) }
-            let record = ContractionRecord(
-                number: records.count + 1,
-                startTime: startedAt,
-                duration: duration,
-                interval: interval
-            )
-            records.append(record)
-            state = .between(lastEnd: now, lastDuration: duration, lastStart: startedAt)
+        if let liveRecord {
+            // End the active contraction.
+            liveRecord.endTime = now
             elapsedSeconds = 0
             restSeconds = 0
-
-        case .between:
-            state = .active(startedAt: now)
+        } else {
+            // Start a new contraction (works from idle or between).
+            let new = ContractionRecord(startTime: now)
+            modelContext.insert(new)
             elapsedSeconds = 0
             restSeconds = 0
             timerStarted.toggle()
@@ -352,19 +387,20 @@ struct ContractionTimerView: View {
     }
 
     private func tick() {
-        switch state {
+        switch displayState {
         case .idle:
             break
         case .active(let startedAt):
             elapsedSeconds = Int(Date().timeIntervalSince(startedAt))
-        case .between(let lastEnd, _, _):
+        case .between(let lastEnd, _):
             restSeconds = Int(Date().timeIntervalSince(lastEnd))
         }
     }
 
     private func reset() {
-        state = .idle
-        records = []
+        for record in records {
+            modelContext.delete(record)
+        }
         elapsedSeconds = 0
         restSeconds = 0
         isPulsing = false
@@ -379,13 +415,19 @@ struct ContractionTimerView: View {
     }
 
     private var avgDuration: String {
-        guard !records.isEmpty else { return "—" }
-        let avg = records.map(\.duration).reduce(0, +) / Double(records.count)
+        let durations = completedRecords.compactMap(\.duration)
+        guard !durations.isEmpty else { return "—" }
+        let avg = durations.reduce(0, +) / Double(durations.count)
         return formatTime(Int(avg))
     }
 
     private var avgInterval: String {
-        let intervals = records.compactMap(\.interval)
+        let chronological = completedRecords
+        guard chronological.count > 1 else { return "—" }
+        var intervals: [TimeInterval] = []
+        for i in 1..<chronological.count {
+            intervals.append(chronological[i].startTime.timeIntervalSince(chronological[i - 1].startTime))
+        }
         guard !intervals.isEmpty else { return "—" }
         let avg = intervals.reduce(0, +) / Double(intervals.count)
         return formatTime(Int(avg))
@@ -396,4 +438,5 @@ struct ContractionTimerView: View {
     NavigationStack {
         ContractionTimerView()
     }
+    .modelContainer(for: ContractionRecord.self, inMemory: true)
 }

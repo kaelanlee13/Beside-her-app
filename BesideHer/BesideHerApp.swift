@@ -13,6 +13,7 @@ struct BesideHerApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             UserProfile.self,
+            ContractionRecord.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
