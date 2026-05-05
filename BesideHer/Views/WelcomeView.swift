@@ -15,9 +15,10 @@ struct WelcomeView: View {
             Spacer()
 
             VStack(spacing: 10) {
+                // TODO: replace wordmark with brand asset — currently using ink token (was hardcoded #3A6F8F)
                 Text("besideher")
                     .font(Font.custom("Georgia", size: 46))
-                    .foregroundColor(Color(hex: "3A6F8F"))
+                    .foregroundStyle(Color.ink)
                     .tracking(1.3)
                 Text("BESIDE HER THROUGH IT ALL")
                     .font(.eyebrow)
@@ -55,11 +56,11 @@ struct WelcomeView: View {
             Button(action: onContinue) {
                 Text("Get Started")
                     .font(.bodyText.weight(.semibold))
-                    .foregroundColor(.white)
+                    .foregroundStyle(Color.onAccent)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 16)
                     .background(
-                        RoundedRectangle(cornerRadius: 14)
+                        RoundedRectangle(cornerRadius: Radius.card)
                             .fill(Color.accent)
                     )
             }

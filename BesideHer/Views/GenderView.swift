@@ -89,11 +89,11 @@ struct GenderView: View {
             Button(action: onContinue) {
                 Text("Continue")
                     .font(.bodyText.weight(.semibold))
-                    .foregroundColor(.white)
+                    .foregroundStyle(Color.onAccent)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 16)
                     .background(
-                        RoundedRectangle(cornerRadius: 14)
+                        RoundedRectangle(cornerRadius: Radius.card)
                             .fill(Color.accent)
                     )
             }
@@ -114,10 +114,10 @@ struct GenderView: View {
             .frame(maxWidth: .infinity)
             .padding(.vertical, 28)
             .background(
-                RoundedRectangle(cornerRadius: 16)
+                RoundedRectangle(cornerRadius: Radius.card)
                     .fill(isSelected ? Color.accentSoft : Color.surface)
                     .overlay(
-                        RoundedRectangle(cornerRadius: 16)
+                        RoundedRectangle(cornerRadius: Radius.card)
                             .stroke(isSelected ? Color.accent : Color.divider,
                                     lineWidth: isSelected ? 2 : 1)
                     )

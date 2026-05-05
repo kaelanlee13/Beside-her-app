@@ -11,12 +11,12 @@ struct TipsCategoryView: View {
 
     @State private var selectedCategoryId: String? = nil
 
-    private let categories: [(id: String, name: String, icon: String, color: String, caption: String)] = [
-        ("emotional-support", "Emotional Support",  "heart.fill",                    "E84D6A", "Being present for every moment"),
-        ("financial-prep",    "Financial Prep",      "dollarsign.circle.fill",        "56B89F", "Plan ahead so you can be present"),
-        ("home-gear",         "Home & Gear",         "house.fill",                    "E8963F", "Get the nursery ready together"),
-        ("labor-prep",        "Labor Prep",          "cross.case.fill",               "3B7DD8", "Know what to expect when it begins"),
-        ("postpartum-prep",   "Postpartum Prep",     "figure.and.child.holdinghands", "8B6CC1", "Support her through the fourth trimester"),
+    private let categories: [(id: String, name: String, icon: String, tint: Color, caption: String)] = [
+        ("emotional-support", "Emotional Support",  "heart.fill",                    Color.accent,        "Being present for every moment"),
+        ("financial-prep",    "Financial Prep",      "dollarsign.circle.fill",        Color.sage,          "Plan ahead so you can be present"),
+        ("home-gear",         "Home & Gear",         "house.fill",                    Color.clay,          "Get the nursery ready together"),
+        ("labor-prep",        "Labor Prep",          "cross.case.fill",               Color.alert,         "Know what to expect when it begins"),
+        ("postpartum-prep",   "Postpartum Prep",     "figure.and.child.holdinghands", Color.inkSecondary,  "Support her through the fourth trimester"),
     ]
 
     var body: some View {
@@ -30,7 +30,7 @@ struct TipsCategoryView: View {
                             headline: category.name,
                             caption: category.caption,
                             illustrationName: category.icon,
-                            tintColor: Color(hex: category.color),
+                            tintColor: category.tint,
                             action: { selectedCategoryId = category.id }
                         )
                     }

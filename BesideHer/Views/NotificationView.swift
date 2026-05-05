@@ -35,8 +35,9 @@ struct NotificationView: View {
                 Circle()
                     .fill(Color.accentSoft)
                     .frame(width: 72, height: 72)
-                Text("🔔")
-                    .font(.system(size: 32))
+                Image(systemName: "bell.fill")
+                    .font(.system(size: 28, weight: .semibold))
+                    .foregroundStyle(Color.accent)
             }
             .padding(.bottom, 20)
 
@@ -80,11 +81,11 @@ struct NotificationView: View {
             Button(action: onEnable) {
                 Text("Enable Notifications")
                     .font(.bodyText.weight(.semibold))
-                    .foregroundColor(.white)
+                    .foregroundStyle(Color.onAccent)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 16)
                     .background(
-                        RoundedRectangle(cornerRadius: 14)
+                        RoundedRectangle(cornerRadius: Radius.card)
                             .fill(Color.accent)
                     )
             }

@@ -81,11 +81,11 @@ struct DueDateView: View {
             Button(action: onContinue) {
                 Text("Continue")
                     .font(.bodyText.weight(.semibold))
-                    .foregroundColor(.white)
+                    .foregroundStyle(Color.onAccent)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 16)
                     .background(
-                        RoundedRectangle(cornerRadius: 14)
+                        RoundedRectangle(cornerRadius: Radius.card)
                             .fill(Color.accent)
                     )
             }

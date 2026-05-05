@@ -35,7 +35,7 @@ struct WeekDetailView: View {
                 // ─── Baby Development ────────────────────────────────────
                 sectionCard(
                     systemImage: "figure.child",
-                    accentColor: AppTheme.primary,
+                    accentColor: Color.ink,
                     eyebrow: "DEVELOPMENT",
                     title: "Baby Development",
                     body: week.babyDevelopment
@@ -46,7 +46,7 @@ struct WeekDetailView: View {
                 // ─── Partner Experience ──────────────────────────────────
                 sectionCard(
                     systemImage: "figure.arms.open",
-                    accentColor: AppTheme.accent,
+                    accentColor: Color.clay,
                     eyebrow: "YOUR PARTNER",
                     title: "Partner Experience",
                     body: week.partnerExperience
@@ -84,47 +84,46 @@ struct WeekDetailView: View {
 
     private var heroHeader: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: AppTheme.cornerRadius)
-                .fill(AppTheme.heroGradient)
+            RoundedRectangle(cornerRadius: Radius.card)
+                .fill(Color.paperTinted)
 
             VStack(alignment: .leading, spacing: 0) {
                 Text("Trimester \(week.trimester)  ·  \(trimesterMonth)")
                     .font(.captionText)
-                    .foregroundColor(.white.opacity(0.65))
+                    .foregroundStyle(Color.inkSecondary)
 
                 Text("Week \(week.weekNumber)")
                     .font(.hero)
-                    .foregroundColor(.white)
+                    .foregroundStyle(Color.ink)
                     .padding(.top, 2)
 
                 Text(week.title)
                     .font(.h2)
-                    .foregroundColor(.white.opacity(0.9))
+                    .foregroundStyle(Color.ink.opacity(0.85))
                     .padding(.top, 4)
 
                 Divider()
-                    .background(.white.opacity(0.2))
+                    .background(Color.divider)
                     .padding(.vertical, 14)
 
                 HStack(spacing: 10) {
-                    Text(week.sizeEmoji)
-                        .font(.system(size: 28))
+                    // TODO: replace size illustration — need asset for "\(week.sizeComparison)" (e.g. apple, lemon, papaya)
+                    Image(systemName: "leaf.fill")
+                        .font(.system(size: 22))
+                        .foregroundStyle(Color.accent.opacity(0.55))
                     VStack(alignment: .leading, spacing: 2) {
                         Text("SIZE THIS WEEK")
-                            .font(.eyebrow)
-                            .textCase(.uppercase)
-                            .tracking(1.4)
-                            .foregroundColor(.white.opacity(0.55))
+                            .eyebrowStyle()
                         Text(week.sizeComparison)
                             .font(.bodyText.weight(.semibold))
-                            .foregroundColor(.white)
+                            .foregroundStyle(Color.ink)
                     }
                 }
             }
             .padding(20)
             .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .shadow(color: AppTheme.deepNavy.opacity(0.3), radius: 12, y: 6)
+        .premiumShadow()
     }
 
     // MARK: - Section Card (Baby Dev / Partner Exp)
@@ -136,12 +135,12 @@ struct WeekDetailView: View {
 
             HStack(spacing: 10) {
                 ZStack {
-                    RoundedRectangle(cornerRadius: 8)
+                    RoundedRectangle(cornerRadius: Radius.input)
                         .fill(accentColor.opacity(0.12))
                         .frame(width: 32, height: 32)
                     Image(systemName: systemImage)
                         .font(.system(size: 15, weight: .semibold))
-                        .foregroundColor(accentColor)
+                        .foregroundStyle(accentColor)
                 }
                 Text(title)
                     .font(.h2)
@@ -167,12 +166,12 @@ struct WeekDetailView: View {
 
             HStack(spacing: 10) {
                 ZStack {
-                    RoundedRectangle(cornerRadius: 8)
+                    RoundedRectangle(cornerRadius: Radius.input)
                         .fill(Color.sage.opacity(0.12))
                         .frame(width: 32, height: 32)
                     Image(systemName: "hands.sparkles")
                         .font(.system(size: 15, weight: .semibold))
-                        .foregroundColor(Color.sage)
+                        .foregroundStyle(Color.sage)
                 }
                 Text("How to Help")
                     .font(.h2)
@@ -182,7 +181,7 @@ struct WeekDetailView: View {
             ForEach(week.howToHelp, id: \.self) { tip in
                 HStack(alignment: .top, spacing: 10) {
                     Circle()
-                        .fill(Color.accent)
+                        .fill(Color.sage)
                         .frame(width: 5, height: 5)
                         .padding(.top, 7)
                     Text(tip)
@@ -244,17 +243,17 @@ struct WeekDetailView: View {
                 withAnimation(.easeInOut(duration: 0.2)) { onToggle() }
             }) {
                 ZStack {
-                    RoundedRectangle(cornerRadius: 5)
+                    Circle()
                         .fill(isCompleted ? Color.accent : .clear)
                         .frame(width: 22, height: 22)
                         .overlay(
-                            RoundedRectangle(cornerRadius: 5)
+                            Circle()
                                 .stroke(isCompleted ? Color.clear : Color.divider, lineWidth: 1.5)
                         )
                     if isCompleted {
                         Image(systemName: "checkmark")
                             .font(.system(size: 11, weight: .bold))
-                            .foregroundColor(Color.onAccent)
+                            .foregroundStyle(Color.onAccent)
                     }
                 }
             }
@@ -313,10 +312,10 @@ struct WeekDetailView: View {
             .padding(16)
             .frame(maxWidth: .infinity)
             .background(
-                RoundedRectangle(cornerRadius: AppTheme.cornerRadius)
+                RoundedRectangle(cornerRadius: Radius.card)
                     .fill(Color.accentSoft)
                     .overlay(
-                        RoundedRectangle(cornerRadius: AppTheme.cornerRadius)
+                        RoundedRectangle(cornerRadius: Radius.card)
                             .stroke(Color.accent.opacity(0.25), lineWidth: 1)
                     )
             )
@@ -336,15 +335,15 @@ struct WeekDetailView: View {
                         Text("Week \(previousWeekNumber)")
                             .font(.captionText.weight(.semibold))
                     }
-                    .foregroundColor(AppTheme.primary)
+                    .foregroundStyle(Color.ink)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 10)
                     .background(
-                        RoundedRectangle(cornerRadius: 10)
+                        RoundedRectangle(cornerRadius: Radius.input)
                             .fill(Color.surface)
                     )
                     .overlay(
-                        RoundedRectangle(cornerRadius: 10)
+                        RoundedRectangle(cornerRadius: Radius.input)
                             .stroke(Color.divider, lineWidth: 1)
                     )
                 }
@@ -361,15 +360,15 @@ struct WeekDetailView: View {
                         Image(systemName: "chevron.right")
                             .font(.system(size: 12, weight: .semibold))
                     }
-                    .foregroundColor(AppTheme.primary)
+                    .foregroundStyle(Color.ink)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 10)
                     .background(
-                        RoundedRectangle(cornerRadius: 10)
+                        RoundedRectangle(cornerRadius: Radius.input)
                             .fill(Color.surface)
                     )
                     .overlay(
-                        RoundedRectangle(cornerRadius: 10)
+                        RoundedRectangle(cornerRadius: Radius.input)
                             .stroke(Color.divider, lineWidth: 1)
                     )
                 }
@@ -383,11 +382,11 @@ struct WeekDetailView: View {
     // MARK: - Shared Style
 
     private var surfaceCard: some View {
-        RoundedRectangle(cornerRadius: AppTheme.cornerRadius)
+        RoundedRectangle(cornerRadius: Radius.card)
             .fill(Color.surface)
-            .shadow(color: AppTheme.cardShadow, radius: 4, y: 2)
+            .premiumShadow()
             .overlay(
-                RoundedRectangle(cornerRadius: AppTheme.cornerRadius)
+                RoundedRectangle(cornerRadius: Radius.card)
                     .stroke(Color.divider, lineWidth: 1)
             )
     }

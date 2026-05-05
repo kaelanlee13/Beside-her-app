@@ -63,8 +63,8 @@ struct ChecklistsView: View {
                 NavigationLink(destination: LaborBagView(profile: profile)) {
                     HStack(spacing: 14) {
                         ZStack {
-                            RoundedRectangle(cornerRadius: 10)
-                                .fill(Color.accent.opacity(0.1))
+                            RoundedRectangle(cornerRadius: Radius.input)
+                                .fill(Color.accentSoft)
                                 .frame(width: 44, height: 44)
                             Image(systemName: "bag.fill")
                                 .font(.system(size: 18))
@@ -85,12 +85,12 @@ struct ChecklistsView: View {
                     }
                     .padding(14)
                     .background(
-                        RoundedRectangle(cornerRadius: 14)
+                        RoundedRectangle(cornerRadius: Radius.card)
                             .fill(Color.surface)
-                            .shadow(color: .black.opacity(0.04), radius: 3, y: 1)
+                            .premiumShadow()
                     )
                     .overlay(
-                        RoundedRectangle(cornerRadius: 14)
+                        RoundedRectangle(cornerRadius: Radius.card)
                             .stroke(Color.divider, lineWidth: 1)
                     )
                 }

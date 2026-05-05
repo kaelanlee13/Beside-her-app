@@ -81,12 +81,12 @@ struct ContractionTimerView: View {
         .frame(maxWidth: .infinity)
         .padding(24)
         .background(
-            RoundedRectangle(cornerRadius: 20)
+            RoundedRectangle(cornerRadius: Radius.card)
                 .fill(Color.surface)
-                .shadow(color: .black.opacity(0.05), radius: 8, y: 3)
+                .premiumShadow()
         )
         .overlay(
-            RoundedRectangle(cornerRadius: 20)
+            RoundedRectangle(cornerRadius: Radius.card)
                 .stroke(Color.divider, lineWidth: 1)
         )
     }
@@ -181,13 +181,13 @@ struct ContractionTimerView: View {
         Button(action: handleTap) {
             Text(buttonLabel)
                 .font(.bodyText.weight(.bold))
-                .foregroundColor(.white)
+                .foregroundStyle(Color.onAccent)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 18)
                 .background(
-                    RoundedRectangle(cornerRadius: 16)
+                    RoundedRectangle(cornerRadius: Radius.card)
                         .fill(buttonColor)
-                        .shadow(color: buttonColor.opacity(0.35), radius: 8, y: 4)
+                        .premiumShadow()
                 )
         }
         .sensoryFeedback(.impact(weight: .light), trigger: timerStarted)
@@ -218,12 +218,12 @@ struct ContractionTimerView: View {
         }
         .padding(.vertical, 16)
         .background(
-            RoundedRectangle(cornerRadius: 14)
+            RoundedRectangle(cornerRadius: Radius.card)
                 .fill(Color.surface)
-                .shadow(color: .black.opacity(0.04), radius: 3, y: 1)
+                .premiumShadow()
         )
         .overlay(
-            RoundedRectangle(cornerRadius: 14)
+            RoundedRectangle(cornerRadius: Radius.card)
                 .stroke(Color.divider, lineWidth: 1)
         )
     }
@@ -282,12 +282,12 @@ struct ContractionTimerView: View {
         }
         .padding(16)
         .background(
-            RoundedRectangle(cornerRadius: 14)
+            RoundedRectangle(cornerRadius: Radius.card)
                 .fill(Color.surface)
-                .shadow(color: .black.opacity(0.04), radius: 3, y: 1)
+                .premiumShadow()
         )
         .overlay(
-            RoundedRectangle(cornerRadius: 14)
+            RoundedRectangle(cornerRadius: Radius.card)
                 .stroke(Color.divider, lineWidth: 1)
         )
     }
@@ -314,7 +314,7 @@ struct ContractionTimerView: View {
         .padding(14)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(
-            RoundedRectangle(cornerRadius: 14)
+            RoundedRectangle(cornerRadius: Radius.card)
                 .fill(Color.accentSoft)
         )
     }

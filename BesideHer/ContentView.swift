@@ -93,23 +93,14 @@ struct MainTabView: View {
         .tint(Color.accent)
         .toolbarBackground(Color.surface, for: .tabBar)
         .toolbarBackground(.visible, for: .tabBar)
-        .toolbarColorScheme(.light, for: .tabBar)
         .tabBarMinimizeOnScrollDownIfAvailable()
     }
 
     private static func configureTabBarAppearance() {
         let appearance = UITabBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = UIColor { trait in
-            trait.userInterfaceStyle == .dark
-                ? UIColor(red: 0x1E/255, green: 0x1A/255, blue: 0x16/255, alpha: 1) // surface dark
-                : UIColor(red: 0xFB/255, green: 0xF8/255, blue: 0xF2/255, alpha: 1) // surface light
-        }
-        appearance.shadowColor = UIColor { trait in
-            trait.userInterfaceStyle == .dark
-                ? UIColor(red: 0x2E/255, green: 0x29/255, blue: 0x25/255, alpha: 1) // divider dark
-                : UIColor(red: 0xE7/255, green: 0xDF/255, blue: 0xD2/255, alpha: 1) // divider light
-        }
+        appearance.backgroundColor = UIColor(Color.surface)
+        appearance.shadowColor = UIColor(Color.divider)
 
         // SF Pro Rounded 10pt Semibold for tab labels
         let labelFont: UIFont = {

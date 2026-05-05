@@ -197,12 +197,12 @@ struct HomeView: View {
         NavigationLink(destination: ContractionTimerView()) {
             HStack(spacing: 14) {
                 ZStack {
-                    RoundedRectangle(cornerRadius: 10)
-                        .fill(AppTheme.primary.opacity(0.1))
+                    RoundedRectangle(cornerRadius: Radius.input)
+                        .fill(Color.divider)
                         .frame(width: 42, height: 42)
                     Image(systemName: "waveform.path.ecg")
                         .font(.system(size: 18))
-                        .foregroundColor(AppTheme.primary)
+                        .foregroundStyle(Color.inkSecondary)
                 }
                 VStack(alignment: .leading, spacing: 2) {
                     Text("Contraction Timer")
@@ -239,7 +239,7 @@ struct HomeView: View {
                 Spacer()
                 Text("\(completedCount) of \(totalCount)")
                     .font(.captionText.weight(.semibold))
-                    .foregroundStyle(Color.accent)
+                    .foregroundStyle(Color.inkSecondary)
             }
             .padding(.bottom, Spacing.md)
 
@@ -293,11 +293,11 @@ struct HomeView: View {
     // MARK: - Shared Helpers
 
     private var surfaceCard: some View {
-        RoundedRectangle(cornerRadius: AppTheme.cornerRadius)
+        RoundedRectangle(cornerRadius: Radius.card)
             .fill(Color.surface)
-            .shadow(color: AppTheme.cardShadow, radius: 4, y: 2)
+            .premiumShadow()
             .overlay(
-                RoundedRectangle(cornerRadius: AppTheme.cornerRadius)
+                RoundedRectangle(cornerRadius: Radius.card)
                     .stroke(Color.divider, lineWidth: 1)
             )
     }

@@ -30,7 +30,7 @@ struct SettingsView: View {
                 VStack(spacing: 0) {
                     settingsRow(
                         systemImage: "calendar",
-                        iconColor: AppTheme.primary,
+                        iconColor: Color.inkSecondary,
                         label: "Due Date",
                         value: formattedDueDate,
                         showChevron: true,
@@ -42,7 +42,7 @@ struct SettingsView: View {
                     Divider().padding(.leading, 52)
                     settingsRow(
                         systemImage: "figure.child",
-                        iconColor: Color.sage,
+                        iconColor: Color.inkSecondary,
                         label: "Baby's Gender",
                         value: genderLabel,
                         showChevron: true,
@@ -51,7 +51,7 @@ struct SettingsView: View {
                     Divider().padding(.leading, 52)
                     settingsRow(
                         systemImage: "calendar.badge.clock",
-                        iconColor: Color.accent,
+                        iconColor: Color.inkSecondary,
                         label: "Current Week",
                         value: "Week \(profile.currentWeek)",
                         showChevron: false,
@@ -60,7 +60,7 @@ struct SettingsView: View {
                     Divider().padding(.leading, 52)
                     settingsRow(
                         systemImage: "list.bullet.clipboard",
-                        iconColor: Color(hex: "8B6CC1"),
+                        iconColor: Color.inkSecondary,
                         label: "Trimester",
                         value: trimesterLabel,
                         showChevron: false,
@@ -144,17 +144,17 @@ struct SettingsView: View {
                 sectionHeader("About")
 
                 VStack(spacing: 0) {
-                    aboutRow(systemImage: "info.circle.fill", iconColor: AppTheme.primary, label: "About BesideHer") {
+                    aboutRow(systemImage: "info.circle.fill", iconColor: Color.inkSecondary, label: "About BesideHer") {
                         showAbout = true
                     }
                     Divider().padding(.leading, 52)
-                    aboutRow(systemImage: "star.fill", iconColor: Color(hex: "F6AD55"), label: "Rate the App") {
+                    aboutRow(systemImage: "star.fill", iconColor: Color.inkSecondary, label: "Rate the App") {
                         if let url = URL(string: "https://apps.apple.com/app/id6743770424") {
                             UIApplication.shared.open(url)
                         }
                     }
                     Divider().padding(.leading, 52)
-                    aboutRow(systemImage: "envelope.fill", iconColor: Color(hex: "56B89F"), label: "Send Feedback") {
+                    aboutRow(systemImage: "envelope.fill", iconColor: Color.inkSecondary, label: "Send Feedback") {
                         if let url = URL(string: "mailto:besideherapp@gmail.com?subject=BesideHer%20Feedback") {
                             UIApplication.shared.open(url)
                         }
@@ -167,11 +167,11 @@ struct SettingsView: View {
                 sectionHeader("Legal")
 
                 VStack(spacing: 0) {
-                    aboutRow(systemImage: "hand.raised.fill", iconColor: Color(hex: "5A8FD6"), label: "Privacy Policy") {
+                    aboutRow(systemImage: "hand.raised.fill", iconColor: Color.inkSecondary, label: "Privacy Policy") {
                         showPrivacyPolicy = true
                     }
                     Divider().padding(.leading, 52)
-                    aboutRow(systemImage: "doc.text.fill", iconColor: Color(hex: "7A9CC4"), label: "Terms of Use") {
+                    aboutRow(systemImage: "doc.text.fill", iconColor: Color.inkSecondary, label: "Terms of Use") {
                         showTermsOfUse = true
                     }
                     Divider().padding(.leading, 52)
@@ -279,12 +279,12 @@ struct SettingsView: View {
 
     private func iconBadge(systemImage: String, color: Color) -> some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 8)
+            RoundedRectangle(cornerRadius: Radius.input)
                 .fill(color.opacity(0.12))
                 .frame(width: 32, height: 32)
             Image(systemName: systemImage)
                 .font(.system(size: 14, weight: .semibold))
-                .foregroundColor(color)
+                .foregroundStyle(color)
         }
     }
 
@@ -298,11 +298,11 @@ struct SettingsView: View {
     }
 
     private var surfaceCard: some View {
-        RoundedRectangle(cornerRadius: AppTheme.cornerRadius)
+        RoundedRectangle(cornerRadius: Radius.card)
             .fill(Color.surface)
-            .shadow(color: AppTheme.cardShadow, radius: 4, y: 2)
+            .premiumShadow()
             .overlay(
-                RoundedRectangle(cornerRadius: AppTheme.cornerRadius)
+                RoundedRectangle(cornerRadius: Radius.card)
                     .stroke(Color.divider, lineWidth: 1)
             )
     }
@@ -392,10 +392,10 @@ struct GenderPickerSheet: View {
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 28)
                 .background(
-                    RoundedRectangle(cornerRadius: 16)
+                    RoundedRectangle(cornerRadius: Radius.card)
                         .fill(isSelected ? Color.accentSoft : Color.surface)
                         .overlay(
-                            RoundedRectangle(cornerRadius: 16)
+                            RoundedRectangle(cornerRadius: Radius.card)
                                 .stroke(isSelected ? Color.accent : Color.divider,
                                         lineWidth: isSelected ? 2 : 1)
                         )
@@ -497,11 +497,11 @@ struct BookmarkedTipsView: View {
                         }
                         .padding(16)
                         .background(
-                            RoundedRectangle(cornerRadius: AppTheme.cornerRadius)
+                            RoundedRectangle(cornerRadius: Radius.card)
                                 .fill(Color.surface)
-                                .shadow(color: AppTheme.cardShadow, radius: 4, y: 2)
+                                .premiumShadow()
                                 .overlay(
-                                    RoundedRectangle(cornerRadius: AppTheme.cornerRadius)
+                                    RoundedRectangle(cornerRadius: Radius.card)
                                         .stroke(Color.divider, lineWidth: 1)
                                 )
                         )
@@ -556,11 +556,11 @@ struct AboutView: View {
                     }
                     .padding(20)
                     .background(
-                        RoundedRectangle(cornerRadius: AppTheme.cornerRadius)
+                        RoundedRectangle(cornerRadius: Radius.card)
                             .fill(Color.surface)
-                            .shadow(color: AppTheme.cardShadow, radius: 4, y: 2)
+                            .premiumShadow()
                             .overlay(
-                                RoundedRectangle(cornerRadius: AppTheme.cornerRadius)
+                                RoundedRectangle(cornerRadius: Radius.card)
                                     .stroke(Color.divider, lineWidth: 1)
                             )
                     )

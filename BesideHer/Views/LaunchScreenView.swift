@@ -18,10 +18,10 @@ struct LaunchScreenView: View {
                 .ignoresSafeArea()
 
             VStack(spacing: 10) {
-                // Wordmark
+                // TODO: replace wordmark with brand asset — currently using ink token (was hardcoded #3A6F8F)
                 Text("besideher")
                     .font(Font.custom("Georgia", size: 46))
-                    .foregroundColor(Color(hex: "3A6F8F"))
+                    .foregroundStyle(Color.ink)
                     .tracking(1.3)
 
                 // Tagline
