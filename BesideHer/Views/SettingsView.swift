@@ -2,7 +2,7 @@
 //  SettingsView.swift
 //  BesideHer
 //
-//  Settings screen for editing due date, notifications, bookmarks, and app info
+//  Settings screen for editing due date, notifications, and app info
 //
 
 import SwiftUI
@@ -17,10 +17,6 @@ struct SettingsView: View {
     @State private var showAbout = false
     @State private var showPrivacyPolicy = false
     @State private var showTermsOfUse = false
-
-    var bookmarkedTips: [Tip] {
-        content.tips(withIDs: profile.bookmarkedTips)
-    }
 
     var body: some View {
         ScrollView {
@@ -99,43 +95,6 @@ struct SettingsView: View {
                     }
                     .padding(.horizontal, 14)
                     .padding(.vertical, 12)
-                }
-                .background(surfaceCard)
-                .padding(.horizontal, 20)
-
-                // ─── Saved ───────────────────────────────────────────────
-                sectionHeader("Saved")
-
-                VStack(spacing: 0) {
-                    if bookmarkedTips.isEmpty {
-                        HStack(spacing: 12) {
-                            iconBadge(systemImage: "bookmark", color: Color.inkSecondary)
-                            Text("No bookmarked tips yet")
-                                .font(.bodyText)
-                                .foregroundStyle(Color.inkSecondary)
-                            Spacer()
-                        }
-                        .padding(.horizontal, 14)
-                        .padding(.vertical, 12)
-                    } else {
-                        NavigationLink(destination: BookmarkedTipsView(profile: profile)) {
-                            HStack(spacing: 12) {
-                                iconBadge(systemImage: "bookmark.fill", color: Color.accent)
-                                Text("Bookmarked Tips")
-                                    .font(.bodyText)
-                                    .foregroundStyle(Color.ink)
-                                Spacer()
-                                Text("\(bookmarkedTips.count) saved")
-                                    .font(.captionText)
-                                    .foregroundStyle(Color.inkSecondary)
-                                Image(systemName: "chevron.right")
-                                    .font(.system(size: 12))
-                                    .foregroundStyle(Color.inkSecondary)
-                            }
-                            .padding(.horizontal, 14)
-                            .padding(.vertical, 12)
-                        }
-                    }
                 }
                 .background(surfaceCard)
                 .padding(.horizontal, 20)
@@ -438,82 +397,6 @@ struct DatePickerSheet: View {
                 }
             }
         }
-    }
-}
-
-// MARK: - Bookmarked Tips View
-
-struct BookmarkedTipsView: View {
-    let profile: UserProfile
-    let content = ContentService.shared
-
-    var bookmarkedTips: [Tip] {
-        content.tips(withIDs: profile.bookmarkedTips)
-    }
-
-    var body: some View {
-        ScrollView {
-            VStack(spacing: 12) {
-                if bookmarkedTips.isEmpty {
-                    VStack(spacing: 12) {
-                        Image(systemName: "bookmark")
-                            .font(.system(size: 36))
-                            .foregroundStyle(Color.inkSecondary)
-                        Text("No bookmarks yet")
-                            .font(.h2)
-                            .foregroundStyle(Color.ink)
-                        Text("Tap the bookmark icon on any tip to save it here.")
-                            .font(.bodyText)
-                            .foregroundStyle(Color.inkSecondary)
-                            .multilineTextAlignment(.center)
-                    }
-                    .padding(.top, 60)
-                } else {
-                    ForEach(bookmarkedTips) { tip in
-                        VStack(alignment: .leading, spacing: 8) {
-                            HStack {
-                                Text(tip.title)
-                                    .font(.h2)
-                                    .foregroundStyle(Color.ink)
-                                Spacer()
-                                Button(action: {
-                                    withAnimation { profile.toggleBookmark(tip.id) }
-                                }) {
-                                    Image(systemName: "bookmark.fill")
-                                        .font(.system(size: 14))
-                                        .foregroundStyle(Color.accent)
-                                }
-                            }
-                            Text(tip.content)
-                                .font(.bodyText)
-                                .foregroundStyle(Color.inkSecondary)
-                                .lineSpacing(4)
-                            Text(tip.categoryDisplayName)
-                                .font(.captionText.weight(.semibold))
-                                .foregroundStyle(Color.accent)
-                                .padding(.horizontal, 8)
-                                .padding(.vertical, 3)
-                                .background(Capsule().fill(Color.accentSoft))
-                        }
-                        .padding(16)
-                        .background(
-                            RoundedRectangle(cornerRadius: Radius.card)
-                                .fill(Color.surface)
-                                .premiumShadow()
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: Radius.card)
-                                        .stroke(Color.divider, lineWidth: 1)
-                                )
-                        )
-                    }
-                }
-            }
-            .padding(.horizontal, 20)
-            .padding(.vertical, 12)
-        }
-        .background(Color.paper.ignoresSafeArea())
-        .navigationTitle("Bookmarked Tips")
-        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

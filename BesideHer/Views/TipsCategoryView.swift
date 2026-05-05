@@ -10,6 +10,7 @@ struct TipsCategoryView: View {
     let content = ContentService.shared
 
     @State private var path = NavigationPath()
+    @State private var selectedSection: TipsSection = .categories
 
     private let categories: [(id: String, name: String, icon: String, tint: Color, caption: String)] = [
         ("emotional-support", "Emotional Support",  "heart.fill",                    Color.accent,        "Being present for every moment"),
@@ -19,25 +20,26 @@ struct TipsCategoryView: View {
         ("postpartum-prep",   "Postpartum Prep",     "figure.and.child.holdinghands", Color.inkSecondary,  "Support her through the fourth trimester"),
     ]
 
+    private var bookmarkedTips: [Tip] {
+        content.tips(withIDs: profile.bookmarkedTips)
+    }
+
     var body: some View {
         NavigationStack(path: $path) {
             ScrollView {
-                VStack(spacing: Spacing.md) {
-                    ForEach(categories, id: \.id) { category in
-                        let tips = content.tips(forCategory: category.id)
-                        EditorialCard(
-                            eyebrow: "\(tips.count) ARTICLES",
-                            headline: category.name,
-                            caption: category.caption,
-                            illustrationName: category.icon,
-                            tintColor: category.tint,
-                            action: {
-                                path.append(TipsCategoryRef(id: category.id))
-                            }
-                        )
+                VStack(spacing: 0) {
+                    sectionSelector
+                        .padding(.horizontal, 20)
+                        .padding(.top, 4)
+                        .padding(.bottom, Spacing.md)
+
+                    switch selectedSection {
+                    case .categories:
+                        categoriesList
+                    case .bookmarks:
+                        bookmarksList
                     }
                 }
-                .padding(.horizontal, 20)
                 .padding(.vertical, 12)
             }
             .softScrollEdgeEffect()
@@ -58,6 +60,81 @@ struct TipsCategoryView: View {
             }
         }
     }
+
+    // MARK: - Sections
+
+    private var sectionSelector: some View {
+        HStack(spacing: Spacing.sm) {
+            FilterChip(title: "Categories", isSelected: selectedSection == .categories) {
+                withAnimation(.spring(response: 0.3, dampingFraction: 0.75)) {
+                    selectedSection = .categories
+                }
+            }
+            FilterChip(title: "Bookmarks", isSelected: selectedSection == .bookmarks) {
+                withAnimation(.spring(response: 0.3, dampingFraction: 0.75)) {
+                    selectedSection = .bookmarks
+                }
+            }
+            Spacer()
+        }
+    }
+
+    private var categoriesList: some View {
+        VStack(spacing: Spacing.md) {
+            ForEach(categories, id: \.id) { category in
+                let tips = content.tips(forCategory: category.id)
+                EditorialCard(
+                    eyebrow: "\(tips.count) ARTICLES",
+                    headline: category.name,
+                    caption: category.caption,
+                    illustrationName: category.icon,
+                    tintColor: category.tint,
+                    action: {
+                        path.append(TipsCategoryRef(id: category.id))
+                    }
+                )
+            }
+        }
+        .padding(.horizontal, 20)
+    }
+
+    @ViewBuilder
+    private var bookmarksList: some View {
+        let bookmarks = bookmarkedTips
+        if bookmarks.isEmpty {
+            EmptyStateView(
+                illustrationName: "bookmark",
+                headline: "No bookmarks yet.",
+                caption: "Tap the bookmark icon on any article to save it here.",
+                tintColor: Color.accent
+            )
+            .padding(.top, Spacing.xl)
+        } else {
+            LazyVStack(spacing: 0) {
+                ForEach(Array(bookmarks.enumerated()), id: \.element.id) { idx, tip in
+                    NavigationLink(value: ReadableArticle.article(from: tip, siblings: bookmarks)) {
+                        TipIndexRow(
+                            index: idx + 1,
+                            tip: tip,
+                            isBookmarked: true
+                        )
+                    }
+                    .buttonStyle(.plain)
+
+                    if idx < bookmarks.count - 1 {
+                        Rectangle()
+                            .fill(Color.divider)
+                            .frame(height: 1)
+                            .padding(.horizontal, 20)
+                    }
+                }
+            }
+        }
+    }
+}
+
+private enum TipsSection {
+    case categories, bookmarks
 }
 
 private struct TipsCategoryRef: Hashable {
@@ -71,44 +148,10 @@ struct TipsListView: View {
     let tips: [Tip]
     let profile: UserProfile
 
-    @State private var selectedTrimester: Int? = nil
-
-    var filteredTips: [Tip] {
-        guard let tri = selectedTrimester else { return tips }
-        return tips.filter { $0.trimester.contains(tri) }
-    }
-
     var body: some View {
         ScrollView {
             VStack(spacing: 0) {
-
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: Spacing.sm) {
-                        FilterChip(title: "All", isSelected: selectedTrimester == nil) {
-                            withAnimation(.spring(response: 0.3, dampingFraction: 0.75)) {
-                                selectedTrimester = nil
-                            }
-                        }
-                        ForEach([1, 2, 3], id: \.self) { tri in
-                            FilterChip(
-                                title: trimesterLabel(tri),
-                                isSelected: selectedTrimester == tri,
-                                action: {
-                                    withAnimation(.spring(response: 0.3, dampingFraction: 0.75)) {
-                                        selectedTrimester = selectedTrimester == tri ? nil : tri
-                                    }
-                                }
-                            )
-                        }
-                    }
-                    .padding(.horizontal, 20)
-                    .padding(.vertical, 2)
-                }
-                .scrollIndicators(.hidden)
-                .padding(.top, 4)
-                .padding(.bottom, Spacing.md)
-
-                if filteredTips.isEmpty {
+                if tips.isEmpty {
                     EmptyStateView(
                         illustrationName: "book.closed",
                         headline: "Pick where to start.",
@@ -117,7 +160,7 @@ struct TipsListView: View {
                     )
                 } else {
                     LazyVStack(spacing: 0) {
-                        ForEach(Array(filteredTips.enumerated()), id: \.element.id) { idx, tip in
+                        ForEach(Array(tips.enumerated()), id: \.element.id) { idx, tip in
                             NavigationLink(value: ReadableArticle.article(from: tip, siblings: tips)) {
                                 TipIndexRow(
                                     index: idx + 1,
@@ -127,7 +170,7 @@ struct TipsListView: View {
                             }
                             .buttonStyle(.plain)
 
-                            if idx < filteredTips.count - 1 {
+                            if idx < tips.count - 1 {
                                 Rectangle()
                                     .fill(Color.divider)
                                     .frame(height: 1)
@@ -142,15 +185,6 @@ struct TipsListView: View {
         .background(Color.paper.ignoresSafeArea())
         .navigationTitle(categoryName)
         .navigationBarTitleDisplayMode(.inline)
-    }
-
-    private func trimesterLabel(_ tri: Int) -> String {
-        switch tri {
-        case 1: return "1st Tri"
-        case 2: return "2nd Tri"
-        case 3: return "3rd Tri"
-        default: return "Tri \(tri)"
-        }
     }
 }
 
@@ -167,25 +201,12 @@ private struct TipIndexRow: View {
         return "\(mins) MIN READ"
     }
 
-    private var trimesterLabel: String {
-        guard !tip.trimester.isEmpty else { return "" }
-        return tip.trimester.map { "T\($0)" }.joined(separator: " · ")
-    }
-
     var body: some View {
         HStack(alignment: .top, spacing: Spacing.lg) {
             VStack(alignment: .leading, spacing: Spacing.xs) {
                 HStack(spacing: 8) {
                     Text(String(format: "%02d", index))
                         .eyebrowStyle()
-
-                    if !trimesterLabel.isEmpty {
-                        Text("·")
-                            .font(.eyebrow)
-                            .foregroundStyle(Color.inkSecondary)
-                        Text(trimesterLabel)
-                            .eyebrowStyle()
-                    }
 
                     Spacer()
 
