@@ -286,88 +286,53 @@
     {
       "id": "tip-036",
       "category": "home-gear",
-      "title": "Buy Safety-Critical Gear New",
-      "content": "Always buy car seats, crib mattresses, and bassinets new \u2014 used ones may have hidden damage or expired materials. Everything else (stroller, clothes, dresser) can be safely purchased secondhand. Check cpsc.gov for recalls on any used items.",
+      "title": "The four things you don't compromise on",
+      "content": "Most of what gets sold to first-time parents is fashion. A small number of items aren't \u2014 and one of them has a federal regulation closing in December 2026 that almost nobody is talking about.",
+      "paragraphs": [
+        "The baby aisle at any big-box store is overwhelming on purpose. Most of what's there can be bought new, used, borrowed, or skipped without consequence \u2014 and most of what gets opinionated about online (the brand of stroller, the fabric of the swaddle, the right white-noise machine) lives entirely in that fungible majority. There's a much smaller list \u2014 four items, more or less \u2014 where the choice actually matters. They're the ones where a hundred-dollar mistake becomes a several-thousand-dollar mistake, or worse. The exhausting part of preparing for a baby isn't researching the gear. It's separating that small list from the noise around it, and handling it deliberately, before the noise wins.",
+        "Start with the car seat, because it's the only piece of baby gear with a federal regulation about to change underneath it. FMVSS 213b \u2014 the updated federal standard with new side-impact testing \u2014 becomes mandatory in December 2026. Anything sold after that date will meet it; anything sold before may or may not, depending on the manufacturer. If you're buying a seat in 2026, ask whether the model has been certified to 213b, not just to the older 213. There's a second decision underneath that one: infant bucket seat or convertible. The bucket \u2014 the click-in, click-out kind that doubles as a carrier \u2014 is convenient for the first few months and outgrown in 6 to 18. The convertible costs more upfront and lasts 3 to 10 years, which is the better math for most families who don't already have a bucket from a sibling. Either way: install rear-facing, install by week 36, and have it inspected at a certified inspection station. The seat is one of the few products in your house where 'mostly correct' and 'correct' have very different consequences.",
+        "The second item is the crib. Not the frame \u2014 the frame is fashion \u2014 but what goes in it. The mattress must be new, firm, and flat. Used mattresses are the one item where secondhand is an actual safety problem: foams degrade, fluids penetrate in ways that don't always show on the surface, and the firmness rating can decay invisibly. Inside the crib, nothing else: no bumpers (now banned), no blankets, no pillows, no stuffed animals, no positioners. A fitted sheet is the entire ensemble. Keep the room between 68 and 72 degrees, and room-share \u2014 same room, not the same bed \u2014 for at least the first six months. The point of all of this isn't aesthetic minimalism. It's that the conditions known to reduce SIDS risk are unfashionably specific, and the parents who improvise on them are mostly improvising against a number they haven't seen.",
+        "The third item is the carrier, which most dads underestimate because it looks like a fabric accessory. It isn't. A carrier worn wrong puts the baby in the wrong position for breathing or hip development; worn right, it's the thing that gives you back your hands for the first months of the baby's life. The five-rule version of 'worn right' is the T.I.C.K.S. checklist, written down by babywearing safety bodies: Tight enough that the baby can't slump; In view at all times; Close enough to kiss the top of the head; Keep chin off chest; Supported back, with the spine in its natural curve. Try a few styles \u2014 a stretchy wrap, a structured carrier, a ring sling \u2014 because they fit different bodies differently and the right one is mostly the one you'll actually use. The fourth item is the system around the car seat: the car itself. By week 36, install the seat and have it inspected. From that week forward, keep the gas tank at least half full, because labor doesn't time itself to your fuel light. Toss a small kit in the trunk \u2014 a blanket, a flashlight, a couple bottles of water \u2014 and the version of you who needs it never has to think about it.",
+        "The reason these four sit together is that they share a property the rest of the baby aisle doesn't: getting them right is invisible, and getting them wrong shows up later, often quietly, often in places you can't undo. Everything else \u2014 the bouncer, the swing, the third-tier stroller, the dresser with the changing pad on top \u2014 can be bought new, used, late, or never, and the worst case is mild inconvenience. The car seat that meets the new standard, the bare crib, the carrier worn the way the safety bodies wrote it down, and the car ready to leave at 2 a.m. \u2014 those four are the ones that quietly carry the rest of it. Handle them in the second trimester, while you can still think in straight lines, and you'll spend the third trimester worrying about smaller things, which is the version of the third trimester you want."
+      ],
+      "pullQuote": "The car seat that meets the new standard, the bare crib, the carrier worn right, and the car ready to leave at 2 a.m. \u2014 those four are the ones that quietly carry the rest of it.",
+      "readMinutes": 5,
       "trimester": [
         2,
         3
       ],
       "tags": [
         "safety",
-        "gear",
-        "buying"
-      ]
-    },
-    {
-      "id": "tip-037",
-      "category": "home-gear",
-      "title": "Set Up a Safe Sleep Environment",
-      "content": "Crib must have a firm, flat mattress with only a fitted sheet \u2014 nothing else. No blankets, bumpers, pillows, or stuffed animals. Room temperature 68-72\u00b0F. Room-share (same room, not same bed) for at least 6 months.",
-      "trimester": [
-        3
-      ],
-      "tags": [
-        "sleep",
-        "safety",
-        "crib"
-      ]
-    },
-    {
-      "id": "tip-038",
-      "category": "home-gear",
-      "title": "Choose the Right Car Seat",
-      "content": "New federal car seat standards (FMVSS 213b) with updated side-impact testing become mandatory December 2026. Infant bucket seats offer portability but last only 6-18 months. Convertible seats last 3-10 years for better long-term value. Always install rear-facing.",
-      "trimester": [
-        3
-      ],
-      "tags": [
         "car-seat",
-        "safety",
-        "transport"
+        "sleep",
+        "carrier",
+        "preparation"
       ]
     },
     {
       "id": "tip-039",
       "category": "home-gear",
-      "title": "Start a Smart Baby Registry",
-      "content": "Register at multiple stores using a universal registry platform. List 2-3x more items than expected guests. Take advantage of completion discounts (Amazon offers 15% off for Prime). Focus on essentials, not gimmicks.",
+      "title": "What to ask for, what to ignore, what to inherit",
+      "content": "A baby registry isn't a wishlist. It's the only window in the run-up to a baby where a lot of money is about to be spent on you, and you have a small amount of control over where it goes. Done well, it does three jobs at once.",
+      "paragraphs": [
+        "The registry shows up in the second trimester as a kind of Pinterest board with prices, and two hours into building one you realize it's actually doing something stranger. It's the only window in the run-up to a baby where a lot of money is about to be spent on you, and you have a small amount of control over where it goes. Most first-time parents treat it like a wishlist. The couples who get the most out of it treat it like a strategy document. The strategy is built from three lists, and the trick is knowing which item belongs on which.",
+        "List one is what to ask for. The principle is to load the registry with essentials at every price point \u2014 small items (bottles, swaddles, sleep sacks), mid items (a monitor, a carrier, a bouncer), and a few large items that the right relative might pick up alone or in a group (the stroller, the car seat, the convertible crib). List two to three times more items than guests, because items get bought in unpredictable orders and an empty registry late in the third trimester is the version of this where you end up at Target on a Saturday at 35 weeks. Use a universal registry platform that pulls from multiple stores rather than locking yourself into one \u2014 guests don't notice the difference, but it widens what's available and stacks better with completion discounts. Speaking of which: Amazon, for example, offers Prime members 15% off the remaining items near the end of the registry window. Wait until the shower is over to buy what's left, and you'll save more than you'd guess.",
+        "List two is what to leave off. Most of what gets marketed hardest to expecting parents is, on close inspection, solving a problem they don't actually have. Wipe warmers exist because someone decided room-temperature wipes were an emergency; they aren't. Newborn shoes are sold for babies who, by definition, won't be walking for the better part of a year. Car seat mirrors look reassuring but distract drivers in a way the safety community has been warning about for two decades. Wearable baby monitors \u2014 the sock that tracks oxygen and pulse \u2014 look like data and turn out to be a generator of 3 a.m. anxiety calls about readings that mean nothing. Bottle sterilizers replace a dishwasher that already sterilizes. Crib bumpers are simply banned. None of these is going to ruin your life if it ends up in your house. But each of them takes a slot on a registry that could've been a sleep sack instead.",
+        "List three is the longest, and the one that saves the most money: what to buy used or borrow. The baby gear secondhand market is one of the most dramatically discounted in any consumer category, because the items are outgrown so fast that resale is mostly a question of finding someone six months ahead of you who's done. A UPPAbaby Vista that retails for $900 sells for $150 used in most cities. Baby clothes \u2014 outgrown in weeks, often worn three times \u2014 should default to hand-me-downs unless you have a specific reason. Bouncers and swings, used for a window of two to four months, are the highest-value items to borrow rather than buy. A crib frame, a dresser, a high chair (eventually), a play mat \u2014 all fine used, assuming you check cpsc.gov for recalls and the model is current. Across an average gear list, families who buy used strategically save somewhere between $1,650 and $4,000. The exception, named once and held to: car seats, crib mattresses, and bassinets are not on the used list, ever.",
+        "The mistake almost nobody making a registry sees in real time is that the three lists aren't equally weighted. The 'ask for' list is a few dozen items. The 'ignore' list saves you a few hundred dollars. The 'inherit' list saves thousands, and almost no first-time couple builds it deliberately. Most of the friends and family one or two stages ahead of you have things in their garages they would gladly send you, and they're waiting for someone to ask. So ask. Send a group text in the second trimester listing, by name, the half-dozen big-ticket items you'd take used or borrowed. The replies will surprise you. The registry is the front door of the strategy. The back door \u2014 the friend whose toddler just outgrew the bouncer, the cousin with two strollers in the basement \u2014 is where most of the math actually happens."
+      ],
+      "pullQuote": "Most first-time parents treat the registry like a wishlist. The couples who get the most out of it treat it like a strategy document.",
+      "readMinutes": 5,
       "trimester": [
-        2
+        2,
+        3
       ],
       "tags": [
         "registry",
+        "savings",
+        "used",
         "gear",
         "planning"
-      ]
-    },
-    {
-      "id": "tip-040",
-      "category": "home-gear",
-      "title": "Skip These Overhyped Items",
-      "content": "Skip wipe warmers (unnecessary), newborn shoes (babies don't walk), car seat mirrors (distraction hazard), wearable baby monitors (increase anxiety), bottle sterilizers (dishwasher works fine), and crib bumpers (banned for safety).",
-      "trimester": [
-        2,
-        3
-      ],
-      "tags": [
-        "registry",
-        "savings",
-        "skip"
-      ]
-    },
-    {
-      "id": "tip-041",
-      "category": "home-gear",
-      "title": "Buy Used Strategically",
-      "content": "Save $1,650-$4,000+ buying strollers, clothes, and furniture secondhand. UPPAbaby Vista strollers ($900+ new) sell used for $150. Baby clothes are outgrown in weeks. Bouncers and swings are used for just months \u2014 borrow if possible.",
-      "trimester": [
-        2,
-        3
-      ],
-      "tags": [
-        "used",
-        "savings",
-        "gear"
       ]
     },
     {
@@ -467,34 +432,6 @@
         "furniture",
         "timing",
         "safety"
-      ]
-    },
-    {
-      "id": "tip-049",
-      "category": "home-gear",
-      "title": "Choose the Right Baby Carrier",
-      "content": "For carriers, follow the T.I.C.K.S. safety rule: Tight, In view, Close enough to kiss, Keep chin off chest, Supported back. Try different styles \u2014 wraps, structured carriers, and ring slings all have different advantages. Buy used if possible.",
-      "trimester": [
-        3
-      ],
-      "tags": [
-        "carrier",
-        "safety",
-        "babywearing"
-      ]
-    },
-    {
-      "id": "tip-050",
-      "category": "home-gear",
-      "title": "Prep Your Car for Baby",
-      "content": "Install the car seat by week 36 and have it inspected at a certified inspection station. Keep the car gas tank at least half full from week 36 onward. Pack a small emergency kit in the car with blankets and a flashlight.",
-      "trimester": [
-        3
-      ],
-      "tags": [
-        "car",
-        "car-seat",
-        "preparation"
       ]
     },
     {
