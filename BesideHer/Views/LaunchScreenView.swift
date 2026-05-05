@@ -41,7 +41,7 @@ struct LaunchScreenView: View {
                 logoOpacity = 1.0
             }
             // Fade out content before parent removes the view
-            withAnimation(.easeIn(duration: 0.5).delay(1.8)) {
+            withAnimation(.easeIn(duration: 0.5).delay(2.8)) {
                 isExiting = true
             }
         }
