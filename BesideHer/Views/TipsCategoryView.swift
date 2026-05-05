@@ -10,6 +10,7 @@ struct TipsCategoryView: View {
     let content = ContentService.shared
 
     @State private var selectedCategoryId: String? = nil
+    @State private var sampleArticle: ReadableArticle? = nil
 
     private let categories: [(id: String, name: String, icon: String, tint: Color, caption: String)] = [
         ("emotional-support", "Emotional Support",  "heart.fill",                    Color.accent,        "Being present for every moment"),
@@ -31,7 +32,13 @@ struct TipsCategoryView: View {
                             caption: category.caption,
                             illustrationName: category.icon,
                             tintColor: category.tint,
-                            action: { selectedCategoryId = category.id }
+                            action: {
+                                if category.id == "emotional-support" {
+                                    sampleArticle = .sampleEmotionalSupport
+                                } else {
+                                    selectedCategoryId = category.id
+                                }
+                            }
                         )
                     }
                 }
@@ -50,6 +57,9 @@ struct TipsCategoryView: View {
                         profile: profile
                     )
                 }
+            }
+            .navigationDestination(item: $sampleArticle) { article in
+                ArticleReaderView(article: article)
             }
         }
     }
