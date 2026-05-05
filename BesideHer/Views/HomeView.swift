@@ -170,7 +170,7 @@ struct HomeView: View {
         case "girl": subject = "She's"
         default:     subject = "Baby is"
         }
-        return "\(subject) the size of \(articleFor(week.sizeComparison)) \(week.sizeComparison.lowercased())."
+        return "\(subject) the size of \(articleFor(week.sizeComparison)) \(week.sizeComparison.lowercased())"
     }
 
     private func heroBodyText(_ week: Week) -> String {
