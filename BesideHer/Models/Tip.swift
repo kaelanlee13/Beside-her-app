@@ -15,6 +15,12 @@ struct Tip: Codable, Identifiable {
     let content: String
     let trimester: [Int]
     let tags: [String]
+
+    // Editorial fields — present when a tip has been authored as a long-form
+    // article. When absent, the reader falls back to splitting `content`.
+    let paragraphs: [String]?
+    let pullQuote: String?
+    let readMinutes: Int?
     
     /// Returns a user-friendly category name for display
     var categoryDisplayName: String {

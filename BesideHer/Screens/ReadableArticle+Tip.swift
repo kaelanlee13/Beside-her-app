@@ -13,16 +13,16 @@ extension ReadableArticle {
     /// Builds a "leaf" article — used inside another article's related list.
     /// Has no further related articles to keep the model finite.
     static func leaf(from tip: Tip) -> ReadableArticle {
-        let paragraphs = paragraphs(from: tip.content)
+        let body = tip.paragraphs ?? Self.paragraphs(from: tip.content)
         return ReadableArticle(
             id: tip.id,
             category: tip.categoryDisplayName,
-            readTimeMinutes: readTimeMinutes(for: tip.content),
+            readTimeMinutes: tip.readMinutes ?? readTimeMinutes(forBody: body),
             title: tip.title,
             authorName: defaultAuthor,
             publishedDate: defaultPublishLabel,
-            pullQuote: nil,
-            paragraphs: paragraphs,
+            pullQuote: tip.pullQuote,
+            paragraphs: body,
             relatedArticles: []
         )
     }
@@ -35,16 +35,16 @@ extension ReadableArticle {
             .prefix(3)
             .map { ReadableArticle.leaf(from: $0) }
 
-        let paragraphs = paragraphs(from: tip.content)
+        let body = tip.paragraphs ?? Self.paragraphs(from: tip.content)
         return ReadableArticle(
             id: tip.id,
             category: tip.categoryDisplayName,
-            readTimeMinutes: readTimeMinutes(for: tip.content),
+            readTimeMinutes: tip.readMinutes ?? readTimeMinutes(forBody: body),
             title: tip.title,
             authorName: defaultAuthor,
             publishedDate: defaultPublishLabel,
-            pullQuote: nil,
-            paragraphs: paragraphs,
+            pullQuote: tip.pullQuote,
+            paragraphs: body,
             relatedArticles: Array(related)
         )
     }
@@ -57,6 +57,11 @@ extension ReadableArticle {
     private static func readTimeMinutes(for content: String) -> Int {
         let words = content.split { $0.isWhitespace }.count
         return max(1, Int(ceil(Double(words) / 180.0)))
+    }
+
+    private static func readTimeMinutes(forBody paragraphs: [String]) -> Int {
+        let combined = paragraphs.joined(separator: " ")
+        return readTimeMinutes(for: combined)
     }
 
     /// Splits a tip's prose into 1–2 paragraphs on sentence boundaries.
