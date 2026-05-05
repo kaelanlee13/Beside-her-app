@@ -183,31 +183,27 @@
     {
       "id": "tip-024",
       "category": "financial-prep",
-      "title": "Understand Tax Benefits for New Parents",
-      "content": "The Child Tax Credit provides $2,200 per child. The EITC can add up to $4,328 for one-child families. The Dependent Care FSA allows up to $7,500 in pre-tax childcare dollars for 2026. Together these can return $5,000-$9,000 annually.",
-      "trimester": [
-        2,
-        3
+      "title": "The year the system pays you back",
+      "content": "The calendar year your baby is born is the most tax-favored year of your adult life. Most families leave thousands on the table because nobody told them where to look — or which thirty-day windows close on you if you don't.",
+      "paragraphs": [
+        "There's a small, almost embarrassing thing that's true about the year a baby is born: the tax code, which spends most of its existence quietly extracting money from you, briefly turns into something else. For one calendar year — and only if you know to ask — it begins giving money back. The amount is not symbolic. For an average middle-income family with one new child, the combined effect of a few credits and a few pre-tax accounts is somewhere between five and nine thousand dollars a year. Most families capture some of this. Almost none capture all of it. The reason is the most boring possible: nobody told them which buttons to press, and the buttons are all in different rooms.",
+        "Start with the credits, because they're the simplest. The Child Tax Credit, after the most recent revisions, returns up to $2,200 per child to families inside its income range — not as a deduction, but as a direct reduction in what you owe, dollar for dollar. If you fall inside the Earned Income Tax Credit window — phase-outs vary, but roughly under $50,000 for a one-child family filing jointly — that's another $4,328 sitting there waiting to be claimed. Neither requires any clever planning. They require filing correctly, which means using a tax preparer or software that asks the right questions. The most common way new parents lose this money is using a too-cheap filing service in the year of birth, the one year their return suddenly isn't simple. The credit is yours; you just have to claim it on the right form.",
+        "The pre-tax accounts are the lever most people don't pull. There are three worth knowing. A Healthcare FSA lets you set aside roughly $3,300 to $3,400 in pre-tax dollars to pay medical expenses — and the year you have a baby is, by some margin, the year you'll have the most medical expenses of your life. An HSA, available only if you're on a high-deductible health plan, allows up to $8,550 to $8,750 for a family, with the rare property of being triple tax-advantaged: pre-tax going in, tax-free growth, tax-free coming out for medical use. A Dependent Care FSA — separate from the healthcare one — lets you put up to $7,500 in pre-tax dollars toward childcare in 2026. The strategic move with all three is the same: max the contribution in the calendar year you actually use it. Birth is a qualifying life event, which means you can enroll or increase outside of open enrollment if you act inside the window, usually thirty days. If you miss the window, you wait a full year for the next one, which means the year of greatest expense becomes the year you contributed the least.",
+        "Underneath these moves is a question of visibility. The credits and accounts are technical, but the failure mode is almost always emotional: the new parents who lose the most money are not the ones who don't know — they're the ones who knew, then forgot, then never went back. A budgeting app is the antidote, and the choice between them matters less than the act of choosing one. YNAB rewards couples who like systems. Mint is forgiving and visual. Goodbudget runs on the envelope method for people who think in categories. Pick one that fits the way she actually thinks about money — not the way you do — because she's the one who'll be asked to use it during the months when you're both running on three hours of sleep. Set up a category called something like Pregnancy Year, and route every co-pay, every prescription, every receipt for baby gear into it. The tax software will ask you for these numbers in April. It is dramatically faster to find them in a phone app than in a year-old email folder.",
+        "The window for all of this is narrow. The credits attach to a specific tax year. The pre-tax account contributions have to happen during the calendar year, not retroactively. The qualifying-life-event enrollment closes thirty days after birth, and the version of you who tries to file the paperwork on day twenty-eight is the version of you most likely to miss something. Spend an evening on it now, in the second trimester, while you can still think in straight lines. List the credits you're eligible for. Open the pre-tax accounts you don't have. Set the contribution rate. Pick the budgeting app. None of these moves are hard in isolation. They're hard because the system that gives them to you is built out of forms, and forms are designed for people with time on their hands, which is the resource you are about to have less of than ever before."
       ],
-      "tags": [
-        "taxes",
-        "credits",
-        "savings"
-      ]
-    },
-    {
-      "id": "tip-025",
-      "category": "financial-prep",
-      "title": "Use FSA and HSA Strategically",
-      "content": "A Healthcare FSA covers up to $3,300-$3,400 in pre-tax medical expenses. An HSA (if on a high-deductible plan) allows $8,550-$8,750 for families. Max these out during the delivery year to save significantly on taxes.",
+      "pullQuote": "The window for all of this is narrow. Spend an evening on it now, in the second trimester, while you can still think in straight lines.",
+      "readMinutes": 5,
       "trimester": [
         1,
         2
       ],
       "tags": [
+        "taxes",
+        "credits",
         "fsa",
         "hsa",
-        "tax-savings"
+        "budgeting"
       ]
     },
     {
@@ -237,89 +233,54 @@
       ]
     },
     {
-      "id": "tip-028",
-      "category": "financial-prep",
-      "title": "Start a 529 College Savings Plan",
-      "content": "Opening a 529 at birth with $200/month grows to approximately $86,144 by age 18 at 7% returns. Many states offer tax deductions on contributions. Starting early with even small amounts makes a huge difference thanks to compound growth.",
-      "trimester": [
-        3
-      ],
-      "tags": [
-        "college",
-        "savings",
-        "529"
-      ]
-    },
-    {
       "id": "tip-029",
       "category": "financial-prep",
-      "title": "Get Term Life Insurance",
-      "content": "A healthy 30-year-old can get $500,000 in coverage for $23-$30/month \u2014 about 15x cheaper than whole life. Use the DIME method: Debt + Income replacement + Mortgage + Education = your coverage need. Get quotes from at least three providers.",
+      "title": "The conversation nobody wants to have",
+      "content": "Term life insurance and a will with guardianship are the two documents that decide what happens if you're not there. Both are cheap. Most new dads don't have either, and the reason is almost never money.",
+      "paragraphs": [
+        "There is a particular conversation that almost every couple expecting a child knows they need to have, and almost every couple expecting a child does not, in fact, have. It's about what happens if one of you isn't there. It sounds morbid in a way that having a baby is meant not to be, and so it gets postponed \u2014 first until after the baby shower, then until after the birth, then until after she goes back to work, and then it just sits there, indefinitely, in the category of things you'll do when life calms down, which is a category that no longer exists. The cost of having the conversation is uncomfortable. The cost of not having it is, in the literal sense, your child's future being decided by someone who has never met your family.",
+        "Term life insurance is the single most undervalued financial product available to new parents, mostly because the entire industry around it is structured to convince you to buy something else. A healthy thirty-year-old can buy $500,000 of twenty-year term coverage for somewhere between twenty-three and thirty dollars a month \u2014 about the cost of two coffees a week. The same person being sold whole life insurance, which bundles coverage with a savings vehicle nobody actually needs, is typically quoted ten to fifteen times that premium for the same coverage. Term is the one to buy. The standard sizing rule is the DIME method: add up your Debt, ten years of Income replacement, the remaining balance on your Mortgage, and the projected cost of Education, and you get a coverage number that survives most ordinary scenarios. Get quotes from at least three providers \u2014 they vary more than they should \u2014 and lock the rate while you're young, healthy, and the underwriting is friendliest.",
+        "The other document is the one almost nobody has, including, statistically, you. A will with a guardianship designation is the most important piece of paper a new parent owns, and the reason is not subtle: in the absence of one, the question of who raises your child if both parents die is decided by a probate court judge, working from a default order of relatives that may or may not match anyone's wishes. The court is not malicious. It's just a court. It picks from the available adults using rules that were not written with your particular brother-in-law in mind. The will is how you take that decision back. Naming a guardian is the part that takes the longest, not because it's legally complex, but because you have to actually decide, with her, who that person is \u2014 which is a conversation that opens up other conversations, and which is exactly why the will so often ends up unwritten.",
+        "A will alone is the floor. The rest of the package \u2014 a durable power of attorney, a healthcare directive, beneficiary designations on every account \u2014 is what keeps the floor from turning into the ceiling. The power of attorney lets someone you trust handle finances if you're incapacitated. The healthcare directive tells doctors what to do when you can't tell them yourself. Beneficiary designations override the will on retirement accounts and life insurance policies, which is why the most common will-related mistake is leaving an old girlfriend as the beneficiary on a 401(k) you opened in 2014. A basic attorney-drafted package \u2014 will, power of attorney, healthcare directive, beneficiary review \u2014 costs roughly $1,000 to $2,000 for a couple in most states. There are online services for less; for a family with a house and a kid, an attorney is the version that's harder to undo later. The single evening you spend on this is the evening you stop carrying it around.",
+        "The reason this particular conversation is the hardest one is that you have to imagine yourself, briefly, as not being there. That's the move that sticks. But the structure of the conversation, once you have it, is what dissolves the dread: the documents exist precisely so that you don't have to keep imagining it. They're the version of the worry that lives on a shelf, in a folder, instead of in your head, at three in the morning, in an apartment that contains a person who didn't exist last year. Sit down with her on a weekend. Make the calls. Sign the papers. The version of you who does this is the version of you who gets to spend the rest of fatherhood not thinking about it."
+      ],
+      "pullQuote": "The documents exist precisely so that you don't have to keep imagining it. They're the version of the worry that lives on a shelf, in a folder, instead of in your head, at three in the morning.",
+      "readMinutes": 5,
       "trimester": [
         2
       ],
       "tags": [
         "insurance",
-        "life-insurance",
-        "protection"
-      ]
-    },
-    {
-      "id": "tip-030",
-      "category": "financial-prep",
-      "title": "Create Your Estate Documents",
-      "content": "A will with guardianship designation is the most important document. Without it, a court decides who raises your children. A basic attorney package (will + power of attorney + healthcare directive) costs $1,000-$2,000 for a couple.",
-      "trimester": [
-        2,
-        3
-      ],
-      "tags": [
         "estate",
         "will",
-        "guardianship"
-      ]
-    },
-    {
-      "id": "tip-032",
-      "category": "financial-prep",
-      "title": "Understand Childcare Costs",
-      "content": "Daycare centers average $17,836/year nationally. In-home daycare: $6,500-$12,000/year. Nannies: ~$43,000/year. Au pairs: $18,200-$27,000/year. Start research early \u2014 many daycares have 6-12 month waitlists.",
-      "trimester": [
-        2
-      ],
-      "tags": [
-        "childcare",
-        "costs",
-        "planning"
-      ]
-    },
-    {
-      "id": "tip-033",
-      "category": "financial-prep",
-      "title": "Use a Budgeting App",
-      "content": "Create a baby budget using an app like YNAB, Mint, or Goodbudget. Track pregnancy-related expenses separately. Include categories for medical costs, gear, nursery, and postpartum needs. Visibility reduces financial anxiety.",
-      "trimester": [
-        1,
-        2
-      ],
-      "tags": [
-        "budget",
-        "apps",
-        "tracking"
+        "guardianship",
+        "protection"
       ]
     },
     {
       "id": "tip-034",
       "category": "financial-prep",
-      "title": "Plan for the First 30 Days After Birth",
-      "content": "Add baby to insurance within 30 days of birth. Apply for a Social Security number at the hospital. Update your W-4 to reflect the new dependent. Enroll in a Dependent Care FSA if not already. Request an itemized hospital bill.",
+      "title": "The first month, the first year, the first eighteen",
+      "content": "The most consequential financial decisions of fatherhood happen across three time horizons that all open in the same week: the thirty-day paperwork window, the twelve-month childcare runway, and the eighteen-year arc you start funding now or never quite catch up on.",
+      "paragraphs": [
+        "The thing nobody warns you about the first weeks of fatherhood is how much of it is paperwork. Not metaphorical paperwork. Actual paper. Forms with deadlines, in envelopes, sitting in a hospital gift bag, while you are trying to figure out how to put a car seat in a car. There is a particular kind of exhaustion that comes from being the one person in the household who is not recovering from childbirth, and there is a particular kind of unfairness in the fact that this is also the person who is supposed to handle the bureaucracy. The good news is the list of things that have to be done is short. The bad news is the deadlines are real, and the cost of missing them is mostly invisible until much later, which is exactly when you cannot afford to discover it.",
+        "There is a window. It opens at birth and it closes at thirty days, and inside it sit five things that are not optional. Add the baby to your health insurance \u2014 if you miss this, the baby is uninsured between the day they were born and the day of the next open enrollment, which depending on the calendar can be most of a year. Apply for the Social Security number at the hospital before discharge, because the alternative is a separate trip to a federal office with a newborn in a car seat. Update your W-4 to reflect the new dependent \u2014 not doing this means you over-withhold for the rest of the year, lending the IRS money you'd rather have in your account. Enroll in or increase a Dependent Care FSA, which is a benefit only available because birth is a qualifying life event, and which disappears once the window closes. And request an itemized hospital bill \u2014 not the summary, the line-by-line one \u2014 because the summary is where the billing errors hide. Set a single calendar reminder for day twenty-five. That gives you five days of slack against a thirty-day deadline, which is exactly the right amount of slack for a household running on four hours of sleep.",
+        "Past the first month, the next horizon opens, and the dominant feature of it is the cost of childcare. The numbers are larger than most expecting parents are prepared for, and they vary in a way that doesn't always match instinct. A center-based daycare averages $17,836 per year nationally, with coastal cities running well past that. An in-home daycare \u2014 a smaller operation, often run out of someone's house with a state license \u2014 runs $6,500 to $12,000, and is frequently the underrated middle ground. A nanny averages around $43,000, plus payroll taxes; an au pair, $18,200 to $27,000, plus the structural complexity of housing another adult. The decision matters less than the timing of the decision. Most well-rated daycares have waitlists of six to twelve months, which means the parents who tour facilities in the second trimester are the parents who get to choose. The parents who start the search at month seven are the parents who take whatever's left. Start touring in the third trimester if you can, even if you have no intention of deciding yet. The information you gather will compound.",
+        "The third horizon is the longest one, and the one that almost never gets attended to in the season when it matters most: the eighteen-year window between birth and college. A 529 plan is the standard vehicle, and the math is uncharitable to anyone who waits. Two hundred dollars a month, contributed from the month of birth, compounds at a roughly seven percent return into about $86,000 by the time the child is eighteen. The same contribution started at age five lands closer to $52,000. The same contribution started at age ten lands closer to $26,000. There is no investment available to a normal-income family with that kind of leverage on early action, and it costs nothing to set up. Many states layer a state tax deduction on top of the contributions, which makes the effective return higher than the headline number. Open the account at month one. Set up an automatic transfer of whatever you can sustain \u2014 a hundred dollars, fifty, twenty if that's what fits \u2014 and the habit will be there long before the stakes are.",
+        "The reason these three horizons sit in the same article is that they all open in the same week. The first month is reaction. The first year is logistics. The first eighteen years is faith \u2014 or, more precisely, faith expressed through a recurring transfer that started when the child was a week old. Most fathers manage one of the three. A few manage two. Almost none manage all three, and the reason is not money. It's that the season in which all three become possible is the season in which you have the least bandwidth to think about any of them. The trick, if there is one, is to do as much of it as you can before the baby actually arrives \u2014 schedule the calendar reminders, tour the daycares, open the 529 account empty \u2014 so that the version of you living on broken sleep is doing execution, not decisions. The decisions are easier now. Make them now."
+      ],
+      "pullQuote": "The first month is reaction. The first year is logistics. The first eighteen years is faith \u2014 or, more precisely, faith expressed through a recurring transfer that started when the child was a week old.",
+      "readMinutes": 5,
       "trimester": [
+        2,
         3
       ],
       "tags": [
         "postpartum",
-        "insurance",
-        "paperwork"
+        "paperwork",
+        "childcare",
+        "529",
+        "savings"
       ]
     },
     {
