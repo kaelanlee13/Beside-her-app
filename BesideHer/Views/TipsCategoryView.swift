@@ -114,7 +114,6 @@ struct TipsCategoryView: View {
                 ForEach(Array(bookmarks.enumerated()), id: \.element.id) { idx, tip in
                     NavigationLink(value: ReadableArticle.article(from: tip, siblings: bookmarks)) {
                         TipIndexRow(
-                            index: idx + 1,
                             tip: tip,
                             isBookmarked: true
                         )
@@ -163,7 +162,6 @@ struct TipsListView: View {
                         ForEach(Array(tips.enumerated()), id: \.element.id) { idx, tip in
                             NavigationLink(value: ReadableArticle.article(from: tip, siblings: tips)) {
                                 TipIndexRow(
-                                    index: idx + 1,
                                     tip: tip,
                                     isBookmarked: profile.isTipBookmarked(tip.id)
                                 )
@@ -191,13 +189,11 @@ struct TipsListView: View {
 // MARK: - Index row
 
 private struct TipIndexRow: View {
-    let index: Int
     let tip: Tip
     let isBookmarked: Bool
 
     private var readTimeLabel: String {
-        let words = tip.content.split { $0.isWhitespace }.count
-        let mins = max(1, Int(ceil(Double(words) / 180.0)))
+        let mins = ReadableArticle.leaf(from: tip).readTimeMinutes
         return "\(mins) MIN READ"
     }
 
@@ -205,13 +201,10 @@ private struct TipIndexRow: View {
         HStack(alignment: .top, spacing: Spacing.lg) {
             VStack(alignment: .leading, spacing: Spacing.xs) {
                 HStack(spacing: 8) {
-                    Text(String(format: "%02d", index))
+                    Text(readTimeLabel)
                         .eyebrowStyle()
 
                     Spacer()
-
-                    Text(readTimeLabel)
-                        .eyebrowStyle()
                 }
 
                 Text(tip.title)
