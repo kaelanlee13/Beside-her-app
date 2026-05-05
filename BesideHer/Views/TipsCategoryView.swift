@@ -9,8 +9,7 @@ struct TipsCategoryView: View {
     let profile: UserProfile
     let content = ContentService.shared
 
-    @State private var selectedCategoryId: String? = nil
-    @State private var sampleArticle: ReadableArticle? = nil
+    @State private var path = NavigationPath()
 
     private let categories: [(id: String, name: String, icon: String, tint: Color, caption: String)] = [
         ("emotional-support", "Emotional Support",  "heart.fill",                    Color.accent,        "Being present for every moment"),
@@ -21,23 +20,19 @@ struct TipsCategoryView: View {
     ]
 
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             ScrollView {
                 VStack(spacing: Spacing.md) {
                     ForEach(categories, id: \.id) { category in
                         let tips = content.tips(forCategory: category.id)
                         EditorialCard(
-                            eyebrow: "\(tips.count) TIPS",
+                            eyebrow: "\(tips.count) ARTICLES",
                             headline: category.name,
                             caption: category.caption,
                             illustrationName: category.icon,
                             tintColor: category.tint,
                             action: {
-                                if category.id == "emotional-support" {
-                                    sampleArticle = .sampleEmotionalSupport
-                                } else {
-                                    selectedCategoryId = category.id
-                                }
+                                path.append(TipsCategoryRef(id: category.id))
                             }
                         )
                     }
@@ -49,20 +44,24 @@ struct TipsCategoryView: View {
             .background(Color.paper.ignoresSafeArea())
             .navigationTitle("Support Tips")
             .navigationBarTitleDisplayMode(.inline)
-            .navigationDestination(item: $selectedCategoryId) { categoryId in
-                if let cat = categories.first(where: { $0.id == categoryId }) {
+            .navigationDestination(for: TipsCategoryRef.self) { ref in
+                if let cat = categories.first(where: { $0.id == ref.id }) {
                     TipsListView(
                         categoryName: cat.name,
-                        tips: content.tips(forCategory: categoryId),
+                        tips: content.tips(forCategory: ref.id),
                         profile: profile
                     )
                 }
             }
-            .navigationDestination(item: $sampleArticle) { article in
-                ArticleReaderView(article: article)
+            .navigationDestination(for: ReadableArticle.self) { article in
+                ArticleReaderView(article: article, profile: profile)
             }
         }
     }
+}
+
+private struct TipsCategoryRef: Hashable {
+    let id: String
 }
 
 // MARK: - Tips List View
@@ -81,7 +80,7 @@ struct TipsListView: View {
 
     var body: some View {
         ScrollView {
-            VStack(spacing: Spacing.md) {
+            VStack(spacing: 0) {
 
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: Spacing.sm) {
@@ -107,6 +106,7 @@ struct TipsListView: View {
                 }
                 .scrollIndicators(.hidden)
                 .padding(.top, 4)
+                .padding(.bottom, Spacing.md)
 
                 if filteredTips.isEmpty {
                     EmptyStateView(
@@ -115,61 +115,28 @@ struct TipsListView: View {
                         caption: "Articles are short and dad-tested.",
                         tintColor: Color.sage
                     )
-                }
-
-                ForEach(filteredTips) { tip in
-                    VStack(alignment: .leading, spacing: Spacing.sm) {
-                        HStack(alignment: .top) {
-                            Text(tip.title)
-                                .font(.h2)
-                                .foregroundStyle(Color.ink)
-
-                            Spacer()
-
-                            Button(action: {
-                                withAnimation(.spring(response: 0.3, dampingFraction: 0.75)) {
-                                    profile.toggleBookmark(tip.id)
-                                }
-                            }) {
-                                Image(systemName: profile.isTipBookmarked(tip.id) ? "bookmark.fill" : "bookmark")
-                                    .font(.system(size: 14))
-                                    .foregroundStyle(profile.isTipBookmarked(tip.id) ? Color.accent : Color.inkSecondary)
+                } else {
+                    LazyVStack(spacing: 0) {
+                        ForEach(Array(filteredTips.enumerated()), id: \.element.id) { idx, tip in
+                            NavigationLink(value: ReadableArticle.article(from: tip, siblings: tips)) {
+                                TipIndexRow(
+                                    index: idx + 1,
+                                    tip: tip,
+                                    isBookmarked: profile.isTipBookmarked(tip.id)
+                                )
                             }
                             .buttonStyle(.plain)
-                        }
 
-                        Text(tip.content)
-                            .font(.bodyText)
-                            .foregroundStyle(Color.inkSecondary)
-                            .lineSpacing(4)
-
-                        if !tip.trimester.isEmpty {
-                            HStack(spacing: Spacing.xs) {
-                                ForEach(tip.trimester, id: \.self) { tri in
-                                    Text("T\(tri)")
-                                        .font(.eyebrow)
-                                        .foregroundStyle(Color.accent)
-                                        .padding(.horizontal, 8)
-                                        .padding(.vertical, 3)
-                                        .background(Capsule().fill(Color.accentSoft))
-                                }
+                            if idx < filteredTips.count - 1 {
+                                Rectangle()
+                                    .fill(Color.divider)
+                                    .frame(height: 1)
+                                    .padding(.horizontal, 20)
                             }
                         }
                     }
-                    .padding(Spacing.xl)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .background(
-                        RoundedRectangle(cornerRadius: Radius.card)
-                            .fill(Color.surface)
-                            .premiumShadow()
-                    )
-                    .overlay(
-                        RoundedRectangle(cornerRadius: Radius.card)
-                            .strokeBorder(Color.divider, lineWidth: 1)
-                    )
                 }
             }
-            .padding(.horizontal, 20)
             .padding(.vertical, 12)
         }
         .background(Color.paper.ignoresSafeArea())
@@ -184,6 +151,78 @@ struct TipsListView: View {
         case 3: return "3rd Tri"
         default: return "Tri \(tri)"
         }
+    }
+}
+
+// MARK: - Index row
+
+private struct TipIndexRow: View {
+    let index: Int
+    let tip: Tip
+    let isBookmarked: Bool
+
+    private var readTimeLabel: String {
+        let words = tip.content.split { $0.isWhitespace }.count
+        let mins = max(1, Int(ceil(Double(words) / 180.0)))
+        return "\(mins) MIN READ"
+    }
+
+    private var trimesterLabel: String {
+        guard !tip.trimester.isEmpty else { return "" }
+        return tip.trimester.map { "T\($0)" }.joined(separator: " · ")
+    }
+
+    var body: some View {
+        HStack(alignment: .top, spacing: Spacing.lg) {
+            VStack(alignment: .leading, spacing: Spacing.xs) {
+                HStack(spacing: 8) {
+                    Text(String(format: "%02d", index))
+                        .eyebrowStyle()
+
+                    if !trimesterLabel.isEmpty {
+                        Text("·")
+                            .font(.eyebrow)
+                            .foregroundStyle(Color.inkSecondary)
+                        Text(trimesterLabel)
+                            .eyebrowStyle()
+                    }
+
+                    Spacer()
+
+                    Text(readTimeLabel)
+                        .eyebrowStyle()
+                }
+
+                Text(tip.title)
+                    .font(.h2)
+                    .foregroundStyle(Color.ink)
+                    .multilineTextAlignment(.leading)
+                    .fixedSize(horizontal: false, vertical: true)
+
+                Text(tip.content)
+                    .font(.bodyText)
+                    .foregroundStyle(Color.inkSecondary)
+                    .lineLimit(2)
+                    .multilineTextAlignment(.leading)
+            }
+
+            VStack {
+                if isBookmarked {
+                    Image(systemName: "bookmark.fill")
+                        .font(.system(size: 13))
+                        .foregroundStyle(Color.accent)
+                }
+                Spacer()
+                Image(systemName: "arrow.up.right")
+                    .font(.system(size: 14, weight: .semibold))
+                    .foregroundStyle(Color.inkSecondary)
+            }
+            .padding(.top, 2)
+        }
+        .padding(.horizontal, 20)
+        .padding(.vertical, Spacing.lg)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .contentShape(Rectangle())
     }
 }
 

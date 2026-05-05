@@ -18,7 +18,7 @@ struct ReadableArticle: Identifiable, Hashable {
     let publishedDate: String
     let pullQuote: String?
     let paragraphs: [String]
-    let relatedTitles: [String]
+    let relatedArticles: [ReadableArticle]
 
     static let sampleEmotionalSupport = ReadableArticle(
         id: "sample-third-trimester-presence",
@@ -35,10 +35,7 @@ struct ReadableArticle: Identifiable, Hashable {
             "There will be evenings she snaps at you for something that isn't your fault, and mornings she cries about a commercial. Her hormones are doing the work of preparing her body to do something extraordinary, and the side effects are real. Your job in those moments is not to take it personally and not to pretend it isn't happening. Acknowledge it gently, give her the room she needs, and come back. Coming back is the part most men skip. It's the part that builds the trust she'll need when labor starts and the world gets loud.",
             "And here's the quiet truth nobody tells you: the muscle you're building right now — the muscle of choosing her presence over your distractions — is the same muscle you'll need on the other side. The baby will arrive. The nights will get harder. The version of you who learned, in these final weeks, how to actually show up for the woman in front of him is the version of you who will know how to show up for the family you're about to have. Start now. It compounds.",
         ],
-        relatedTitles: [
-            "Conversations to have before the baby arrives",
-            "When her body changes faster than her mood",
-        ]
+        relatedArticles: []
     )
 }
 
@@ -46,13 +43,18 @@ struct ReadableArticle: Identifiable, Hashable {
 
 struct ArticleReaderView: View {
     let article: ReadableArticle
+    var profile: UserProfile? = nil
 
     @Environment(\.dismiss) private var dismiss
 
-    @State private var isBookmarked: Bool = false
+    @State private var localBookmark: Bool = false
     @State private var scrollOffset: CGFloat = 0
     @State private var contentHeight: CGFloat = 1
     @State private var viewportHeight: CGFloat = 1
+
+    private var isBookmarked: Bool {
+        profile?.isTipBookmarked(article.id) ?? localBookmark
+    }
 
     private var progress: CGFloat {
         let scrollable = max(contentHeight - viewportHeight, 1)
@@ -120,26 +122,28 @@ struct ArticleReaderView: View {
 
                     bodyText
 
-                    Spacer().frame(height: Spacing.xxxl)
+                    if !article.relatedArticles.isEmpty {
+                        Spacer().frame(height: Spacing.xxxl)
 
-                    Rectangle()
-                        .fill(Color.divider)
-                        .frame(height: 1)
+                        Rectangle()
+                            .fill(Color.divider)
+                            .frame(height: 1)
 
-                    Spacer().frame(height: Spacing.xl)
+                        Spacer().frame(height: Spacing.xl)
 
-                    Text("MORE FROM \(article.category.uppercased())")
-                        .eyebrowStyle()
+                        Text("MORE FROM \(article.category.uppercased())")
+                            .eyebrowStyle()
 
-                    Spacer().frame(height: Spacing.md)
+                        Spacer().frame(height: Spacing.md)
 
-                    VStack(spacing: 0) {
-                        ForEach(Array(article.relatedTitles.enumerated()), id: \.offset) { index, title in
-                            relatedRow(title: title)
-                            if index < article.relatedTitles.count - 1 {
-                                Rectangle()
-                                    .fill(Color.divider)
-                                    .frame(height: 1)
+                        VStack(spacing: 0) {
+                            ForEach(Array(article.relatedArticles.enumerated()), id: \.element.id) { index, related in
+                                relatedRow(article: related)
+                                if index < article.relatedArticles.count - 1 {
+                                    Rectangle()
+                                        .fill(Color.divider)
+                                        .frame(height: 1)
+                                }
                             }
                         }
                     }
@@ -202,23 +206,31 @@ struct ArticleReaderView: View {
 
     // MARK: Related rows
 
-    private func relatedRow(title: String) -> some View {
-        HStack(alignment: .center, spacing: Spacing.lg) {
-            Text(title)
-                .font(.h2)
-                .foregroundStyle(Color.ink)
-                .multilineTextAlignment(.leading)
-                .fixedSize(horizontal: false, vertical: true)
+    private func relatedRow(article: ReadableArticle) -> some View {
+        NavigationLink(value: article) {
+            HStack(alignment: .center, spacing: Spacing.lg) {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("\(article.readTimeMinutes) MIN READ")
+                        .eyebrowStyle()
 
-            Spacer(minLength: Spacing.md)
+                    Text(article.title)
+                        .font(.h2)
+                        .foregroundStyle(Color.ink)
+                        .multilineTextAlignment(.leading)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
 
-            Image(systemName: "arrow.up.right")
-                .font(.system(size: 15, weight: .semibold))
-                .foregroundStyle(Color.inkSecondary)
+                Spacer(minLength: Spacing.md)
+
+                Image(systemName: "arrow.up.right")
+                    .font(.system(size: 15, weight: .semibold))
+                    .foregroundStyle(Color.inkSecondary)
+            }
+            .padding(.vertical, Spacing.lg)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .contentShape(Rectangle())
         }
-        .padding(.vertical, Spacing.lg)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .contentShape(Rectangle())
+        .buttonStyle(.plain)
     }
 
     // MARK: Progress rule
@@ -250,7 +262,11 @@ struct ArticleReaderView: View {
 
         ToolbarItem(placement: .topBarTrailing) {
             Button {
-                isBookmarked.toggle()
+                if let profile {
+                    profile.toggleBookmark(article.id)
+                } else {
+                    localBookmark.toggle()
+                }
             } label: {
                 Image(systemName: isBookmarked ? "bookmark.fill" : "bookmark")
                     .font(.system(size: 17, weight: .regular))
