@@ -192,19 +192,46 @@ struct HomeView: View {
         return "Week \(profile.currentWeek) of 40 · \(suffix)"
     }
 
-    // MARK: - Contraction Timer Row
+    // MARK: - Contraction Timer
 
+    @ViewBuilder
     private var contractionRow: some View {
+        if profile.currentWeek < 36 {
+            contractionLinkRow
+        } else {
+            contractionCard
+        }
+    }
+
+    private var contractionLinkRow: some View {
+        NavigationLink(destination: ContractionTimerView()) {
+            HStack {
+                Text("CONTRACTION TIMER")
+                    .eyebrowStyle()
+                Spacer()
+                Image(systemName: "arrow.right")
+                    .font(.system(size: 11, weight: .semibold))
+                    .foregroundStyle(Color.inkSecondary)
+            }
+            .padding(.horizontal, Spacing.lg)
+            .padding(.vertical, Spacing.md)
+            .overlay(alignment: .top) {
+                Rectangle().fill(Color.divider).frame(height: 1)
+            }
+            .overlay(alignment: .bottom) {
+                Rectangle().fill(Color.divider).frame(height: 1)
+            }
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+    }
+
+    private var contractionCard: some View {
         NavigationLink(destination: ContractionTimerView()) {
             HStack(spacing: 14) {
-                ZStack {
-                    RoundedRectangle(cornerRadius: Radius.input)
-                        .fill(Color.divider)
-                        .frame(width: 42, height: 42)
-                    Image(systemName: "waveform.path.ecg")
-                        .font(.system(size: 18))
-                        .foregroundStyle(Color.inkSecondary)
-                }
+                Image(systemName: "waveform.path")
+                    .font(.system(size: 24, weight: .regular))
+                    .foregroundStyle(Color.accent)
                 VStack(alignment: .leading, spacing: 2) {
                     Text("Contraction Timer")
                         .font(.h2)
@@ -332,9 +359,16 @@ struct HomeView: View {
 }
 
 
-#Preview {
+#Preview("Week 32 — link row") {
     HomeView(profile: UserProfile(
-        dueDate: Calendar.current.date(byAdding: .weekOfYear, value: 16, to: Date())!,
+        dueDate: Calendar.current.date(byAdding: .day, value: 56, to: Date())!,
+        onboardingCompleted: true
+    ))
+}
+
+#Preview("Week 38 — card") {
+    HomeView(profile: UserProfile(
+        dueDate: Calendar.current.date(byAdding: .day, value: 14, to: Date())!,
         onboardingCompleted: true
     ))
 }
