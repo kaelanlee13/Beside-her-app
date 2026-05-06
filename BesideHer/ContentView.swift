@@ -102,6 +102,9 @@ struct MainTabView: View {
         appearance.backgroundColor = UIColor(Color.surface)
         appearance.shadowColor = UIColor(Color.divider)
 
+        let inactive = UIColor(Color.inkSecondary)
+        let active   = UIColor(Color.accent)
+
         // SF Pro Rounded 10pt Semibold for tab labels
         let labelFont: UIFont = {
             let base = UIFont.systemFont(ofSize: 10, weight: .semibold)
@@ -111,14 +114,17 @@ struct MainTabView: View {
             return base
         }()
         let item = UITabBarItemAppearance()
-        item.normal.titleTextAttributes = [.font: labelFont]
-        item.selected.titleTextAttributes = [.font: labelFont]
+        item.normal.titleTextAttributes   = [.font: labelFont, .foregroundColor: inactive]
+        item.selected.titleTextAttributes = [.font: labelFont, .foregroundColor: active]
+        item.normal.iconColor   = inactive
+        item.selected.iconColor = active
         appearance.stackedLayoutAppearance = item
         appearance.inlineLayoutAppearance = item
         appearance.compactInlineLayoutAppearance = item
 
         UITabBar.appearance().standardAppearance = appearance
         UITabBar.appearance().scrollEdgeAppearance = appearance
+        UITabBar.appearance().unselectedItemTintColor = inactive
     }
 }
 

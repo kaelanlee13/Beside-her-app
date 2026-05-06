@@ -299,8 +299,8 @@ struct HomeView: View {
     private func dadQuestionCard(question: String, answer: String) -> some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack(spacing: 6) {
-                Image(systemName: "questionmark.circle.fill")
-                    .font(.system(size: 14))
+                Image(systemName: "questionmark.circle")
+                    .font(.system(size: 16))
                     .foregroundStyle(Color.inkSecondary)
                 Text("DAD QUESTION")
                     .eyebrowStyle()
@@ -313,7 +313,7 @@ struct HomeView: View {
                 .foregroundStyle(Color.inkSecondary)
                 .lineSpacing(4)
         }
-        .padding(16)
+        .padding(Spacing.xl)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(surfaceCard)
     }

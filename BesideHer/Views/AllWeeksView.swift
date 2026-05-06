@@ -18,8 +18,13 @@ struct AllWeeksView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(alignment: .leading, spacing: Spacing.xxl) {
+                VStack(alignment: .leading, spacing: Spacing.xl) {
                     masthead
+
+                    if let week = content.week(for: profile.currentWeek) {
+                        currentWeekHero(week: week)
+                            .padding(.horizontal, 20)
+                    }
 
                     ForEach(trimesters) { section in
                         trimesterSection(section)
@@ -50,7 +55,9 @@ struct AllWeeksView: View {
 
     @ViewBuilder
     private func trimesterSection(_ section: TrimesterSection) -> some View {
-        let weeksInRange = content.weeks.filter { section.range.contains($0.weekNumber) }
+        let weeksInRange = content.weeks.filter {
+            section.range.contains($0.weekNumber) && $0.weekNumber != profile.currentWeek
+        }
 
         VStack(alignment: .leading, spacing: Spacing.md) {
             Text(section.label)
@@ -59,20 +66,13 @@ struct AllWeeksView: View {
 
             VStack(alignment: .leading, spacing: 0) {
                 ForEach(Array(weeksInRange.enumerated()), id: \.element.id) { idx, week in
-                    if week.weekNumber == profile.currentWeek {
-                        currentWeekHero(week: week)
-                            .padding(.horizontal, 20)
-                            .padding(.vertical, Spacing.sm)
-                    } else {
-                        weekRow(week)
-                        if idx < weeksInRange.count - 1,
-                           weeksInRange[idx + 1].weekNumber != profile.currentWeek {
-                            Rectangle()
-                                .fill(Color.divider)
-                                .frame(height: 1)
-                                .padding(.leading, Spacing.lg + 40 + Spacing.lg)
-                                .padding(.trailing, Spacing.lg)
-                        }
+                    weekRow(week)
+                    if idx < weeksInRange.count - 1 {
+                        Rectangle()
+                            .fill(Color.divider)
+                            .frame(height: 1)
+                            .padding(.leading, Spacing.lg + 40 + Spacing.lg)
+                            .padding(.trailing, Spacing.lg)
                     }
                 }
             }
@@ -87,7 +87,7 @@ struct AllWeeksView: View {
                 HStack(alignment: .top, spacing: Spacing.md) {
                     VStack(alignment: .leading, spacing: Spacing.sm) {
                         Text("WEEK \(week.weekNumber) OF 40").eyebrowStyle()
-                        Text(week.title)
+                        Text(weekSubtitle(week))
                             .font(.hero)
                             .foregroundStyle(Color.ink)
                             .fixedSize(horizontal: false, vertical: true)
@@ -128,14 +128,14 @@ struct AllWeeksView: View {
         let isPast = week.weekNumber < profile.currentWeek
         return NavigationLink(destination: WeekDetailView(week: week, profile: profile)) {
             HStack(spacing: Spacing.lg) {
-                TrimesterGlyph(weekNumber: week.weekNumber, size: 40, tinted: true)
+                TrimesterGlyph(weekNumber: week.weekNumber, size: 40, tinted: false)
 
                 VStack(alignment: .leading, spacing: 2) {
                     Text("Week \(week.weekNumber)")
                         .font(.h2)
                         .fontDesign(.serif)
                         .foregroundStyle(Color.ink)
-                    Text(week.title)
+                    Text(weekSubtitle(week))
                         .font(.bodyText)
                         .foregroundStyle(Color.ink)
                         .lineLimit(1)
@@ -166,6 +166,13 @@ struct AllWeeksView: View {
         let vowels: [Character] = ["a", "e", "i", "o", "u"]
         if let first = word.lowercased().first, vowels.contains(first) { return "an" }
         return "a"
+    }
+
+    /// Strips the leading "Week N: " prefix from a title for use as a row subtitle.
+    private func weekSubtitle(_ week: Week) -> String {
+        guard let colonIdx = week.title.firstIndex(of: ":") else { return week.title }
+        return String(week.title[week.title.index(after: colonIdx)...])
+            .trimmingCharacters(in: .whitespaces)
     }
 }
 
