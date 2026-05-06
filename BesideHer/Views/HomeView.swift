@@ -123,11 +123,7 @@ struct HomeView: View {
 
                     Spacer(minLength: Spacing.sm)
 
-                    Image(systemName: "leaf.fill")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 80, height: 80)
-                        .foregroundStyle(Color.accent.opacity(0.18))
+                    TrimesterGlyph(weekNumber: profile.currentWeek, size: 80, tinted: true)
                 }
 
                 if let week = currentWeekContent {

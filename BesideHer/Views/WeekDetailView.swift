@@ -107,10 +107,7 @@ struct WeekDetailView: View {
                     .padding(.vertical, 14)
 
                 HStack(spacing: 10) {
-                    // TODO: replace size illustration — need asset for "\(week.sizeComparison)" (e.g. apple, lemon, papaya)
-                    Image(systemName: "leaf.fill")
-                        .font(.system(size: 22))
-                        .foregroundStyle(Color.accent.opacity(0.55))
+                    TrimesterGlyph(weekNumber: week.weekNumber, size: 28, tinted: false)
                     VStack(alignment: .leading, spacing: 2) {
                         Text("SIZE THIS WEEK")
                             .eyebrowStyle()

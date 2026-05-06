@@ -93,11 +93,7 @@ struct AllWeeksView: View {
                             .fixedSize(horizontal: false, vertical: true)
                     }
                     Spacer(minLength: Spacing.sm)
-                    Image(systemName: "leaf.fill")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 80, height: 80)
-                        .foregroundStyle(Color.accent.opacity(0.18))
+                    TrimesterGlyph(weekNumber: week.weekNumber, size: 80, tinted: true)
                 }
 
                 Text("Size of \(articleFor(week.sizeComparison)) \(week.sizeComparison.lowercased())")
@@ -132,15 +128,7 @@ struct AllWeeksView: View {
         let isPast = week.weekNumber < profile.currentWeek
         return NavigationLink(destination: WeekDetailView(week: week, profile: profile)) {
             HStack(spacing: Spacing.lg) {
-                ZStack {
-                    Circle()
-                        .fill(Color.surface)
-                        .frame(width: 40, height: 40)
-                        .overlay(Circle().strokeBorder(Color.divider, lineWidth: 1))
-                    Image(systemName: "leaf")
-                        .font(.system(size: 16))
-                        .foregroundStyle(Color.inkSecondary)
-                }
+                TrimesterGlyph(weekNumber: week.weekNumber, size: 40, tinted: true)
 
                 VStack(alignment: .leading, spacing: 2) {
                     Text("Week \(week.weekNumber)")
