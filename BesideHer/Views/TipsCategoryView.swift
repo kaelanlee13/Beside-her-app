@@ -12,12 +12,12 @@ struct TipsCategoryView: View {
     @State private var path = NavigationPath()
     @State private var selectedSection: TipsSection = .categories
 
-    private let categories: [(id: String, name: String, icon: String, tint: Color, caption: String)] = [
-        ("emotional-support", "Emotional Support",  "heart.fill",                    Color.accent,        "Being present for every moment"),
-        ("financial-prep",    "Financial Prep",      "dollarsign.circle.fill",        Color.sage,          "Plan ahead so you can be present"),
-        ("home-gear",         "Home & Gear",         "house.fill",                    Color.clay,          "Get the nursery ready together"),
-        ("labor-prep",        "Labor Prep",          "cross.case.fill",               Color.alert,         "Know what to expect when it begins"),
-        ("postpartum-prep",   "Postpartum Prep",     "figure.and.child.holdinghands", Color.inkSecondary,  "Support her through the fourth trimester"),
+    private let categories: [(id: String, name: String, icon: String, background: Color, iconTint: Color, caption: String)] = [
+        ("emotional-support", "Emotional Support",  "heart.fill",                    Color.accent.opacity(0.18), Color.accent.opacity(0.7),  "Being present for every moment"),
+        ("financial-prep",    "Financial Prep",      "dollarsign.circle.fill",        Color.sage.opacity(0.18),   Color.sage.opacity(0.85),   "Plan ahead so you can be present"),
+        ("home-gear",         "Home & Gear",         "house.fill",                    Color.clay.opacity(0.22),   Color.accent.opacity(0.7),  "Get the nursery ready together"),
+        ("labor-prep",        "Labor Prep",          "cross.case.fill",               Color.accent.opacity(0.10), Color.accent.opacity(0.7),  "Know what to expect when it begins"),
+        ("postpartum-prep",   "Postpartum Prep",     "figure.and.child.holdinghands", Color.sage.opacity(0.10),   Color.accent.opacity(0.7),  "Support her through the fourth trimester"),
     ]
 
     private var bookmarkedTips: [Tip] {
@@ -114,7 +114,8 @@ struct TipsCategoryView: View {
                     headline: category.name,
                     caption: category.caption,
                     illustrationName: category.icon,
-                    tintColor: category.tint,
+                    backgroundTint: category.background,
+                    iconTint: category.iconTint,
                     action: {
                         path.append(TipsCategoryRef(id: category.id))
                     }

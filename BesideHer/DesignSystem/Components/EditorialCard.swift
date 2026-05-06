@@ -10,7 +10,8 @@ struct EditorialCard: View {
     let headline: String
     let caption: String
     let illustrationName: String
-    let tintColor: Color
+    let backgroundTint: Color
+    let iconTint: Color
     let action: () -> Void
 
     @State private var hapticTrigger = false
@@ -21,28 +22,25 @@ struct EditorialCard: View {
             action()
         }) {
             ZStack(alignment: .bottomLeading) {
-                // Tinted surface background
                 RoundedRectangle(cornerRadius: Radius.card)
                     .fill(Color.surface)
                 RoundedRectangle(cornerRadius: Radius.card)
-                    .fill(tintColor.opacity(0.18))
+                    .fill(backgroundTint)
 
-                // Illustration — top-right
                 VStack {
                     HStack {
                         Spacer()
                         Image(systemName: illustrationName)
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 96, height: 96)
-                            .foregroundStyle(tintColor.opacity(0.55))
-                            .padding(.top, Spacing.xl)
-                            .padding(.trailing, Spacing.xl)
+                            .frame(width: 64, height: 64)
+                            .foregroundStyle(iconTint)
+                            .padding(.top, Spacing.lg)
+                            .padding(.trailing, Spacing.lg)
                     }
                     Spacer()
                 }
 
-                // Text block — bottom-left
                 VStack(alignment: .leading, spacing: Spacing.sm) {
                     Text(eyebrow)
                         .eyebrowStyle()
@@ -57,9 +55,9 @@ struct EditorialCard: View {
                         .foregroundStyle(Color.inkSecondary)
                         .lineLimit(2)
                 }
-                .padding(Spacing.xl)
+                .padding(Spacing.lg)
             }
-            .frame(height: 180)
+            .frame(height: 140)
             .clipShape(RoundedRectangle(cornerRadius: Radius.card))
             .premiumShadow()
         }
@@ -75,7 +73,8 @@ struct EditorialCard: View {
             headline: "Emotional Support",
             caption: "Being there for every moment that matters",
             illustrationName: "heart.fill",
-            tintColor: Color.accent,
+            backgroundTint: Color.accent.opacity(0.18),
+            iconTint: Color.accent.opacity(0.7),
             action: {}
         )
         EditorialCard(
@@ -83,10 +82,11 @@ struct EditorialCard: View {
             headline: "Financial Prep",
             caption: "Plan ahead so you can be present",
             illustrationName: "dollarsign.circle.fill",
-            tintColor: Color.sage,
+            backgroundTint: Color.sage.opacity(0.18),
+            iconTint: Color.sage.opacity(0.85),
             action: {}
         )
     }
-    .padding(Spacing.xl)
+    .padding(Spacing.lg)
     .background(Color.paper)
 }
