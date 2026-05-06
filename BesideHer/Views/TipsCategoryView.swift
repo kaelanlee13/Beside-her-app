@@ -24,10 +24,16 @@ struct TipsCategoryView: View {
         content.tips(withIDs: profile.bookmarkedTips)
     }
 
+    private var totalArticleCount: Int {
+        categories.reduce(0) { $0 + content.tips(forCategory: $1.id).count }
+    }
+
     var body: some View {
         NavigationStack(path: $path) {
             ScrollView {
                 VStack(spacing: 0) {
+                    masthead
+
                     sectionSelector
                         .padding(.horizontal, 20)
                         .padding(.top, 4)
@@ -44,7 +50,7 @@ struct TipsCategoryView: View {
             }
             .softScrollEdgeEffect()
             .background(Color.paper.ignoresSafeArea())
-            .navigationTitle("Support Tips")
+            .toolbarBackground(.hidden, for: .navigationBar)
             .navigationBarTitleDisplayMode(.inline)
             .navigationDestination(for: TipsCategoryRef.self) { ref in
                 if let cat = categories.first(where: { $0.id == ref.id }) {
@@ -59,6 +65,26 @@ struct TipsCategoryView: View {
                 ArticleReaderView(article: article, profile: profile)
             }
         }
+    }
+
+    // MARK: - Masthead
+
+    private var masthead: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text("GUIDES")
+                .font(.eyebrow)
+                .eyebrowStyle()
+            Text("Tips")
+                .font(.h1)
+                .foregroundStyle(Color.ink)
+            Text("\(categories.count) sections · \(totalArticleCount) articles")
+                .font(.captionText)
+                .foregroundStyle(Color.inkSecondary)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.horizontal, Spacing.lg)
+        .padding(.top, Spacing.sm)
+        .padding(.bottom, Spacing.lg)
     }
 
     // MARK: - Sections
