@@ -34,11 +34,6 @@ struct HomeView: View {
                         .padding(.horizontal, 20)
                         .padding(.top, 4)
 
-                    // ─── Progress ───────────────────────────────────────────
-                    progressCard
-                        .padding(.horizontal, 20)
-                        .padding(.top, 14)
-
                     // ─── Contraction Timer CTA ──────────────────────────────
                     contractionRow
                         .padding(.horizontal, 20)
@@ -108,7 +103,7 @@ struct HomeView: View {
             VStack(alignment: .leading, spacing: Spacing.lg) {
 
                 // Top section: text + illustration
-                HStack(alignment: .top, spacing: Spacing.md) {
+                HStack(alignment: .top, spacing: Spacing.sm) {
                     VStack(alignment: .leading, spacing: Spacing.sm) {
                         Text("WEEK \(profile.currentWeek) OF 40")
                             .eyebrowStyle()
@@ -116,12 +111,13 @@ struct HomeView: View {
                             .animation(.easeInOut(duration: 0.6), value: profile.currentWeek)
 
                         Text(heroHeadlineText)
-                            .font(.hero)
+                            .font(.system(size: 36, weight: .semibold, design: .serif))
                             .foregroundStyle(Color.ink)
+                            .lineLimit(3)
+                            .minimumScaleFactor(0.85)
                             .fixedSize(horizontal: false, vertical: true)
                     }
-
-                    Spacer(minLength: Spacing.sm)
+                    .frame(maxWidth: .infinity, alignment: .leading)
 
                     TrimesterGlyph(weekNumber: profile.currentWeek, size: 80, tinted: true)
                 }
@@ -133,19 +129,27 @@ struct HomeView: View {
                         .lineLimit(2)
                 }
 
-                // Progress ruler — full-width, no label
-                GeometryReader { geo in
-                    ZStack(alignment: .leading) {
-                        Rectangle()
-                            .fill(Color.divider)
-                            .frame(height: 1)
-                        Rectangle()
-                            .fill(Color.accent)
-                            .frame(width: geo.size.width * min(profile.progressPercentage, 1.0), height: 1)
-                            .animation(.easeInOut(duration: 1.2), value: profile.currentWeek)
+                // Progress ruler + caption — full-width
+                VStack(alignment: .leading, spacing: Spacing.xs) {
+                    GeometryReader { geo in
+                        ZStack(alignment: .leading) {
+                            Rectangle()
+                                .fill(Color.divider)
+                                .frame(height: 1)
+                            Rectangle()
+                                .fill(Color.accent)
+                                .frame(width: geo.size.width * min(profile.progressPercentage, 1.0), height: 1)
+                                .animation(.easeInOut(duration: 1.2), value: profile.currentWeek)
+                        }
                     }
+                    .frame(height: 1)
+
+                    Text(heroProgressCaption)
+                        .font(.captionText)
+                        .foregroundStyle(Color.inkSecondary)
+                        .contentTransition(.numericText())
+                        .animation(.easeInOut(duration: 0.6), value: profile.currentWeek)
                 }
-                .frame(height: 1)
             }
             .padding(Spacing.xl)
             .background(
@@ -174,51 +178,18 @@ struct HomeView: View {
         return "\(weekLabel)  ·  \(countdownText)"
     }
 
-
-    // MARK: - Progress Card
-
-    private var progressCard: some View {
-        VStack(alignment: .leading, spacing: Spacing.md) {
-            Text("PROGRESS")
-                .eyebrowStyle()
-
-            Text(progressHeadlineText)
-                .font(.h1)
-                .foregroundStyle(Color.ink)
-
-            HairlineProgressRuler(
-                progress: profile.progressPercentage,
-                ticks: [13.0 / 40.0, 27.0 / 40.0]
-            )
-            .padding(.vertical, Spacing.xs)
-
-            Text("Week \(profile.currentWeek) of 40")
-                .font(.captionText)
-                .foregroundStyle(Color.inkSecondary)
-                .contentTransition(.numericText())
-                .animation(.easeInOut(duration: 0.6), value: profile.currentWeek)
-        }
-        .padding(Spacing.xl)
-        .background(
-            RoundedRectangle(cornerRadius: Radius.card)
-                .fill(Color.surface)
-                .premiumShadow()
-        )
-    }
-
-    private var progressHeadlineText: String {
+    private var heroProgressCaption: String {
         let cal = Calendar.current
         let days = cal.dateComponents([.day], from: cal.startOfDay(for: Date()),
                                       to: cal.startOfDay(for: profile.dueDate)).day ?? 0
+        let suffix: String
         switch days {
-        case ..<0:  return "Baby may have arrived"
-        case 0:     return "Due today"
-        case 1:     return "1 day to go"
-        case 2..<14: return "\(days) days to go"
-        default:
-            let weeks = (days + 6) / 7
-            return "\(weeks) week\(weeks == 1 ? "" : "s") to go"
+        case ..<0: suffix = "overdue by \(abs(days)) day\(abs(days) == 1 ? "" : "s")"
+        case 0:    suffix = "due today"
+        case 1:    suffix = "1 day to go"
+        default:   suffix = "\(days) days to go"
         }
+        return "Week \(profile.currentWeek) of 40 · \(suffix)"
     }
 
     // MARK: - Contraction Timer Row
