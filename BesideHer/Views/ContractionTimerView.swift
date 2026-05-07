@@ -350,9 +350,11 @@ struct ContractionTimerView: View {
                 .padding(.top, 1)
 
             VStack(alignment: .leading, spacing: 4) {
+                Text("WHEN TO GO")
+                    .eyebrowStyle()
                 Text("The 5-1-1 Rule")
-                    .font(.captionText.weight(.semibold))
-                    .foregroundStyle(Color.accent)
+                    .font(.h2)
+                    .foregroundStyle(Color.ink)
                 Text("Head to the hospital when contractions are 5 minutes apart, last at least 1 minute each, for 1 hour.")
                     .font(.captionText)
                     .foregroundStyle(Color.inkSecondary)
