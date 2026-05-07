@@ -34,8 +34,6 @@ struct WeekDetailView: View {
 
                 // ─── Baby Development ────────────────────────────────────
                 sectionCard(
-                    systemImage: "figure.child",
-                    accentColor: Color.ink,
                     eyebrow: "DEVELOPMENT",
                     title: "Baby Development",
                     body: week.babyDevelopment
@@ -45,8 +43,6 @@ struct WeekDetailView: View {
 
                 // ─── Partner Experience ──────────────────────────────────
                 sectionCard(
-                    systemImage: "figure.arms.open",
-                    accentColor: Color.clay,
                     eyebrow: "YOUR PARTNER",
                     title: "Partner Experience",
                     body: week.partnerExperience
@@ -55,9 +51,13 @@ struct WeekDetailView: View {
                 .padding(.top, 12)
 
                 // ─── How to Help ─────────────────────────────────────────
-                howToHelpCard
-                    .padding(.horizontal, 20)
-                    .padding(.top, 12)
+                sectionCard(
+                    eyebrow: "YOUR ROLE",
+                    title: "How to Help",
+                    body: week.howToHelp
+                )
+                .padding(.horizontal, 20)
+                .padding(.top, 12)
 
                 // ─── Action Items ────────────────────────────────────────
                 if !week.actionItems.isEmpty || !weekChecklistItems.isEmpty {
@@ -97,7 +97,7 @@ struct WeekDetailView: View {
                     .foregroundStyle(Color.ink)
                     .padding(.top, 2)
 
-                Text(week.title)
+                Text(cleanSubtitle(week.title, weekNumber: week.weekNumber))
                     .font(.h2)
                     .foregroundStyle(Color.ink.opacity(0.85))
                     .padding(.top, 4)
@@ -125,20 +125,11 @@ struct WeekDetailView: View {
 
     // MARK: - Section Card (Baby Dev / Partner Exp)
 
-    private func sectionCard(systemImage: String, accentColor: Color, eyebrow: String, title: String, body: String) -> some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text(eyebrow)
-                .eyebrowStyle()
-
-            HStack(spacing: 10) {
-                ZStack {
-                    RoundedRectangle(cornerRadius: Radius.input)
-                        .fill(accentColor.opacity(0.12))
-                        .frame(width: 32, height: 32)
-                    Image(systemName: systemImage)
-                        .font(.system(size: 15, weight: .semibold))
-                        .foregroundStyle(accentColor)
-                }
+    private func sectionCard(eyebrow: String, title: String, body: String) -> some View {
+        VStack(alignment: .leading, spacing: 12) {
+            VStack(alignment: .leading, spacing: 4) {
+                Text(eyebrow)
+                    .eyebrowStyle()
                 Text(title)
                     .font(.h2)
                     .foregroundStyle(Color.ink)
@@ -154,55 +145,17 @@ struct WeekDetailView: View {
         .background(surfaceCard)
     }
 
-    // MARK: - How to Help Card
-
-    private var howToHelpCard: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text("YOUR ROLE")
-                .eyebrowStyle()
-
-            HStack(spacing: 10) {
-                ZStack {
-                    RoundedRectangle(cornerRadius: Radius.input)
-                        .fill(Color.sage.opacity(0.12))
-                        .frame(width: 32, height: 32)
-                    Image(systemName: "hands.sparkles")
-                        .font(.system(size: 15, weight: .semibold))
-                        .foregroundStyle(Color.sage)
-                }
-                Text("How to Help")
-                    .font(.h2)
-                    .foregroundStyle(Color.ink)
-            }
-
-            ForEach(week.howToHelp, id: \.self) { tip in
-                HStack(alignment: .top, spacing: 10) {
-                    Circle()
-                        .fill(Color.sage)
-                        .frame(width: 5, height: 5)
-                        .padding(.top, 7)
-                    Text(tip)
-                        .font(.bodyText)
-                        .foregroundStyle(Color.inkSecondary)
-                        .lineSpacing(3)
-                }
-            }
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(16)
-        .background(surfaceCard)
-    }
-
     // MARK: - Action Items Card
 
     private var actionItemsCard: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text("YOUR TASKS")
-                .eyebrowStyle()
-
-            Text("Action Items")
-                .font(.h2)
-                .foregroundStyle(Color.ink)
+        VStack(alignment: .leading, spacing: 12) {
+            VStack(alignment: .leading, spacing: 4) {
+                Text("YOUR TASKS")
+                    .eyebrowStyle()
+                Text("Action Items")
+                    .font(.h2)
+                    .foregroundStyle(Color.ink)
+            }
 
             ForEach(week.actionItems) { item in
                 taskRow(
@@ -431,6 +384,11 @@ struct WeekDetailView: View {
 
     private var nextWeek: Week? {
         content.week(for: nextWeekNumber)
+    }
+
+    private func cleanSubtitle(_ raw: String, weekNumber: Int) -> String {
+        let prefix = "Week \(weekNumber): "
+        return raw.hasPrefix(prefix) ? String(raw.dropFirst(prefix.count)) : raw
     }
 }
 

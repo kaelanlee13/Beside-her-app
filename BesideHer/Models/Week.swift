@@ -16,7 +16,7 @@ struct Week: Codable, Identifiable {
     let sizeEmoji: String
     let babyDevelopment: String
     let partnerExperience: String
-    let howToHelp: [String]
+    let howToHelp: String
     let actionItems: [ActionItem]
     let commonDadQuestion: String?
     let commonDadAnswer: String?
