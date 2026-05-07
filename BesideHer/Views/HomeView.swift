@@ -122,13 +122,6 @@ struct HomeView: View {
                     TrimesterGlyph(weekNumber: profile.currentWeek, size: 80, tinted: true)
                 }
 
-                if let week = currentWeekContent {
-                    Text(heroBodyText(week))
-                        .font(.bodyText)
-                        .foregroundStyle(Color.inkSecondary)
-                        .lineLimit(2)
-                }
-
                 // Progress ruler + caption — full-width
                 VStack(alignment: .leading, spacing: Spacing.xs) {
                     GeometryReader { geo in
@@ -173,23 +166,16 @@ struct HomeView: View {
         return "\(subject) the size of \(articleFor(week.sizeComparison)) \(week.sizeComparison.lowercased())"
     }
 
-    private func heroBodyText(_ week: Week) -> String {
-        let weekLabel = week.title.split(separator: ":", maxSplits: 1).first.map(String.init) ?? week.title
-        return "\(weekLabel)  ·  \(countdownText)"
-    }
-
     private var heroProgressCaption: String {
         let cal = Calendar.current
         let days = cal.dateComponents([.day], from: cal.startOfDay(for: Date()),
                                       to: cal.startOfDay(for: profile.dueDate)).day ?? 0
-        let suffix: String
         switch days {
-        case ..<0: suffix = "overdue by \(abs(days)) day\(abs(days) == 1 ? "" : "s")"
-        case 0:    suffix = "due today"
-        case 1:    suffix = "1 day to go"
-        default:   suffix = "\(days) days to go"
+        case ..<0: return "overdue by \(abs(days)) day\(abs(days) == 1 ? "" : "s")"
+        case 0:    return "due today"
+        case 1:    return "1 day to go"
+        default:   return "\(days) days to go"
         }
-        return "Week \(profile.currentWeek) of 40 · \(suffix)"
     }
 
     // MARK: - Contraction Timer
@@ -328,19 +314,6 @@ struct HomeView: View {
                 RoundedRectangle(cornerRadius: Radius.card)
                     .stroke(Color.divider, lineWidth: 1)
             )
-    }
-
-    private var countdownText: String {
-        let calendar = Calendar.current
-        let today = calendar.startOfDay(for: Date())
-        let due   = calendar.startOfDay(for: profile.dueDate)
-        let days  = calendar.dateComponents([.day], from: today, to: due).day ?? 0
-        switch days {
-        case ..<0: return "Overdue by \(abs(days))d"
-        case 0:    return "Due today!"
-        case 1:    return "1 day to go"
-        default:   return "\(days) days to go"
-        }
     }
 
     private var babyLabel: String {

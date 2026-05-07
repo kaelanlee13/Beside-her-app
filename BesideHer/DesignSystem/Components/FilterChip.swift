@@ -19,9 +19,9 @@ struct FilterChip: View {
 
     var body: some View {
         Button(action: action) {
-            Text(title)
+            Text(title.uppercased())
                 .font(.eyebrow)
-                .eyebrowStyle()
+                .tracking(1.4)
                 .foregroundStyle(isSelected ? Color.paper : Color.inkSecondary)
                 .padding(.horizontal, horizontalPadding)
                 .padding(.vertical, verticalPadding)

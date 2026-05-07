@@ -409,13 +409,20 @@ struct AboutView: View {
         NavigationStack {
             ScrollView {
                 VStack(spacing: 24) {
-                    Image("BesideHerLogo")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 80)
-                        .padding(.horizontal, 32)
-                        .padding(.top, 32)
+                    VStack(spacing: 10) {
+                        Text("besideher")
+                            .font(Font.custom("Georgia", size: 46))
+                            .foregroundStyle(Color.ink)
+                            .tracking(1.3)
+
+                        Text("BESIDE HER THROUGH IT ALL")
+                            .font(.eyebrow)
+                            .textCase(.uppercase)
+                            .tracking(3.2)
+                            .foregroundStyle(Color.inkSecondary)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.top, 32)
 
                     VStack(spacing: 8) {
                         Text("Your pregnancy companion for dads")
