@@ -34,7 +34,6 @@ struct WeekDetailView: View {
 
                 // ─── Baby Development ────────────────────────────────────
                 sectionCard(
-                    eyebrow: "DEVELOPMENT",
                     title: "Baby Development",
                     body: week.babyDevelopment
                 )
@@ -43,7 +42,6 @@ struct WeekDetailView: View {
 
                 // ─── Partner Experience ──────────────────────────────────
                 sectionCard(
-                    eyebrow: "YOUR PARTNER",
                     title: "Partner Experience",
                     body: week.partnerExperience
                 )
@@ -52,7 +50,6 @@ struct WeekDetailView: View {
 
                 // ─── How to Help ─────────────────────────────────────────
                 sectionCard(
-                    eyebrow: "YOUR ROLE",
                     title: "How to Help",
                     body: week.howToHelp
                 )
@@ -125,15 +122,11 @@ struct WeekDetailView: View {
 
     // MARK: - Section Card (Baby Dev / Partner Exp)
 
-    private func sectionCard(eyebrow: String, title: String, body: String) -> some View {
+    private func sectionCard(title: String, body: String) -> some View {
         VStack(alignment: .leading, spacing: 12) {
-            VStack(alignment: .leading, spacing: 4) {
-                Text(eyebrow)
-                    .eyebrowStyle()
-                Text(title)
-                    .font(.h2)
-                    .foregroundStyle(Color.ink)
-            }
+            Text(title)
+                .font(.h2)
+                .foregroundStyle(Color.ink)
 
             Text(body)
                 .font(.bodyText)
@@ -149,13 +142,9 @@ struct WeekDetailView: View {
 
     private var actionItemsCard: some View {
         VStack(alignment: .leading, spacing: 12) {
-            VStack(alignment: .leading, spacing: 4) {
-                Text("YOUR TASKS")
-                    .eyebrowStyle()
-                Text("Action Items")
-                    .font(.h2)
-                    .foregroundStyle(Color.ink)
-            }
+            Text("Action Items")
+                .font(.h2)
+                .foregroundStyle(Color.ink)
 
             ForEach(week.actionItems) { item in
                 taskRow(
