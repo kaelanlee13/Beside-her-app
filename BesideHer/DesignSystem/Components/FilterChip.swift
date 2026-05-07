@@ -5,37 +5,37 @@
 
 import SwiftUI
 
-/// Quiet editorial filter chip.
-/// Selected: Color.ink background with Color.paper text — strong contrast in both modes.
-/// Unselected: transparent with Color.divider border.
+/// Editorial filter chip — ink-filled when active, outlined eyebrow when inactive.
+/// Selected: Color.ink background with Color.paper text (warm-black/cream in light, cream/warm-black in dark).
+/// Color.ink and Color.paper are inverses in the adaptive theme, guaranteeing AAA contrast in both modes.
+/// Unselected: transparent with Color.divider border, inkSecondary eyebrow.
 struct FilterChip: View {
     let title: String
     let isSelected: Bool
     let action: () -> Void
 
-    var horizontalPadding: CGFloat = 14
-    var verticalPadding: CGFloat = 8
+    var horizontalPadding: CGFloat = 16
+    var verticalPadding: CGFloat = 10
 
     var body: some View {
         Button(action: action) {
             Text(title)
                 .font(.eyebrow)
-                .textCase(.uppercase)
-                .tracking(1.4)
+                .eyebrowStyle()
                 .foregroundStyle(isSelected ? Color.paper : Color.inkSecondary)
                 .padding(.horizontal, horizontalPadding)
                 .padding(.vertical, verticalPadding)
                 .background(
-                    Capsule()
+                    RoundedRectangle(cornerRadius: Radius.pill, style: .continuous)
                         .fill(isSelected ? Color.ink : Color.clear)
                 )
                 .overlay(
-                    Capsule()
+                    RoundedRectangle(cornerRadius: Radius.pill, style: .continuous)
                         .strokeBorder(isSelected ? Color.clear : Color.divider, lineWidth: 1)
                 )
         }
         .buttonStyle(.plain)
-        .animation(.spring(response: 0.3, dampingFraction: 0.75), value: isSelected)
+        .animation(.spring(response: 0.35, dampingFraction: 0.8), value: isSelected)
     }
 }
 
