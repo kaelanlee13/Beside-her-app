@@ -281,7 +281,7 @@ struct ContractionTimerView: View {
 
                     Text(formatTime(Int(row.duration)))
                         .font(.system(size: 14, weight: .semibold, design: .monospaced))
-                        .foregroundStyle(Color.sage)
+                        .foregroundStyle(Color.ink)
 
                     Spacer()
 

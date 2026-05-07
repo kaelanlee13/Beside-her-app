@@ -16,10 +16,8 @@ private struct LaborBagItem: Identifiable {
 
 private struct LaborBagSection: Identifiable {
     let id: String
+    let eyebrow: String
     let title: String
-    /// SF Symbol name. TODO: replace with custom illustration assets when available
-    /// (e.g. "mom", "baby", "dad", "docs") for the editorial aesthetic.
-    let symbol: String
     let items: [LaborBagItem]
 }
 
@@ -29,7 +27,7 @@ struct LaborBagView: View {
     let profile: UserProfile
 
     private let sections: [LaborBagSection] = [
-        LaborBagSection(id: "mom", title: "For Mom", symbol: "figure.stand.dress", items: [
+        LaborBagSection(id: "mom", eyebrow: "PACK FOR", title: "Mom", items: [
             LaborBagItem(id: "lb-m1",  text: "Comfortable robe or nightgown (2–3)"),
             LaborBagItem(id: "lb-m2",  text: "Nursing bra and breast pads (2–3 sets)"),
             LaborBagItem(id: "lb-m3",  text: "Underwear — maternity or disposable (5–6 pairs)"),
@@ -44,14 +42,14 @@ struct LaborBagView: View {
             LaborBagItem(id: "lb-m12", text: "Entertainment: tablet, books, or headphones"),
             LaborBagItem(id: "lb-m13", text: "Glasses if she wears contacts"),
         ]),
-        LaborBagSection(id: "baby", title: "For Baby", symbol: "figure.and.child.holdinghands", items: [
+        LaborBagSection(id: "baby", eyebrow: "PACK FOR", title: "Baby", items: [
             LaborBagItem(id: "lb-b1", text: "Going-home outfit (newborn AND 0–3 month sizes)"),
             LaborBagItem(id: "lb-b2", text: "Infant car seat — installed before you leave"),
             LaborBagItem(id: "lb-b3", text: "Swaddle blanket (1–2)"),
             LaborBagItem(id: "lb-b4", text: "Newborn hat and socks"),
             LaborBagItem(id: "lb-b5", text: "Diapers and wipes (hospital usually provides, but bring a pack)"),
         ]),
-        LaborBagSection(id: "dad", title: "For Dad", symbol: "figure.arms.open", items: [
+        LaborBagSection(id: "dad", eyebrow: "PACK FOR", title: "Dad", items: [
             LaborBagItem(id: "lb-d1", text: "Change of clothes for 2–3 days"),
             LaborBagItem(id: "lb-d2", text: "Toiletries and deodorant"),
             LaborBagItem(id: "lb-d3", text: "Phone charger and camera"),
@@ -61,7 +59,7 @@ struct LaborBagView: View {
             LaborBagItem(id: "lb-d7", text: "Entertainment for long labor (book, tablet, headphones)"),
             LaborBagItem(id: "lb-d8", text: "Comfortable shoes — you'll be on your feet a lot"),
         ]),
-        LaborBagSection(id: "docs", title: "Documents", symbol: "doc.text.fill", items: [
+        LaborBagSection(id: "docs", eyebrow: "PAPERWORK", title: "Documents", items: [
             LaborBagItem(id: "lb-doc1", text: "Health insurance card"),
             LaborBagItem(id: "lb-doc2", text: "Hospital pre-registration confirmation"),
             LaborBagItem(id: "lb-doc3", text: "OB or midwife contact numbers"),
@@ -121,7 +119,7 @@ struct LaborBagView: View {
                         .font(.system(size: 13))
                     Text("Bag is packed — you're ready!")
                         .font(.captionText.weight(.semibold))
-                        .foregroundStyle(Color.sage)
+                        .foregroundStyle(Color.ink)
                 }
             }
         }
@@ -137,25 +135,22 @@ struct LaborBagView: View {
 
     private func sectionCard(_ section: LaborBagSection) -> some View {
         VStack(alignment: .leading, spacing: 0) {
-            HStack(spacing: 8) {
-                ZStack {
-                    RoundedRectangle(cornerRadius: Radius.input)
-                        .fill(Color.divider)
-                        .frame(width: 30, height: 30)
-                    Image(systemName: section.symbol)
-                        .font(.system(size: 14, weight: .semibold))
+            VStack(alignment: .leading, spacing: 4) {
+                Text(section.eyebrow)
+                    .eyebrowStyle()
+
+                HStack(alignment: .lastTextBaseline) {
+                    Text(section.title)
+                        .font(.h2)
+                        .foregroundStyle(Color.ink)
+
+                    Spacer()
+
+                    let done = section.items.filter { profile.isChecklistItemCompleted($0.id) }.count
+                    Text("\(done)/\(section.items.count)")
+                        .font(.captionText.weight(.semibold))
                         .foregroundStyle(Color.inkSecondary)
                 }
-                Text(section.title)
-                    .font(.h2)
-                    .foregroundStyle(Color.ink)
-
-                Spacer()
-
-                let done = section.items.filter { profile.isChecklistItemCompleted($0.id) }.count
-                Text("\(done)/\(section.items.count)")
-                    .font(.captionText.weight(.semibold))
-                    .foregroundStyle(Color.inkSecondary)
             }
             .padding(.horizontal, 16)
             .padding(.vertical, 14)
