@@ -88,9 +88,10 @@ struct AllWeeksView: View {
                     VStack(alignment: .leading, spacing: Spacing.sm) {
                         Text("WEEK \(week.weekNumber) OF 40").eyebrowStyle()
                         Text(weekSubtitle(week))
-                            .font(.hero)
+                            .font(.system(size: 36, weight: .semibold, design: .serif))
                             .foregroundStyle(Color.ink)
-                            .fixedSize(horizontal: false, vertical: true)
+                            .lineLimit(2)
+                            .minimumScaleFactor(0.55)
                     }
                     Spacer(minLength: Spacing.sm)
                     TrimesterGlyph(weekNumber: week.weekNumber, size: 80, tinted: true)
@@ -138,7 +139,8 @@ struct AllWeeksView: View {
                     Text(weekSubtitle(week))
                         .font(.bodyText)
                         .foregroundStyle(Color.ink)
-                        .lineLimit(1)
+                        .lineLimit(2)
+                        .fixedSize(horizontal: false, vertical: true)
                     Text("Size of \(articleFor(week.sizeComparison)) \(week.sizeComparison.lowercased())")
                         .font(.captionText)
                         .foregroundStyle(Color.inkSecondary)
