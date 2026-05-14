@@ -84,15 +84,24 @@ struct AllWeeksView: View {
     private func currentWeekHero(week: Week) -> some View {
         NavigationLink(destination: WeekDetailView(week: week, profile: profile)) {
             VStack(alignment: .leading, spacing: Spacing.lg) {
+
+                // Eyebrow row with chevron — top-right tappable affordance
+                HStack {
+                    Text("WEEK \(week.weekNumber) OF 40").eyebrowStyle()
+                    Spacer()
+                    Image(systemName: "chevron.right")
+                        .font(.system(size: 14, weight: .semibold))
+                        .foregroundStyle(Color.inkSecondary)
+                }
+
+                // Headline + illustration
                 HStack(alignment: .top, spacing: Spacing.md) {
-                    VStack(alignment: .leading, spacing: Spacing.sm) {
-                        Text("WEEK \(week.weekNumber) OF 40").eyebrowStyle()
-                        Text(weekSubtitle(week))
-                            .font(.hero)
-                            .foregroundStyle(Color.ink)
-                            .fixedSize(horizontal: false, vertical: true)
-                    }
-                    Spacer(minLength: Spacing.sm)
+                    Text(weekSubtitle(week))
+                        .font(.system(size: 36, weight: .semibold, design: .serif))
+                        .foregroundStyle(Color.ink)
+                        .lineLimit(2)
+                        .minimumScaleFactor(0.55)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                     TrimesterGlyph(weekNumber: week.weekNumber, size: 80, tinted: true)
                 }
 
@@ -111,6 +120,15 @@ struct AllWeeksView: View {
                     }
                 }
                 .frame(height: 1)
+
+                // CTA — accent eyebrow inviting the tap
+                HStack(spacing: 4) {
+                    Text("Open this week")
+                    Image(systemName: "arrow.right")
+                }
+                .eyebrowStyle()
+                .foregroundStyle(Color.accent)
+                .padding(.top, Spacing.md)
             }
             .padding(Spacing.xl)
             .background(
@@ -138,7 +156,8 @@ struct AllWeeksView: View {
                     Text(weekSubtitle(week))
                         .font(.bodyText)
                         .foregroundStyle(Color.ink)
-                        .lineLimit(1)
+                        .lineLimit(2)
+                        .fixedSize(horizontal: false, vertical: true)
                     Text("Size of \(articleFor(week.sizeComparison)) \(week.sizeComparison.lowercased())")
                         .font(.captionText)
                         .foregroundStyle(Color.inkSecondary)

@@ -102,22 +102,27 @@ struct HomeView: View {
         }) {
             VStack(alignment: .leading, spacing: Spacing.lg) {
 
-                // Top section: text + illustration
-                HStack(alignment: .top, spacing: Spacing.sm) {
-                    VStack(alignment: .leading, spacing: Spacing.sm) {
-                        Text("WEEK \(profile.currentWeek) OF 40")
-                            .eyebrowStyle()
-                            .contentTransition(.numericText())
-                            .animation(.easeInOut(duration: 0.6), value: profile.currentWeek)
+                // Eyebrow row with chevron — top-right tappable affordance
+                HStack {
+                    Text("WEEK \(profile.currentWeek) OF 40")
+                        .eyebrowStyle()
+                        .contentTransition(.numericText())
+                        .animation(.easeInOut(duration: 0.6), value: profile.currentWeek)
+                    Spacer()
+                    Image(systemName: "chevron.right")
+                        .font(.system(size: 14, weight: .semibold))
+                        .foregroundStyle(Color.inkSecondary)
+                }
 
-                        Text(heroHeadlineText)
-                            .font(.system(size: 36, weight: .semibold, design: .serif))
-                            .foregroundStyle(Color.ink)
-                            .lineLimit(3)
-                            .minimumScaleFactor(0.85)
-                            .fixedSize(horizontal: false, vertical: true)
-                    }
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                // Headline + illustration
+                HStack(alignment: .top, spacing: Spacing.sm) {
+                    Text(heroHeadlineText)
+                        .font(.system(size: 36, weight: .semibold, design: .serif))
+                        .foregroundStyle(Color.ink)
+                        .lineLimit(3)
+                        .minimumScaleFactor(0.85)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .frame(maxWidth: .infinity, alignment: .leading)
 
                     TrimesterGlyph(weekNumber: profile.currentWeek, size: 80, tinted: true)
                 }
@@ -143,6 +148,15 @@ struct HomeView: View {
                         .contentTransition(.numericText())
                         .animation(.easeInOut(duration: 0.6), value: profile.currentWeek)
                 }
+
+                // CTA — accent eyebrow inviting the tap
+                HStack(spacing: 4) {
+                    Text("Read this week's guide")
+                    Image(systemName: "arrow.right")
+                }
+                .eyebrowStyle()
+                .foregroundStyle(Color.accent)
+                .padding(.top, Spacing.md)
             }
             .padding(Spacing.xl)
             .background(
